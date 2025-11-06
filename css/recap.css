@@ -1,0 +1,92 @@
+/* recap.css */
+.recap-container {
+  max-width: 800px;
+  margin: 120px auto 80px;
+  padding: 0 20px;
+  color: #eaeaea;
+}
+
+.recap-title {
+  font-size: 2rem;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.recap-subtitle {
+  text-align: center;
+  color: #aaa;
+  margin-bottom: 40px;
+}
+
+.recap-section {
+  margin-bottom: 40px;
+}
+
+.recap-section h2 {
+  color: #ff6600;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.recap-section p {
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+
+.recap-section pre {
+  background: #0d1117;
+  color: #b5e853;
+  padding: 15px;
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 1rem;
+  overflow-x: auto;
+}
+
+/* Quiz Section */
+.quiz {
+  border-top: 1px solid #2c2c2c;
+  padding-top: 40px;
+  margin-top: 50px;
+}
+
+.quiz h2 {
+  color: #ff6600;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+}
+
+.quiz-question {
+  margin-bottom: 25px;
+}
+
+.quiz-question p {
+  margin-bottom: 10px;
+  color: #ddd;
+}
+
+.quiz-question button {
+  background: #1a1a1a;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 8px 16px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quiz-question button:hover {
+  background: #ff6600;
+  border-color: #ff6600;
+  color: #0d0d0d;
+}
+
+#quiz-result {
+  margin-top: 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sfida 3: Operatorët në JavaScript | Mëso Programimin</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/challanges.css" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="navbar-left">
+      <img src="imgs/coding-removebg-preview.png" alt="Logo" class="logo-icon">
+      <span class="logo-text">Mëso Programimin</span>
+    </div>
+    <div class="navbar-right">
+      <button class="trial-btn">Trial</button>
+      <button class="menu-btn">☰</button>
+    </div>
+  </header>
+
+  <!-- Challenge Layout -->
+  <main class="challenge-container vertical-layout">
+    <!-- Instructions -->
+    <section class="instructions-top">
+      <h2 class="challenge-title">🧮 Sfida 3: Operatorët në JavaScript</h2>
+      <p>
+        Tani që di si funksionojnë operatorët, është koha t’i përdorësh në praktikë!
+      </p>
+      <p><strong>Detyra:</strong></p>
+      <ol>
+        <li>Krijo dy variabla: <code>num1</code> dhe <code>num2</code> (p.sh. 10 dhe 3).</li>
+        <li>Përdor operatorët aritmetikë për të bërë disa llogaritje dhe shfaq rezultatet me <code>console.log()</code>.</li>
+        <li>Përdor operatorët e krahasimit për të kontrolluar nëse <code>num1</code> është më i madh, më i vogël apo i barabartë me <code>num2</code>.</li>
+      </ol>
+      <p>Kliko <strong>“Ekzekuto Kodin”</strong> për të parë rezultatet në console.</p>
+    </section>
+
+    <!-- Code Editor -->
+    <section class="editor-bottom">
+      <h2 class="challenge-title">💻 Shkruaj Kodin Tënd</h2>
+      <div id="editor" class="monaco-editor"></div>
+      <button id="run-btn">Ekzekuto Kodin</button>
+      <div id="output"></div>
+
+      <div class="lesson-nav top-nav">
+        <a href="lesson3.html" class="nav-btn back-btn">← Kthehu te Mësimi</a>
+        <a href="lesson4.html" class="nav-btn next-btn">Vazhdo te Mësimi 4 →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      <p>© 2025 Mëso Programimin | Krijuar nga <span>Qelsim Rraci</span></p>
+    </div>
+  </footer>
+
+  <script>
+    // Load Monaco Editor
+    require.config({ paths: { vs: "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs" } });
+    require(["vs/editor/editor.main"], function () {
+      window.editor = monaco.editor.create(document.getElementById("editor"), {
+        value: `// Krijo dy variabla dhe përdor operatorët 👇\nlet num1 = 10;\nlet num2 = 3;\n\n// Operatorë aritmetikë\nconsole.log("Mbledhja:", num1 + num2);\nconsole.log("Zbritja:", num1 - num2);\nconsole.log("Shumëzimi:", num1 * num2);\nconsole.log("Pjesëtimi:", num1 / num2);\nconsole.log("Mbetja:", num1 % num2);\n\n// Operatorë krahasimi\nconsole.log("num1 > num2:", num1 > num2);\nconsole.log("num1 < num2:", num1 < num2);\nconsole.log("num1 == num2:", num1 == num2);\nconsole.log("num1 === num2:", num1 === num2);`,
+        language: "javascript",
+        theme: "vs-dark",
+        fontSize: 16,
+        automaticLayout: true,
+        minimap: { enabled: false },
+      });
+    });
+
+    // Run code
+    document.getElementById("run-btn").addEventListener("click", () => {
+      const code = window.editor.getValue();
+      const output = document.getElementById("output");
+      output.textContent = "";
+
+      const logs = [];
+      const originalLog = console.log;
+      console.log = (...args) => logs.push(args.join(" "));
+
+      try {
+        eval(code);
+        output.innerHTML = logs.length ? logs.join("<br>") : "<em>(nuk ka output)</em>";
+      } catch (err) {
+        output.textContent = "⚠️ Gabim: " + err.message;
+      }
+      console.log = originalLog;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recap 1 | Mëso Programimin</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/recap.css" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <div class="navbar-left">
+      <img src="imgs/coding-removebg-preview.png" alt="Logo" class="logo-icon">
+      <span class="logo-text">Mëso Programimin</span>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="recap-container">
+    <h1 class="recap-title">Recap: Çfarë ke mësuar deri tani</h1>
+    <p class="recap-subtitle">Përsërit konceptet kryesore përpara se të vazhdosh më tej.</p>
+
+    <section class="recap-section">
+      <h2>📦 Variablat</h2>
+      <p>Variablat ruhen për të ruajtur të dhëna që përdoren më vonë në program.</p>
+      <pre><code>let emri = "Qelsim";
+let mosha = 20;
+console.log(emri, mosha);</code></pre>
+    </section>
+
+    <section class="recap-section">
+      <h2>📚 Llojet e të dhënave</h2>
+      <p>Ka disa tipe bazë: <strong>string</strong>, <strong>number</strong>, <strong>boolean</strong>, <strong>null</strong> dhe <strong>undefined</strong>.</p>
+      <pre><code>let tekst = "Hello";
+let numer = 42;
+let eshteStudent = true;
+let nota = null;
+let telefoni;</code></pre>
+    </section>
+
+    <section class="recap-section">
+      <h2>🧩 typeof()</h2>
+      <p>Përdoret për të parë çfarë tipi të dhëne ka një variabël.</p>
+      <pre><code>console.log(typeof "Qelsim"); // string
+console.log(typeof 20); // number</code></pre>
+    </section>
+
+    <section class="recap-section">
+      <h2>⚙️ Operatorët</h2>
+      <p>Na ndihmojnë të bëjmë llogaritje dhe krahasime midis vlerave.</p>
+      <pre><code>let a = 10, b = 3;
+console.log(a + b); // 13
+console.log(a > b); // true</code></pre>
+    </section>
+
+    <!-- Quiz Section -->
+    <section class="quiz">
+      <h2>🧠 Quiz</h2>
+      <p>Kontrollo njohuritë e tua përmes disa pyetjeve të shkurtra.</p>
+
+      <div class="quiz-question">
+        <p>1️⃣ Çfarë bën <code>typeof</code> në JavaScript?</p>
+        <button onclick="checkAnswer(this, true)">Tregon tipin e të dhënës</button>
+        <button onclick="checkAnswer(this, false)">E fshin variablen</button>
+      </div>
+
+      <div class="quiz-question">
+        <p>2️⃣ Cili është rezultati i <code>10 == "10"</code>?</p>
+        <button onclick="checkAnswer(this, true)">true</button>
+        <button onclick="checkAnswer(this, false)">false</button>
+      </div>
+
+      <div id="quiz-result"></div>
+    </section>
+
+    <!-- Navigation -->
+    <div class="lesson-nav recap-nav">
+      <a href="challenge3.html" class="nav-btn back-btn">← Kthehu te Sfida 3</a>
+      <a href="lesson4.html" class="nav-btn next-btn">Vazhdo te Mësimi 4 →</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      <p>© 2025 Mëso Programimin | Krijuar nga <span>Qelsim Rraci</span></p>
+    </div>
+  </footer>
+
+  <script>
+    function checkAnswer(btn, correct) {
+      const result = document.getElementById("quiz-result");
+      const buttons = btn.parentElement.querySelectorAll("button");
+
+      buttons.forEach(b => b.disabled = true);
+
+      if (correct) {
+        btn.style.background = "#00c985";
+        result.textContent = "✅ Saktë!";
+        result.style.color = "#00c985";
+      } else {
+        btn.style.background = "#ff4444";
+        result.textContent = "❌ Gabim. Provo përsëri!";
+        result.style.color = "#ff5555";
+      }
+    }
+  </script>
+</body>
+</html>
