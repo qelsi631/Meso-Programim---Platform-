@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mësimi 4: Kushtet (if / else) | Mëso Programimin</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-left">
+      <img src="imgs/coding-removebg-preview.png" alt="Logo" class="logo-icon">
+      <span class="logo-text">Mëso Programimin</span>
+    </div>
+  </header>
+
+  <main class="lesson-container">
+    <h1 class="lesson-title">Mësimi 4: Kushtet (if / else)</h1>
+    <p class="lesson-updated">Përditësuar: Nëntor 2025</p>
+
+    <!-- Section 1 -->
+    <section class="lesson-section">
+      <h2>Çfarë janë kushtet?</h2>
+      <p>
+        Në jetën e përditshme, marrim vendime çdo ditë:  
+        <em>“Nese bje shi, e marr çadrën. nese jo, dal pa çadër.”</em> 🌧️☀️  
+      </p>
+      <p>
+        Kompjuteri bën të njëjtën gjë — merr vendime bazuar në **kushte**.  
+        Në JavaScript, për këtë përdorim fjalën <code>if</code>.
+      </p>
+
+      <pre class="code-block"><code class="language-javascript">// Shembull 1
+let moti = "shi";
+
+if (moti === "shi") {
+  console.log("Merr çadrën!");
+}
+</code></pre>
+
+      <p>
+        Ky kod i thotë kompjuterit: “Nëse variabla <code>moti</code> ka vlerën ‘shi’,  
+        atëherë shfaq mesazhin ‘Merr çadrën!’”.
+      </p>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="lesson-section">
+      <h2>Pse na duhet edhe <code>else</code>?</h2>
+      <p>
+        <code>else</code> përdoret kur duam të ndodhë diçka <strong>ndryshe</strong> nëse kushti nuk plotësohet.
+      </p>
+
+      <pre class="code-block"><code class="language-javascript">// Shembull 2
+let moti = "diell";
+
+if (moti === "shi") {
+  console.log("Merr çadrën!");
+} else {
+  console.log("Nuk të duhet çadra!");
+}
+</code></pre>
+
+      <p>
+        Në këtë rast, për shkak se moti <strong>nuk</strong> është "shi",  
+        programi ekzekuton bllokun <code>else</code>.
+      </p>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="lesson-section">
+      <h2>if – else if – else (më shumë kushte)</h2>
+      <p>
+        Ndonjëherë nuk kemi vetëm dy zgjedhje, por disa.  
+        Këtu hyjnë në lojë <code>else if</code>.
+      </p>
+
+      <pre class="code-block"><code class="language-javascript">// Shembull 3
+let temperatura = 5;
+
+if (temperatura > 25) {
+  console.log("Është nxehtë ☀️");
+} else if (temperatura > 10) {
+  console.log("Është freskët 🌤️");
+} else {
+  console.log("Është ftohtë ❄️");
+}
+</code></pre>
+
+      <p>
+        Kompjuteri kontrollon nga lart-poshtë:  
+        - A është > 25? ❌ jo → kalon më poshtë  
+        - A është > 10? ❌ jo → kalon më poshtë  
+        - Arrin te <code>else</code> → printon “Është ftohtë ❄️”
+      </p>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="lesson-section">
+      <h2>Operatorët krahasues</h2>
+      <p>
+        Kur krahasojmë dy gjëra, përdorim **operatorë krahasues**:
+      </p>
+      <ul>
+        <li><code>==</code> ➜ është i barabartë (nuk kontrollon tipin)</li>
+        <li><code>===</code> ➜ është plotësisht i barabartë (kontrollon edhe tipin)</li>
+        <li><code>!=</code> ➜ jo i barabartë</li>
+        <li><code>&gt;</code> ➜ më i madh</li>
+        <li><code>&lt;</code> ➜ më i vogël</li>
+        <li><code>&gt;=</code> ➜ më i madh ose i barabartë</li>
+        <li><code>&lt;=</code> ➜ më i vogël ose i barabartë</li>
+      </ul>
+
+      <pre class="code-block"><code class="language-javascript">// Shembull 4
+let mosha = 18;
+
+if (mosha >= 18) {
+  console.log("Mund të hysh në Club");
+} else {
+  console.log("Duhet të jesh 18+ 😅");
+}
+</code></pre>
+    </section>
+
+    <!-- Section 5 -->
+    <section class="lesson-section">
+      <h2>Forma e shkurtuar (Ternary Operator)</h2>
+      <p>
+        Në vend që të shkruajmë shumë rreshta <code>if</code> dhe <code>else</code>,  
+        ndonjëherë mund ta bëjmë me një rresht:
+      </p>
+      <pre class="code-block"><code class="language-javascript">let mosha = 20;
+let mesazh = (mosha >= 18) ? "Je i rritur" : "Je i mitur";
+console.log(mesazh);</code></pre>
+
+      <p>
+        Kjo quhet “ternary operator” dhe është e shkurtër, por përdore vetëm për kushte të thjeshta.
+      </p>
+    </section>
+
+    <!-- Navigation -->
+    <div class="lesson-nav">
+      <a href="recap1.html" class="nav-btn back-btn">← Kthehu te Recap</a>
+      <a href="challenge4.html" class="nav-btn next-btn">Vazhdo te Sfida 4 →</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      <p>© 2025 Mëso Programimin | Krijuar nga <span>Qelsim Rraci</span></p>
+    </div>
+  </footer>
+</body>
+</html>
