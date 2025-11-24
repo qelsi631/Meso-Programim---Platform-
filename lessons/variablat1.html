@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programimi | Mëso Programimin</title>
+
+  <link rel="stylesheet" href="/css/lesson.css" />
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="navbar-left">
+      <img src="/imgs/coding-removebg-preview.png" class="logo-icon" />
+      <span class="logo-text">Mëso Programimin</span>
+    </div>
+
+    <div class="navbar-right">
+      <button class="trial-btn">Trial</button>
+      <button class="menu-btn" id="toggleSidebar">☰</button>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar-lessons" id="sidebarLessons">
+
+    <div class="chapter">
+      <div class="chapter-header">
+        <span>1. Hyrja</span>
+        <span class="arrow">▼</span>
+      </div>
+
+      <div class="chapter-content">
+        <a class="lesson-item" data-lesson="hyrja" href="hyrje.html">Hyrje në kurs</a>
+        <a class="lesson-item" data-lesson="programimi" data-required="programimi" href="programimi.html">Programimi</a>
+        <a class="lesson-item" data-lesson="variablat1" data-required="variablat1" href="variablat1.html">
+          Variablat I <span class="icon lock">🔒</span>
+        </a>
+        <a class="lesson-item" data-lesson="sfida_variablat" data-required="variablat1" href="sfida-variablat.html">
+          Sfida — Variablat <span class="icon lock">🔒</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="lesson-container">
+
+    <h1 class="lesson-title">Variablat I</h1>
+    <p class="lesson-updated">Përditësuar: Janar 2026</p>
+
+    <!-- SECTION 1 -->
+    <section class="lesson-section">
+      <h2>Çfarë është një variabël?</h2>
+
+      <p>
+        Variablat janë një nga konceptet më themelore dhe më të rëndësishme të programimit.
+        Një variabël është një <strong>vend</strong> ku ruajmë informacione. Mund ta imagjinosh si një kuti që ka një emër,
+        dhe brenda saj fusim një vlerë.
+      </p>
+
+      <div class="gold-box">
+        <strong>Variabla = Emër + Vlerë</strong>
+        <br>
+        (p.sh. emri i kutisë është <em>mosha</em>, vlera brenda saj është <em>20</em>)
+      </div>
+
+      <p>
+        Pa variabla, një program nuk mund të mbajë mend asgjë — as emrin tënd, as moshën, as rezultatet, as zgjedhjet e përdoruesit.
+      </p>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section class="lesson-section">
+      <h2>Pse përdoren variablat?</h2>
+
+      <p>Na duhen sepse duam që programi të mbajë mend të dhëna që i përdor më vonë.</p>
+
+      <ul>
+        <li>për të ruajtur emrin e përdoruesit (<strong>Alban</strong>)</li>
+        <li>për të ruajtur qytetin (<strong>Prishtinë</strong>)</li>
+        <li>për të ruajtur moshën e përdoruesit</li>
+        <li>për të ruajtur rezultatin e një testi</li>
+      </ul>
+
+      <div class="red-box">
+        Mbaj mend: pa variabla, programi nuk do të mund të mbante mend asnjë informacion.
+      </div>
+    </section>
+
+    
+
+    <!-- SECTION 4 -->
+    <section class="lesson-section">
+      <h2>Si deklarohet një variabël?</h2>
+
+      <p class="highlight-gold">Për të krijuar (deklaruar) një variabël në JavaScript, përdorim fjalën <strong>let</strong>.</p>
+
+      <pre class="code-block"><code class="language-javascript">
+let emri = "Alban";
+let qyteti = "Prishtinë";
+let mosha = 21;
+      </code></pre>
+
+      <p>
+        Në këtë shembull, kemi krijuar tre variabla që mbajnë informacione të ndryshme.  
+        Këto vlera mund t’i përdorim më vonë për llogaritje, kontrollime, ose shfaqje në ekran.
+      </p>
+
+    </section>
+
+   
+  <div class="recap-box">
+  <h3>Recap</h3>
+  <ul>
+    <li>Një variabël përdoret për të ruajtur informacione.</li>
+    <li>Variabla ka dy pjesë: emrin dhe vlerën.</li>
+    <li>Përdorim <strong>let</strong> për të deklaruar një variabël.</li>
+    <li>Variablat e bëjnë programin në gjendje të mbajë mend të dhënat.</li>
+  </ul>
+</div>
+
+
+
+  </main>
+
+  <!-- FOOTER -->
+  <div class="lesson-footer">
+    <div class="lesson-footer-title" id="toggleSidebar">
+      1. Hyrja
+    </div>
+
+    <div class="lesson-footer-buttons">
+      <a href="programimi.html">Kthehu</a>
+      <a href="/puzzles/puzzle.html">Vazhdo</a>
+    </div>
+  </div>
+
+  <!-- Mark lesson as completed -->
+  <script>
+    localStorage.setItem("variablat1_completed", true);
+  </script>
+
+  <script src="/javascript/script.js"></script>
+
+</body>
+</html>

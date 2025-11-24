@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mësimi 2: Tipet e të Dhënave | Mëso Programimin</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/lesson.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/lesson.css">
   <link rel="icon" type="image/png" href="favicon.png">
   <link
     rel="stylesheet"
@@ -34,6 +34,43 @@
       <button class="menu-btn">☰</button>
     </div>
   </header>
+ <div class="sidebar-lessons" id="sidebarLessons">
+
+  <!-- KAPITULLI 1 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <span>1. Hyrja</span>
+      <span class="arrow">▼</span>
+    </div>
+
+    <div class="chapter-content">
+      <a class="lesson-item" data-lesson="hyrja" href="lesson1.html">
+        Hyrje në kurs <span class="icon tick">✔</span>
+      </a>
+
+      <a class="lesson-item" data-lesson="programimi" data-required="hyrja" href="programimi.html">
+        Programimi <span class="icon lock">🔒</span>
+      </a>
+
+      <a class="lesson-item" data-lesson="variablat1" data-required="programimi" href="variablat1.html">
+        Variablat I <span class="icon lock">🔒</span>
+      </a>
+
+      <a class="lesson-item" data-lesson="variablat2" data-required="variablat1" href="variablat2.html">
+        Variablat II <span class="icon lock">🔒</span>
+      </a>
+
+      <a class="lesson-item" data-lesson="ushtrim_variablat" data-required="variablat2" href="ushtrim-variablat.html">
+        Ushtrim — Variablat <span class="icon lock">🔒</span>
+      </a>
+
+      <a class="lesson-item" data-lesson="sfida_variablat" data-required="ushtrim_variablat" href="sfida-variablat.html">
+        Sfida — Variablat <span class="icon lock">🔒</span>
+      </a>
+    </div>
+  </div>
+
+</div>
 
   <!-- Lesson content -->
   <main class="lesson-container">
@@ -145,10 +182,18 @@ console.log(typeof telefoni);      // "undefined"
     </div>
   </main>
 
-  <footer class="footer">
-    <div class="footer-bottom">
-      <p>© 2025 Mëso Programimin | Krijuar nga <span>Q.Rr</span></p>
-    </div>
-  </footer>
+    <!-- FOOTER STICKY -->
+<div class="lesson-footer">
+  <div class="lesson-footer-title" id="toggleSidebar">
+    Mësimi 1 — Variablat
+  </div>
+
+  <div class="lesson-footer-buttons">
+    <a href="index.html">Kthehu</a>
+    <a href="challange1.html">Vazhdo</a>
+  </div>
+</div>
+
+<script src="/javascript/script.js"></script>
 </body>
 </html>

@@ -104,4 +104,163 @@
   .nav-btn {
     text-align: center;
   }
+
+  .lesson-footer-buttons{
+    position: relative;
+    left: 10px;
+  }
 }
+
+
+
+/* Sidebar */
+.sidebar-lessons {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 320px;
+  height: 100%;
+  background: #161B22;
+  border-right: 1px solid #30363d;
+  padding: 20px;
+  overflow-y: auto;
+  display: none;
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 2000;
+}
+
+.sidebar-lessons.visible {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.chapter-header {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 10px 0;
+  font-weight: bold;
+  color: white;
+}
+
+.chapter-header .arrow {
+  transition: 0.2s;
+}
+
+.chapter-header.active .arrow {
+  transform: rotate(180deg);
+}
+
+.chapter-content {
+  display: none;
+  padding-left: 10px;
+}
+
+.lesson-item {
+  padding: 6px;
+  border-radius: 4px;
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.lesson-item:hover {
+  background: #21262d;
+}
+
+.icon {
+  display: none;
+}
+
+/* Footer Sticky */
+.lesson-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #424242;
+  padding: 3px 20px;
+  border-top: 1px solid #30363d;
+  display: flex;
+  align-items: center;
+  z-index: 1500;
+}
+
+.lesson-footer-title {
+  flex: 1;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.lesson-footer-buttons a {
+  background: #6b6b6b;
+  padding: 4px 18px;
+  color: rgb(14, 3, 3);
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+}
+.lesson-footer-buttons a:nth-child(2){
+  background-color: #d05e00;
+  color: black;
+  
+}
+.lesson-footer-buttons{
+  position: relative;
+  right: 500px;
+}
+
+
+
+/* GOLD highlight (për gjëra shumë të rëndësishme por jo kritike) */
+.highlight-gold {
+  border-left: 3px solid gold;
+  padding: 8px 12px;
+  background: rgba(255, 215, 0, 0.08); /* gold light background */
+  margin: 10px 0;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* RED highlight (për gjëra kritike që DUHET mbajtur mend) */
+.highlight-red {
+  border-left: 3px solid #ff4d4d;
+  padding: 8px 12px;
+  background: rgba(255, 77, 77, 0.08);
+  margin: 10px 0;
+  border-radius: 4px;
+  font-weight: 600;
+  color: #d10000;
+}
+
+.recap-box {
+  border: 1px solid #ffa500; /* orange */
+  padding: 14px 16px;
+  border-radius: 8px;
+  background: rgba(255, 165, 0, 0.06); /* soft orange background */
+  margin-top: 25px;
+  font-weight: 400; /* normal, not bold */
+  line-height: 1.55; /* nice and readable */
+}
+
+.recap-box h3 {
+  margin-top: 0;
+  font-weight: 600; /* slightly bold but not heavy */
+  color: #ff9b00;
+  font-size: 18px;
+}
+
+.recap-box ul {
+  margin: 10px 0 0 20px;
+  padding: 0;
+}
+
+.recap-box ul li {
+  margin-bottom: 6px;
+}
+
