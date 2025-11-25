@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Variablat II | Mëso Programimin</title>
+
+  <!-- CSS kryesor -->
+  <link rel="stylesheet" href="/css/lesson.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="imgs/favicon-32x32.png" />
+
+  <!-- Font Awesome (nëse të duhet diku më vonë) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+  />
+
+  <!-- Prism (nëse përdor highlight për kodin) -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+
+  <style>
+    /* Highlight Gold: për gjëra të rëndësishme */
+    .gold-highlight {
+      border: 1px solid gold;
+      padding: 6px 10px;
+      display: inline-block;
+      border-radius: 6px;
+      background: rgba(255, 215, 0, 0.08);
+      margin: 6px 0;
+    }
+
+    /* Recap box (border portokalli) */
+    .recap-box {
+      border: 1px solid orange;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-top: 20px;
+      background: rgba(255, 165, 0, 0.03);
+    }
+    .recap-box h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+    .recap-box ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .recap-box li {
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="navbar-left">
+      <img src="imgs/coding-removebg-preview.png" class="logo-icon" alt="Logo" />
+      <span class="logo-text">Mëso Programimin</span>
+    </div>
+
+    <div class="navbar-right">
+      <button class="trial-btn">Trial</button>
+      <button class="menu-btn">☰</button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="lesson-container">
+    <h1 class="lesson-title">Variablat II</h1>
+    <p class="lesson-updated">Përditësuar: Janar 2026</p>
+
+    <!-- SECTION 1 – Rishikim i shkurtër -->
+    <section class="lesson-section">
+      <h2>Rikujtim i shkurtër</h2>
+      <p>
+        Në mësimin e kaluar pamë që një variabël është një <strong>vend ku ruajmë informacion</strong>,
+        si një kuti me një emër dhe një vlerë brenda saj.
+      </p>
+      <p>
+        Përdorëm fjalën <strong>let</strong> për të krijuar variabla si:
+      </p>
+
+      <pre class="code-block"><code class="language-javascript">
+let emri = "Alban";
+let qyteti = "Prishtinë";
+let mosha = 21;
+      </code></pre>
+
+      <p class="gold-highlight">
+        Një variabël ruan një vlerë që mund ta përdorim më vonë për llogaritje, kontrollime dhe shfaqje të të dhënave.
+      </p>
+    </section>
+
+    <!-- SECTION 2 – Anatomia e një variabli -->
+    <section class="lesson-section">
+      <h2>Anatomia e një variabli</h2>
+      <p>
+        Le ta shikojmë më nga afër se nga çfarë përbëhet një variabël në JavaScript.
+      </p>
+
+      <pre class="code-block"><code class="language-javascript">
+let mosha = 21;
+      </code></pre>
+
+      <p>Kjo përbëhet nga tre pjesë kryesore:</p>
+
+      <ul>
+        <li><strong>let</strong> – fjala kyçe që i tregon JavaScript-it se po krijojmë një variabël të re.</li>
+        <li><strong>mosha</strong> – emri i variablës (si etiketa e kutisë).</li>
+        <li><strong>= 21;</strong> – vlera që po i japim variablës.</li>
+      </ul>
+
+      <p>
+        Në fjalë të thjeshta, ky rresht mund të lexohet si:
+      </p>
+      <p class="gold-highlight">
+        “Krijo një variabël me emrin <strong>mosha</strong> dhe jepi vlerën <strong>21</strong>.”
+      </p>
+    </section>
+
+    <!-- SECTION 3 – Emrat e variablave -->
+    <section class="lesson-section">
+      <h2>Si t’i emërtojmë variablat?</h2>
+
+      <p>
+        Emri i variablës duhet të jetë <strong>kuptimplotë</strong>, që kur ta lexosh kodin më vonë, ta kuptosh menjëherë
+        se çfarë ruan ajo variabël.
+      </p>
+
+      <ul>
+        <li><code>mosha</code> – emër i mirë</li>
+        <li><code>emri</code> – emër i mirë</li>
+        <li><code>x</code>, <code>a1</code> – emra jo shumë të qartë (përdori vetëm në raste të veçanta)</li>
+      </ul>
+
+      <p>Ka disa rregulla bazë për emrat e variablave:</p>
+
+      <ul>
+        <li>Nuk mund të fillojnë me numër (p.sh. <code>1mosha</code> është gabim).</li>
+        <li>Nuk duhet të kenë hapësira (p.sh. <code>emri i përdoruesit</code> është gabim).</li>
+        <li>Nuk duhet të kenë karaktere speciale si <code>@</code>, <code>-</code>, <code>!</code>, etj.</li>
+      </ul>
+
+      <p class="gold-highlight">
+        Shumica e programuesve përdorin stilin <strong>camelCase</strong>, p.sh.
+        <code>emriPerdoruesit</code>, <code>dataLindjes</code>.
+      </p>
+    </section>
+
+    <!-- SECTION 4 – Shembuj praktikë me let -->
+    <section class="lesson-section">
+      <h2>Shembuj praktikë me <code>let</code></h2>
+
+      <p>
+        Le të shohim disa shembuj se si mund të përdorim variablat për të ruajtur të dhëna rreth një përdoruesi.
+      </p>
+
+      <pre class="code-block"><code class="language-javascript">
+let emri = "Alban";
+let qyteti = "Prishtinë";
+let mosha = 21;
+      </code></pre>
+
+      <p>
+        Këtu kemi tre variabla që ruajnë emrin, qytetin dhe moshën e një personi.  
+        Më vonë në kurs do të shohim se si t’i përdorim këto vlera për llogaritje dhe vendimmarrje (if / else).
+      </p>
+    </section>
+
+    <!-- SECTION 5 – Recap -->
+    <section class="lesson-section">
+      <div class="recap-box">
+        <h3>Recap — Variablat II</h3>
+        <ul>
+          <li>Një variabël përbëhet nga: fjala kyçe, emri dhe vlera.</li>
+          <li><strong>let</strong> përdoret për të krijuar një variabël të re.</li>
+          <li>Emrat e variablave duhet të jenë <strong>kuptimplotë</strong> dhe pa hapësira.</li>
+          <li>Stili <strong>camelCase</strong> (p.sh. <code>emriPerdoruesit</code>) është shumë i zakonshëm.</li>
+          <li>Variablat na ndihmojnë të ruajmë informacione për t’i përdorur më vonë në program.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <div class="lesson-footer">
+    <div class="lesson-footer-title">
+      1. Hyrja
+    </div>
+
+    <div class="lesson-footer-buttons">
+      <!-- Ndrysho link-un sipas rrugës reale të faqes së puzzle-it -->
+      <a href="puzzleVariable1.html">Kthehu</a>
+      <!-- Këtu mund të çosh te ushtrimi tjetër, sfida ose kapitulli tjetër -->
+      <a href="sfida-variablat.html">Vazhdo</a>
+    </div>
+  </div>
+
+  <!-- Skripti kryesor, nëse e përdor për gjëra globale -->
+  <script src="/javascript/script.js"></script>
+</body>
+</html>
