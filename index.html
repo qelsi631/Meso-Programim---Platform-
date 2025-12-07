@@ -1,169 +1,134 @@
 <!DOCTYPE html>
 <html lang="sq">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mëso Programimin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mëso Programimin</title>
+    <link rel="stylesheet" href="Dizajni i ri/style.css">
+</head>
+<body>
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/home.css" />
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-  />
+<header class="topbar">
+    <img src="Dizajni i ri/icon platformes.jpg" alt="Logo" class="logo-small">
 
-  <!-- Privacy-friendly analytics by Plausible -->
-<script async src="https://plausible.io/js/pa-HNQrPBGookKdMa9kQ6gfx.js"></script>
+    <nav class="nav-desktop">
+        <a href="#">Ballina</a>
+        <a href="#">Mësimet</a>
+        <a href="#">Rreth Nesh</a>
+    </nav>
+
+    <img src="Dizajni i ri/burger-bar.png" class="menu-icon" id="menuToggle" alt="Menu">
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-left">
+        <h1 class="title">Mirë se vini</h1>
+
+        <p class="desc">
+            Mëso programim, platformë e krijuar për të gjithë 
+            <span class="highlight">shqipfolësit</span> që duan të mësojnë bazat e programimit 
+            dhe të zhyten thellë në botën e programimit.
+        </p>
+
+        <button class="btn"><a href="lessons/hyrje.html" class="btn-a">Fillo Tani</a></button>
+    </div>
+
+    <div class="hero-right">
+        <img src="Dizajni i ri/meso-programim-high-resolution-logo-transparent.png" alt="Mëso Programimin Logo" class="big-logo">
+        
+    </div>
+
+</section>
+
+
+<section class="lessons-section">
+    <h2 class="lessons-title">Çka do të mësoni</h2>
+
+    <div class="lessons-grid">
+
+        <div class="lesson-item">1. Bazat e Programimit</div>
+        <div class="lesson-item">2. Variablat</div>
+        <div class="lesson-item">3. Tipat e të Dhënave</div>
+        <div class="lesson-item">4. Operatorët</div>
+        <div class="lesson-item">5. Kushtet (if / else)</div>
+        <div class="lesson-item">6. Ciklet (for / while)</div>
+        <div class="lesson-item">7. Funksionet</div>
+        <div class="lesson-item">8. Stringjet</div>
+        <div class="lesson-item">9. Arrays</div>
+        <div class="lesson-item">10. Objektet (OOP – Hyrje)</div>
+        <div class="lesson-item">11. Puzzle & Ushtrime</div>
+        <div class="lesson-item">12. Projektet Praktike</div>
+
+    </div>
+</section>
+
+
+<section class="steps-section">
+    <h2 class="steps-title">Si funksionon platforma</h2>
+
+    <div class="steps-grid">
+
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <h3>Lexoni mësime të shkurtra</h3>
+            <p>Çdo kapitull fillon me një mësim të shkurtër që shpjegon konceptin në mënyrë të thjeshtë dhe të qartë.</p>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <h3>Zbatoni konceptet me puzzle</h3>
+            <p>Pas mësimit, ju zgjidhni puzzle praktike për ta përdorur menjëherë konceptin e mësuar.</p>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <h3>Përballuni me sfida</h3>
+            <p>Pas disa puzzle-ve hapet një sfidë që teston sa mirë e keni kuptuar konceptin.</p>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <h3>Hapni nivele dhe mësime të reja</h3>
+            <p>Duke përfunduar puzzle dhe sfida, hapni nivele të reja dhe progresi ruhet automatikisht.</p>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+<section class="cta-section">
+    <div class="cta-content">
+        <h2>Gati të fillosh rrugëtimin tënd në programim?</h2>
+        <p>Mëso konceptet bazë, zgjidh puzzle dhe ndërto logjikën e programimit – të gjitha në shqip.</p>
+        <button class="btn"><a href="lessons/hyrje.html" class="btn-a">Fillo Tani</a></button>
+    </div>
+</section>
+
+
+
+<footer class="footer">
+    <div class="footer-content">
+        <img src="Dizajni i ri/icon platformes.jpg" alt="Logo" class="footer-logo">
+        <p class="footer-copy">© 2025 Mëso Programimin. Të gjitha të drejtat e rezervuara.</p>
+    </div>
+</footer>
+
+
+
+
+
+
+
 <script>
-  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
+    const menu = document.getElementById("menuToggle");
+    menu.addEventListener("click", () => {
+        document.body.classList.toggle("openNav");
+    });
 </script>
 
-<meta name="description" content="Mëso Programimin është platforma e parë në gjuhën shqipe për të mësuar JavaScript dhe bazat e programimit përmes mësimeve interaktive, ushtrimeve dhe sfidave praktike.">
-<meta name="keywords" content="mëso programim, javascript shqip, programim në shqip, kurs programimi, mëso kodim, qelsim rraci">
-<meta name="author" content="Qelsim Rraci">
-
-
-<link rel="apple-touch-icon" sizes="180x180" href="imgs/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="imgs/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="imgs/favicon-16x16.png">
-<link rel="manifest" href="imgs/site.webmanifest">
-</head>
-
-<body>
-  <!-- Header -->
-  <header class="navbar">
-    <div class="navbar-left">
-      <img src="/imgs/coding-removebg-preview.png" alt="Logo" class="logo-icon" />
-      <span class="logo-text">Mëso Programimin</span>
-    </div>
-    <div class="navbar-right">
-      <button class="trial-btn">Trial</button>
-      <button class="menu-btn">☰</button>
-    </div>
-  </header>
-
-  <!-- Main -->
-  <main>
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-content">
-        <h1>Mëso Programimin</h1>
-        <p>
-          Filloni udhëtimin tuaj në botën e <strong>programimit</strong> përmes mësimeve interaktive,
-          ushtrimeve praktike dhe sfidave në gjuhën shqipe.
-        </p>
-        <a href="#learn" class="hero-btn">🚀 Fillo të mësosh</a>
-      </div>
-
-      <div class="hero-image">
-        <img src="imgs/coding-removebg-preview.png" alt="Coding illustration" />
-      </div>
-    </section>
-
-    <!-- Learn Section -->
-    <section id="learn" class="perbajtja">
-      <h2 class="title">Çfarë do të mësosh</h2>
-      <p class="desc">
-        Në këtë platformë do të mësosh <strong>bazat e programimit</strong> përmes mësimeve të qarta,
-        shembujve praktikë dhe sfidave interaktive — të gjitha në <strong>gjuhën shqipe</strong>.
-        Qëllimi ynë është ta bëjmë programimin të kuptueshëm, argëtues dhe të arritshëm për të gjithë.
-      </p>
-
-      <ul class="list">
-        <li>✅ Kuptosh si funksionon logjika e programimit</li>
-        <li>✅ Shkruash programin tënd të parë me <strong>JavaScript</strong></li>
-        <li>✅ Përdorësh <strong>variabla, kushte, cikle dhe funksione</strong></li>
-        <li>✅ Ndërtosh <strong>projekte të vogla interaktive</strong></li>
-        <li>✅ Mendosh si një <strong>programues i vërtetë</strong> duke zgjidhur probleme hap pas hapi</li>
-      </ul>
-
-     <div class="structure">
-  <h3 class="structure-title">Si është ndarë kursi</h3>
-  <p class="structure-desc">Kursi ndahet në 3 pjesë kryesore që të ndihmojnë të kuptosh, praktikosh dhe sfidosh veten:</p>
-
-  <div class="structure-cards">
-    <div class="structure-card">
-      <div class="icon-wrapper">
-        <i class="fas fa-brain"></i>
-      </div>
-      <h4>Teori</h4>
-      <p>Shpjegime të qarta për çdo koncept të ri, me shembuj të thjeshtë dhe ilustrime praktike.</p>
-    </div>
-
-    <div class="structure-card">
-      <div class="icon-wrapper">
-        <i class="fas fa-laptop-code"></i>
-      </div>
-      <h4>Praktikë</h4>
-      <p>Ushtrime interaktive ku mund të shkruash dhe testosh kodin tënd në shfletues.</p>
-    </div>
-
-    <div class="structure-card">
-      <div class="icon-wrapper">
-        <i class="fas fa-rocket"></i>
-      </div>
-      <h4>Sfidë</h4>
-      <p>Detyra që të ndihmojnë të mendosh si një programues i vërtetë dhe të zgjidhësh probleme reale.</p>
-    </div>
-  </div>
-</div>
-
-
-
-      <p class="end">
-        Nuk ka rëndësi nëse nuk ke programuar kurrë më parë — kjo platformë është pika e duhur për ta nisur udhëtimin tënd drejt botës së programimit.
-      </p>
-
-      <a href="lessons/hyrje.html" class="btn">Fillo tani</a>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-about">
-        <h3>Mëso Programimin</h3>
-        <p>
-          Një platformë në gjuhën shqipe për të mësuar bazat e programimit
-          përmes mësimeve interaktive, ushtrimeve praktike dhe sfidave të vërteta.
-        </p>
-      </div>
-
-      <div class="footer-links">
-        <h4>Linke të shpejta</h4>
-        <ul>
-          <li><a href="#">Kreu</a></li>
-          <li><a href="#">Rreth nesh</a></li>
-          <li><a href="#">Kursi</a></li>
-          <li><a href="#">Kontakt</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-social">
-        <h4>Na ndiq</h4>
-        <div class="social-icons">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
-          <a href="#"><i class="fab fa-github"></i></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>© 2025 Mëso Programimin. Krijuar nga <span>Q.Rr</span> 💻</p>
-    </div>
-  </footer>
-
-  <!-- Smooth scroll (optional enhancement) -->
-  <script>
-    document.querySelector('.hero-btn').addEventListener('click', e => {
-      e.preventDefault();
-      document.querySelector('#learn').scrollIntoView({ behavior: 'smooth' });
-    });
-  </script>
 </body>
 </html>
