@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rreth Nesh | Mëso Programim</title>
+
+  <link rel="stylesheet" href="rreth-nesh.css" />
+  <link rel="stylesheet" href="/sidebar.css">
+
+  <!-- Fonts (nëse i ke global, mund ta heqësh) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- NAV -->
+    <nav class="top-nav">
+      <a href="#" id="menuBtn" class="icon-btn" aria-label="Hap menunë">
+        <img src="/imgs/menu (1).png" alt="Menu">
+      </a>
+
+      <a href="#" class="goback">Kthehu Pas</a>
+    </nav>
+
+    <!-- SIDEBAR -->
+    <div class="overlay" id="overlay"></div>
+
+    <div class="sidebar" id="sidebar" aria-hidden="true">
+      <div class="sidebar-head">
+        <div class="sidebar-title">
+          <img class="ikonSidebar" src="/imgs/icon_platformes-removebg-preview.png" alt="">
+          <p>Meso Programim</p>
+        </div>
+        <button class="sidebar-close" id="closeBtn" type="button">✕</button>
+      </div>
+
+      <div class="sidebar-links">
+        <a href="#">Ballina</a>
+        <a href="#">Mësimet</a>
+        <a href="#">Profili</a>
+        <a class="active" href="#">Rreth Nesh</a>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <header class="hero">
+       <div class="hero-left">
+
+    <div class="brand-row">
+      <img class="brand-icon" src="/imgs/icon_platformes-removebg-preview.png" alt="Mëso Programim">
+      <div>
+        <div class="badge">Rreth Nesh</div>
+        <h1>Mëso Programim — platformë për të mësuar kodim, hap pas hapi.</h1>
+      </div>
+    </div>
+
+    <p>
+      Ne krijojmë mësime dhe ushtrime praktike në gjuhën shqipe për fillestarë,
+      me qëllim që secili të mund ta fillojë rrugën në programim pa konfuzion.
+    </p>
+
+        <div class="hero-actions">
+          <a class="btn" href="#">Shiko Mësimet</a>
+          <a class="btn ghost" href="#kontakt">Kontakt</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="num">HTML</div>
+            <div class="label">Mësimi i parë</div>
+          </div>
+          <div class="stat">
+            <div class="num">Ushtrime</div>
+            <div class="label">Praktikë reale</div>
+          </div>
+          <div class="stat">
+            <div class="num">Shqip</div>
+            <div class="label">Gjuha kryesore</div>
+          </div>
+        </div>
+      </div>
+
+      
+    </header>
+
+    <!-- SECTIONS -->
+    <main class="content">
+
+      <section class="grid-3">
+        <article class="card">
+          <h3>Misioni</h3>
+          <p>
+            Të bëjmë mësimin e programimit më të lehtë për fillestarët në gjuhën shqipe,
+            përmes praktikës dhe shembujve realë.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Vizioni</h3>
+          <p>
+            Një komunitet ku secili mund të mësojë web development dhe të ndërtojë projekte reale
+            për portfolio dhe punësim.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Si funksionon</h3>
+          <p>
+            Lexon mësimin → sheh shembullin → bën ushtrimin në editor → kalon kontrollet → vazhdon te mësimi tjetër.
+          </p>
+        </article>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <h2>Çfarë do të mësosh këtu</h2>
+          <p>Rruga është e ndërtuar që nga bazat deri te projektet.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Web Basics</h3>
+            <p>Si funksionon web-i, browseri, serveri, HTML/CSS/JS.</p>
+          </div>
+          <div class="card">
+            <h3>HTML</h3>
+            <p>Struktura e faqes: headings, paragrafë, lista, forma, linka, imazhe.</p>
+          </div>
+          <div class="card">
+            <h3>CSS</h3>
+            <p>Stilizim modern: layout, responsive, Flexbox/Grid, komponentë.</p>
+          </div>
+          <div class="card">
+            <h3>JavaScript</h3>
+            <p>Interaktivitet: DOM, evente, funksione, array, projekte të vogla.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="kontakt">
+        <div class="section-head">
+          <h2>Kontakt</h2>
+          <p>Nëse do sugjerime, bashkëpunim, ose ide për mësime të reja.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="card">
+            <h3>Na shkruaj</h3>
+            <p>Jep email-in ose rrjetet sociale (kur t’i kesh gati).</p>
+
+            <div class="contact-item">
+  <div class="left">
+    <img class="contact-ico" src="/imgs/email (2).png" alt="Email">
+    <span class="k">Email</span>
+  </div>
+  <span class="v">info@mesoprogramim.online</span>
+</div>
+
+<div class="contact-item">
+  <div class="left">
+    <img class="contact-ico" src="/imgs/instagram (6).png" alt="Instagram">
+    <span class="k">Instagram</span>
+  </div>
+  <span class="v">@mesoprogramim</span>
+</div>
+
+
+            <div class="note small">
+              (Ndrysho këto me të tuat reale kur t’i vendosësh.)
+            </div>
+          </div>
+
+          <form class="card form" action="#" method="post">
+            <h3>Mesazh i shpejtë</h3>
+
+            <label>
+              Emri
+              <input type="text" name="name" placeholder="Shkruaj emrin..." />
+            </label>
+
+            <label>
+              Email
+              <input type="email" name="email" placeholder="Shkruaj email-in..." />
+            </label>
+
+            <label>
+              Mesazhi
+              <textarea name="message" rows="5" placeholder="Shkruaj mesazhin..."></textarea>
+            </label>
+
+           <button class="btn" type="button" id="sendMailBtn">Dërgo</button>
+
+           
+          </form>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Mëso Programim. Të gjitha të drejtat e rezervuara.</p>
+    </footer>
+
+  </div>
+
+  <script>
+  const sendBtn = document.getElementById("sendMailBtn");
+
+  sendBtn.addEventListener("click", () => {
+    const name = document.querySelector('input[name="name"]').value.trim();
+    const email = document.querySelector('input[name="email"]').value.trim();
+    const message = document.querySelector('textarea[name="message"]').value.trim();
+
+    if (!name || !email || !message) {
+      alert("Ju lutem plotësoni të gjitha fushat.");
+      return;
+    }
+
+    const to = "qelsim2005@gmail.com"; // ndrysho këtu
+    const subject = encodeURIComponent(`Mesazh nga Rreth Nesh — ${name}`);
+    const body = encodeURIComponent(
+      `Emri: ${name}\nEmail: ${email}\n\nMesazhi:\n${message}`
+    );
+
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+  });
+</script>
+
+  <script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Sidebar
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    const menuBtn = document.getElementById("menuBtn");
+    const closeBtn = document.getElementById("closeBtn");
+
+    function openSidebar(){
+      sidebar.classList.add("open");
+      overlay.classList.add("show");
+      sidebar.setAttribute("aria-hidden", "false");
+    }
+    function closeSidebar(){
+      sidebar.classList.remove("open");
+      overlay.classList.remove("show");
+      sidebar.setAttribute("aria-hidden", "true");
+    }
+
+    menuBtn?.addEventListener("click", (e)=>{ e.preventDefault(); openSidebar(); });
+    closeBtn?.addEventListener("click", closeSidebar);
+    overlay?.addEventListener("click", closeSidebar);
+  </script>
+
+</body>
+</html>

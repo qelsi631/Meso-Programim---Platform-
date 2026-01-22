@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programimi | Mëso Programim</title>
+
+  <link rel="stylesheet" href="/html-css/mesimet/welcome.css">
+  <link rel="stylesheet" href="/sidebar.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Prism (optional here, but safe to keep for consistency) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js" defer></script>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- NAV -->
+    <nav>
+      <a href="" id="menuBtn"><img src="/imgs/menu (1).png" alt=""></a>
+      <a href="/lessons/hyrje.html" class="goback">Kthehu Pas</a>
+    </nav>
+
+    <!-- SIDEBAR -->
+    <div class="overlay" id="overlay"></div>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-head">
+        <div class="sidebar-title">
+          <img class="ikonSidebar" src="/imgs/icon_platformes-removebg-preview.png" alt="">
+          <p>Meso Programim</p>
+        </div>
+        <button class="sidebar-close" id="closeBtn" type="button">✕</button>
+      </div>
+
+      <div class="sidebar-links">
+        <a href="#">Ballina</a>
+        <a href="#">Mësimet</a>
+        <a href="#">Profili</a>
+        <a href="#">Rreth Nesh</a>
+      </div>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+      <div class="welcome">
+        <h1>Programimi</h1>
+        <p class="lesson-updated">Përditësuar: Nëntor 2025</p>
+      </div>
+
+      <!-- LESSON CONTENT -->
+      <section class="lesson-content">
+
+        <div class="hapsira">
+          <h2>Çfarë është programimi?</h2>
+          <p>
+            Programimi është mënyra se si i japim <strong>urdhra kompjuterit</strong> që ai të kryejë një detyrë.
+            Ne i tregojmë kompjuterit <em>çfarë të bëjë</em> dhe ai e ndjek hap pas hapi.
+          </p>
+          <p>
+            Në thelb, programimi është më shumë <strong>logjikë</strong> sesa matematikë e vështirë.
+          </p>
+        </div>
+
+        <div class="hapsira2">
+          <h2>Çfarë është një gjuhë programuese?</h2>
+          <p>
+            Një <strong>gjuhë programuese</strong> është mënyra si komunikojmë me kompjuterin.
+            Përdorim gjuhë si:
+          </p>
+          <ul>
+            <li>JavaScript</li>
+            <li>Python</li>
+            <li>Java</li>
+            <li>C++</li>
+          </ul>
+          <p>
+            Në këtë kurs do të përdorim <strong>JavaScript</strong>.
+          </p>
+        </div>
+
+        <div class="hapsira2">
+          <h2>Shembuj nga jeta e përditshme</h2>
+          <ul>
+            <li><strong>Instagram</strong> – ngarkon postimet</li>
+            <li><strong>YouTube</strong> – sugjeron video</li>
+            <li><strong>TikTok</strong> – njeh shijet e tua</li>
+            <li><strong>Google Maps</strong> – gjen rrugën</li>
+            <li><strong>Bankat</strong> – kontrollojnë llogarinë</li>
+          </ul>
+        </div>
+
+        <div class="hapsira2">
+          <h2>Çfarë duhet të dish para se të fillojmë?</h2>
+          <p>
+            Nuk ke nevojë të dish asgjë — ky kurs fillon nga zero.
+          </p>
+          <ul>
+            <li>Pak durim</li>
+            <li>Dëshirë për të mësuar</li>
+            <li>Gatishmëri për të ushtruar</li>
+          </ul>
+          <p>
+            Në mësimin e radhës do të flasim për <strong>Variablat</strong>.
+          </p>
+        </div>
+
+      </section>
+    </header>
+
+    <!-- FOOTER NEXT -->
+    <footer class="lesson-footer">
+      <a class="btn-next" href="/lessons/variablat1.html">Vazhdo</a>
+    </footer>
+
+  </div>
+
+  <!-- Mark lesson as completed -->
+  <script>
+    localStorage.setItem("programimi_completed", true);
+  </script>
+
+  <script>
+    // Sidebar logic (same as your new pages)
+    const menuBtn = document.getElementById("menuBtn");
+    const overlay = document.getElementById("overlay");
+    const closeBtn = document.getElementById("closeBtn");
+
+    function openSidebar() {
+      document.body.classList.add("sidebar-open");
+    }
+    function closeSidebar() {
+      document.body.classList.remove("sidebar-open");
+    }
+
+    menuBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      openSidebar();
+    });
+
+    overlay.addEventListener("click", closeSidebar);
+    closeBtn.addEventListener("click", closeSidebar);
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeSidebar();
+    });
+  </script>
+
+</body>
+</html>

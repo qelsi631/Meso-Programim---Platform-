@@ -1,0 +1,163 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+   font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+}
+
+body {
+  background-color: #e5e5e5;
+  color: #111827;
+}
+
+/* HERO */
+.course-hero {
+  background-color: #ff7a00;
+  margin: 40px auto;
+  padding: 48px 24px;
+  border-radius: 16px;
+  max-width: 1000px;
+  text-align: center;
+  color: #fff;
+}
+
+.course-hero h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.course-hero p {
+  font-size: 16px;
+  max-width: 600px;
+  margin: 0 auto 24px;
+  line-height: 1.6;
+}
+
+.btn-start {
+  background-color: #fff;
+  color: #111827;
+  padding: 12px 28px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+}
+
+/* CONTENT */
+.course-content {
+  max-width: 1000px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  padding: 0 24px;
+}
+
+/* LEFT */
+.course-info h2 {
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+
+.course-info p {
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  color: #374151;
+}
+
+.icons {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.icons img {
+  width: 48px;
+  height: 48px;
+}
+
+/* RIGHT */
+.course-topics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.course-topics ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.course-topics li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #374151;
+}
+
+/* orange circle */
+.course-topics li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;               /* e qit rrethin n'mes t'linës */
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff7a00;       /* portokalli */
+}
+.css-points li::before {
+  background: #2962ff;       /* blu */
+}
+.universal-points li::before {
+  background: #00c853;       /* jeshile */
+}
+
+/* micro interaction */
+.course-topics li:hover {
+  color: #111827;
+  transform: translateX(2px);
+  transition: 0.15s ease;
+}
+
+
+.buttons{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+.buttons a:nth-child(1){
+    background-color: #111827;
+    color: #fff;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .course-content {
+    grid-template-columns: 1fr;
+  }
+
+  .course-topics {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+     
+  
+    .course-topics {
+    grid-template-columns: 1fr;
+  }
+
+  .course-hero h1 {
+    font-size: 32px;
+  }
+}

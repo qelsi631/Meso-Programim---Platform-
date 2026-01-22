@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz — HTML & CSS | Mëso Programimin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="quiz.css" />
+</head>
+<body>
+
+  <div class="page">
+
+    <nav class="topbar">
+      <a class="icon-btn" href="/html-css/mesimet/lesson0.1.html" aria-label="Kthehu pas">←</a>
+      <div class="topbar-title">
+        <p class="tiny">Quiz</p>
+        <h1>Html - Titujt (Headings)</h1>
+      </div>
+      <div class="progress-wrap" aria-label="Progresi i quiz-it">
+        <span class="progress-text">1/5</span>
+        <div class="progress">
+          <div class="progress-bar" style="width: 20%"></div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container">
+
+     <section class="card">
+  <p class="badge" id="badge">Pyetja 1</p>
+
+  <h2 class="question" id="questionText"></h2>
+
+  <form class="options" id="quizForm"></form>
+
+  <p class="result" id="resultMsg"></p>
+</section>
+
+
+    <div class="right-actions">
+  <button class="btn primary" type="button" id="submitBtn">Dërgo</button>
+  <button class="btn ghost hidden" type="button" id="retryBtn">Provo prap</button>
+  <button class="btn next" type="button" id="nextBtn" disabled>Vazhdo</button>
+</div>
+
+
+  </div>
+</section>
+
+
+
+    </main>
+
+  </div>
+
+
+
+  <script>
+  const quizData = [
+    {
+      badge: "Pyetja 1",
+      question: "Cili tag HTML përdoret zakonisht për titullin kryesor të një faqeje?",
+      answers: [
+        { text: "<h1>", correct: true },
+        { text: "<p>", correct: false },
+        { text: "<h4>", correct: false },
+        { text: "<h2>", correct: false },
+      ]
+    }
+ 
+ 
+  ];
+
+  const badgeEl = document.getElementById("badge");
+  const questionEl = document.getElementById("questionText");
+  const formEl = document.getElementById("quizForm");
+  const resultMsg = document.getElementById("resultMsg");
+  const submitBtn = document.getElementById("submitBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const retryBtn = document.getElementById("retryBtn");
+
+  let current = 0;
+
+  function getOptions() {
+    return Array.from(document.querySelectorAll(".option"));
+  }
+
+  function resetFeedback() {
+    const options = getOptions();
+    options.forEach(o => o.classList.remove("correct", "wrong", "disabled"));
+    resultMsg.className = "result";
+    resultMsg.textContent = "";
+  }
+
+  function lockOptions(lock) {
+    const options = getOptions();
+    options.forEach(o => {
+      if (lock) o.classList.add("disabled");
+      else o.classList.remove("disabled");
+    });
+  }
+
+  function renderQuestion() {
+    const q = quizData[current];
+
+    // reset UI
+    resetFeedback();
+    submitBtn.disabled = false;
+
+    // Vazhdo gjithmonë i dukshëm, por i mbyllur derisa të jetë saktë
+    nextBtn.disabled = true;
+
+    // Retry fshehur në fillim
+    retryBtn.classList.add("hidden");
+
+    // fill text
+    badgeEl.textContent = q.badge;
+    questionEl.textContent = q.question;
+
+    // build options
+    formEl.innerHTML = "";
+    q.answers.forEach((a, idx) => {
+      const label = document.createElement("label");
+      label.className = "option";
+      if (a.correct) label.dataset.correct = "true";
+
+      label.innerHTML = `
+        <input type="radio" name="q" value="${idx}">
+        <span>${a.text.replaceAll("<", "&lt;").replaceAll(">", "&gt;")}</span>
+      `;
+      formEl.appendChild(label);
+    });
+  }
+
+  submitBtn.addEventListener("click", () => {
+    const options = getOptions();
+    const selectedInput = document.querySelector('input[name="q"]:checked');
+
+    resetFeedback();
+    nextBtn.disabled = true;
+    retryBtn.classList.add("hidden");
+
+    if (!selectedInput) {
+      resultMsg.textContent = "Zgjedh një përgjigje para se të dërgosh.";
+      return;
+    }
+
+    const selectedLabel = selectedInput.closest(".option");
+    const correctLabel = options.find(o => o.dataset.correct === "true");
+
+    // show correct always
+    if (correctLabel) correctLabel.classList.add("correct");
+
+    const isCorrect = selectedLabel === correctLabel;
+
+    if (!isCorrect) {
+      selectedLabel.classList.add("wrong");
+      resultMsg.textContent = "Gabim ❌ Provo përsëri.";
+      resultMsg.classList.add("bad");
+
+      // shfaq Retry dhe ç'lejo me provu prap
+      retryBtn.classList.remove("hidden");
+
+      // i mbyll opsionet derisa të shtypet Retry (opsionale)
+      lockOptions(true);
+
+      // lejo submit prap (pas retry)
+      submitBtn.disabled = false;
+    } else {
+      resultMsg.textContent = "Saktë ✅ Bravo! Tani mund të vazhdosh.";
+      resultMsg.classList.add("good");
+
+      nextBtn.disabled = false;
+      submitBtn.disabled = true;
+
+      // lock options (opsionale)
+      lockOptions(true);
+    }
+  });
+
+  retryBtn.addEventListener("click", () => {
+    // pastro feedback, hape opsionet, dhe fsheh retry
+    resetFeedback();
+    lockOptions(false);
+    retryBtn.classList.add("hidden");
+
+    // vazhdo mbetet i mbyllur
+    nextBtn.disabled = true;
+
+    // hiq selektimin (opsionale)
+    const checked = document.querySelector('input[name="q"]:checked');
+    if (checked) checked.checked = false;
+  });
+
+  nextBtn.addEventListener("click", () => {
+    if (nextBtn.disabled) return;
+
+    if (current < quizData.length - 1) {
+      current++;
+      renderQuestion();
+    } else {
+      window.location.href = "/html-css/ushtrime/ushtrime0.1.html";
+    }
+  });
+
+  renderQuestion();
+</script>
+
+
+
+
+
+</body>
+</html>
+
+</body>
+</html>

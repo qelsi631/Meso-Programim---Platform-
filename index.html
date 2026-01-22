@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mëso Programimin</title>
-    <link rel="stylesheet" href="Dizajni i ri/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header class="topbar">
-    <img src="Dizajni i ri/icon platformes.jpg" alt="Logo" class="logo-small">
+    <img src="imgs/icon platformes.jpg" alt="Logo" class="logo-small">
 
     <nav class="nav-desktop">
         <a href="#">Ballina</a>
@@ -17,7 +20,7 @@
         <a href="#">Rreth Nesh</a>
     </nav>
 
-    <img src="Dizajni i ri/burger-bar.png" class="menu-icon" id="menuToggle" alt="Menu">
+    <img src="imgs/burger-bar.png" class="menu-icon" id="menuToggle" alt="Menu">
 </header>
 
 
@@ -32,37 +35,70 @@
             dhe të zhyten thellë në botën e programimit.
         </p>
 
-        <button class="btn"><a href="lessons/hyrje.html" class="btn-a">Fillo Tani</a></button>
+        <button class="btn"><a href="#mesimet" class="btn-a">Fillo Tani</a></button>
     </div>
 
     <div class="hero-right">
-        <img src="Dizajni i ri/meso-programim-high-resolution-logo-transparent.png" alt="Mëso Programimin Logo" class="big-logo">
+        <img src="imgs/meso-programim-high-resolution-logo-transparent.png" alt="Mëso Programimin Logo" class="big-logo">
         
     </div>
 
 </section>
 
 
-<section class="lessons-section">
-    <h2 class="lessons-title">Çka do të mësoni</h2>
+<section class="lessons-section" id="mesimet">
+    <h2 class="lessons-title">Çka mund të mësoni</h2>
 
     <div class="lessons-grid">
 
-        <div class="lesson-item">1. Bazat e Programimit</div>
-        <div class="lesson-item">2. Variablat</div>
-        <div class="lesson-item">3. Tipat e të Dhënave</div>
-        <div class="lesson-item">4. Operatorët</div>
-        <div class="lesson-item">5. Kushtet (if / else)</div>
-        <div class="lesson-item">6. Ciklet (for / while)</div>
-        <div class="lesson-item">7. Funksionet</div>
-        <div class="lesson-item">8. Stringjet</div>
-        <div class="lesson-item">9. Arrays</div>
-        <div class="lesson-item">10. Objektet (OOP – Hyrje)</div>
-        <div class="lesson-item">11. Puzzle & Ushtrime</div>
-        <div class="lesson-item">12. Projektet Praktike</div>
+        <!-- HTML & CSS -->
+         <a class="titulliM" href="/html-css/intro.html">
+        <div class="lesson-item html">
+            <div class="lesson-header">
+                <div class="icons">
+                    <h3>HTML & CSS</h3>
+                    <img src="imgs/html-5.png" alt="html icon">
+                    <img src="imgs/css-3.png" alt="css icon">
+                </div>
+                <span class="lesson-badge">Beginner</span>
+            </div>
+            <p>Krijoni faqe web moderne nga zero, strukturë dhe dizajn.</p>
+        </div>
+        </a>
+        
 
+        <!-- JavaScript -->
+         <a class="titulliM" href="lessons/javascript.html">
+        <div class="lesson-item js">
+            <div class="lesson-header">
+                <div class="icons">
+                    <h3>JavaScript</h3>
+                    <img src="imgs/js (1).png" alt="javascript icon">
+                </div>
+                <span class="lesson-badge">Core</span>
+            </div>
+            <p>Shtoni logjikë dhe interaktivitet në faqet web.</p>
+        </div>
+        </a>
+
+        <!-- Java -->
+            <a class="titulliM" href="lessons/java.html">
+        <div class="lesson-item java">
+            <div class="lesson-header">
+                <div class="icons">
+                    <h3>Java</h3>
+                    <img src="imgs/java (1).png" alt="">
+                </div>
+                <span class="lesson-badge">OOP</span>
+            </div>
+            <p>Programim i strukturuar dhe bazat e Object-Oriented.</p>
+        </div>
+        </a>
     </div>
 </section>
+
+
+
 
 
 <section class="steps-section">
@@ -104,7 +140,7 @@
     <div class="cta-content">
         <h2>Gati të fillosh rrugëtimin tënd në programim?</h2>
         <p>Mëso konceptet bazë, zgjidh puzzle dhe ndërto logjikën e programimit – të gjitha në shqip.</p>
-        <button class="btn"><a href="lessons/hyrje.html" class="btn-a">Fillo Tani</a></button>
+        <button class="btn"><a href="#mesimet" class="btn-a">Fillo Tani</a></button>
     </div>
 </section>
 
@@ -112,7 +148,7 @@
 
 <footer class="footer">
     <div class="footer-content">
-        <img src="Dizajni i ri/icon platformes.jpg" alt="Logo" class="footer-logo">
+        <img src="imgs/icon platformes.jpg" alt="Logo" class="footer-logo">
         <p class="footer-copy">© 2025 Mëso Programimin. Të gjitha të drejtat e rezervuara.</p>
     </div>
 </footer>

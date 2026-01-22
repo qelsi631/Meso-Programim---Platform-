@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="welcome.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/sidebar.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+</head>
+<body>
+    <div class="container">
+           <nav>
+        <a href="" id="menuBtn"><img src="/imgs/menu (1).png" alt=""></a>
+
+        <a href=""  class="goback">Kthehu Pas</a>
+    </nav>
+
+    <div class="overlay" id="overlay"></div>
+
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-head">
+    <div class="sidebar-title">
+        <img class="ikonSidebar" src="/imgs/icon_platformes-removebg-preview.png" alt="">
+        <p>Meso Programim</p>
+    </div>
+    <button class="sidebar-close" id="closeBtn" type="button">✕</button>
+  </div>
+
+  <div class="sidebar-links">
+    <a href="#">Ballina</a>
+    <a href="#">Mësimet</a>
+    <a href="#">Profili</a>
+    <a href="#">Rreth Nesh</a>
+  </div>
+</div>
+
+<header>
+    <div class="welcome">
+        <p style="color: orange">✨Mesimi I Parë</p>
+        <h1>Mirë se vini në kursin e <span>HTML & CSS!</span></h1>
+      <p style="color: #b0b6c8;">Këtu do të mësoni bazat e ndërtimit të faqeve web me HTML dhe CSS.</p>
+    </div>
+
+
+    <section class="lesson-content">
+                <p>
+  Mirë se erdhe në Mësimin 1!
+  <span aria-hidden="true"> 👋</span>
+</p>
+
+<p>
+  Çdo faqe interneti që ke vizituar ndonjëherë është ndërtuar me <span class="highlight">kod HTML</span>
+  
+</p>
+
+<p>
+  Në këtë kurs do të mësosh 
+  <span class="highlight">bazat e HTML dhe CSS</span>
+   dhe do të jesh në gjendje të ndërtosh
+  faqen tënde të parë web
+  hap pas hapi.
+</p>
+
+<p class="highlight-gold">HTML është gjuha që përdoret për të ndërtuar faqet e internetit.</p>
+
+ <div class="hapsira">
+ <h2>Histori e shkurter per HTML</h2>
+ <p>HTML u zhvillua fillimisht nga <a class="highlight" href="https://en.wikipedia.org/wiki/Tim_Berners-Lee " target="_blank" rel="noopener noreferrer">Tim Berners-Lee</a> ndërsa punonte në CERN. Qëllimi kryesor i HTML ishte paraqitja e dokumenteve që mund të lidhen me njëra-tjetrën.</p>
+ </div>
+
+ <div class="hapsira2">
+  <h2>Sintaksa e kodit ne HTML</h2>
+  <p>Kodi ne HTML shkruhet permes tagjev (tags) </button></p>
+  <div class="code-card">
+  <div class="code-head">
+    <span class="code-lang">HTML</span>
+    <button class="code-copy" type="button">Copy</button>
+  </div>
+
+  <pre class="code-block line-numbers"><code class="language-html">
+&lt;p&gt;Ky eshte nje Paragraf&lt;/p&gt;
+  </code></pre>
+</div>
+
+      <p>Kodi me siper paraqet nje paragraf me tekstin "Ky eshte nje Paragraf".</p>
+      <p>Ai eshte i krijuar permes 2 tagjeve, tagu hapes <span class="highlight">&lt;p&gt;</span> dhe tagu mbylles <span class="highlight">&lt;/p&gt;</span>. Ndersa brenda shkruhet teksti</p>
+      <p>Me vone do te mesojme edhe per elemente te tjera si Titujt, butonat, imazhet, tabelat etj. </p>
+ </div>
+
+     
+    </section>
+
+
+    
+
+
+</header>
+     <footer class="lesson-footer">
+  <a class="btn-next" href="/html-css/quiz/quiz.html">Vazhdo</a>
+</footer>
+
+
+    </div>
+   
+
+ 
+<script>
+    const menuBtn = document.getElementById("menuBtn");
+const overlay = document.getElementById("overlay");
+const closeBtn = document.getElementById("closeBtn");
+
+function openSidebar() {
+  document.body.classList.add("sidebar-open");
+}
+
+function closeSidebar() {
+  document.body.classList.remove("sidebar-open");
+}
+
+menuBtn.addEventListener("click", (e) => {
+  e.preventDefault(); // IMPORTANT because your <a href=""> reloads page
+  openSidebar();
+});
+
+overlay.addEventListener("click", closeSidebar);
+closeBtn.addEventListener("click", closeSidebar);
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeSidebar();
+});
+
+
+
+document.addEventListener("click", async (e) => {
+    const btn = e.target.closest(".code-copy");
+    if (!btn) return;
+
+    const card = btn.closest(".code-card");
+    const codeEl = card?.querySelector("pre code");
+    if (!codeEl) return;
+
+    try {
+      await navigator.clipboard.writeText(codeEl.textContent.trim());
+      const old = btn.textContent;
+      btn.textContent = "Copied!";
+      setTimeout(() => (btn.textContent = old), 900);
+    } catch (err) {
+      btn.textContent = "Copy failed";
+      setTimeout(() => (btn.textContent = "Copy"), 900);
+    }
+  });
+</script>
+    
+</body>
+</html>

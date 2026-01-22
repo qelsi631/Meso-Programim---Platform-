@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="welcome.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/sidebar.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" defer></script>
+
+<!-- për HTML highlight (language-html përdor markup) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js" defer></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+</head>
+<body>
+    <div class="container">
+           <nav>
+        <a href="" id="menuBtn"><img src="/imgs/menu (1).png" alt=""></a>
+
+        <a href="/html-css/quiz/quiz.html"  class="goback">Kthehu Pas</a>
+    </nav>
+
+    <div class="overlay" id="overlay"></div>
+
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-head">
+    <div class="sidebar-title">
+        <img class="ikonSidebar" src="/imgs/icon_platformes-removebg-preview.png" alt="">
+        <p>Meso Programim</p>
+    </div>
+    <button class="sidebar-close" id="closeBtn" type="button">✕</button>
+  </div>
+
+  <div class="sidebar-links">
+    <a href="#">Ballina</a>
+    <a href="#">Mësimet</a>
+    <a href="#">Profili</a>
+    <a href="#">Rreth Nesh</a>
+  </div>
+</div>
+
+<header>
+    <div class="welcome">
+        
+        <h1>Titujt ne HTML</span></h1>
+     
+    </div>
+
+
+   <section class="lesson-content">
+
+  <p>
+    Në këtë mësim do të mësosh për <span class="highlight">Titujt (Headings) në HTML</span>.
+    Titujt përdoren për t’i dhënë strukturë një faqeje dhe për ta bërë tekstin më të kuptueshëm.
+  </p>
+
+  <p>
+    HTML ka <span class="highlight">6 nivele titujsh</span>: nga <span class="highlight">&lt;h1&gt;</span> (më i rëndësishmi)
+    deri te <span class="highlight">&lt;h6&gt;</span> (më i vogli).
+  </p>
+
+  <div class="hapsira">
+    <h2>Çka janë Headings?</h2>
+    <p>
+      Headings janë titujt që i shohim zakonisht në fillim të një faqeje ose në fillim të seksioneve.
+      Ata e organizojnë përmbajtjen si në një libër: titull kryesor, kapituj dhe nënkapituj.
+    </p>
+  </div>
+
+  <div class="hapsira2">
+    <h2>Shembull: 6 nivelet e titujve</h2>
+    <p>Shiko si shkruhen titujt në HTML:</p>
+
+ <!-- ===== Code + Preview (HTML) ===== -->
+<div class="code-card">
+  <div class="code-head">
+    <div class="code-left">
+      <span class="dots">
+        <i></i><i></i><i></i>
+      </span>
+      <span class="code-lang">HTML</span>
+    </div>
+    <button class="code-copy" id="copyBtn">Copy</button>
+  </div>
+
+  <pre class="code-block line-numbers">
+<code class="language-html" id="exampleCode">&lt;h1&gt;Ky eshte titull me h1&lt;/h1&gt;
+&lt;h2&gt;Titull me h2&lt;/h2&gt;
+&lt;h3&gt;Titull me h3&lt;/h3&gt;
+&lt;h4&gt;Titull me h4&lt;/h4&gt;
+&lt;h5&gt;Titull me h5&lt;/h5&gt;
+&lt;h6&gt;Titull me h6&lt;/h6&gt;</code>
+  </pre>
+</div>
+
+<div class="preview-card">
+  <div class="preview-title">Preview</div>
+  <div class="preview-box" id="examplePreview"></div>
+</div>
+
+
+    <p>
+      <span class="highlight">&lt;h1&gt;</span> zakonisht përdoret për titullin kryesor të faqes,
+      ndërsa <span class="highlight">&lt;h2&gt;</span> dhe <span class="highlight">&lt;h3&gt;</span>
+      për seksione dhe nën-seksione.
+    </p>
+  </div>
+
+  
+
+  <div class="hapsira2">
+    <h2>Shembull real: strukturë faqeje</h2>
+    <p>Ja një strukturë tipike e një faqeje me tituj:</p>
+
+    <pre class="code-block line-numbers"><code class="language-html">
+&lt;h1&gt;Titulli i pare&lt;/h1&gt;
+
+&lt;h2&gt;Kapitulli 1: Bazat&lt;/h2&gt;
+&lt;h3&gt;Titujt (Headings)&lt;/h3&gt;
+&lt;p&gt;Titujt përdoren për të ndarë përmbajtjen në pjesë...&lt;/p&gt;
+
+&lt;h3&gt;Paragrafët&lt;/h3&gt;
+&lt;p&gt;Paragrafët krijohen me tagun p...&lt;/p&gt;
+    </code></pre>
+
+    <img class="liveserver" src="/imgs/Document - Google Chrome 19_01_2026 12_41_56.png" alt="">
+  </div>
+
+ 
+
+
+    
+
+
+</header>
+     <footer class="lesson-footer">
+  <a class="btn-next" href="/html-css/quiz/quiz2.html">Vazhdo</a>
+</footer>
+
+
+    </div>
+   
+
+ 
+<script>
+    const menuBtn = document.getElementById("menuBtn");
+const overlay = document.getElementById("overlay");
+const closeBtn = document.getElementById("closeBtn");
+
+function openSidebar() {
+  document.body.classList.add("sidebar-open");
+}
+
+function closeSidebar() {
+  document.body.classList.remove("sidebar-open");
+}
+
+menuBtn.addEventListener("click", (e) => {
+  e.preventDefault(); // IMPORTANT because your <a href=""> reloads page
+  openSidebar();
+});
+
+overlay.addEventListener("click", closeSidebar);
+closeBtn.addEventListener("click", closeSidebar);
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeSidebar();
+});
+
+
+  // Render the preview (decode the &lt; &gt; so it becomes real HTML)
+  const codeEl = document.getElementById("exampleCode");
+  const previewEl = document.getElementById("examplePreview");
+  previewEl.innerHTML = codeEl.textContent;
+
+  // Copy button
+  document.getElementById("copyBtn").addEventListener("click", async () => {
+    const textToCopy = codeEl.textContent;
+    await navigator.clipboard.writeText(textToCopy);
+
+    const btn = document.getElementById("copyBtn");
+    const old = btn.textContent;
+    btn.textContent = "Copied!";
+    setTimeout(() => (btn.textContent = old), 900);
+  });
+
+  // Line numbers (no Prism plugin needed)
+  const pre = document.getElementById("codePre");
+  const code = document.getElementById("exampleCode").innerHTML.split("\n").length;
+  pre.style.setProperty("--lines", code);
+
+
+  
+</script>
+    
+</body>
+</html>

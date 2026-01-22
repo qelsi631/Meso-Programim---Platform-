@@ -1,0 +1,103 @@
+/* === Sidebar + Overlay (added in a NEW file) === */
+
+.overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+  z-index: 50;
+}
+
+/* sidebar container */
+.sidebar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 290px;
+  height: 100vh;
+  background-color: #292929;   /* matches your dark theme */
+  transform: translateX(-100%);
+  transition: transform 220ms ease;
+  z-index: 60;
+  box-shadow: 8px 0 30px rgba(0,0,0,0.35);
+
+  /* IMPORTANT because your * has overflow:hidden */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* remove the background-color that your * puts on everything, INSIDE sidebar only */
+.sidebar *{
+  background-color: transparent;
+}
+
+.sidebar-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.sidebar-title{
+  color: #fff;
+  font-size: 18px;
+  font-weight: 800;
+  display: flex;
+}
+
+.sidebar-close{
+  border: 0;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 10px;
+}
+
+.sidebar-close:hover{
+  background: rgba(255,255,255,0.08);
+}
+
+.sidebar-links{
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebar-links a{
+  display: block;
+  padding: 12px 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #e8edf7;
+  font-weight: 700;
+}
+
+.sidebar-links a:hover{
+  background: rgba(255,122,0,0.15);
+  outline: 1px solid rgba(255,122,0,0.25);
+}
+
+/* OPEN STATE */
+body.sidebar-open .overlay{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.sidebar-open .sidebar{
+  transform: translateX(0);
+}
+
+
+.ikonSidebar{
+    width: 60px;
+    cursor: pointer;
+}
+.sidebar-title p{
+    font-size: 17px;
+    margin-top: 7px;
+}
