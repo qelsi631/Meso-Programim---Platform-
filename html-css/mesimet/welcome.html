@@ -93,6 +93,28 @@
  </div>
 
      
+<!-- ===== Course Roadmap ===== -->
+<div class="course-roadmap">
+  <h2>Harta e Mësimit (Roadmap)</h2>
+
+  <p>
+    Kjo është struktura e plotë e kursit.
+     — do të ecim hap pas hapi, dhe çdo mësim ndërtohet mbi të mëparshmin.
+  </p>
+
+  <img 
+    src="/imgs/planprogrami.jpg" 
+    alt="Plani i mësimeve për kursin HTML"
+    class="roadmap-img"
+    loading="lazy"
+  />
+
+  <p class="highlight-gold">
+    Aktualisht je në Mësimin 1. Le të fillojmë! 🚀
+  </p>
+</div>
+
+
     </section>
 
 
@@ -109,52 +131,9 @@
    
 
  
-<script>
-    const menuBtn = document.getElementById("menuBtn");
-const overlay = document.getElementById("overlay");
-const closeBtn = document.getElementById("closeBtn");
-
-function openSidebar() {
-  document.body.classList.add("sidebar-open");
-}
-
-function closeSidebar() {
-  document.body.classList.remove("sidebar-open");
-}
-
-menuBtn.addEventListener("click", (e) => {
-  e.preventDefault(); // IMPORTANT because your <a href=""> reloads page
-  openSidebar();
-});
-
-overlay.addEventListener("click", closeSidebar);
-closeBtn.addEventListener("click", closeSidebar);
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeSidebar();
-});
-
-
-
-document.addEventListener("click", async (e) => {
-    const btn = e.target.closest(".code-copy");
-    if (!btn) return;
-
-    const card = btn.closest(".code-card");
-    const codeEl = card?.querySelector("pre code");
-    if (!codeEl) return;
-
-    try {
-      await navigator.clipboard.writeText(codeEl.textContent.trim());
-      const old = btn.textContent;
-      btn.textContent = "Copied!";
-      setTimeout(() => (btn.textContent = old), 900);
-    } catch (err) {
-      btn.textContent = "Copy failed";
-      setTimeout(() => (btn.textContent = "Copy"), 900);
-    }
-  });
-</script>
+<script src="/js.lessons/code-preview.js"></script>
+<script src="/js.lessons/sidebar.js"></script>
+<script src="/js.lessons/copy.js"></script>
     
 </body>
 </html>
