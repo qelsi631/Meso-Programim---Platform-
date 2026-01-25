@@ -16,6 +16,8 @@ const statusText = document.getElementById("statusText");
 const checklist = document.getElementById("checklist");
 const hintBtn = document.getElementById("hintBtn");
 const hintBox = document.getElementById("hintBox");
+const continueBtn = document.getElementById("continueBtn");
+
 
 // Sidebar controls
 const sidebar = document.getElementById("sidebar");
@@ -136,7 +138,6 @@ function initMonaco() {
   });
 }
 
-// Buttons
 function run() {
   if (!editor) return;
 
@@ -146,9 +147,15 @@ function run() {
   const { results, allPassed } = validate(userHtml);
   updateChecklist(results);
 
-  if (allPassed) setStatus("✅ Të gjitha kontrollet u kaluan", "good");
-  else setStatus("❌ Ende jo — rregullo checklist-in", "bad");
+  if (allPassed) {
+    setStatus("✅ Të gjitha kontrollet u kaluan", "good");
+    showContinue();
+  } else {
+    setStatus("❌ Ende jo — rregullo checklist-in", "bad");
+    hideContinue();
+  }
 }
+
 
 function reset() {
   if (!editor) return;
@@ -174,6 +181,27 @@ hintBtn.addEventListener("click", () => {
     hintBtn.textContent = "Shfaq Hint";
   }
 });
+
+function showContinue() {
+  if (!continueBtn) return;
+
+  // show + small pop
+  continueBtn.hidden = false;
+  continueBtn.classList.remove("attention");
+  continueBtn.classList.add("pop");
+
+  // after pop finishes, start attention loop
+  setTimeout(() => {
+    continueBtn.classList.remove("pop");
+    continueBtn.classList.add("attention");
+  }, 240);
+}
+
+function hideContinue() {
+  if (!continueBtn) return;
+  continueBtn.classList.remove("attention", "pop");
+  continueBtn.hidden = true;
+}
 
 // Start
 initMonaco();

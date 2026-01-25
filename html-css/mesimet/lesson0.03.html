@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mësimi 0.03 | Text Formatting në HTML</title>
+
+  <link rel="stylesheet" href="welcome.css">
+  <link rel="stylesheet" href="/sidebar.css">
+  <link rel="stylesheet" href="style.css">
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Prism -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" defer></script>
+  
+  <style>
+    /* CSS do të shtohet inline për siguri */
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" id="menuBtn"><img src="/imgs/menu (1).png" alt="Menu"></a>
+    <a href="/html-css/ushtrime/ushtrime0.1.html" class="goback">Kthehu Pas</a>
+  </nav>
+
+  <!-- SIDEBAR -->
+  <div class="overlay" id="overlay"></div>
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <div class="sidebar-title">
+        <img class="ikonSidebar" src="/imgs/icon_platformes-removebg-preview.png" alt="Logo">
+        <p>Mëso Programim</p>
+      </div>
+      <button class="sidebar-close" id="closeBtn">✕</button>
+    </div>
+
+    <div class="sidebar-links">
+      <a href="#">Ballina</a>
+      <a href="#">Mësimet</a>
+      <a href="#">Profili</a>
+      <a href="#">Rreth Nesh</a>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="welcome">
+      <h1>Text Formatting në HTML</h1>
+      <p>Mëso si të formatosh tekstin në HTML për të theksuar informacion të rëndësishëm</p>
+    </div>
+
+    <section class="lesson-content">
+
+      <!-- SECTION 1 - Introduction -->
+      <section class="section-card">
+        <div class="section-header">
+          <div class="section-icon">✨</div>
+          <h2>Çfarë është Text Formatting?</h2>
+        </div>
+        
+        <p>Text Formatting në HTML është si <span class="highlight">"stilizimi bazë i tekstit"</span> - mënyra për të theksuar fjalë të rëndësishme pa përdorur CSS.</p>
+        
+        <div class="subsection">
+          <h3>Pse e përdorim?</h3>
+          <ul>
+            <li>Për të theksuar informacion të rëndësishëm</li>
+            <li>Për të përmirësuar lexueshmërinë</li>
+            <li>Për t'u kuptuar më lehtë nga shfletuesit dhe screen readers</li>
+            <li>Për të organizuar më mirë strukturën e tekstit</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SECTION 2 - Semantic vs Visual -->
+      
+
+      <!-- SECTION 3 - All Elements -->
+      <section class="section-card">
+        <div class="section-header">
+          <div class="section-icon">📝</div>
+          <h2>Të gjitha tag-et e formatimit</h2>
+        </div>
+        
+        <p>Këtu janë të gjitha tag-et kryesore për formatimin e tekstit:</p>
+        
+        <!-- CODE EXAMPLE -->
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy" id="copyBtn1">Copy</button>
+          </div>
+          
+          <pre class="code-pre line-numbers">
+<code class="language-html" id="exampleCode">
+&lt;!-- Theksim semantik --&gt;
+&lt;p&gt;Kjo është &lt;strong&gt;shumë e rëndësishme&lt;/strong&gt; dhe kjo është &lt;em&gt;e theksuar&lt;/em&gt;.&lt;/p&gt;
+
+&lt;!-- Stilizim vizual --&gt;
+&lt;p&gt;Kjo është &lt;b&gt;e trashë&lt;/b&gt; dhe kjo është &lt;i&gt;e pjerrët&lt;/i&gt;.&lt;/p&gt;
+
+&lt;!-- Formatime të tjera --&gt;
+&lt;p&gt;Kjo fjalë është &lt;mark&gt;e theksuar me marker&lt;/mark&gt;.&lt;/p&gt;
+&lt;p&gt;Formula: H&lt;sub&gt;2&lt;/sub&gt;O dhe x&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;Tekst i vogël&lt;/small&gt; dhe &lt;del&gt;tekst i fshirë&lt;/del&gt;.&lt;/p&gt;
+&lt;p&gt;Kjo është &lt;ins&gt;tekst i shtuar&lt;/ins&gt;.&lt;/p&gt;
+
+&lt;!-- Ndarës dhe line break --&gt;
+&lt;hr&gt;
+&lt;p&gt;Rreshti 1&lt;br&gt;Rreshti 2&lt;/p&gt;
+</code>
+          </pre>
+        </div>
+        
+        <!-- PREVIEW -->
+        <div class="preview-card">
+          <div class="preview-title">Si duket në browser:</div>
+          <div class="preview-box" id="examplePreview">
+            <p>Kjo është <strong>shumë e rëndësishme</strong> dhe kjo është <em>e theksuar</em>.</p>
+            <p>Kjo është <b>e trashë</b> dhe kjo është <i>e pjerrët</i>.</p>
+            <p>Kjo fjalë është <mark>e theksuar me marker</mark>.</p>
+            <p>Formula: H<sub>2</sub>O dhe x<sup>2</sup>.</p>
+            <p><small>Tekst i vogël</small> dhe <del>tekst i fshirë</del>.</p>
+            <p>Kjo është <ins>tekst i shtuar</ins>.</p>
+            <hr>
+            <p>Rreshti 1<br>Rreshti 2</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4 - Detailed Explanation -->
+      <section class="section-card">
+        <div class="section-header">
+          <div class="section-icon">🔍</div>
+          <h2>Shpjegim i Detajuar</h2>
+        </div>
+        
+        <div class="element-grid">
+          <div class="element-card">
+            <h3><span class="tag-example">&lt;strong&gt;</span></h3>
+            <p class="element-desc">Tekst me rëndësi të lartë</p>
+            <div class="element-preview">
+              <strong>Tekst i rëndësishëm</strong>
+            </div>
+            <p class="element-note">Përdor për aksesibilitet</p>
+          </div>
+          
+          <div class="element-card">
+            <h3><span class="tag-example">&lt;em&gt;</span></h3>
+            <p class="element-desc">Theks emocional/toni</p>
+            <div class="element-preview">
+              <em>Tekst i theksuar</em>
+            </div>
+            <p class="element-note">Ndryshon kuptimin</p>
+          </div>
+          
+          <div class="element-card">
+            <h3><span class="tag-example">&lt;mark&gt;</span></h3>
+            <p class="element-desc">Theksim me marker</p>
+            <div class="element-preview">
+              <mark>Tekst i theksuar</mark>
+            </div>
+            <p class="element-note">Si me shënues</p>
+          </div>
+          
+          <div class="element-card">
+            <h3><span class="tag-example">&lt;sub&gt;</span>/<span class="tag-example">&lt;sup&gt;</span></h3>
+            <p class="element-desc">Indeks poshtë/sipër</p>
+            <div class="element-preview">
+              H<sub>2</sub>O, x<sup>2</sup>
+            </div>
+            <p class="element-note">Për formula</p>
+          </div>
+          
+          <div class="element-card">
+            <h3><span class="tag-example">&lt;small&gt;</span></h3>
+            <p class="element-desc">Tekst i vogël</p>
+            <div class="element-preview">
+              <small>Tekst i vogël</small>
+            </div>
+            <p class="element-note">Për komente të vogla</p>
+          </div>
+          
+          <div class="element-card">
+            <h3><span class="tag-example">&lt;del&gt;</span>/<span class="tag-example">&lt;ins&gt;</span></h3>
+            <p class="element-desc">Fshirë/Shtuar</p>
+            <div class="element-preview">
+              <del>Fshirë</del> <ins>Shtuar</ins>
+            </div>
+            <p class="element-note">Për ndryshime</p>
+          </div>
+
+          <div class="element-card">
+            <h3><span class="tag-example">&lt;br&gt;</span>/<span class="tag-example">&lt;hr&gt;</span></h3>
+            <p class="element-desc">Rresht i ri / Linjë horizontale</p>
+            <div class="element-preview">
+              <br> <hr>
+            </div>
+            <p class="element-note">Për ndryshime</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5 - Practical Example -->
+      <section class="section-card">
+        <div class="section-header">
+          <div class="section-icon">🎯</div>
+          <h2>Shembull praktik nga jeta reale</h2>
+        </div>
+        
+        <p>Le të shohim si përdoren këto tag-e në një njoftim real:</p>
+        
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML - Email njoftim</span>
+            </div>
+            <button class="code-copy" id="copyBtn2">Copy</button>
+          </div>
+          
+          <pre class="code-pre">
+<code class="language-html">
+&lt;div class="notification"&gt;
+  &lt;h3&gt;&lt;strong&gt;Njoftim i rëndësishëm!&lt;/strong&gt;&lt;/h3&gt;
+  &lt;p&gt;
+    Takimi i &lt;mark&gt;sotëm&lt;/mark&gt; është &lt;em&gt;shtyrë&lt;/em&gt; për &lt;b&gt;14:00&lt;/b&gt;.
+  &lt;/p&gt;
+  &lt;p&gt;
+    Ju lutem &lt;strong&gt;konfirmoni&lt;/strong&gt; praninë tuaj.
+  &lt;/p&gt;
+  &lt;hr&gt;
+  &lt;p&gt;&lt;small&gt;Njoftim i dërguar automatikisht&lt;/small&gt;&lt;/p&gt;
+&lt;/div&gt;
+</code>
+          </pre>
+        </div>
+        
+        <div class="preview-card">
+          <div class="preview-title">Parje e njoftimit:</div>
+          <div class="preview-box" style="background: #f0f7ff;">
+            <div class="notification-example">
+              <h3><strong>Njoftim i rëndësishëm!</strong></h3>
+              <p>
+                Takimi i <mark>sotëm</mark> është <em>shtyrë</em> për <b>14:00</b>.
+              </p>
+              <p>
+                Ju lutem <strong>konfirmoni</strong> praninë tuaj.
+              </p>
+              <hr>
+              <p><small>Njoftim i dërguar automatikisht</small></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+ 
+
+<script src="/js.lessons/sidebar.js"></script>
+<script>
+  // Interactive functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    // Copy buttons
+    document.querySelectorAll('.code-copy').forEach((button, index) => {
+      button.addEventListener('click', function() {
+        const codeCard = this.closest('.code-card');
+        const codeElement = codeCard.querySelector('code');
+        const textToCopy = codeElement.textContent;
+        
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          const originalText = this.textContent;
+          this.textContent = '✅ Copied!';
+          this.style.background = '#34D399';
+          this.style.color = '#000';
+          
+          setTimeout(() => {
+            this.textContent = originalText;
+            this.style.background = '';
+            this.style.color = '';
+          }, 2000);
+        });
+      });
+    });
+    
+    // Quiz functionality
+    window.checkQuiz = function() {
+      const correctAnswers = document.querySelectorAll('input[data-correct="true"]:checked');
+      const totalCorrect = document.querySelectorAll('input[data-correct="true"]').length;
+      const score = correctAnswers.length;
+      
+      const resultText = document.getElementById('resultText');
+      const resultDiv = document.getElementById('quizResult');
+      
+      let message = '';
+      if (score === totalCorrect) {
+        message = `🎉 Përgjigje perfekte! ${score}/${totalCorrect} - Të gjitha janë të sakta!`;
+        resultDiv.style.borderColor = '#34D399';
+      } else if (score > 0) {
+        message = `👍 Ke ${score}/${totalCorrect} përgjigje të sakta. Vazhdo të praktikosh!`;
+        resultDiv.style.borderColor = '#FBBF24';
+      } else {
+        message = `📚 Ke ${score}/${totalCorrect} përgjigje të sakta. Rishiko mësimin!`;
+        resultDiv.style.borderColor = '#EF4444';
+      }
+      
+      resultText.textContent = message;
+      resultDiv.style.display = 'block';
+    };
+    
+    window.resetQuiz = function() {
+      document.querySelectorAll('input[type="radio"]').forEach(input => {
+        input.checked = false;
+      });
+      document.getElementById('quizResult').style.display = 'none';
+    };
+  });
+</script>
+
+</body>
+</html>

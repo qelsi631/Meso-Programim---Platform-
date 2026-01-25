@@ -382,6 +382,30 @@ body{
   background: rgba(0,0,0,.26);
 }
 
+.continue-btn[hidden] { display: none; }
+
+/* Attention animation */
+.continue-btn.attention {
+  animation: pulseMove 1.1s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes pulseMove {
+  0%   { transform: scale(1) translateY(0); }
+  50%  { transform: scale(0.94) translateY(-2px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+/* Optional: make it feel “new” when it appears */
+.continue-btn.pop {
+  animation: popIn 220ms ease-out both;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
 /* Responsive */
 @media (max-width: 980px){
   .practice-layout{
@@ -392,3 +416,6 @@ body{
   }
   .output{ height: 280px; }
 }
+
+
+
