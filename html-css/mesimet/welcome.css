@@ -107,6 +107,81 @@ header p {
   font-family: monospace;
 } */
 
+.lesson-section{
+  margin: 96px 0;
+}
+
+.lesson-section h2{
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+
+.muted{
+  color: #c0c2ca;
+  font-weight: 500;
+  max-width: 850px;
+}
+
+/* Shembulli i thjeshtë i kodit */
+.anatomy-example{
+  margin-top: 14px;
+  padding-left: 14px;
+  border-left: 3px solid rgba(255, 122, 0, 0.6);
+}
+
+.anatomy-example code{
+  display: inline-block;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  background: rgba(0,0,0,.25);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 14px;
+  color: #4FC1FF;
+}
+
+/* Pikat shpjeguese */
+.anatomy-points{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-weight: 500;
+  color: rgba(255,255,255,.92);
+}
+
+.anatomy-points span{
+  color: #c0c2ca;
+}
+
+.anatomy-points b{
+  color: #fff;
+}
+
+/* Foto e madhe */
+.anatomy-figure{
+  margin-top: 18px;
+}
+
+.anatomy-figure img{
+  width: 100%;
+  max-width: 1000px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.18);
+}
+
+.anatomy-figure figcaption{
+  margin-top: 10px;
+  text-align: center;
+  color: #c0c2ca;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+
 /* ===== Premium Code Visual (CSS) ===== */
 .code-card{
   margin: 18px 0;

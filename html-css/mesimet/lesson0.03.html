@@ -71,15 +71,15 @@
           <h2>Çfarë është Text Formatting?</h2>
         </div>
         
-        <p>Text Formatting në HTML është si <span class="highlight">"stilizimi bazë i tekstit"</span> - mënyra për të theksuar fjalë të rëndësishme pa përdorur CSS.</p>
+        <p class="highlight-gold">Text Formatting në HTML është mënyra se si e bëjmë tekstin të duket dhe të kuptohet më mirë, duke theksuar fjalë ose pjesë të rëndësishme pa përdorur CSS.</p>
         
         <div class="subsection">
           <h3>Pse e përdorim?</h3>
           <ul>
             <li>Për të theksuar informacion të rëndësishëm</li>
-            <li>Për të përmirësuar lexueshmërinë</li>
+            <li>Për ta bërë tekstin më të lehtë për t’u lexuar</li>
             <li>Për t'u kuptuar më lehtë nga shfletuesit dhe screen readers</li>
-            <li>Për të organizuar më mirë strukturën e tekstit</li>
+            <li>Për ta organizuar tekstin në mënyrë më të rregullt dhe të qartë</li>
           </ul>
         </div>
       </section>
@@ -150,70 +150,101 @@
           <h2>Shpjegim i Detajuar</h2>
         </div>
         
-        <div class="element-grid">
-          <div class="element-card">
-            <h3><span class="tag-example">&lt;strong&gt;</span></h3>
-            <p class="element-desc">Tekst me rëndësi të lartë</p>
-            <div class="element-preview">
-              <strong>Tekst i rëndësishëm</strong>
-            </div>
-            <p class="element-note">Përdor për aksesibilitet</p>
-          </div>
-          
-          <div class="element-card">
-            <h3><span class="tag-example">&lt;em&gt;</span></h3>
-            <p class="element-desc">Theks emocional/toni</p>
-            <div class="element-preview">
-              <em>Tekst i theksuar</em>
-            </div>
-            <p class="element-note">Ndryshon kuptimin</p>
-          </div>
-          
-          <div class="element-card">
-            <h3><span class="tag-example">&lt;mark&gt;</span></h3>
-            <p class="element-desc">Theksim me marker</p>
-            <div class="element-preview">
-              <mark>Tekst i theksuar</mark>
-            </div>
-            <p class="element-note">Si me shënues</p>
-          </div>
-          
-          <div class="element-card">
-            <h3><span class="tag-example">&lt;sub&gt;</span>/<span class="tag-example">&lt;sup&gt;</span></h3>
-            <p class="element-desc">Indeks poshtë/sipër</p>
-            <div class="element-preview">
-              H<sub>2</sub>O, x<sup>2</sup>
-            </div>
-            <p class="element-note">Për formula</p>
-          </div>
-          
-          <div class="element-card">
-            <h3><span class="tag-example">&lt;small&gt;</span></h3>
-            <p class="element-desc">Tekst i vogël</p>
-            <div class="element-preview">
-              <small>Tekst i vogël</small>
-            </div>
-            <p class="element-note">Për komente të vogla</p>
-          </div>
-          
-          <div class="element-card">
-            <h3><span class="tag-example">&lt;del&gt;</span>/<span class="tag-example">&lt;ins&gt;</span></h3>
-            <p class="element-desc">Fshirë/Shtuar</p>
-            <div class="element-preview">
-              <del>Fshirë</del> <ins>Shtuar</ins>
-            </div>
-            <p class="element-note">Për ndryshime</p>
-          </div>
+       <div class="elements-list">
 
-          <div class="element-card">
-            <h3><span class="tag-example">&lt;br&gt;</span>/<span class="tag-example">&lt;hr&gt;</span></h3>
-            <p class="element-desc">Rresht i ri / Linjë horizontale</p>
-            <div class="element-preview">
-              <br> <hr>
-            </div>
-            <p class="element-note">Për ndryshime</p>
-          </div>
-        </div>
+  <div class="element-row">
+    <div class="element-meta">
+      <div class="element-tag"><code>&lt;strong&gt;</code></div>
+      <div class="element-text">
+        <p class="element-title">Tekst me rëndësi të lartë</p>
+        <p class="element-note">Përdoret për kuptim dhe aksesibilitet.</p>
+      </div>
+    </div>
+    <div class="element-demo">
+      <strong>Tekst i rëndësishëm</strong>
+    </div>
+  </div>
+
+  <div class="element-row">
+    <div class="element-meta">
+      <div class="element-tag"><code>&lt;em&gt;</code></div>
+      <div class="element-text">
+        <p class="element-title">Theksim (toni/ndjenja)</p>
+        <p class="element-note">Shpesh ndryshon kuptimin e fjalisë.</p>
+      </div>
+    </div>
+    <div class="element-demo">
+      <em>Tekst i theksuar</em>
+    </div>
+  </div>
+
+  <div class="element-row">
+    <div class="element-meta">
+      <div class="element-tag"><code>&lt;mark&gt;</code></div>
+      <div class="element-text">
+        <p class="element-title">Theksim me marker</p>
+        <p class="element-note">Si me shënues në letër.</p>
+      </div>
+    </div>
+    <div class="element-demo">
+      <mark>Tekst i theksuar</mark>
+    </div>
+  </div>
+
+  <div class="element-row">
+    <div class="element-meta">
+      <div class="element-tag"><code>&lt;sub&gt;</code> <code>&lt;sup&gt;</code></div>
+      <div class="element-text">
+        <p class="element-title">Indeks poshtë / sipër</p>
+        <p class="element-note">Për formula dhe fuqi.</p>
+      </div>
+    </div>
+    <div class="element-demo">
+      H<sub>2</sub>O, x<sup>2</sup>
+    </div>
+  </div>
+
+  <div class="element-row">
+    <div class="element-meta">
+      <div class="element-tag"><code>&lt;small&gt;</code></div>
+      <div class="element-text">
+        <p class="element-title">Tekst i vogël</p>
+        <p class="element-note">Për shënime/komente të vogla.</p>
+      </div>
+    </div>
+    <div class="element-demo">
+      <small>Tekst i vogël</small>
+    </div>
+  </div>
+
+  <div class="element-row">
+    <div class="element-meta">
+      <div class="element-tag"><code>&lt;del&gt;</code> <code>&lt;ins&gt;</code></div>
+      <div class="element-text">
+        <p class="element-title">Fshirë / Shtuar</p>
+        <p class="element-note">Për ndryshime në tekst.</p>
+      </div>
+    </div>
+    <div class="element-demo">
+      <del>Fshirë</del> <ins>Shtuar</ins>
+    </div>
+  </div>
+
+  <div class="element-row">
+    <div class="element-meta">
+      <div class="element-tag"><code>&lt;br&gt;</code> <code>&lt;hr&gt;</code></div>
+      <div class="element-text">
+        <p class="element-title">Rresht i ri / Vijë ndarëse</p>
+        <p class="element-note">Për ndarje të thjeshta në tekst.</p>
+      </div>
+    </div>
+    <div class="element-demo">
+      Rreshti 1<br>Rreshti 2<hr>
+    </div>
+  </div>
+
+</div>
+
       </section>
 
       <!-- SECTION 5 - Practical Example -->
@@ -234,7 +265,7 @@
             <button class="code-copy" id="copyBtn2">Copy</button>
           </div>
           
-          <pre class="code-pre">
+          <pre class="code-pre line-numbers">
 <code class="language-html">
 &lt;div class="notification"&gt;
   &lt;h3&gt;&lt;strong&gt;Njoftim i rëndësishëm!&lt;/strong&gt;&lt;/h3&gt;
