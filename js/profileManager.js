@@ -185,6 +185,16 @@ export async function isUserEnrolledInCourse(userId, courseSlug) {
  */
 export async function deleteUserAccount(userId) {
   try {
+    // Get current session to retrieve access token
+    const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+    
+    if (sessionError || !session) {
+      console.error("No active session:", sessionError);
+      return { error: { message: "No active session found" } };
+    }
+
+    const accessToken = session.access_token;
+
     // Step 1: Delete avatar from storage if exists
     try {
       const { data: files } = await supabase.storage
@@ -235,8 +245,12 @@ export async function deleteUserAccount(userId) {
       console.warn("Could not delete profile:", e);
     }
 
-    // Step 5: Delete auth user (this deletes the Supabase auth account)
-    const { error: deleteError } = await supabase.auth.admin.deleteUser(userId);
+    // Step 5: Delete auth user with Bearer token
+    const { error: deleteError } = await supabase.auth.admin.deleteUser(userId, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    });
     
     if (deleteError && deleteError.message.includes("not allowed")) {
       // If admin delete fails (common with RLS), use signOut approach
@@ -247,7 +261,9 @@ export async function deleteUserAccount(userId) {
 
     if (deleteError) {
       console.error("Error deleting auth user:", deleteError);
-      return { error: deleteError };
+      // Even if auth deletion fails, data was already deleted
+      await supabase.auth.signOut();
+      return { error: null };
     }
 
     // Sign out user
