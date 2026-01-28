@@ -185,6 +185,29 @@
       background: #d0d0d0;
     }
 
+    .delete-btn {
+      width: 100%;
+      background: #ff6b6b;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      transition: background 0.3s;
+      margin-top: 20px;
+    }
+
+    .delete-btn:hover {
+      background: #ff5252;
+    }
+
+    .delete-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
     .msg {
       padding: 12px;
       border-radius: 6px;
@@ -290,13 +313,15 @@
       </div>
     </form>
 
+    <button class="delete-btn" id="deleteAccountBtn">Delete Account</button>
+
     <a href="index.html" class="back-link">← Back to Home</a>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script type="module">
     import { supabase } from "./js/supabaseClient.js";
-    import { getCurrentUserProfile, updateProfile, uploadAvatar } from "./js/profileManager.js";
+    import { getCurrentUserProfile, updateProfile, uploadAvatar, deleteUserAccount } from "./js/profileManager.js";
 
     const usernameEl = document.getElementById("username");
     const fullNameEl = document.getElementById("fullName");
@@ -453,6 +478,51 @@
     logoutBtn.addEventListener("click", async () => {
       await supabase.auth.signOut();
       window.location.href = "index.html";
+    });
+
+    const deleteAccountBtn = document.getElementById("deleteAccountBtn");
+    deleteAccountBtn.addEventListener("click", async () => {
+      const confirmDelete = confirm(
+        "⚠️ WARNING: This will permanently delete your account and all associated data. This action cannot be undone. Are you sure?"
+      );
+
+      if (!confirmDelete) return;
+
+      const finalConfirm = confirm(
+        "Are you absolutely sure? Type 'DELETE' in the next prompt to confirm permanent deletion."
+      );
+
+      if (!finalConfirm) return;
+
+      const userInput = prompt("Type 'DELETE' to confirm account deletion:");
+      if (userInput !== "DELETE") {
+        showMsg("Account deletion cancelled.", false);
+        return;
+      }
+
+      deleteAccountBtn.disabled = true;
+      deleteAccountBtn.textContent = "Deleting...";
+
+      try {
+        const { error } = await deleteUserAccount(currentUser.id);
+
+        if (error) {
+          showMsg("Error deleting account: " + error.message, false);
+          deleteAccountBtn.disabled = false;
+          deleteAccountBtn.textContent = "Delete Account";
+          return;
+        }
+
+        showMsg("✅ Account deleted successfully. Redirecting...");
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 1500);
+      } catch (error) {
+        console.error("Error deleting account:", error);
+        showMsg("Error deleting account", false);
+        deleteAccountBtn.disabled = false;
+        deleteAccountBtn.textContent = "Delete Account";
+      }
     });
 
     // Load profile on page load

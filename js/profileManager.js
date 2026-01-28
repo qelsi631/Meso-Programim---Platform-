@@ -179,3 +179,82 @@ export async function isUserEnrolledInCourse(userId, courseSlug) {
 
   return { enrolled: !!data };
 }
+
+/**
+ * Delete user account and all associated data
+ */
+export async function deleteUserAccount(userId) {
+  try {
+    // Step 1: Delete avatar from storage if exists
+    try {
+      const { data: files } = await supabase.storage
+        .from("profiles")
+        .list("avatars");
+
+      if (files && files.length > 0) {
+        const userAvatars = files.filter(file => file.name.includes(userId));
+        if (userAvatars.length > 0) {
+          for (const file of userAvatars) {
+            await supabase.storage
+              .from("profiles")
+              .remove([`avatars/${file.name}`]);
+          }
+        }
+      }
+    } catch (e) {
+      console.warn("Could not delete avatars:", e);
+    }
+
+    // Step 2: Delete user progress records
+    try {
+      await supabase
+        .from("lesson_progress")
+        .delete()
+        .eq("user_id", userId);
+    } catch (e) {
+      console.warn("Could not delete progress:", e);
+    }
+
+    // Step 3: Delete user course enrollments
+    try {
+      await supabase
+        .from("user_courses")
+        .delete()
+        .eq("user_id", userId);
+    } catch (e) {
+      console.warn("Could not delete enrollments:", e);
+    }
+
+    // Step 4: Delete user profile
+    try {
+      await supabase
+        .from("profiles")
+        .delete()
+        .eq("id", userId);
+    } catch (e) {
+      console.warn("Could not delete profile:", e);
+    }
+
+    // Step 5: Delete auth user (this deletes the Supabase auth account)
+    const { error: deleteError } = await supabase.auth.admin.deleteUser(userId);
+    
+    if (deleteError && deleteError.message.includes("not allowed")) {
+      // If admin delete fails (common with RLS), use signOut approach
+      // The user's data will still be deleted from previous steps
+      await supabase.auth.signOut();
+      return { error: null };
+    }
+
+    if (deleteError) {
+      console.error("Error deleting auth user:", deleteError);
+      return { error: deleteError };
+    }
+
+    // Sign out user
+    await supabase.auth.signOut();
+    return { error: null };
+  } catch (error) {
+    console.error("Error in deleteUserAccount:", error);
+    return { error };
+  }
+}

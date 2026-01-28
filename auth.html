@@ -28,20 +28,43 @@
     <div class="logo">
       <img src="imgs/icon platformes.jpg" alt="Mëso Programimin Logo">
     </div>
-    <h1>Hyni / Regjistrohuni</h1>
+    <h1 id="pageTitle">Hyni</h1>
 
-    <label>Email</label>
-    <input id="email" type="email" placeholder="ju@shembull.com" />
+    <!-- LOGIN FORM -->
+    <div id="loginForm">
+      <label>Email</label>
+      <input id="email" type="email" placeholder="ju@shembull.com" />
 
-    <label>Fjalëkalimi</label>
-    <input id="password" type="password" placeholder="••••••••" />
+      <label>Fjalëkalimi</label>
+      <input id="password" type="password" placeholder="••••••••" />
 
-    <div class="row">
-      <button class="primary" id="btnLogin">Hyni</button>
-      <button class="secondary" id="btnSignup">Regjistrohuni</button>
+      <div class="row">
+        <button class="primary" id="btnLogin">Hyni</button>
+        <button class="secondary" id="btnSignup">Regjistrohuni</button>
+      </div>
+
+      <button class="secondary" id="btnGoogle">Vazhdo me Google</button>
     </div>
 
-    <button class="secondary" id="btnGoogle">Vazhdo me Google</button>
+    <!-- REGISTRATION FORM -->
+    <div id="registerForm" style="display:none;">
+      <label>Emri</label>
+      <input id="fullName" type="text" placeholder="Emri juaj" />
+
+      <label>Emri i përdoruesit</label>
+      <input id="username" type="text" placeholder="emriperdoruesit" />
+
+      <label>Email</label>
+      <input id="regEmail" type="email" placeholder="ju@shembull.com" />
+
+      <label>Fjalëkalimi</label>
+      <input id="regPassword" type="password" placeholder="••••••••" />
+
+      <div class="row">
+        <button class="primary" id="btnCreateAccount">Krijo Llogarinë</button>
+        <button class="secondary" id="btnBackToLogin">Kthehu</button>
+      </div>
+    </div>
 
     <div class="msg" id="msg"></div>
 
