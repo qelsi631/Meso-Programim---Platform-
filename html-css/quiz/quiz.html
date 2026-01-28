@@ -14,7 +14,10 @@
   <div class="page">
 
     <nav class="topbar">
-      <a class="icon-btn" href="/html-css/mesimet/welcome.html" aria-label="Kthehu pas">←</a>
+      <a class="icon-btn" href="../mesimet/welcome.html" aria-label="Kthehu pas">←</a>
+      
+      <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard" style="font-size: 20px;">📊</a>
+      
       <div class="topbar-title">
         <p class="tiny">Quiz</p>
         <h1>HTML Bazat</h1>
@@ -58,7 +61,13 @@
 
 
 
-  <script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script type="module">
+  import { markLessonCompleted } from "../../js/courseProgressManager.js";
+
+  const COURSE_SLUG = "html-fundamentals";
+  const LESSON_ID = "l5"; // First Quiz
+
   const quizData = [
     {
       badge: "Pyetja 1",
@@ -220,7 +229,11 @@
       current++;
       renderQuestion();
     } else {
-      window.location.href = "/html-css/mesimet/lesson0.1.html";
+      // Mark quiz as completed before navigating
+      (async () => {
+        await markLessonCompleted(COURSE_SLUG, LESSON_ID);
+        window.location.href = "/html-css/mesimet/lesson0.2.html";
+      })();
     }
   });
 

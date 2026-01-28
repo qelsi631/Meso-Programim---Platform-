@@ -6,7 +6,7 @@
   <title>Ushtrime | Mëso Programim</title>
 
   <link rel="stylesheet" href="ushtrime.css" />
-  <link rel="stylesheet" href="/sidebar.css">
+  <link rel="stylesheet" href="../../sidebar.css">
 
   <!-- If you already use Google Fonts in your project, you can remove this -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,10 +20,12 @@
     <!-- TOP NAV (keep consistent with your platform) -->
     <nav class="top-nav">
       <a href="#" id="menuBtn" class="icon-btn" aria-label="Hap menunë">
-        <img src="/imgs/menu (1).png" alt="Menu">
+        <img src="../../imgs/menu (1).png" alt="Menu">
       </a>
+      
+      <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
 
-      <a href="/html-css/quiz/quiz2.html" class="goback">Kthehu Pas</a>
+      <a href="../../html-css/quiz/quiz2.html" class="goback">Kthehu Pas</a>
     </nav>
 
     <!-- SIDEBAR (same concept as your pages) -->
@@ -32,7 +34,7 @@
     <div class="sidebar" id="sidebar" aria-hidden="true">
       <div class="sidebar-head">
         <div class="sidebar-title">
-          <img class="ikonSidebar" src="/imgs/icon_platformes-removebg-preview.png" alt="">
+          <img class="ikonSidebar" src="../../imgs/icon_platformes-removebg-preview.png" alt="">
           <p>Meso Programim</p>
         </div>
         <button class="sidebar-close" id="closeBtn" type="button">✕</button>
@@ -128,7 +130,7 @@
           <div class="actions">
             <button class="btn" id="runBtn" type="button">Run</button>
             <button class="btn ghost" id="resetBtn" type="button">Reset</button>
-            <a href="/html-css/mesimet/lesson0.03.html" class="btn continue-btn" id="continueBtn" hidden>
+            <a href="../../html-css/mesimet/lesson0.03.html" class="btn continue-btn" id="continueBtn" hidden>
   Vazhdo →
 </a>
 
@@ -155,8 +157,7 @@
 
 
   <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.52.2/min/vs/loader.js"></script>
-<script src="ushtrime.js"></script>
-
-  <script src="ushtrime.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module" src="ushtrime.js"></script>
 </body>
 </html>

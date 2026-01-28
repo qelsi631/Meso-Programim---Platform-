@@ -1,4 +1,12 @@
 // ============================
+// Lesson Progress Tracking
+// ============================
+import { markLessonCompleted } from "../../js/courseProgressManager.js";
+
+const COURSE_SLUG = "html-fundamentals";
+const LESSON_ID = "l4"; // Exercises lesson
+
+// ============================
 // Starter Code (default content)
 // ============================
 const STARTER_CODE = `<!-- Shkruaj këtu HTML-in tënd -->
@@ -195,6 +203,15 @@ function showContinue() {
     continueBtn.classList.remove("pop");
     continueBtn.classList.add("attention");
   }, 240);
+  
+  // Mark lesson as completed and navigate to next page when continue button is clicked
+  continueBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
+    await markLessonCompleted(COURSE_SLUG, LESSON_ID);
+    console.log("✓ Exercise lesson marked as completed");
+    // Navigate to next lesson (quiz)
+    window.location.href = "../quiz/quiz.html";
+  }, { once: true });
 }
 
 function hideContinue() {

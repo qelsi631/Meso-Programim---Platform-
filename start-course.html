@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Starting…</title>
+</head>
+<body>
+  <p>Starting course…</p>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module">
+    import { supabase } from "./js/supabaseClient.js";
+    import { getLastVisited } from "./js/progress.js";
+
+    const params = new URLSearchParams(location.search);
+    const course = params.get("course") || "html";
+
+    const { data: { session } } = await supabase.auth.getSession();
+
+    // if not logged in -> go to auth, then come back here
+    if (!session) {
+      const next = encodeURIComponent(`start-course.html?course=${course}`);
+      location.href = `auth.html?next=${next}`;
+    } else {
+      // logged in -> try to resume from last visited page for this course
+        const last = await getLastVisited();
+        if (last && last.includes(course)) {
+          // normalize leading slash
+          const url = last.startsWith("/") ? last.slice(1) : last;
+          location.href = url;
+        } else {
+        if (course === "html-css") location.href = "html-css/mesimet/welcome.html";
+        else location.href = "index.html";
+      }
+    }
+  </script>
+</body>
+</html>

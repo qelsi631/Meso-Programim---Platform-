@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Your Profile</title>
+  <link rel="stylesheet" href="css/onboarding.css">
+</head>
+<body>
+  <div class="onboarding-container">
+    <!-- Step 1: Profile Setup -->
+    <div class="step step-1 active">
+      <div class="step-header">
+        <h1>Welcome to Mëso Programimin! 👋</h1>
+        <p>Let's set up your profile</p>
+      </div>
+
+      <form id="profileForm" class="onboarding-form">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input 
+            type="text" 
+            id="username" 
+            name="username"
+            placeholder="Choose your username"
+            required
+          >
+          <small id="usernameHelp" class="help-text"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input 
+            type="text" 
+            id="fullName" 
+            name="fullName"
+            placeholder="Your full name"
+            required
+          >
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-large">Continue →</button>
+      </form>
+
+      <div id="profileMsg" class="msg"></div>
+    </div>
+
+    <!-- Step 2: Course Selection -->
+    <div class="step step-2">
+      <div class="step-header">
+        <h1>Choose Your Learning Path 📚</h1>
+        <p>Select the courses you want to start with</p>
+      </div>
+
+      <div class="courses-selection">
+        <div class="course-option" data-course="html-css">
+          <div class="course-option-icon">📄</div>
+          <div class="course-option-title">HTML & CSS</div>
+          <div class="course-option-desc">Learn web fundamentals</div>
+          <input type="checkbox" class="course-checkbox" value="html-fundamentals" data-course="html-css">
+          <input type="checkbox" class="course-checkbox" value="css-styling" data-course="html-css">
+          <div class="checkmark">✓</div>
+        </div>
+
+        <div class="course-option" data-course="javascript">
+          <div class="course-option-icon">⚙️</div>
+          <div class="course-option-title">JavaScript</div>
+          <div class="course-option-desc">Master programming basics</div>
+          <input type="checkbox" class="course-checkbox" value="javascript-basics" data-course="javascript">
+          <div class="checkmark">✓</div>
+        </div>
+
+        <div class="course-option" data-course="java">
+          <div class="course-option-icon">☕</div>
+          <div class="course-option-title">Java</div>
+          <div class="course-option-desc">Advanced programming</div>
+          <input type="checkbox" class="course-checkbox" value="java-basics" data-course="java">
+          <div class="checkmark">✓</div>
+        </div>
+      </div>
+
+      <div id="courseMsg" class="msg"></div>
+
+      <div class="step-actions">
+        <button id="backBtn" class="btn btn-outline btn-large">← Back</button>
+        <button id="completeBtn" class="btn btn-primary btn-large">Start Learning →</button>
+      </div>
+    </div>
+
+    <!-- Progress Indicator -->
+    <div class="progress-indicator">
+      <div class="progress-step active" data-step="1">Profile</div>
+      <div class="progress-step" data-step="2">Courses</div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module" src="js/onboarding.js"></script>
+</body>
+</html>

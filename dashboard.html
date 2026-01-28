@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Dashboard</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Header with Profile Section -->
+    <header class="dashboard-header">
+      <div class="header-content">
+        <div class="profile-quick">
+          <div class="profile-avatar-small" id="profileAvatarSmall">👤</div>
+          <div class="profile-info-quick">
+            <h2 id="profileNameQuick">Loading...</h2>
+            <p id="profileUsernameQuick" class="text-muted">@username</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <a href="profile.html" class="btn btn-outline">Edit Profile</a>
+          <button id="logoutBtn" class="btn btn-danger">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+      <!-- Welcome Section -->
+      <section class="welcome-section">
+        <h1 id="welcomeText">Welcome back!</h1>
+        <p id="welcomeSubtext">Continue your learning journey</p>
+      </section>
+
+      <!-- Stats -->
+      <section class="stats-section">
+        <div class="stat-card">
+          <div class="stat-icon">📚</div>
+          <div class="stat-content">
+            <div class="stat-label">Courses Enrolled</div>
+            <div class="stat-value" id="enrolledCount">0</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">✅</div>
+          <div class="stat-content">
+            <div class="stat-label">Lessons Completed</div>
+            <div class="stat-value" id="lessonsCount">0</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🔥</div>
+          <div class="stat-content">
+            <div class="stat-label">Current Streak</div>
+            <div class="stat-value" id="streakCount">0 days</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Courses Grid -->
+      <section class="courses-section">
+        <h2>Your Courses</h2>
+        <div class="courses-container" id="coursesContainer">
+          <div class="loading">Loading your courses...</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Course Modal -->
+  <div id="courseModal" class="modal">
+    <div class="modal-content modal-course">
+      <button class="modal-close" id="modalClose">&times;</button>
+      
+      <div class="course-modal-header">
+        <div class="course-header-info">
+          <h2 id="modalCourseTitle">Course Title</h2>
+          <p id="modalCourseDesc" class="text-muted">Course description</p>
+          <div class="progress-bar-container">
+            <div class="progress-bar">
+              <div class="progress-fill" id="modalProgressFill"></div>
+            </div>
+            <span class="progress-text" id="modalProgressText">0%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-roadmap-container">
+        <div class="path" id="courseRoadmapPath"></div>
+      </div>
+
+      <div class="course-modal-footer">
+        <button class="btn btn-primary" id="resumeBtn">Continue Learning</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overlay -->
+  <div id="modalOverlay" class="modal-overlay"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>

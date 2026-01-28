@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/sidebar.css">
+    <link rel="stylesheet" href="../../sidebar.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
   
@@ -26,9 +26,11 @@
 <body>
     <div class="container">
            <nav>
-        <a href="" id="menuBtn"><img src="/imgs/menu (1).png" alt=""></a>
+        <a href="" id="menuBtn"><img src="../../imgs/menu (1).png" alt=""></a>
+        
+        <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
 
-        <a href="/html-css/quiz/quiz.html"  class="goback">Kthehu Pas</a>
+        <a href="../../html-css/quiz/quiz.html"  class="goback">Kthehu Pas</a>
     </nav>
 
     <div class="overlay" id="overlay"></div>
@@ -36,7 +38,7 @@
 <div class="sidebar" id="sidebar">
   <div class="sidebar-head">
     <div class="sidebar-title">
-        <img class="ikonSidebar" src="/imgs/icon_platformes-removebg-preview.png" alt="">
+        <img class="ikonSidebar" src="../../imgs/icon_platformes-removebg-preview.png" alt="">
         <p>Meso Programim</p>
     </div>
     <button class="sidebar-close" id="closeBtn" type="button">✕</button>
@@ -134,7 +136,7 @@
 &lt;p&gt;Paragrafët krijohen me tagun p...&lt;/p&gt;
     </code></pre>
 
-    <img class="liveserver" src="/imgs/Document - Google Chrome 19_01_2026 12_41_56.png" alt="">
+    <img class="liveserver" src="../../imgs/Document - Google Chrome 19_01_2026 12_41_56.png" alt="">
   </div>
 
  
@@ -145,7 +147,7 @@
 
 </header>
      <footer class="lesson-footer">
-  <a class="btn-next" href="/html-css/quiz/quiz2.html">Vazhdo</a>
+  <a class="btn-next" href="../../html-css/quiz/quiz2.html">Vazhdo</a>
 </footer>
 
 
@@ -153,11 +155,44 @@
    
 
  
-<script src="/js.lessons/sidebar.js"></script>
-<script src="/js.lessons/code-preview.js"></script>
-<script src="/js.lessons/copy.js"></script>
+<script src="../../js.lessons/sidebar.js"></script>
+<script src="../../js.lessons/code-preview.js"></script>
+<script src="../../js.lessons/copy.js"></script>
 
 
+<!-- Supabase CDN (gives window.supabase) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- Protect lesson (redirects to auth if not logged in) -->
+<script type="module" src="../../js/requireAuth.js"></script>
+
+<script type="module">
+  import { initLessonProgress } from "../../js/lessonProgressInit.js";
+  initLessonProgress("html-headings-1");
+</script>
+
+
+<script type="module">
+  import { markLessonCompleted } from "../../js/courseProgressManager.js";
+
+  const COURSE_SLUG = "html-fundamentals";
+  const LESSON_ID = "l2"; // HTML Basics Part 1
+
+  // Mark lesson as complete when user clicks next
+  const btn = document.querySelector(".btn-next");
+  if (btn) {
+    btn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const nextUrl = btn.getAttribute("href");
+      
+      // Mark this lesson as completed
+      await markLessonCompleted(COURSE_SLUG, LESSON_ID);
+      
+      // Navigate to next lesson
+      window.location.href = nextUrl;
+    });
+  }
+</script>
     
 </body>
 </html>

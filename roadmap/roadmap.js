@@ -35,9 +35,12 @@ function statusOf(item, completed, nextId) {
 function openItem(item, status) {
   if (status === "locked") return;
 
-  // Replace with your real route:
-  // window.location.href = `/lesson.html?course=${htmlRoadmap.courseId}&id=${item.id}`;
-  alert(`Open: ${item.title} (${item.id})`);
+  // Navigate to the lesson file if path is provided
+  if (item.path) {
+    window.location.href = item.path;
+  } else {
+    alert(`Open: ${item.title} (${item.id})`);
+  }
 }
 
 function itemIcon(item, status) {

@@ -21,6 +21,9 @@
     </nav>
 
     <img src="imgs/burger-bar.png" class="menu-icon" id="menuToggle" alt="Menu">
+    <a id="dashboardLink" href="dashboard.html" style="display:none;">Dashboard</a>
+    <a id="authLink" href="auth.html">Login</a>
+
 </header>
 
 
@@ -35,7 +38,7 @@
             dhe të zhyten thellë në botën e programimit.
         </p>
 
-        <button class="btn"><a href="#mesimet" class="btn-a">Fillo Tani</a></button>
+        <button class="btn"><a href="courses.html" class="btn-a">Fillo Tani</a></button>
     </div>
 
     <div class="hero-right">
@@ -52,7 +55,7 @@
     <div class="lessons-grid">
 
         <!-- HTML & CSS -->
-         <a class="titulliM" href="/html-css/intro.html">
+         <a class="titulliM" href="start-course.html?course=html-css">
         <div class="lesson-item html">
             <div class="lesson-header">
                 <div class="icons">
@@ -164,6 +167,35 @@
     menu.addEventListener("click", () => {
         document.body.classList.toggle("openNav");
     });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script type="module">
+  import { supabase } from "./js/supabaseClient.js";
+
+  const authLink = document.getElementById("authLink");
+  const dashboardLink = document.getElementById("dashboardLink");
+
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (user) {
+    // Redirect to dashboard if already logged in
+    window.location.href = "dashboard.html";
+    
+    dashboardLink.style.display = "inline-block";
+    authLink.textContent = "Logout";
+    authLink.href = "#";
+    authLink.addEventListener("click", async (e) => {
+      e.preventDefault();
+      await supabase.auth.signOut();
+      window.location.href = "index.html";
+    });
+  } else {
+    dashboardLink.style.display = "none";
+    authLink.textContent = "Login";
+    authLink.href = "auth.html";
+  }
 </script>
 
 </body>

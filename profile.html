@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+      width: 100%;
+      padding: 40px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      color: #333;
+    }
+
+    .logout-btn {
+      background: #ff6b6b;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+
+    .logout-btn:hover {
+      background: #ff5252;
+    }
+
+    .profile-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .profile-picture {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+      overflow: hidden;
+      border: 3px solid #667eea;
+    }
+
+    .profile-picture img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-picture.empty {
+      font-size: 48px;
+    }
+
+    .upload-btn {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+
+    .upload-btn:hover {
+      background: #5568d3;
+    }
+
+    #pictureInput {
+      display: none;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    input[type="text"]:disabled,
+    input[type="email"]:disabled {
+      background: #f5f5f5;
+      color: #999;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .save-btn {
+      flex: 1;
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .save-btn:hover {
+      background: #5568d3;
+    }
+
+    .save-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .cancel-btn {
+      flex: 1;
+      background: #e0e0e0;
+      color: #333;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .cancel-btn:hover {
+      background: #d0d0d0;
+    }
+
+    .msg {
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .msg.ok {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .msg.err {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .loading {
+      text-align: center;
+      color: #999;
+    }
+
+    .loading::after {
+      content: " ...";
+      animation: dots 1.5s steps(4, end) infinite;
+    }
+
+    @keyframes dots {
+      0%,
+      20% {
+        color: rgba(0, 0, 0, 0);
+      }
+      40% {
+        color: #999;
+      }
+      60% {
+        color: #999;
+      }
+      80%,
+      100% {
+        color: rgba(0, 0, 0, 0);
+      }
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #667eea;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>My Profile</h1>
+      <button class="logout-btn" id="logoutBtn">Logout</button>
+    </div>
+
+    <div id="msg"></div>
+
+    <div class="profile-section">
+      <div class="profile-picture" id="profilePictureContainer">
+        <span class="empty">👤</span>
+      </div>
+      <button class="upload-btn" id="uploadAvatarBtn">Upload Avatar</button>
+      <input type="file" id="avatarInput" accept="image/*" />
+    </div>
+
+    <form id="profileForm">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter your username" />
+      </div>
+
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" placeholder="Enter your full name" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email (Read-only)</label>
+        <input type="email" id="email" disabled />
+      </div>
+
+      <div class="form-group">
+        <label for="joinDate">Member Since</label>
+        <input type="text" id="joinDate" disabled />
+      </div>
+
+      <div class="button-group">
+        <button type="submit" class="save-btn" id="saveBtn">Save Changes</button>
+        <button type="button" class="cancel-btn" id="cancelBtn">Cancel</button>
+      </div>
+    </form>
+
+    <a href="index.html" class="back-link">← Back to Home</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module">
+    import { supabase } from "./js/supabaseClient.js";
+    import { getCurrentUserProfile, updateProfile, uploadAvatar } from "./js/profileManager.js";
+
+    const usernameEl = document.getElementById("username");
+    const fullNameEl = document.getElementById("fullName");
+    const emailEl = document.getElementById("email");
+    const joinDateEl = document.getElementById("joinDate");
+    const msgEl = document.getElementById("msg");
+    const uploadAvatarBtn = document.getElementById("uploadAvatarBtn");
+    const avatarInput = document.getElementById("avatarInput");
+    const profilePictureContainer = document.getElementById("profilePictureContainer");
+    const saveBtn = document.getElementById("saveBtn");
+    const cancelBtn = document.getElementById("cancelBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const profileForm = document.getElementById("profileForm");
+
+    let currentUser = null;
+    let currentProfile = null;
+    let originalValues = {};
+
+    function showMsg(text, ok = true) {
+      msgEl.textContent = text;
+      msgEl.className = "msg " + (ok ? "ok" : "err");
+      setTimeout(() => {
+        msgEl.textContent = "";
+        msgEl.className = "msg";
+      }, 4000);
+    }
+
+    function formatDate(dateString) {
+      return new Date(dateString).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+    }
+
+    async function loadProfile() {
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) {
+          window.location.href = "auth.html?next=profile.html";
+          return;
+        }
+
+        currentUser = user;
+        const { data: profile, error } = await getCurrentUserProfile();
+
+        if (error && error.code !== "PGRST116") {
+          showMsg("Error loading profile", false);
+          return;
+        }
+
+        if (profile) {
+          currentProfile = profile;
+          usernameEl.value = profile.username || "";
+          fullNameEl.value = profile.full_name || "";
+          emailEl.value = user.email;
+          joinDateEl.value = formatDate(profile.created_at);
+
+          if (profile.avatar_url) {
+            profilePictureContainer.innerHTML = `<img src="${profile.avatar_url}" alt="Profile" />`;
+          }
+        } else {
+          // New user - populate with auth data
+          emailEl.value = user.email;
+          usernameEl.value = `user_${user.id.slice(0, 8)}`;
+        }
+
+        // Save original values
+        originalValues = {
+          username: usernameEl.value,
+          fullName: fullNameEl.value,
+        };
+      } catch (error) {
+        console.error("Error loading profile:", error);
+        showMsg("Error loading profile", false);
+      }
+    }
+
+    uploadAvatarBtn.addEventListener("click", () => {
+      avatarInput.click();
+    });
+
+    avatarInput.addEventListener("change", async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      uploadAvatarBtn.disabled = true;
+      uploadAvatarBtn.textContent = "Uploading...";
+
+      try {
+        const { data, error } = await uploadAvatar(currentUser.id, file);
+        if (error) {
+          showMsg("Error uploading avatar", false);
+          return;
+        }
+
+        profilePictureContainer.innerHTML = `<img src="${data.url}" alt="Profile" />`;
+        showMsg("✅ Avatar uploaded successfully!");
+      } catch (error) {
+        console.error("Error uploading avatar:", error);
+        showMsg("Error uploading avatar", false);
+      } finally {
+        uploadAvatarBtn.disabled = false;
+        uploadAvatarBtn.textContent = "Upload Avatar";
+        avatarInput.value = "";
+      }
+    });
+
+    profileForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const username = usernameEl.value.trim();
+      const fullName = fullNameEl.value.trim();
+
+      if (!username) {
+        showMsg("Username cannot be empty", false);
+        return;
+      }
+
+      saveBtn.disabled = true;
+      saveBtn.textContent = "Saving...";
+
+      try {
+        const updates = {
+          username,
+          full_name: fullName,
+        };
+
+        const { error } = await updateProfile(currentUser.id, updates);
+
+        if (error) {
+          showMsg("Error updating profile", false);
+          return;
+        }
+
+        originalValues.username = username;
+        originalValues.fullName = fullName;
+        showMsg("✅ Profile updated successfully!");
+      } catch (error) {
+        console.error("Error updating profile:", error);
+        showMsg("Error updating profile", false);
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.textContent = "Save Changes";
+      }
+    });
+
+    cancelBtn.addEventListener("click", () => {
+      usernameEl.value = originalValues.username;
+      fullNameEl.value = originalValues.fullName;
+      msgEl.textContent = "";
+    });
+
+    logoutBtn.addEventListener("click", async () => {
+      await supabase.auth.signOut();
+      window.location.href = "index.html";
+    });
+
+    // Load profile on page load
+    loadProfile();
+  </script>
+</body>
+</html>
