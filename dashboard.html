@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Dashboard</title>
+  <title>Paneli im | Mëso Programimin</title>
   <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
@@ -11,16 +11,17 @@
     <!-- Header with Profile Section -->
     <header class="dashboard-header">
       <div class="header-content">
+        <img src="imgs/icon platformes.jpg" alt="Logo" class="dashboard-logo">
         <div class="profile-quick">
           <div class="profile-avatar-small" id="profileAvatarSmall">👤</div>
           <div class="profile-info-quick">
-            <h2 id="profileNameQuick">Loading...</h2>
-            <p id="profileUsernameQuick" class="text-muted">@username</p>
+            <h2 id="profileNameQuick">Duke ngarkuar...</h2>
+            <p id="profileUsernameQuick" class="text-muted">@përdoruesi</p>
           </div>
         </div>
         <div class="header-actions">
-          <a href="profile.html" class="btn btn-outline">Edit Profile</a>
-          <button id="logoutBtn" class="btn btn-danger">Logout</button>
+          <a href="profile.html" class="btn btn-outline">Redakto Profilin</a>
+          <button id="logoutBtn" class="btn btn-danger">Dil</button>
         </div>
       </div>
     </header>
@@ -29,8 +30,8 @@
     <main class="dashboard-main">
       <!-- Welcome Section -->
       <section class="welcome-section">
-        <h1 id="welcomeText">Welcome back!</h1>
-        <p id="welcomeSubtext">Continue your learning journey</p>
+        <h1 id="welcomeText">Mirë se erdhe përsëri!</h1>
+        <p id="welcomeSubtext">Vazhdo udhëtimin tënd të të mësuarit</p>
       </section>
 
       <!-- Stats -->
@@ -38,31 +39,31 @@
         <div class="stat-card">
           <div class="stat-icon">📚</div>
           <div class="stat-content">
-            <div class="stat-label">Courses Enrolled</div>
+          <div class="stat-label">Kurse të Regjistruara</div>
             <div class="stat-value" id="enrolledCount">0</div>
           </div>
         </div>
         <div class="stat-card">
           <div class="stat-icon">✅</div>
           <div class="stat-content">
-            <div class="stat-label">Lessons Completed</div>
+          <div class="stat-label">Mësime të Përfunduara</div>
             <div class="stat-value" id="lessonsCount">0</div>
           </div>
         </div>
         <div class="stat-card">
           <div class="stat-icon">🔥</div>
           <div class="stat-content">
-            <div class="stat-label">Current Streak</div>
-            <div class="stat-value" id="streakCount">0 days</div>
+          <div class="stat-label">Seri Aktuale</div>
+          <div class="stat-value" id="streakCount">0 ditë</div>
           </div>
         </div>
       </section>
 
       <!-- Courses Grid -->
       <section class="courses-section">
-        <h2>Your Courses</h2>
+        <h2>Kurset e tua</h2>
         <div class="courses-container" id="coursesContainer">
-          <div class="loading">Loading your courses...</div>
+          <div class="loading">Duke ngarkuar kurset e tua...</div>
         </div>
       </section>
     </main>
@@ -75,8 +76,8 @@
       
       <div class="course-modal-header">
         <div class="course-header-info">
-          <h2 id="modalCourseTitle">Course Title</h2>
-          <p id="modalCourseDesc" class="text-muted">Course description</p>
+          <h2 id="modalCourseTitle">Titulli i Kursit</h2>
+          <p id="modalCourseDesc" class="text-muted">Përshkrimi i kursit</p>
           <div class="progress-bar-container">
             <div class="progress-bar">
               <div class="progress-fill" id="modalProgressFill"></div>
@@ -91,7 +92,7 @@
       </div>
 
       <div class="course-modal-footer">
-        <button class="btn btn-primary" id="resumeBtn">Continue Learning</button>
+        <button class="btn btn-primary" id="resumeBtn">Vazhdo të Mësosh</button>
       </div>
     </div>
   </div>

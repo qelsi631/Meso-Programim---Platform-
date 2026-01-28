@@ -1,13 +1,24 @@
 import { htmlRoadmap } from "./data/htmlRoadmap.js";
 
+const COURSE_SLUG = htmlRoadmap.courseId;
 const STORAGE_KEY = `progress:${htmlRoadmap.courseId}`;
 
 function getCompleted() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) ?? []; }
+  // Use localStorage for roadmap progress
+  try { 
+    const progressData = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+    return Object.keys(progressData).filter(id => progressData[id].completed);
+  }
   catch { return []; }
 }
+
 function setCompleted(ids) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(ids));
+  // Save progress to localStorage
+  const progressData = {};
+  ids.forEach(id => {
+    progressData[id] = { completed: true, completedAt: new Date().toISOString() };
+  });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(progressData));
 }
 
 function getAllItems() {
@@ -50,7 +61,7 @@ function itemIcon(item, status) {
   return "{}";
 }
 
-function render() {
+async function render() {
   const subtitle = document.getElementById("subtitle");
   const title = document.getElementById("title");
   const path = document.getElementById("path");
@@ -62,7 +73,7 @@ function render() {
   const next = getNextItem(all, completed);
   const nextId = next?.id;
 
-  subtitle.textContent = next?.moduleTitle ?? "Completed";
+  subtitle.textContent = next?.moduleTitle ?? "Përfunduar";
 
   path.innerHTML = "";
 
@@ -94,7 +105,7 @@ function render() {
 
     divider.innerHTML = `
       <div class="left">
-        <div class="kicker">Module</div>
+        <div class="kicker">Moduli</div>
         <div class="name">${m.title}</div>
       </div>
       <div class="badge">${doneCount}/${moduleItems.length}</div>
@@ -143,7 +154,7 @@ path.appendChild(label);
     if (status === "next") {
       const flag = document.createElement("div");
       flag.className = "flag";
-      flag.textContent = "Continue";
+      flag.textContent = "Vazhdo";
       flag.style.top = `${top - 36}px`;
       flag.style.marginLeft = `${leftOffset}px`;
       path.appendChild(flag);
@@ -157,12 +168,15 @@ path.appendChild(label);
   // Quick test: press "C" to mark next as completed (remove later)
   window.addEventListener("keydown", (e) => {
     if (e.key.toLowerCase() === "c") {
-      const n = getNextItem(getAllItems(), getCompleted());
+      const completed = getCompleted();
+      const n = getNextItem(getAllItems(), completed);
       if (!n) return;
-      setCompleted([...new Set([...getCompleted(), n.id])]);
+      setCompleted([...new Set([...completed, n.id])]);
       render();
     }
   }, { once: true });
 }
+
+render();
 
 render();

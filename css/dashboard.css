@@ -1,11 +1,11 @@
 /* Dashboard Styles */
 :root {
-  --primary: #667eea;
-  --primary-dark: #5568d3;
-  --secondary: #764ba2;
+  --primary: #ff6600;
+  --primary-dark: #e55a00;
+  --secondary: #ff8533;
   --success: #4caf50;
   --danger: #ff6b6b;
-  --bg: #f8f9fa;
+  --bg: #ffffff;
   --card-bg: #ffffff;
   --text: #333;
   --text-light: #666;
@@ -20,7 +20,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Nunito, sans-serif;
   background: var(--bg);
   color: var(--text);
 }
@@ -48,6 +48,10 @@ body {
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
+}
+
+.dashboard-logo {
+  height: 50px;
 }
 
 .profile-quick {
@@ -112,7 +116,7 @@ body {
 .btn-primary:hover {
   background: var(--primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 6px 16px rgba(255, 102, 0, 0.4);
 }
 
 .btn-outline {
@@ -503,7 +507,7 @@ body {
   width: 10px;
   height: 100%;
   border-radius: 999px;
-  background: rgba(102, 126, 234, 0.1);
+  background: rgba(255, 102, 0, 0.1);
 }
 
 .node {

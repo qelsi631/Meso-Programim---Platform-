@@ -1,30 +1,18 @@
 // data/htmlRoadmap.js
 export const htmlRoadmap = {
-  courseId: "html-fundamentals",
-  title: "HTML & CSS Fundamentals",
+  courseId: "html-css-course",
+  title: "Rruga e HTML & CSS",
   modules: [
     {
       id: "m1",
-      title: "MODULE 1 — Getting Started",
+      title: "MODULI 1 — Bazat e HTML",
       items: [
-        { id: "l1", title: "Welcome to HTML & CSS", type: "lesson", path: "../../html-css/mesimet/welcome.html" },
-        { id: "l2", title: "HTML Basics Part 1", type: "lesson", path: "../../html-css/mesimet/lesson0.2.html" },
-        { id: "l3", title: "HTML Basics Part 2", type: "lesson", path: "../../html-css/mesimet/lesson0.03.html" },
-      ],
-    },
-    {
-      id: "m2",
-      title: "MODULE 2 — Practice & Exercises",
-      items: [
-        { id: "l4", title: "HTML Exercises", type: "lesson", path: "../../html-css/ushtrime/ushtrime0.1.html" },
-      ],
-    },
-    {
-      id: "m3",
-      title: "MODULE 3 — Assessment",
-      items: [
-        { id: "l5", title: "Quiz - HTML Basics", type: "assessment", path: "../../html-css/quiz/quiz.html" },
-        { id: "l6", title: "Quiz 2 - Advanced Topics", type: "assessment", path: "../../html-css/quiz/quiz2.html" },
+        { id: "l1", title: "Mirë se vini në kursin e HTML & CSS!", type: "mësim", path: "html-css/mesimet/welcome.html" },
+        { id: "l2", title: "Titujt në HTML", type: "mësim", path: "html-css/mesimet/lesson0.2.html" },
+        { id: "l3", title: "Text Formatting në HTML", type: "mësim", path: "html-css/mesimet/lesson0.03.html" },
+        { id: "l4", title: "Ushtrimi 1: Titujt & Paragrafët", type: "mësim", path: "html-css/ushtrime/ushtrime0.1.html" },
+        { id: "l5", title: "HTML Bazat", type: "vlerësim", path: "html-css/quiz/quiz.html" },
+        { id: "l6", title: "Html - Titujt (Headings)", type: "vlerësim", path: "html-css/quiz/quiz2.html" },
       ],
     },
   ],

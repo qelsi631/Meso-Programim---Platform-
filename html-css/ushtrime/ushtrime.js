@@ -209,8 +209,8 @@ function showContinue() {
     e.preventDefault();
     await markLessonCompleted(COURSE_SLUG, LESSON_ID);
     console.log("✓ Exercise lesson marked as completed");
-    // Navigate to next lesson (quiz)
-    window.location.href = "../quiz/quiz.html";
+    // Navigate to next lesson (Text Formatting)
+    window.location.href = "../../html-css/mesimet/lesson0.03.html";
   }, { once: true });
 }
 
