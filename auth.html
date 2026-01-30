@@ -6,7 +6,7 @@
   <title>Hyni | Mëso Programimin</title>
   <style>
     body{font-family: Nunito, sans-serif; background:#ffffff; color:#333; display:flex; min-height:100vh; align-items:center; justify-content:center; padding:24px;}
-    .card{width:100%; max-width:420px; background:#ffffff; border:1px solid #e0e0e0; border-radius:16px; padding:20px; box-shadow:0 4px 12px rgba(0, 0, 0, 0.08)}
+    .card{width:100%; max-width:460px; background:#ffffff; border:1px solid #e0e0e0; border-radius:16px; padding:20px; box-shadow:0 4px 12px rgba(0, 0, 0, 0.08)}
     .logo{text-align:center; margin-bottom:20px;}
     .logo img{height:60px;}
     h1{font-size:22px; margin:0 0 14px; text-align:center;}
@@ -20,6 +20,10 @@
     .msg{margin-top:12px; font-size:13px; opacity:.95}
     .ok{color:#4caf50}
     .err{color:#ff6b6b}
+    .info{margin-top:14px; padding:12px; border-radius:12px; background:#f8f9fa; font-size:13px; line-height:1.5}
+    .info h2{font-size:14px; margin:0 0 6px}
+    .info ul{margin:6px 0 0 18px; padding:0}
+    .info li{margin:4px 0}
     a{color:#ff6600}
   </style>
 </head>
@@ -33,10 +37,10 @@
     <!-- LOGIN FORM -->
     <div id="loginForm">
       <label>Email</label>
-      <input id="email" type="email" placeholder="ju@shembull.com" />
+      <input id="email" type="email" placeholder="ju@shembull.com" autocomplete="email" required />
 
       <label>Fjalëkalimi</label>
-      <input id="password" type="password" placeholder="••••••••" />
+      <input id="password" type="password" placeholder="••••••••" autocomplete="current-password" required />
 
       <div class="row">
         <button class="primary" id="btnLogin">Hyni</button>
@@ -49,24 +53,42 @@
     <!-- REGISTRATION FORM -->
     <div id="registerForm" style="display:none;">
       <label>Emri</label>
-      <input id="fullName" type="text" placeholder="Emri juaj" />
+      <input id="fullName" type="text" placeholder="Emri juaj" autocomplete="name" required />
 
       <label>Emri i përdoruesit</label>
-      <input id="username" type="text" placeholder="emriperdoruesit" />
+      <input id="username" type="text" placeholder="emriperdoruesit" autocomplete="username" required />
 
       <label>Email</label>
-      <input id="regEmail" type="email" placeholder="ju@shembull.com" />
+      <input id="regEmail" type="email" placeholder="ju@shembull.com" autocomplete="email" required />
 
       <label>Fjalëkalimi</label>
-      <input id="regPassword" type="password" placeholder="••••••••" />
+      <input id="regPassword" type="password" placeholder="••••••••" minlength="8" autocomplete="new-password" required />
+
+      <label>Konfirmo fjalëkalimin</label>
+      <input id="regPasswordConfirm" type="password" placeholder="••••••••" minlength="8" autocomplete="new-password" required />
 
       <div class="row">
         <button class="primary" id="btnCreateAccount">Krijo Llogarinë</button>
         <button class="secondary" id="btnBackToLogin">Kthehu</button>
       </div>
+
+      <button class="secondary" id="btnResend">Dërgo sërish email verifikimi</button>
     </div>
 
     <div class="msg" id="msg"></div>
+
+    <div class="info">
+      <h2>Siguria e llogarisë suaj</h2>
+      <div>
+        Për çdo llogari kërkojmë verifikim me email. Kjo na ndihmon të mbrojmë
+        identitetin tuaj dhe të parandalojmë hyrjet e paautorizuara.
+      </div>
+      <ol>
+        <li>Verifikimi me email është i detyrueshëm për hyrje.</li>
+        <li>Nuk ndajmë emailin tuaj me palë të treta.</li>
+        <li>Nëse nuk e merrni emailin, përdorni butonin “Dërgo sërish”.</li>
+      </ol>
+    </div>
 
     <p style="margin-top:14px; font-size:13px; opacity:.8">
       Pas hyrjes mund të ktheheni në <a href="index.html">fillim</a>.

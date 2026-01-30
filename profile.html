@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Profile</title>
+  <title>Profili im</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200..1000&family=Nunito:wght@200..1000&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -12,22 +15,24 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      font-family: Nunito, sans-serif;
+      background: #f7f7f7;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 20px;
+      padding: 30px 20px;
+      color: #333;
     }
 
     .container {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-      max-width: 500px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      max-width: 560px;
       width: 100%;
       padding: 40px;
+      border: 1px solid #f0f0f0;
     }
 
     .header {
@@ -40,21 +45,25 @@
     .header h1 {
       font-size: 28px;
       color: #333;
+      font-weight: 700;
     }
 
     .logout-btn {
-      background: #ff6b6b;
+      background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%);
       color: white;
       border: none;
       padding: 8px 16px;
-      border-radius: 6px;
+      border-radius: 20px;
       cursor: pointer;
       font-size: 14px;
-      transition: background 0.3s;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 12px rgba(255, 102, 0, 0.25);
     }
 
     .logout-btn:hover {
-      background: #ff5252;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(255, 102, 0, 0.35);
     }
 
     .profile-section {
@@ -68,13 +77,14 @@
       width: 120px;
       height: 120px;
       border-radius: 50%;
-      background: #f0f0f0;
+      background: #f3f3f3;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 15px;
       overflow: hidden;
-      border: 3px solid #667eea;
+      border: 3px solid #ff6600;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
     }
 
     .profile-picture img {
@@ -88,18 +98,21 @@
     }
 
     .upload-btn {
-      background: #667eea;
+      background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%);
       color: white;
       border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
+      padding: 10px 22px;
+      border-radius: 20px;
       cursor: pointer;
       font-size: 14px;
-      transition: background 0.3s;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 12px rgba(255, 102, 0, 0.25);
     }
 
     .upload-btn:hover {
-      background: #5568d3;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(255, 102, 0, 0.35);
     }
 
     #pictureInput {
@@ -122,7 +135,7 @@
       width: 100%;
       padding: 12px;
       border: 1px solid #ddd;
-      border-radius: 6px;
+      border-radius: 10px;
       font-size: 14px;
       transition: border-color 0.3s;
     }
@@ -130,8 +143,8 @@
     input[type="text"]:focus,
     input[type="email"]:focus {
       outline: none;
-      border-color: #667eea;
-      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      border-color: #ff6600;
+      box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.15);
     }
 
     input[type="text"]:disabled,
@@ -148,19 +161,21 @@
 
     .save-btn {
       flex: 1;
-      background: #667eea;
+      background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%);
       color: white;
       border: none;
       padding: 12px;
-      border-radius: 6px;
+      border-radius: 10px;
       cursor: pointer;
       font-size: 16px;
-      font-weight: 500;
-      transition: background 0.3s;
+      font-weight: 700;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 12px rgba(255, 102, 0, 0.25);
     }
 
     .save-btn:hover {
-      background: #5568d3;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(255, 102, 0, 0.35);
     }
 
     .save-btn:disabled {
@@ -170,37 +185,40 @@
 
     .cancel-btn {
       flex: 1;
-      background: #e0e0e0;
+      background: #f1f1f1;
       color: #333;
-      border: none;
+      border: 1px solid #e3e3e3;
       padding: 12px;
-      border-radius: 6px;
+      border-radius: 10px;
       cursor: pointer;
       font-size: 16px;
-      font-weight: 500;
-      transition: background 0.3s;
+      font-weight: 600;
+      transition: background 0.2s, border-color 0.2s;
     }
 
     .cancel-btn:hover {
-      background: #d0d0d0;
+      background: #e9e9e9;
+      border-color: #d8d8d8;
     }
 
     .delete-btn {
       width: 100%;
-      background: #ff6b6b;
+      background: #ff4d4f;
       color: white;
       border: none;
       padding: 12px;
-      border-radius: 6px;
+      border-radius: 10px;
       cursor: pointer;
       font-size: 16px;
-      font-weight: 500;
-      transition: background 0.3s;
+      font-weight: 700;
+      transition: transform 0.2s, box-shadow 0.2s;
       margin-top: 20px;
+      box-shadow: 0 4px 12px rgba(255, 77, 79, 0.25);
     }
 
     .delete-btn:hover {
-      background: #ff5252;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(255, 77, 79, 0.35);
     }
 
     .delete-btn:disabled {
@@ -217,14 +235,14 @@
     }
 
     .msg.ok {
-      background: #d4edda;
-      color: #155724;
-      border: 1px solid #c3e6cb;
+      background: #e9f7ef;
+      color: #1e7a43;
+      border: 1px solid #ccead9;
     }
 
     .msg.err {
-      background: #f8d7da;
-      color: #721c24;
+      background: #fdecec;
+      color: #a62828;
       border: 1px solid #f5c6cb;
     }
 
@@ -259,9 +277,10 @@
       display: block;
       text-align: center;
       margin-top: 20px;
-      color: #667eea;
+      color: #ff6600;
       text-decoration: none;
       font-size: 14px;
+      font-weight: 600;
     }
 
     .back-link:hover {
@@ -272,8 +291,8 @@
 <body>
   <div class="container">
     <div class="header">
-      <h1>My Profile</h1>
-      <button class="logout-btn" id="logoutBtn">Logout</button>
+      <h1>Profili im</h1>
+      <button class="logout-btn" id="logoutBtn">Dil</button>
     </div>
 
     <div id="msg"></div>
@@ -282,40 +301,40 @@
       <div class="profile-picture" id="profilePictureContainer">
         <span class="empty">👤</span>
       </div>
-      <button class="upload-btn" id="uploadAvatarBtn">Upload Avatar</button>
+      <button class="upload-btn" id="uploadAvatarBtn">Ngarko avatar</button>
       <input type="file" id="avatarInput" accept="image/*" />
     </div>
 
     <form id="profileForm">
       <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" placeholder="Enter your username" />
+        <label for="username">Emri i përdoruesit</label>
+        <input type="text" id="username" placeholder="Shkruaj emrin e përdoruesit" />
       </div>
 
       <div class="form-group">
-        <label for="fullName">Full Name</label>
-        <input type="text" id="fullName" placeholder="Enter your full name" />
+        <label for="fullName">Emri i plotë</label>
+        <input type="text" id="fullName" placeholder="Shkruaj emrin e plotë" />
       </div>
 
       <div class="form-group">
-        <label for="email">Email (Read-only)</label>
+        <label for="email">Email (Vetëm për lexim)</label>
         <input type="email" id="email" disabled />
       </div>
 
       <div class="form-group">
-        <label for="joinDate">Member Since</label>
+        <label for="joinDate">Anëtar që nga</label>
         <input type="text" id="joinDate" disabled />
       </div>
 
       <div class="button-group">
-        <button type="submit" class="save-btn" id="saveBtn">Save Changes</button>
-        <button type="button" class="cancel-btn" id="cancelBtn">Cancel</button>
+        <button type="submit" class="save-btn" id="saveBtn">Ruaj ndryshimet</button>
+        <button type="button" class="cancel-btn" id="cancelBtn">Anulo</button>
       </div>
     </form>
 
-    <button class="delete-btn" id="deleteAccountBtn">Delete Account</button>
+    <button class="delete-btn" id="deleteAccountBtn">Fshi llogarinë</button>
 
-    <a href="index.html" class="back-link">← Back to Home</a>
+    <a href="index.html" class="back-link">← Kthehu te Ballina</a>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -369,7 +388,7 @@
         const { data: profile, error } = await getCurrentUserProfile();
 
         if (error && error.code !== "PGRST116") {
-          showMsg("Error loading profile", false);
+          showMsg("Gabim gjatë ngarkimit të profilit", false);
           return;
         }
 
@@ -396,7 +415,7 @@
         };
       } catch (error) {
         console.error("Error loading profile:", error);
-        showMsg("Error loading profile", false);
+        showMsg("Gabim gjatë ngarkimit të profilit", false);
       }
     }
 
@@ -409,23 +428,23 @@
       if (!file) return;
 
       uploadAvatarBtn.disabled = true;
-      uploadAvatarBtn.textContent = "Uploading...";
+      uploadAvatarBtn.textContent = "Duke ngarkuar...";
 
       try {
         const { data, error } = await uploadAvatar(currentUser.id, file);
         if (error) {
-          showMsg("Error uploading avatar", false);
+          showMsg(`Gabim gjatë ngarkimit të avatarit: ${error.message || "Gabim i panjohur"}`, false);
           return;
         }
 
         profilePictureContainer.innerHTML = `<img src="${data.url}" alt="Profile" />`;
-        showMsg("✅ Avatar uploaded successfully!");
+        showMsg("✅ Avatari u ngarkua me sukses!");
       } catch (error) {
         console.error("Error uploading avatar:", error);
-        showMsg("Error uploading avatar", false);
+        showMsg(`Gabim gjatë ngarkimit të avatarit: ${error?.message || "Gabim i panjohur"}`, false);
       } finally {
         uploadAvatarBtn.disabled = false;
-        uploadAvatarBtn.textContent = "Upload Avatar";
+        uploadAvatarBtn.textContent = "Ngarko avatar";
         avatarInput.value = "";
       }
     });
@@ -437,12 +456,12 @@
       const fullName = fullNameEl.value.trim();
 
       if (!username) {
-        showMsg("Username cannot be empty", false);
+        showMsg("Emri i përdoruesit nuk mund të jetë bosh", false);
         return;
       }
 
       saveBtn.disabled = true;
-      saveBtn.textContent = "Saving...";
+      saveBtn.textContent = "Duke ruajtur...";
 
       try {
         const updates = {
@@ -453,19 +472,19 @@
         const { error } = await updateProfile(currentUser.id, updates);
 
         if (error) {
-          showMsg("Error updating profile", false);
+          showMsg("Gabim gjatë përditësimit të profilit", false);
           return;
         }
 
         originalValues.username = username;
         originalValues.fullName = fullName;
-        showMsg("✅ Profile updated successfully!");
+        showMsg("✅ Profili u përditësua me sukses!");
       } catch (error) {
         console.error("Error updating profile:", error);
-        showMsg("Error updating profile", false);
+        showMsg("Gabim gjatë përditësimit të profilit", false);
       } finally {
         saveBtn.disabled = false;
-        saveBtn.textContent = "Save Changes";
+        saveBtn.textContent = "Ruaj ndryshimet";
       }
     });
 
@@ -483,45 +502,45 @@
     const deleteAccountBtn = document.getElementById("deleteAccountBtn");
     deleteAccountBtn.addEventListener("click", async () => {
       const confirmDelete = confirm(
-        "⚠️ WARNING: This will permanently delete your account and all associated data. This action cannot be undone. Are you sure?"
+        "⚠️ KUJDES: Kjo do të fshijë përgjithmonë llogarinë tuaj dhe të gjitha të dhënat e lidhura. Ky veprim nuk mund të zhbëhet. A jeni i sigurt?"
       );
 
       if (!confirmDelete) return;
 
       const finalConfirm = confirm(
-        "Are you absolutely sure? Type 'DELETE' in the next prompt to confirm permanent deletion."
+        "A jeni absolutisht i sigurt? Shkruani 'DELETE' në hapin tjetër për të konfirmuar fshirjen përfundimtare."
       );
 
       if (!finalConfirm) return;
 
-      const userInput = prompt("Type 'DELETE' to confirm account deletion:");
+      const userInput = prompt("Shkruani 'DELETE' për të konfirmuar fshirjen e llogarisë:");
       if (userInput !== "DELETE") {
-        showMsg("Account deletion cancelled.", false);
+        showMsg("Fshirja e llogarisë u anulua.", false);
         return;
       }
 
       deleteAccountBtn.disabled = true;
-      deleteAccountBtn.textContent = "Deleting...";
+      deleteAccountBtn.textContent = "Duke fshirë...";
 
       try {
         const { error } = await deleteUserAccount(currentUser.id);
 
         if (error) {
-          showMsg("Error deleting account: " + error.message, false);
+          showMsg("Gabim gjatë fshirjes së llogarisë: " + error.message, false);
           deleteAccountBtn.disabled = false;
-          deleteAccountBtn.textContent = "Delete Account";
+          deleteAccountBtn.textContent = "Fshi llogarinë";
           return;
         }
 
-        showMsg("✅ Account deleted successfully. Redirecting...");
+        showMsg("✅ Llogaria u fshi me sukses. Duke ridrejtuar...");
         setTimeout(() => {
           window.location.href = "index.html";
         }, 1500);
       } catch (error) {
         console.error("Error deleting account:", error);
-        showMsg("Error deleting account", false);
+        showMsg("Gabim gjatë fshirjes së llogarisë", false);
         deleteAccountBtn.disabled = false;
-        deleteAccountBtn.textContent = "Delete Account";
+        deleteAccountBtn.textContent = "Fshi llogarinë";
       }
     });
 

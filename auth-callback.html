@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auth Callback</title>
+  <style>
+    body { font-family: Nunito, sans-serif; display: flex; min-height: 100vh; align-items: center; justify-content: center; background: #ffffff; color: #333; }
+    .card { max-width: 420px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 16px; text-align: center; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Po përpunojmë hyrjen…</h2>
+    <p id="status">Ju lutem prisni.</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module">
+    import { supabase } from "./js/supabaseClient.js";
+
+    const statusEl = document.getElementById("status");
+
+    try {
+      const { data, error } = await supabase.auth.getSession();
+      if (error) throw error;
+
+      if (data?.session) {
+        statusEl.textContent = "✅ Hyrja u krye me sukses. Po ju ridrejtojmë…";
+        setTimeout(() => { window.location.href = "index.html"; }, 800);
+      } else {
+        statusEl.textContent = "Hyrja nuk u përfundua. Ju lutem provoni sërish.";
+      }
+    } catch (e) {
+      statusEl.textContent = "Gabim gjatë hyrjes. Ju lutem provoni sërish.";
+      console.error(e);
+    }
+  </script>
+</body>
+</html>

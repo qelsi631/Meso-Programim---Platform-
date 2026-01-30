@@ -32,7 +32,7 @@ const courseData = {
     slug: "html-fundamentals",
     roadmap: "roadmap.html?course=html-fundamentals",
     lessonPath: "html-css/mesimet/welcome.html",
-    totalLessons: 6  // l1, l2, l3, l4, l5, l6
+    totalLessons: 8  // l1, l2, l3, l4, l5, l6, l7, l8
   },
   "css-styling": {
     title: "CSS Styling",

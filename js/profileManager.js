@@ -88,13 +88,29 @@ export async function getCurrentUserProfile() {
  * Upload avatar picture
  */
 export async function uploadAvatar(userId, file) {
+  if (!userId) {
+    return { error: { message: "User not authenticated" } };
+  }
+
+  if (!file) {
+    return { error: { message: "No file selected" } };
+  }
+
+  if (!file.type?.startsWith("image/")) {
+    return { error: { message: "Please upload a valid image file" } };
+  }
+
   const fileExt = file.name.split(".").pop();
   const fileName = `${userId}-${Date.now()}.${fileExt}`;
   const filePath = `avatars/${fileName}`;
 
   const { error: uploadError } = await supabase.storage
     .from("profiles")
-    .upload(filePath, file);
+    .upload(filePath, file, {
+      cacheControl: "3600",
+      contentType: file.type,
+      upsert: true,
+    });
 
   if (uploadError) {
     console.error("Error uploading avatar:", uploadError);
@@ -107,6 +123,10 @@ export async function uploadAvatar(userId, file) {
     .getPublicUrl(filePath);
 
   // Update profile with new avatar URL
+  if (!publicUrl) {
+    return { error: { message: "Could not generate avatar URL" } };
+  }
+
   const { error: updateError } = await updateProfile(userId, {
     avatar_url: publicUrl,
   });

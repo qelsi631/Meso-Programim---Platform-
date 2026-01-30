@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ushtrime | Text Formatting</title>
+
+  <link rel="stylesheet" href="ushtrime.css" />
+  <link rel="stylesheet" href="../../sidebar.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+
+    <nav class="top-nav">
+      <a href="#" id="menuBtn" class="icon-btn" aria-label="Hap menunë">
+        <img src="../../imgs/menu (1).png" alt="Menu">
+      </a>
+      
+      <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
+
+      <a href="../../html-css/mesimet/lesson0.03.html" class="goback">Kthehu Pas</a>
+    </nav>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="sidebar" id="sidebar" aria-hidden="true">
+      <div class="sidebar-head">
+        <div class="sidebar-title">
+          <img class="ikonSidebar" src="../../imgs/icon_platformes-removebg-preview.png" alt="">
+          <p>Meso Programim</p>
+        </div>
+        <button class="sidebar-close" id="closeBtn" type="button">✕</button>
+      </div>
+
+      <div class="sidebar-links">
+        <a href="../../index.html">Ballina</a>
+        <a href="../../roadmap.html">Mësimet</a>
+        <a href="../../profile.html">Profili</a>
+        <a href="../../rreth-nesh/rreth-nesh.html">Rreth Nesh</a>
+      </div>
+    </div>
+
+    <main class="practice-layout">
+
+      <aside class="practice-left">
+        <div class="crumbs">Mësimet / HTML / Ushtrime</div>
+
+        <h1 class="exercise-title">Ushtrimi 2: Text Formatting</h1>
+        <p class="exercise-desc">
+          Praktiko tag-et e formatimit të tekstit. Shkruaj kodin në editor
+          dhe shtyp <strong>Run</strong> për ta parë rezultatin.
+        </p>
+
+        <div class="meta-row">
+          <span class="pill">Fillestar</span>
+          <span class="pill">~6 min</span>
+          <span class="pill">HTML</span>
+        </div>
+
+        <div class="tags-used">
+          <span>&lt;strong&gt;</span>
+          <span>&lt;em&gt;</span>
+          <span>&lt;mark&gt;</span>
+          <span>&lt;sub&gt;</span>
+          <span>&lt;sup&gt;</span>
+        </div>
+
+        <section class="card">
+          <h2 class="card-title">Detyra</h2>
+          <ol class="steps">
+            <li>Krijo një paragraf që ka një fjalë të rëndësishme me <code>&lt;strong&gt;</code>.</li>
+            <li>Krijo një paragraf me theksim duke përdorur <code>&lt;em&gt;</code>.</li>
+            <li>Highlight një fjalë me <code>&lt;mark&gt;</code>.</li>
+            <li>Përdor <code>&lt;sub&gt;</code> dhe <code>&lt;sup&gt;</code> në një formulë të thjeshtë.</li>
+          </ol>
+          <p class="note">Sugjerim: përdor fjali të shkurtra që e bëjnë të qartë formatimin.</p>
+        </section>
+
+        <section class="card">
+          <h2 class="card-title">Kontrollat</h2>
+
+          <ul class="checklist" id="checklist">
+            <li data-check="strong"><span class="mark" aria-hidden="true">○</span> Ka të paktën 1 <code>&lt;strong&gt;</code></li>
+            <li data-check="em"><span class="mark" aria-hidden="true">○</span> Ka të paktën 1 <code>&lt;em&gt;</code></li>
+            <li data-check="mark"><span class="mark" aria-hidden="true">○</span> Ka të paktën 1 <code>&lt;mark&gt;</code></li>
+            <li data-check="sub"><span class="mark" aria-hidden="true">○</span> Ka të paktën 1 <code>&lt;sub&gt;</code></li>
+            <li data-check="sup"><span class="mark" aria-hidden="true">○</span> Ka të paktën 1 <code>&lt;sup&gt;</code></li>
+          </ul>
+
+          <div class="hint-row">
+            <button class="btn ghost" id="hintBtn" type="button">Shfaq Hint</button>
+          </div>
+
+          <div class="hint-box" id="hintBox" hidden>
+            <strong>Hint:</strong> Përdor këtë strukturë:
+            <div class="hint-code">
+              &lt;p&gt;Kjo është &lt;strong&gt;e rëndësishme&lt;/strong&gt;.&lt;/p&gt;<br>
+              &lt;p&gt;Kjo është &lt;em&gt;e theksuar&lt;/em&gt;.&lt;/p&gt;<br>
+              &lt;p&gt;Fjala &lt;mark&gt;kryesore&lt;/mark&gt;.&lt;/p&gt;<br>
+              &lt;p&gt;H&lt;sub&gt;2&lt;/sub&gt;O dhe x&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2 class="card-title">Rregulla</h2>
+          <ul class="rules">
+            <li>Duhet t’i kalosh të gjitha kontrollet ✅.</li>
+          </ul>
+        </section>
+
+      </aside>
+
+      <section class="practice-right">
+
+        <div class="editor-topbar">
+          <div class="file-tab">index.html</div>
+
+          <div class="actions">
+            <button class="btn" id="runBtn" type="button">Run</button>
+            <button class="btn ghost" id="resetBtn" type="button">Reset</button>
+            <a href="../../html-css/quiz/quiz.html" class="btn continue-btn" id="continueBtn" hidden>
+              Vazhdo →
+            </a>
+          </div>
+        </div>
+
+        <div class="monaco" id="monacoEditor"></div>
+
+        <div class="output-wrap">
+          <div class="output-top">
+            <div class="output-title">Output</div>
+            <div class="status" id="statusText">Ready</div>
+          </div>
+
+          <iframe class="output" id="preview" title="Preview"></iframe>
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.52.2/min/vs/loader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module" src="ushtrime-text-formatting.js"></script>
+</body>
+</html>

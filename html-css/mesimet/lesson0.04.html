@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mësimi 0.04 | Tag-et pa mbyllje: &lt;br&gt; dhe &lt;hr&gt;</title>
+
+  <link rel="stylesheet" href="welcome.css">
+  <link rel="stylesheet" href="../../sidebar.css">
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+
+  <nav>
+    <a href="#" id="menuBtn"><img src="../../imgs/menu (1).png" alt="Menu"></a>
+
+    <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
+
+    <a href="../../html-css/mesimet/lesson0.03.html" class="goback">Kthehu Pas</a>
+  </nav>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <div class="sidebar-title">
+        <img class="ikonSidebar" src="../../imgs/icon_platformes-removebg-preview.png" alt="Logo">
+        <p>Mëso Programim</p>
+      </div>
+      <button class="sidebar-close" id="closeBtn">✕</button>
+    </div>
+
+    <div class="sidebar-links">
+      <a href="../../index.html">Ballina</a>
+      <a href="../../roadmap.html">Mësimet</a>
+      <a href="../../profile.html">Profili</a>
+      <a href="../../rreth-nesh/rreth-nesh.html">Rreth Nesh</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="welcome">
+      <h1>Tag-et pa mbyllje: <span class="highlight">&lt;br&gt;</span> dhe <span class="highlight">&lt;hr&gt;</span></h1>
+      <p>Mëso si përdoren tag-et që nuk kanë mbyllje (void elements) për ndarje dhe rreshta të rinj.</p>
+    </div>
+
+    <section class="lesson-content">
+
+      <section class="section-card">
+        <div class="section-header">
+          <div class="section-icon">⚡</div>
+          <h2>Çfarë janë tag-et pa mbyllje?</h2>
+        </div>
+
+        <p class="highlight-gold">
+          Disa tag-e në HTML nuk kanë tag mbyllës. Ato quhen <strong>void elements</strong> dhe përdoren për veprime të thjeshta si ndarje dhe thyerje rreshtash.
+        </p>
+
+        <div class="subsection">
+          <h3>Pse janë të veçanta?</h3>
+          <ul>
+            <li>Nuk përmbajnë tekst brenda tyre</li>
+            <li>Nuk kërkojnë tag mbyllës</li>
+            <li>Janë të shpejta dhe të thjeshta për t’u përdorur</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <div class="section-icon">🧩</div>
+          <h2>Tag-u &lt;br&gt; (Line Break)</h2>
+        </div>
+
+        <p>Përdoret për të kaluar në rresht të ri brenda të njëjtit paragraf.</p>
+
+        <div class="mini-preview">
+          <h4>Shembull:</h4>
+          <div class="preview-content">
+            Rreshti 1<br>
+            Rreshti 2<br>
+            Rreshti 3
+          </div>
+        </div>
+
+        <pre class="code-pre"><code class="language-html">&lt;p&gt;
+  Rreshti 1&lt;br&gt;
+  Rreshti 2&lt;br&gt;
+  Rreshti 3
+&lt;/p&gt;
+</code></pre>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <div class="section-icon">➖</div>
+          <h2>Tag-u &lt;hr&gt; (Horizontal Rule)</h2>
+        </div>
+
+        <p>Përdoret për të ndarë temat ose pjesët e një faqeje me një vijë horizontale.</p>
+
+        <div class="mini-preview">
+          <h4>Shembull:</h4>
+          <div class="preview-content">
+            Pjesa 1
+            <hr>
+            Pjesa 2
+          </div>
+        </div>
+
+        <pre class="code-pre"><code class="language-html">&lt;p&gt;Pjesa 1&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Pjesa 2&lt;/p&gt;
+</code></pre>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <div class="section-icon">✅</div>
+          <h2>Këshilla të shpejta</h2>
+        </div>
+
+        <ul>
+          <li>Shmang përdorimin e tepërt të <span class="tag-example">&lt;br&gt;</span> për rregullim pamjeje — përdor CSS kur duhet hapësirë.</li>
+          <li>Përdor <span class="tag-example">&lt;hr&gt;</span> për ndarje tematike, jo thjesht dekor.</li>
+        </ul>
+      </section>
+
+    </section>
+  </header>
+
+  <footer class="lesson-footer">
+    <div class="footer-navigation">
+      <div></div>
+      <a class="btn-next" href="../../html-css/ushtrime/ushtrime0.2.html">Vazhdo</a>
+    </div>
+  </footer>
+
+</div>
+
+<script src="../../js.lessons/sidebar.js"></script>
+
+<!-- Supabase CDN (gives window.supabase) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- Protect lesson (redirects to auth if not logged in) -->
+<script type="module" src="../../js/requireAuth.js"></script>
+
+<script type="module">
+  import { initLessonProgress } from "../../js/lessonProgressInit.js";
+  initLessonProgress("html-void-tags");
+</script>
+
+<script type="module">
+  import { markLessonCompleted } from "../../js/courseProgressManager.js";
+
+  const COURSE_SLUG = "html-fundamentals";
+  const LESSON_ID = "l8"; // Void tags lesson
+
+  const btn = document.querySelector(".btn-next");
+  if (btn) {
+    btn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const nextUrl = btn.getAttribute("href");
+      await markLessonCompleted(COURSE_SLUG, LESSON_ID);
+      window.location.href = nextUrl;
+    });
+  }
+</script>
+
+</body>
+</html>
