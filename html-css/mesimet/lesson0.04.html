@@ -12,6 +12,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Prism -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" defer></script>
 </head>
 <body>
 <div class="container">
@@ -87,12 +95,22 @@
           </div>
         </div>
 
-        <pre class="code-pre"><code class="language-html">&lt;p&gt;
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;p&gt;
   Rreshti 1&lt;br&gt;
   Rreshti 2&lt;br&gt;
   Rreshti 3
 &lt;/p&gt;
 </code></pre>
+        </div>
       </section>
 
       <section class="section-card">
@@ -112,10 +130,20 @@
           </div>
         </div>
 
-        <pre class="code-pre"><code class="language-html">&lt;p&gt;Pjesa 1&lt;/p&gt;
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;p&gt;Pjesa 1&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Pjesa 2&lt;/p&gt;
 </code></pre>
+        </div>
       </section>
 
       <section class="section-card">
@@ -143,6 +171,31 @@
 </div>
 
 <script src="../../js.lessons/sidebar.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.code-copy').forEach((button) => {
+      button.addEventListener('click', function() {
+        const codeCard = this.closest('.code-card');
+        const codeElement = codeCard.querySelector('code');
+        const textToCopy = codeElement.textContent;
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          const originalText = this.textContent;
+          this.textContent = '✅ Copied!';
+          this.style.background = '#34D399';
+          this.style.color = '#000';
+
+          setTimeout(() => {
+            this.textContent = originalText;
+            this.style.background = '';
+            this.style.color = '';
+          }, 2000);
+        });
+      });
+    });
+  });
+</script>
 
 <!-- Supabase CDN (gives window.supabase) -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
