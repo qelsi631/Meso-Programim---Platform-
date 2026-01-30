@@ -18,9 +18,10 @@ body {
 .topbar {
     width: 100%;
     padding: 25px 40px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
+    gap: 20px;
 }
 
 .logo-small {
@@ -30,6 +31,14 @@ body {
 .nav-desktop {
     display: flex;
     gap: 30px;
+    justify-self: center;
+}
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    justify-self: end;
+    gap: 16px;
 }
 
 .nav-desktop a {
@@ -127,6 +136,32 @@ body {
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(255, 102, 0, 0.4);
 }
+
+/* ===================== PROFILE ICON ============================ */
+
+.profile-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #fff3e9;
+    box-shadow: 0 4px 12px rgba(255, 102, 0, 0.25);
+    border: 2px solid #ff8533;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+}
+
+.profile-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(255, 102, 0, 0.35);
+}
+
+.profile-icon {
+    width: 24px;
+    height: 24px;
+}
 .hero-right {
     text-align: center;
 }
@@ -186,6 +221,22 @@ body {
     }
     .menu-icon {
         display: block;
+    }
+
+    .topbar-actions {
+        gap: 12px;
+    }
+
+    .topbar-actions #authLink {
+        order: 1;
+    }
+
+    .topbar-actions #dashboardLink {
+        order: 2;
+    }
+
+    .topbar-actions .menu-icon {
+        order: 3;
     }
 
     body.openNav .nav-desktop {

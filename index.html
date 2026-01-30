@@ -20,9 +20,13 @@
         <a href="rreth-nesh/rreth-nesh.html">Rreth Nesh</a>
     </nav>
 
-    <img src="imgs/burger-bar.png" class="menu-icon" id="menuToggle" alt="Menu">
-    <a id="dashboardLink" href="dashboard.html" style="display:none;">Dashboard</a>
-    <a id="authLink" href="auth.html" class="auth-btn">Login</a>
+    <div class="topbar-actions">
+        <img src="imgs/burger-bar.png" class="menu-icon" id="menuToggle" alt="Menu">
+        <a id="dashboardLink" href="dashboard.html" style="display:none;">Dashboard</a>
+        <a id="authLink" href="auth.html" class="profile-link" aria-label="Login" title="Login">
+            <img src="imgs/profile-icon.svg" alt="Profile" class="profile-icon">
+        </a>
+    </div>
 
 </header>
 
@@ -184,8 +188,9 @@
     window.location.href = "dashboard.html";
     
     dashboardLink.style.display = "inline-block";
-    authLink.textContent = "Logout";
-    authLink.href = "#";
+        authLink.href = "#";
+        authLink.setAttribute("aria-label", "Logout");
+        authLink.title = "Logout";
     authLink.addEventListener("click", async (e) => {
       e.preventDefault();
       await supabase.auth.signOut();
@@ -193,8 +198,9 @@
     });
   } else {
     dashboardLink.style.display = "none";
-    authLink.textContent = "Login";
     authLink.href = "auth.html";
+        authLink.setAttribute("aria-label", "Login");
+        authLink.title = "Login";
   }
 </script>
 
