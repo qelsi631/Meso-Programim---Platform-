@@ -186,7 +186,15 @@ body {
 }
 
 .stat-icon {
-  font-size: 32px;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(255, 102, 0, 0.12);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
 }
 
 .stat-content {

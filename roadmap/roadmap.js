@@ -55,10 +55,35 @@ function openItem(item, status) {
 }
 
 function itemIcon(item, status) {
-  if (status === "done") return "✓";
-  if (item.type === "project") return "🧩";
-  if (item.type === "assessment") return "🏁";
-  return "{}";
+  if (status === "done") return "<i class=\"bi bi-check2\"></i>";
+  if (status === "next") return "<i class=\"bi bi-play-fill\"></i>";
+  if (item.type === "vlerësim" || item.type === "assessment") return "<i class=\"bi bi-flag\"></i>";
+  if (item.type === "project") return "<i class=\"bi bi-puzzle\"></i>";
+  return "<i class=\"bi bi-journal-code\"></i>";
+}
+
+function updateSummary(doneCount, totalCount) {
+  const progressText = document.getElementById("progressText");
+  const progressFill = document.getElementById("progressFill");
+
+  if (!progressText || !progressFill) return;
+
+  const pct = totalCount ? Math.round((doneCount / totalCount) * 100) : 0;
+  progressText.textContent = `${doneCount}/${totalCount} • ${pct}%`;
+  progressFill.style.width = `${pct}%`;
+}
+
+function bindReset() {
+  const resetBtn = document.getElementById("resetProgressBtn");
+  if (!resetBtn || resetBtn.dataset.bound) return;
+
+  resetBtn.dataset.bound = "true";
+  resetBtn.addEventListener("click", () => {
+    const ok = window.confirm("Je i sigurt që do të rivendosësh progresin e këtij kursi?");
+    if (!ok) return;
+    localStorage.removeItem(STORAGE_KEY);
+    render();
+  });
 }
 
 async function render() {
@@ -73,13 +98,17 @@ async function render() {
   const next = getNextItem(all, completed);
   const nextId = next?.id;
 
+  updateSummary(completed.length, all.length);
+  bindReset();
+
   subtitle.textContent = next?.moduleTitle ?? "Përfunduar";
 
   path.innerHTML = "";
 
   // Layout
-  const baseTop = 70;
-  const step = 86;
+  const baseTop = 95;
+  const step = 104;
+  const nodeOffset = 60;
   const offsets = [-60, 0, 60, 0, -60, 0, 60, 0];
 
   // For placing module dividers: track the first global index for each module
@@ -93,7 +122,7 @@ async function render() {
     const firstIndex = firstIndexByModule.get(m.id);
     if (firstIndex == null) return;
 
-    const top = baseTop + firstIndex * step - 58; // divider appears above its first node
+    const top = baseTop + firstIndex * step - 80; // divider appears above its first node
 
     const divider = document.createElement("div");
     divider.className = "module-divider";
@@ -116,7 +145,7 @@ async function render() {
 
   // Render nodes
   all.forEach((item, i) => {
-    const top = baseTop + i * step;
+    const top = baseTop + i * step + nodeOffset;
     const leftOffset = offsets[i % offsets.length];
     const status = statusOf(item, completed, nextId);
 
@@ -127,7 +156,7 @@ async function render() {
 
     const icon = document.createElement("div");
     icon.className = "icon";
-    icon.textContent = itemIcon(item, status);
+    icon.innerHTML = itemIcon(item, status);
     node.appendChild(icon);
     // Tooltip (shows on hover)
 const tip = document.createElement("div");
@@ -162,7 +191,7 @@ path.appendChild(label);
   });
 
   // Set container height based on items count (prevents cut-off)
-  const lastY = baseTop + (all.length - 1) * step;
+  const lastY = baseTop + (all.length - 1) * step + nodeOffset;
   path.style.minHeight = `${lastY + 120}px`;
 
   // Quick test: press "C" to mark next as completed (remove later)
@@ -176,7 +205,5 @@ path.appendChild(label);
     }
   }, { once: true });
 }
-
-render();
 
 render();

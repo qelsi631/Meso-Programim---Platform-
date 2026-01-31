@@ -26,7 +26,7 @@ body{
 
 .top{
   display:flex;
-  gap:12px;
+  gap:20px;
   align-items:center;
   background: #ff6600;
   border-radius: 14px;
@@ -56,6 +56,100 @@ body{
 
 .small{color: rgba(255,255,255,.9); font-size: 14px; margin-bottom: 4px;}
 h1{margin:0; font-size: 26px; color: white;}
+
+.summary{
+  margin-top: 16px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.summary-left{
+  min-width: 240px;
+  flex: 1;
+}
+
+.summary-title{
+  font-size: 13px;
+  text-transform: uppercase;
+  color: var(--muted);
+  letter-spacing: .5px;
+  margin-bottom: 6px;
+}
+
+.summary-subtitle{
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.summary-bar{
+  height: 8px;
+  background: #e7e7e7;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.summary-bar-fill{
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ff6600, #ff8533);
+  transition: width .3s ease;
+}
+
+.summary-right{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.legend{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.legend-item{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.legend-dot{
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #ddd;
+}
+
+.legend-dot.done{ background: var(--nodeDone); }
+.legend-dot.next{ background: var(--nodeNext); }
+.legend-dot.locked{ background: #cfcfcf; }
+
+.btn-reset{
+  border: 1px solid var(--border);
+  background: white;
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all .2s ease;
+}
+
+.btn-reset:hover{ border-color: #ff6600; color: #ff6600; }
 
 .roadmap-wrap{
   margin-top: 22px;
@@ -109,7 +203,13 @@ h1{margin:0; font-size: 26px; color: white;}
 .node .icon{
   font-weight: 800;
   letter-spacing: .5px;
-  font-size: 18px;
+  font-size: 22px;
+  color: #333;
+}
+
+.node.done .icon,
+.node.next .icon{
+  color: white;
 }
 
 /* Floating label like "CONTINUE" */
@@ -218,6 +318,4 @@ h1{margin:0; font-size: 26px; color: white;}
   transition: opacity .12s ease;
   box-shadow: var(--shadow);
 }
-}
-
 .node:hover .node-tooltip{ opacity: 1; }
