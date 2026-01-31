@@ -1,6 +1,6 @@
 // data/htmlRoadmap.js
 export const htmlRoadmap = {
-  courseId: "html-css-course",
+  courseId: "html-fundamentals",
   title: "Rruga e HTML & CSS",
   modules: [
     {

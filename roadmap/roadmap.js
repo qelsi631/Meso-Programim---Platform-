@@ -1,28 +1,25 @@
 import { htmlRoadmap } from "./data/htmlRoadmap.js";
+import { getCompletedLessons, resetCourseProgress, markLessonCompleted } from "../js/courseProgressManager.js";
 
-const COURSE_SLUG = htmlRoadmap.courseId;
-const STORAGE_KEY = `progress:${htmlRoadmap.courseId}`;
+const roadmaps = {
+  "html-fundamentals": htmlRoadmap
+};
 
-function getCompleted() {
-  // Use localStorage for roadmap progress
-  try { 
-    const progressData = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-    return Object.keys(progressData).filter(id => progressData[id].completed);
+const urlParams = new URLSearchParams(window.location.search);
+const COURSE_SLUG = urlParams.get("course") || htmlRoadmap.courseId || "html-fundamentals";
+const activeRoadmap = roadmaps[COURSE_SLUG] || htmlRoadmap;
+
+async function getCompleted() {
+  try {
+    const progressData = await getCompletedLessons(COURSE_SLUG);
+    return Object.keys(progressData).filter(id => progressData[id]?.completed);
+  } catch {
+    return [];
   }
-  catch { return []; }
-}
-
-function setCompleted(ids) {
-  // Save progress to localStorage
-  const progressData = {};
-  ids.forEach(id => {
-    progressData[id] = { completed: true, completedAt: new Date().toISOString() };
-  });
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(progressData));
 }
 
 function getAllItems() {
-  return htmlRoadmap.modules.flatMap((m, moduleIndex) =>
+  return activeRoadmap.modules.flatMap((m, moduleIndex) =>
     m.items.map((it, idxInModule) => ({
       ...it,
       moduleId: m.id,
@@ -81,7 +78,7 @@ function bindReset() {
   resetBtn.addEventListener("click", () => {
     const ok = window.confirm("Je i sigurt që do të rivendosësh progresin e këtij kursi?");
     if (!ok) return;
-    localStorage.removeItem(STORAGE_KEY);
+    resetCourseProgress(COURSE_SLUG);
     render();
   });
 }
@@ -91,9 +88,9 @@ async function render() {
   const title = document.getElementById("title");
   const path = document.getElementById("path");
 
-  title.textContent = htmlRoadmap.title;
+  title.textContent = activeRoadmap.title;
 
-  const completed = getCompleted();
+  const completed = await getCompleted();
   const all = getAllItems();
   const next = getNextItem(all, completed);
   const nextId = next?.id;
@@ -118,7 +115,7 @@ async function render() {
   });
 
   // Render module dividers first (so they appear behind nodes nicely)
-  htmlRoadmap.modules.forEach((m) => {
+  activeRoadmap.modules.forEach((m) => {
     const firstIndex = firstIndexByModule.get(m.id);
     if (firstIndex == null) return;
 
@@ -195,12 +192,12 @@ path.appendChild(label);
   path.style.minHeight = `${lastY + 120}px`;
 
   // Quick test: press "C" to mark next as completed (remove later)
-  window.addEventListener("keydown", (e) => {
+  window.addEventListener("keydown", async (e) => {
     if (e.key.toLowerCase() === "c") {
-      const completed = getCompleted();
+      const completed = await getCompleted();
       const n = getNextItem(getAllItems(), completed);
       if (!n) return;
-      setCompleted([...new Set([...completed, n.id])]);
+      await markLessonCompleted(COURSE_SLUG, n.id);
       render();
     }
   }, { once: true });
