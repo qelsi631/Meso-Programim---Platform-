@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mësimi 0.05 | Komentet në HTML</title>
+  <title>Mësimi 0.06 | Imazhet në HTML</title>
 
   <link rel="stylesheet" href="welcome.css">
   <link rel="stylesheet" href="../../sidebar.css">
@@ -29,7 +29,7 @@
 
     <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
 
-    <a href="../../html-css/mesimet/lesson0.04.html" class="goback">Kthehu Pas</a>
+    <a href="../../html-css/mesimet/lesson0.05.html" class="goback">Kthehu Pas</a>
   </nav>
 
   <div class="overlay" id="overlay"></div>
@@ -52,39 +52,46 @@
 
   <header>
     <div class="welcome">
-      <h1>Komentet në <span class="highlight">HTML</span></h1>
-      <p>Mëso si të shkruash komente për të shpjeguar kodin dhe për ta bërë më të qartë.</p>
+      <h1>Imazhet në <span class="highlight">HTML</span></h1>
+      <p>Mëso si të përdorësh tag-un <span class="highlight">&lt;img&gt;</span> për të vendosur foto dhe ikona në faqe.</p>
     </div>
 
     <section class="lesson-content">
 
       <section class="section-card">
         <div class="section-header">
-          <div class="section-icon">💬</div>
-          <h2>Çfarë janë komentet?</h2>
+          <div class="section-icon">🖼️</div>
+          <h2>Çfarë është tag-u &lt;img&gt;?</h2>
         </div>
 
         <p class="highlight-gold">
-          Komentet janë shënime brenda kodit që nuk shfaqen në faqe. Ato shërbejnë për të shpjeguar pse dhe si është shkruar një pjesë e kodit.
+          <strong>&lt;img&gt;</strong> është një element pa mbyllje (void element) që përdoret për të shfaqur imazhe në faqe.
         </p>
 
         <div class="subsection">
-          <h3>Pse janë të dobishme?</h3>
+          <h3>Atributet kryesore</h3>
           <ul>
-            <li>Ndihmojnë ty dhe të tjerët ta kuptojnë kodin më shpejt</li>
-            <li>Shërbejnë si kujtesë për pjesë të rëndësishme</li>
-            <li>E bëjnë mirëmbajtjen më të lehtë</li>
+            <li><strong>src</strong> – rruga e imazhit</li>
+            <li><strong>alt</strong> – përshkrimi i imazhit (për aksesueshmëri)</li>
+            <li><strong>width / height</strong> – madhësia e imazhit (opsionale)</li>
           </ul>
         </div>
       </section>
 
       <section class="section-card">
         <div class="section-header">
-          <div class="section-icon">🧱</div>
-          <h2>Sintaksa e komenteve në HTML</h2>
+          <div class="section-icon">📁</div>
+          <h2>Shembull me imazh lokal</h2>
         </div>
 
-        <p>Komentet në HTML shkruhen me <span class="highlight">&lt;!-- --&gt;</span>.</p>
+        <p>Përdor një imazh që ndodhet në folderin <span class="highlight">imgs</span> të projektit.</p>
+
+        <div class="mini-preview">
+          <h4>Preview:</h4>
+          <div class="preview-content">
+            <img src="../../imgs/html-5.png" alt="Logo HTML" width="140">
+          </div>
+        </div>
 
         <div class="code-card">
           <div class="code-head">
@@ -95,19 +102,25 @@
             <button class="code-copy">Copy</button>
           </div>
 
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;!-- Ky është një koment në HTML --&gt;
-&lt;p&gt;Ky tekst shfaqet në faqe.&lt;/p&gt;
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="../../imgs/html-5.png" alt="Logo HTML" width="140"&gt;
 </code></pre>
         </div>
       </section>
 
       <section class="section-card">
         <div class="section-header">
-          <div class="section-icon">🧩</div>
-          <h2>Koment me shumë rreshta</h2>
+          <div class="section-icon">🌐</div>
+          <h2>Shembull me imazh online</h2>
         </div>
 
-        <p>Kur dëshiron të shpjegosh një pjesë më të gjatë, mund të shkruash koment në disa rreshta.</p>
+        <p>Mund të përdorësh edhe një URL nga interneti.</p>
+
+        <div class="mini-preview">
+          <h4>Preview:</h4>
+          <div class="preview-content">
+            <img src="https://media.istockphoto.com/id/1453838542/photo/last-light-on-mount-sneffels.jpg?s=612x612&w=0&k=20&c=IBOZYpAjhV5hFEL8yKYmY2ZCyCaGEOrXR5VZI13NMRI=" alt="Imazh online" width="220" height="130">
+          </div>
+        </div>
 
         <div class="code-card">
           <div class="code-head">
@@ -118,15 +131,7 @@
             <button class="code-copy">Copy</button>
           </div>
 
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;!--
-  Ky është një koment i gjatë.
-  Mund të zgjatet në disa rreshta
-  për të shpjeguar pjesë të tëra.
---&gt;
-&lt;div class="content-block"&gt;
-  &lt;h2&gt;Titull i bllokut&lt;/h2&gt;
-  &lt;p&gt;Përmbajtja e bllokut...&lt;/p&gt;
-&lt;/div&gt;
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="https://via.placeholder.com/220x130?text=Imazh" alt="Imazh online" width="220" height="130"&gt;
 </code></pre>
         </div>
       </section>
@@ -138,39 +143,14 @@
         </div>
 
         <ul>
-          <li>Mbaji komentet të shkurtra dhe të qarta</li>
-          <li>Përdori për të shpjeguar arsyen e kodit, jo atë që është e dukshme</li>
-          <li>Mos i përdor komentet për të "fshehur" kod të panevojshëm</li>
+          <li>Gjithmonë vendos <strong>alt</strong> për aksesueshmëri dhe SEO</li>
+          <li>Përdor madhësi të përshtatshme për të mos ngadalësuar faqen</li>
+          <li>Ruaj imazhet në folder të organizuar (p.sh. <span class="highlight">imgs</span>)</li>
         </ul>
-
-       
-
-        <div class="code-card">
-          <div class="code-head">
-            <div class="code-left">
-              <span class="dots"><i></i><i></i><i></i></span>
-              <span class="code-lang">HTML</span>
-            </div>
-            <button class="code-copy">Copy</button>
-          </div>
-
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;!-- Menu kryesor i faqes --&gt;
-&lt;div class="menu"&gt;
-  &lt;a href="#"&gt;Ballina&lt;/a&gt;
-  &lt;a href="#"&gt;Rreth nesh&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;!-- Pjesa e përmbajtjes --&gt;
-&lt;div class="content"&gt;
-  &lt;h1&gt;Mirë se vini!&lt;/h1&gt;
-  &lt;p&gt;Këtu gjendet përmbajtja kryesore.&lt;/p&gt;
-&lt;/div&gt;
-</code></pre>
-        </div>
       </section>
 
       <section class="section-card">
-        <p>Tani që di të përdorësh komentet, do të kalojmë te imazhet dhe do të shohim si të përdorim tag-un <span class="highlight">&lt;img&gt;</span> në mësimin tjetër.</p>
+        <p>Në mësimin tjetër do të shohim si të krijojmë linke dhe navigim në faqe me <span class="highlight">&lt;a&gt;</span>.</p>
       </section>
 
     </section>
@@ -179,7 +159,7 @@
   <footer class="lesson-footer">
     <div class="footer-navigation">
       <div></div>
-      <a class="btn-next" href="../../html-css/mesimet/lesson0.06.html">Vazhdo</a>
+      <a class="btn-next" href="../../html-css/ushtrime/ushtrime0.4.html">Vazhdo</a>
     </div>
   </footer>
 
@@ -220,14 +200,14 @@
 
 <script type="module">
   import { initLessonProgress } from "../../js/lessonProgressInit.js";
-  initLessonProgress("html-comments");
+  initLessonProgress("html-images");
 </script>
 
 <script type="module">
   import { markLessonCompleted } from "../../js/courseProgressManager.js";
 
   const COURSE_SLUG = "html-fundamentals";
-  const LESSON_ID = "l9"; // HTML Comments lesson
+  const LESSON_ID = "l10"; // HTML Images lesson
 
   const btn = document.querySelector(".btn-next");
   if (btn) {
