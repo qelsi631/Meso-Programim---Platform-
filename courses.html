@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Browse Courses</title>
+  <title>Kurset | Mëso Programimin</title>
   <link rel="stylesheet" href="css/courses.css">
 </head>
 <body>
@@ -11,28 +11,32 @@
     <!-- Header -->
     <header class="courses-header">
       <div class="header-content">
-        <div>
-          <h1>Discover Courses</h1>
-          <p>Learn programming at your own pace</p>
+        <div class="header-brand">
+          <img src="/imgs/icon ngjyr bardhe.png" alt="Logo" class="courses-logo">
+          <div class="brand-text">
+            <span class="brand-name">Meso Programim</span>
+            <h1>Kurset</h1>
+            <p>Zgjidh kursin dhe fillo të mësosh</p>
+          </div>
         </div>
-        <a href="dashboard.html" class="btn btn-primary">My Dashboard</a>
+        <a href="dashboard.html" class="btn btn-outline">Paneli im</a>
       </div>
     </header>
 
     <!-- Filters -->
     <section class="filters-section">
       <div class="filter-group">
-        <label>Filter by Level:</label>
+        <label>Filtro sipas nivelit:</label>
         <select id="levelFilter">
-          <option value="">All Levels</option>
-          <option value="beginner">Beginner</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="advanced">Advanced</option>
+          <option value="">Të gjitha nivelet</option>
+          <option value="beginner">Fillestar</option>
+          <option value="intermediate">Mesatar</option>
+          <option value="advanced">Avancuar</option>
         </select>
       </div>
       <div class="filter-group">
-        <label>Search:</label>
-        <input type="text" id="searchInput" placeholder="Search courses...">
+        <label>Kërko:</label>
+        <input type="text" id="searchInput" placeholder="Kërko kurse...">
       </div>
     </section>
 

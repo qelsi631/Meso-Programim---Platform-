@@ -1,11 +1,11 @@
 /* Courses Page Styles */
 :root {
-  --primary: #667eea;
-  --primary-dark: #5568d3;
-  --secondary: #764ba2;
+  --primary: #ff6600;
+  --primary-dark: #e55a00;
+  --secondary: #ff8533;
   --success: #4caf50;
   --danger: #ff6b6b;
-  --bg: #f8f9fa;
+  --bg: #ffffff;
   --card-bg: #ffffff;
   --text: #333;
   --text-light: #666;
@@ -20,7 +20,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Nunito, sans-serif;
   background: var(--bg);
   color: var(--text);
 }
@@ -33,7 +33,7 @@ body {
 .courses-header {
   background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   color: white;
-  padding: 40px 20px;
+  padding: 30px 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -47,9 +47,34 @@ body {
   flex-wrap: wrap;
 }
 
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.courses-logo {
+  height: 54px;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brand-name {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  opacity: 0.9;
+  margin-left: -8px;
+}
+
 .header-content h1 {
-  font-size: 32px;
-  margin-bottom: 8px;
+  font-size: 30px;
+  margin-bottom: 6px;
 }
 
 .header-content p {
@@ -59,12 +84,12 @@ body {
 
 /* Buttons */
 .btn {
-  padding: 12px 24px;
+  padding: 10px 20px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   transition: all 0.3s ease;
   text-decoration: none;
   display: inline-block;
@@ -78,7 +103,7 @@ body {
 .btn-primary:hover {
   background: var(--primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 6px 16px rgba(255, 102, 0, 0.4);
 }
 
 .btn-outline {
@@ -137,7 +162,7 @@ body {
 .filter-group input:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.15);
 }
 
 .filter-group input {
@@ -217,12 +242,12 @@ body {
 
 .course-level {
   display: inline-block;
-  background: rgba(102, 126, 234, 0.1);
+  background: rgba(255, 102, 0, 0.12);
   color: var(--primary);
   padding: 4px 10px;
   border-radius: 20px;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 12px;
 }
 

@@ -5,26 +5,17 @@ import { enrollUserInCourse, getUserCourses } from "./profileManager.js";
 const availableCourses = [
   {
     slug: "html-fundamentals",
-    title: "HTML Fundamentals",
-    description: "Learn the basics of HTML, the foundation of web development",
+    title: "HTML",
+    description: "Mëso bazat e HTML, themeli i zhvillimit të faqeve",
     icon: "📄",
     level: "beginner",
     lessons: 15,
     duration: "4-6 weeks"
   },
   {
-    slug: "css-styling",
-    title: "CSS Styling",
-    description: "Master CSS to create beautiful and responsive web designs",
-    icon: "🎨",
-    level: "beginner",
-    lessons: 18,
-    duration: "5-7 weeks"
-  },
-  {
     slug: "javascript-basics",
-    title: "JavaScript Basics",
-    description: "Start your programming journey with JavaScript fundamentals",
+    title: "JavaScript",
+    description: "Nise udhëtimin tënd me bazat e JavaScript",
     icon: "⚙️",
     level: "beginner",
     lessons: 20,
@@ -33,38 +24,11 @@ const availableCourses = [
   {
     slug: "java-basics",
     title: "Java",
-    description: "Learn Java, one of the most popular programming languages",
+    description: "Mëso Java, një nga gjuhët më të përdorura",
     icon: "☕",
     level: "beginner",
     lessons: 22,
     duration: "8-10 weeks"
-  },
-  {
-    slug: "advanced-javascript",
-    title: "Advanced JavaScript",
-    description: "Deep dive into closures, async/await, and modern JavaScript",
-    icon: "🚀",
-    level: "intermediate",
-    lessons: 25,
-    duration: "8-10 weeks"
-  },
-  {
-    slug: "web-apis",
-    title: "Web APIs",
-    description: "Learn to interact with browser APIs and external services",
-    icon: "🔌",
-    level: "intermediate",
-    lessons: 16,
-    duration: "4-5 weeks"
-  },
-  {
-    slug: "responsive-design",
-    title: "Responsive Design",
-    description: "Create websites that work on all devices and screen sizes",
-    icon: "📱",
-    level: "intermediate",
-    lessons: 14,
-    duration: "3-4 weeks"
   }
 ];
 

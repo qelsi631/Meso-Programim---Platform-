@@ -23,6 +23,25 @@ function isStrongPassword(password) {
   return password.length >= 8 && hasLetter && hasNumber;
 }
 
+function normalizeUsername(value) {
+  return value.trim().toLowerCase();
+}
+
+function isValidUsername(value) {
+  return /^[a-z0-9_]{3,20}$/.test(value);
+}
+
+function formatSignupError(error) {
+  const message = error?.message || "Ndodhi një gabim. Provoni sërish.";
+  if (message.toLowerCase().includes("database error saving new user")) {
+    return "Username mund të jetë i zënë ose i pavlefshëm. Provo një username tjetër (vetëm shkronja, numra, _).";
+  }
+  if (message.toLowerCase().includes("user already registered")) {
+    return "Ky email është i regjistruar. Provoni të hyni ose përdorni 'Dërgo sërish' për verifikim.";
+  }
+  return message;
+}
+
 function showMsg(text, ok = true) {
   msgEl.textContent = text;
   msgEl.className = "msg " + (ok ? "ok" : "err");
@@ -56,13 +75,18 @@ document.getElementById("btnBackToLogin").addEventListener("click", showLoginFor
 // Create account with all fields
 document.getElementById("btnCreateAccount").addEventListener("click", async () => {
   const fullName = fullNameEl.value.trim();
-  const username = usernameEl.value.trim();
+  const username = normalizeUsername(usernameEl.value);
   const email = regEmailEl.value.trim();
   const password = regPasswordEl.value;
   const passwordConfirm = regPasswordConfirmEl?.value || "";
 
   if (!fullName || !username || !email || !password) {
     return showMsg("Plotësoni të gjithë fushat.", false);
+  }
+
+  if (!isValidUsername(username)) {
+    usernameEl.value = username;
+    return showMsg("Username duhet të ketë 3-20 karaktere dhe vetëm shkronja, numra ose _.", false);
   }
 
   if (!isStrongPassword(password)) {
@@ -84,7 +108,7 @@ document.getElementById("btnCreateAccount").addEventListener("click", async () =
       emailRedirectTo: `${window.location.origin}/auth-callback.html`,
     },
   });
-  if (error) return showMsg(error.message, false);
+  if (error) return showMsg(formatSignupError(error), false);
 
   // If email confirmation is required, there may be no session yet.
   if (!authData?.session) {

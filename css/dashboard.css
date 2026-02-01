@@ -48,8 +48,24 @@ body {
   flex-wrap: wrap;
 }
 
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .dashboard-logo {
   height: 50px;
+}
+
+.brand-name {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0.95;
+  margin-left: -6px;
 }
 
 .profile-quick {
