@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mësimi 0.06 | Imazhet në HTML</title>
+  <title>Mësimi 0.07 | Linket në HTML</title>
 
   <link rel="stylesheet" href="welcome.css">
   <link rel="stylesheet" href="../../sidebar.css">
@@ -29,7 +29,7 @@
 
     <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
 
-    <a href="../../html-css/mesimet/lesson0.05.html" class="goback">Kthehu Pas</a>
+    <a href="../../html-css/mesimet/lesson0.06.html" class="goback">Kthehu Pas</a>
   </nav>
 
   <div class="overlay" id="overlay"></div>
@@ -52,46 +52,41 @@
 
   <header>
     <div class="welcome">
-      <h1>Imazhet në <span class="highlight">HTML</span></h1>
-      <p>Mëso si të përdorësh tag-un <span class="highlight">&lt;img&gt;</span> për të vendosur foto dhe ikona në faqe.</p>
+      <h1>Linket në <span class="highlight">HTML</span></h1>
+      <p>Mëso si të krijosh linke me tag-un <span class="highlight">&lt;a&gt;</span> për navigim në faqe dhe jashtë saj.</p>
     </div>
 
     <section class="lesson-content">
 
       <section class="section-card">
         <div class="section-header">
-          <div class="section-icon">🖼️</div>
-          <h2>Çfarë është tag-u &lt;img&gt;?</h2>
+          <div class="section-icon">🔗</div>
+          <h2>Çfarë është tag-u &lt;a&gt;?</h2>
         </div>
 
         <p class="highlight-gold">
-          <strong>&lt;img&gt;</strong> është një element pa mbyllje (void element) që përdoret për të shfaqur imazhe në faqe.
+          <strong>&lt;a&gt;</strong> (anchor) përdoret për të krijuar linke. Atributi më i rëndësishëm është <strong>href</strong>, që tregon ku do të shkojë linku.
         </p>
 
         <div class="subsection">
           <h3>Atributet kryesore</h3>
           <ul>
-            <li><strong>src</strong> – rruga e imazhit</li>
-            <li><strong>alt</strong> – përshkrimi i imazhit (për aksesueshmëri)</li>
-            <li><strong>width / height</strong> – madhësia e imazhit (opsionale)</li>
+            <li><strong>href</strong> – adresa e destinacionit</li>
+            <li><strong>target</strong> – hapja në tab të ri (p.sh. <span class="highlight">_blank</span>)</li>
+            <li><strong>rel</strong> – siguria kur hapet në tab të ri</li>
           </ul>
         </div>
       </section>
 
       <section class="section-card">
         <div class="section-header">
-          <div class="section-icon">📁</div>
-          <h2>Shembull me imazh lokal</h2>
+          <div class="section-icon">🌍</div>
+          <h2>Link i thjeshtë (absolute URL)</h2>
         </div>
 
-        <p>Përdor një imazh që ndodhet në folderin <span class="highlight">imgs</span> të projektit.</p>
+        <p>Ky është link drejt një faqeje tjetër në internet.</p>
 
-        <div class="mini-preview">
-          <h4>Preview:</h4>
-          <div class="preview-content">
-            <img src="../../imgs/html-5.png" alt="Logo HTML" width="140">
-          </div>
-        </div>
+        
 
         <div class="code-card">
           <div class="code-head">
@@ -102,23 +97,44 @@
             <button class="code-copy">Copy</button>
           </div>
 
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="../../imgs/html-5.png" alt="Logo HTML" width="140"&gt;
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;a href="https://linku.com"&gt;Vizito Linku.com&lt;/a&gt;
 </code></pre>
         </div>
       </section>
 
       <section class="section-card">
         <div class="section-header">
-          <div class="section-icon">🌐</div>
-          <h2>Shembull me imazh online</h2>
+          
+          <h2>Anatomia e linkut</h2>
+        </div>
+        
+
+        <img class="lesson-image" src="../../imgs/Anatomia e një Linku Href.png" alt="Anatomia e një linku në HTML">
+
+        
+
+          
+
+        
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <div class="section-icon">🧭</div>
+          <h2>Link brenda së njëjtës faqe</h2>
         </div>
 
-        <p>Mund të përdorësh edhe një URL nga interneti.</p>
+        <p>Mund të krijosh navigim të brendshëm me <span class="highlight">#id</span>.</p>
 
         <div class="mini-preview">
           <h4>Preview:</h4>
           <div class="preview-content">
-            <img src="https://media.istockphoto.com/id/1453838542/photo/last-light-on-mount-sneffels.jpg?s=612x612&w=0&k=20&c=IBOZYpAjhV5hFEL8yKYmY2ZCyCaGEOrXR5VZI13NMRI=" alt="Imazh online" width="220" height="130">
+            <a href="#seksioni1">Shko te Seksioni 1</a> | 
+            <a href="#seksioni2">Shko te Seksioni 2</a>
+            <div style="margin-top: 10px;">
+              <strong id="seksioni1">Seksioni 1</strong><br>
+              <strong id="seksioni2">Seksioni 2</strong>
+            </div>
           </div>
         </div>
 
@@ -131,7 +147,34 @@
             <button class="code-copy">Copy</button>
           </div>
 
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="https://via.placeholder.com/220x130?text=Imazh" alt="Imazh online" width="220" height="130"&gt;
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;a href="#seksioni1"&gt;Shko te Seksioni 1&lt;/a&gt;
+&lt;a href="#seksioni2"&gt;Shko te Seksioni 2&lt;/a&gt;
+
+&lt;h3 id="seksioni1"&gt;Seksioni 1&lt;/h3&gt;
+&lt;h3 id="seksioni2"&gt;Seksioni 2&lt;/h3&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <div class="section-icon">📩</div>
+          <h2>Linke speciale (mailto / tel)</h2>
+        </div>
+
+        <p>Linket mund të hapin aplikacionin e email-it ose telefonin.</p>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;a href="mailto:info@example.com"&gt;Na shkruaj&lt;/a&gt;
+&lt;a href="tel:+38344111222"&gt;Na telefono&lt;/a&gt;
 </code></pre>
         </div>
       </section>
@@ -143,14 +186,14 @@
         </div>
 
         <ul>
-          <li>Gjithmonë vendos <strong>alt</strong> për aksesueshmëri dhe SEO</li>
-          <li>Përdor madhësi të përshtatshme për të mos ngadalësuar faqen</li>
-          <li>Ruaj imazhet në folder të organizuar (p.sh. <span class="highlight">imgs</span>)</li>
+          <li>Përdor tekst të qartë për linkun (jo vetëm “kliko këtu”)</li>
+          <li>Kur përdor <span class="highlight">target="_blank"</span>, shto <strong>rel="noopener"</strong></li>
+          <li>Kontrollo që linket relative të jenë të sakta</li>
         </ul>
       </section>
 
       <section class="section-card">
-        <p>Në mësimin tjetër do të shohim si të krijojmë linke dhe navigim në faqe me <span class="highlight">&lt;a&gt;</span>.</p>
+        <p>Në mësimin tjetër do të vazhdojmë me tema të reja dhe do të praktikojmë krijimin e faqeve më të plota.</p>
       </section>
 
     </section>
@@ -159,7 +202,7 @@
   <footer class="lesson-footer">
     <div class="footer-navigation">
       <div></div>
-      <a class="btn-next" href="../../html-css/mesimet/lesson0.07.html">Vazhdo</a>
+      <a class="btn-next" href="../../html-css/ushtrime/ushtrime0.4.html">Vazhdo</a>
     </div>
   </footer>
 
@@ -200,14 +243,14 @@
 
 <script type="module">
   import { initLessonProgress } from "../../js/lessonProgressInit.js";
-  initLessonProgress("html-images");
+  initLessonProgress("html-links");
 </script>
 
 <script type="module">
   import { markLessonCompleted } from "../../js/courseProgressManager.js";
 
   const COURSE_SLUG = "html-fundamentals";
-  const LESSON_ID = "l10"; // HTML Images lesson
+  const LESSON_ID = "l11"; // HTML Links lesson
 
   const btn = document.querySelector(".btn-next");
   if (btn) {

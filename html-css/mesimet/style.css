@@ -133,6 +133,16 @@ header p {
   margin-bottom: 20px;
 }
 
+.lesson-image {
+  display: block;
+  width: min(100%, 720px);
+  height: auto;
+  margin: 16px auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 .section-icon {
   width: 40px;
   height: 40px;
