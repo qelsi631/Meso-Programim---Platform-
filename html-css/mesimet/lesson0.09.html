@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mësimi 0.08 | Imazhet në HTML</title>
+  <title>Mësimi 0.09 | Audio dhe Video në HTML</title>
 
   <link rel="stylesheet" href="welcome.css">
   <link rel="stylesheet" href="../../sidebar.css">
@@ -29,7 +29,7 @@
 
     <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
 
-    <a href="../../html-css/mesimet/lesson0.07.html" class="goback">Kthehu Pas</a>
+    <a href="../../html-css/mesimet/lesson0.08.html" class="goback">Kthehu Pas</a>
   </nav>
 
   <div class="overlay" id="overlay"></div>
@@ -52,45 +52,49 @@
 
   <header>
     <div class="welcome">
-      <h1>Imazhet në <span class="highlight">HTML</span></h1>
-      <p>Mëso si të përdorësh <span class="highlight">&lt;img&gt;</span>, si të shkruash <span class="highlight">alt</span> të mirë dhe si t’i bësh imazhet responsive.</p>
+      <h1>Audio dhe Video në <span class="highlight">HTML</span></h1>
+      <p>Mëso si të shtosh <span class="highlight">audio</span> dhe <span class="highlight">video</span> në faqen tënde me tagët bazë.</p>
     </div>
 
     <section class="lesson-content">
 
       <section class="section-card">
         <div class="section-header">
-          <div class="section-icon">🖼️</div>
-          <h2>Çfarë është tag-u &lt;img&gt;?</h2>
+          <div class="section-icon">🎧</div>
+          <h2>Çfarë janë tagët &lt;audio&gt; dhe &lt;video&gt;?</h2>
         </div>
 
         <p class="highlight-gold">
-          <strong>&lt;img&gt;</strong> është një element pa mbyllje (void element). Ai ka dy atribute kryesore: <strong>src</strong> dhe <strong>alt</strong>.
+          <strong>&lt;audio&gt;</strong> dhe <strong>&lt;video&gt;</strong> lejojnë të shfaqësh media direkt në faqe, pa ndonjë plugin.
         </p>
 
         <div class="subsection">
-          <h3>Atributet më të rëndësishme</h3>
+          <h3>Atributet më të përdorura</h3>
           <ul>
-            <li><strong>src</strong> – rruga e imazhit</li>
-            <li><strong>alt</strong> – përshkrimi i imazhit (aksesueshmëri)</li>
-            <li><strong>width</strong> / <strong>height</strong> – madhësia (opsionale)</li>
-            <li><strong>loading</strong> – ngarkim i vonuar (lazy)</li>
+            <li><strong>controls</strong> – shfaq butonat e play/stop</li>
+            <li><strong>autoplay</strong> – nis automatikisht (jo e rekomanduar)</li>
+            <li><strong>loop</strong> – luan vazhdimisht</li>
+            <li><strong>muted</strong> – nis pa zë</li>
+            <li><strong>poster</strong> – imazh para fillimit (vetëm për video)</li>
           </ul>
         </div>
       </section>
 
       <section class="section-card">
         <div class="section-header">
-          <div class="section-icon">📁</div>
-          <h2>Imazh lokal (nga folderi i projektit)</h2>
+          <div class="section-icon">🎵</div>
+          <h2>Audio i thjeshtë</h2>
         </div>
 
-        <p>Kur imazhi është brenda projektit, përdor rrugë relative.</p>
+        <p>Vendos <span class="highlight">controls</span> që përdoruesi ta dëgjojë lehtë.</p>
 
         <div class="mini-preview">
           <h4>Preview:</h4>
           <div class="preview-content">
-            <img src="../../imgs/html-5.png" alt="Logo HTML" width="140">
+            <audio controls>
+              <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+              Shfletuesi yt nuk e mbështet audio.
+            </audio>
           </div>
         </div>
 
@@ -103,23 +107,29 @@
             <button class="code-copy">Copy</button>
           </div>
 
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="../../imgs/html-5.png" alt="Logo HTML" width="140"&gt;
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;audio controls&gt;
+  &lt;source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg"&gt;
+  Shfletuesi yt nuk e mbështet audio.
+&lt;/audio&gt;
 </code></pre>
         </div>
       </section>
 
       <section class="section-card">
         <div class="section-header">
-          <div class="section-icon">🌐</div>
-          <h2>Imazh online (URL)</h2>
+          <div class="section-icon">🎬</div>
+          <h2>Video e thjeshtë</h2>
         </div>
 
-        <p>Përdor një URL të plotë kur imazhi është në internet.</p>
+        <p>Me <span class="highlight">controls</span> shfaqen butonat e videos.</p>
 
         <div class="mini-preview">
           <h4>Preview:</h4>
           <div class="preview-content">
-            <img src="https://picsum.photos/240/140" alt="Imazh online" width="240" height="140">
+            <video controls width="360">
+              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+              Shfletuesi yt nuk e mbështet videon.
+            </video>
           </div>
         </div>
 
@@ -132,25 +142,21 @@
             <button class="code-copy">Copy</button>
           </div>
 
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="https://picsum.photos/240/140" alt="Imazh online" width="240" height="140"&gt;
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;video controls width="360"&gt;
+  &lt;source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"&gt;
+  Shfletuesi yt nuk e mbështet videon.
+&lt;/video&gt;
 </code></pre>
         </div>
       </section>
 
       <section class="section-card">
         <div class="section-header">
-          <div class="section-icon">🧠</div>
-          <h2>Si të shkruash një alt të mirë</h2>
+          <div class="section-icon">🖼️</div>
+          <h2>Poster (foto para videos)</h2>
         </div>
 
-        <p><strong>alt</strong> duhet të përshkruajë shkurt se çfarë ka në imazh.</p>
-
-        <div class="mini-preview">
-          <h4>Preview (nëse imazhi s’ngarkohet):</h4>
-          <div class="preview-content">
-            <img src="../../imgs/jo-ekziston.png" alt="Logo HTML në ngjyrë portokalli" width="160">
-          </div>
-        </div>
+        <p><span class="highlight">poster</span> vendos një imazh para se video të fillojë.</p>
 
         <div class="code-card">
           <div class="code-head">
@@ -161,77 +167,19 @@
             <button class="code-copy">Copy</button>
           </div>
 
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="logo.png" alt="Logo HTML në ngjyrë portokalli"&gt;
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;video controls width="360" poster="../../imgs/planprogrami.jpg"&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+  Shfletuesi yt nuk e mbështet videon.
+&lt;/video&gt;
 </code></pre>
         </div>
       </section>
 
-      <section class="section-card">
-        <div class="section-header">
-          <div class="section-icon">📱</div>
-          <h2>Imazhe responsive</h2>
-        </div>
-
-        <p>Për ta bërë imazhin të përshtatet me ekranin, përdor <span class="highlight">max-width: 100%</span> dhe <span class="highlight">height: auto</span>.</p>
-
-        <div class="mini-preview">
-          <h4>Preview:</h4>
-          <div class="preview-content">
-            <img src="../../imgs/planprogrami.jpg" alt="Plan mësimi" style="max-width: 100%; height: auto; border-radius: 8px;">
-          </div>
-        </div>
-
-        <div class="code-card">
-          <div class="code-head">
-            <div class="code-left">
-              <span class="dots"><i></i><i></i><i></i></span>
-              <span class="code-lang">HTML</span>
-            </div>
-            <button class="code-copy">Copy</button>
-          </div>
-
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="../../imgs/planprogrami.jpg" alt="Plan mësimi" style="max-width: 100%; height: auto;"&gt;
-</code></pre>
-        </div>
-      </section>
+      
 
       <section class="section-card">
-        <div class="section-header">
-          <div class="section-icon">⚡</div>
-          <h2>Ngarkim i shpejtë (lazy loading)</h2>
-        </div>
-
-        <p>Shto <strong>loading="lazy"</strong> që imazhet të ngarkohen vetëm kur duhen.</p>
-
-        <div class="code-card">
-          <div class="code-head">
-            <div class="code-left">
-              <span class="dots"><i></i><i></i><i></i></span>
-              <span class="code-lang">HTML</span>
-            </div>
-            <button class="code-copy">Copy</button>
-          </div>
-
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="../../imgs/planprogrami.jpg" alt="Plan mësimi" loading="lazy" decoding="async"&gt;
-</code></pre>
-        </div>
+        <p>Në mësimin tjetër do të vazhdojmë me ushtrime praktike për HTML.</p>
       </section>
-
-      <section class="section-card">
-        <div class="section-header">
-          <div class="section-icon">✅</div>
-          <h2>Praktika të mira</h2>
-        </div>
-
-        <ul>
-          <li>Gjithmonë vendos <strong>alt</strong> për aksesueshmëri dhe SEO.</li>
-          <li>Mbaj imazhet në folder të qartë (p.sh. <span class="highlight">imgs</span>).</li>
-          <li>Përdor madhësi të përshtatshme për të mos ngadalësuar faqen.</li>
-          <li>Përdor <span class="highlight">lazy loading</span> për imazhet që s’janë menjëherë në ekran.</li>
-        </ul>
-      </section>
-
-     
 
     </section>
   </header>
@@ -239,7 +187,7 @@
   <footer class="lesson-footer">
     <div class="footer-navigation">
       <div></div>
-      <a class="btn-next" href="../../html-css/mesimet/lesson0.09.html">Vazhdo</a>
+      <a class="btn-next" href="../../html-css/ushtrime/ushtrime0.5.html">Vazhdo</a>
     </div>
   </footer>
 
@@ -280,14 +228,14 @@
 
 <script type="module">
   import { initLessonProgress } from "../../js/lessonProgressInit.js";
-  initLessonProgress("html-images-advanced");
+  initLessonProgress("html-audio-video");
 </script>
 
 <script type="module">
   import { markLessonCompleted } from "../../js/courseProgressManager.js";
 
   const COURSE_SLUG = "html-fundamentals";
-  const LESSON_ID = "l12"; // HTML Images lesson
+  const LESSON_ID = "l13"; // HTML Audio & Video lesson
 
   const btn = document.querySelector(".btn-next");
   if (btn) {
