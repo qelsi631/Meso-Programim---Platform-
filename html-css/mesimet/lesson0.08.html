@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mësimi 0.07 | Linket në HTML</title>
+  <title>Mësimi 0.08 | Imazhet në HTML</title>
 
   <link rel="stylesheet" href="welcome.css">
   <link rel="stylesheet" href="../../sidebar.css">
@@ -29,7 +29,7 @@
 
     <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
 
-    <a href="../../html-css/mesimet/lesson0.06.html" class="goback">Kthehu Pas</a>
+    <a href="../../html-css/mesimet/lesson0.07.html" class="goback">Kthehu Pas</a>
   </nav>
 
   <div class="overlay" id="overlay"></div>
@@ -52,89 +52,45 @@
 
   <header>
     <div class="welcome">
-      <h1>Linket në <span class="highlight">HTML</span></h1>
-      <p>Mëso si të krijosh linke me tag-un <span class="highlight">&lt;a&gt;</span> për navigim në faqe dhe jashtë saj.</p>
+      <h1>Imazhet në <span class="highlight">HTML</span></h1>
+      <p>Mëso si të përdorësh <span class="highlight">&lt;img&gt;</span>, si të shkruash <span class="highlight">alt</span> të mirë dhe si t’i bësh imazhet responsive.</p>
     </div>
 
     <section class="lesson-content">
 
       <section class="section-card">
         <div class="section-header">
-          <div class="section-icon">🔗</div>
-          <h2>Çfarë është tag-u &lt;a&gt;?</h2>
+          <div class="section-icon">🖼️</div>
+          <h2>Çfarë është tag-u &lt;img&gt;?</h2>
         </div>
 
         <p class="highlight-gold">
-          <strong>&lt;a&gt;</strong> (anchor) përdoret për të krijuar linke. Atributi më i rëndësishëm është <strong>href</strong>, që tregon ku do të shkojë linku.
+          <strong>&lt;img&gt;</strong> është një element pa mbyllje (void element). Ai ka dy atribute kryesore: <strong>src</strong> dhe <strong>alt</strong>.
         </p>
 
         <div class="subsection">
-          <h3>Atributet kryesore</h3>
+          <h3>Atributet më të rëndësishme</h3>
           <ul>
-            <li><strong>href</strong> – adresa e destinacionit</li>
-            <li><strong>target</strong> – hapja në tab të ri (p.sh. <span class="highlight">_blank</span>)</li>
-            <li><strong>rel</strong> – siguria kur hapet në tab të ri</li>
+            <li><strong>src</strong> – rruga e imazhit</li>
+            <li><strong>alt</strong> – përshkrimi i imazhit (aksesueshmëri)</li>
+            <li><strong>width</strong> / <strong>height</strong> – madhësia (opsionale)</li>
+            <li><strong>loading</strong> – ngarkim i vonuar (lazy)</li>
           </ul>
         </div>
       </section>
 
       <section class="section-card">
         <div class="section-header">
-          <div class="section-icon">🌍</div>
-          <h2>Link i thjeshtë (absolute URL)</h2>
+          <div class="section-icon">📁</div>
+          <h2>Imazh lokal (nga folderi i projektit)</h2>
         </div>
 
-        <p>Ky është link drejt një faqeje tjetër në internet.</p>
-
-        
-
-        <div class="code-card">
-          <div class="code-head">
-            <div class="code-left">
-              <span class="dots"><i></i><i></i><i></i></span>
-              <span class="code-lang">HTML</span>
-            </div>
-            <button class="code-copy">Copy</button>
-          </div>
-
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;a href="https://linku.com"&gt;Vizito Linku.com&lt;/a&gt;
-</code></pre>
-        </div>
-      </section>
-
-      <section class="section-card">
-        <div class="section-header">
-          
-          <h2>Anatomia e linkut</h2>
-        </div>
-        
-
-        <img class="lesson-image" src="../../imgs/Anatomia e një Linku Href.png" alt="Anatomia e një linku në HTML">
-
-        
-
-          
-
-        
-      </section>
-
-      <section class="section-card">
-        <div class="section-header">
-          <div class="section-icon">🧭</div>
-          <h2>Link brenda së njëjtës faqe</h2>
-        </div>
-
-        <p>Mund të krijosh navigim të brendshëm me <span class="highlight">#id</span>.</p>
+        <p>Kur imazhi është brenda projektit, përdor rrugë relative.</p>
 
         <div class="mini-preview">
           <h4>Preview:</h4>
           <div class="preview-content">
-            <a href="#seksioni1">Shko te Seksioni 1</a> | 
-            <a href="#seksioni2">Shko te Seksioni 2</a>
-            <div style="margin-top: 10px;">
-              <strong id="seksioni1">Seksioni 1</strong><br>
-              <strong id="seksioni2">Seksioni 2</strong>
-            </div>
+            <img src="../../imgs/html-5.png" alt="Logo HTML" width="140">
           </div>
         </div>
 
@@ -147,22 +103,25 @@
             <button class="code-copy">Copy</button>
           </div>
 
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;a href="#seksioni1"&gt;Shko te Seksioni 1&lt;/a&gt;
-&lt;a href="#seksioni2"&gt;Shko te Seksioni 2&lt;/a&gt;
-
-&lt;h3 id="seksioni1"&gt;Seksioni 1&lt;/h3&gt;
-&lt;h3 id="seksioni2"&gt;Seksioni 2&lt;/h3&gt;
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="../../imgs/html-5.png" alt="Logo HTML" width="140"&gt;
 </code></pre>
         </div>
       </section>
 
       <section class="section-card">
         <div class="section-header">
-          <div class="section-icon">📩</div>
-          <h2>Linke speciale (mailto / tel)</h2>
+          <div class="section-icon">🌐</div>
+          <h2>Imazh online (URL)</h2>
         </div>
 
-        <p>Linket mund të hapin aplikacionin e email-it ose telefonin.</p>
+        <p>Përdor një URL të plotë kur imazhi është në internet.</p>
+
+        <div class="mini-preview">
+          <h4>Preview:</h4>
+          <div class="preview-content">
+            <img src="https://picsum.photos/240/140" alt="Imazh online" width="240" height="140">
+          </div>
+        </div>
 
         <div class="code-card">
           <div class="code-head">
@@ -173,8 +132,87 @@
             <button class="code-copy">Copy</button>
           </div>
 
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;a href="mailto:info@example.com"&gt;Na shkruaj&lt;/a&gt;
-&lt;a href="tel:+38344111222"&gt;Na telefono&lt;/a&gt;
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="https://picsum.photos/240/140" alt="Imazh online" width="240" height="140"&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <div class="section-icon">🧠</div>
+          <h2>Si të shkruash një alt të mirë</h2>
+        </div>
+
+        <p><strong>alt</strong> duhet të përshkruajë shkurt se çfarë ka në imazh.</p>
+
+        <div class="mini-preview">
+          <h4>Preview (nëse imazhi s’ngarkohet):</h4>
+          <div class="preview-content">
+            <img src="../../imgs/jo-ekziston.png" alt="Logo HTML në ngjyrë portokalli" width="160">
+          </div>
+        </div>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="logo.png" alt="Logo HTML në ngjyrë portokalli"&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <div class="section-icon">📱</div>
+          <h2>Imazhe responsive</h2>
+        </div>
+
+        <p>Për ta bërë imazhin të përshtatet me ekranin, përdor <span class="highlight">max-width: 100%</span> dhe <span class="highlight">height: auto</span>.</p>
+
+        <div class="mini-preview">
+          <h4>Preview:</h4>
+          <div class="preview-content">
+            <img src="../../imgs/planprogrami.jpg" alt="Plan mësimi" style="max-width: 100%; height: auto; border-radius: 8px;">
+          </div>
+        </div>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="../../imgs/planprogrami.jpg" alt="Plan mësimi" style="max-width: 100%; height: auto;"&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <div class="section-icon">⚡</div>
+          <h2>Ngarkim i shpejtë (lazy loading)</h2>
+        </div>
+
+        <p>Shto <strong>loading="lazy"</strong> që imazhet të ngarkohen vetëm kur duhen.</p>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="../../imgs/planprogrami.jpg" alt="Plan mësimi" loading="lazy" decoding="async"&gt;
 </code></pre>
         </div>
       </section>
@@ -186,15 +224,14 @@
         </div>
 
         <ul>
-          <li>Përdor tekst të qartë për linkun (jo vetëm “kliko këtu”)</li>
-          <li>Kur përdor <span class="highlight">target="_blank"</span>, shto <strong>rel="noopener"</strong></li>
-          <li>Kontrollo që linket relative të jenë të sakta</li>
+          <li>Gjithmonë vendos <strong>alt</strong> për aksesueshmëri dhe SEO.</li>
+          <li>Mbaj imazhet në folder të qartë (p.sh. <span class="highlight">imgs</span>).</li>
+          <li>Përdor madhësi të përshtatshme për të mos ngadalësuar faqen.</li>
+          <li>Përdor <span class="highlight">lazy loading</span> për imazhet që s’janë menjëherë në ekran.</li>
         </ul>
       </section>
 
-      <section class="section-card">
-        <p>Në mësimin tjetër do të mësojmë gjithçka për imazhet në HTML dhe si t’i bëjmë ato të përshtatshme për çdo pajisje.</p>
-      </section>
+     
 
     </section>
   </header>
@@ -202,7 +239,7 @@
   <footer class="lesson-footer">
     <div class="footer-navigation">
       <div></div>
-      <a class="btn-next" href="../../html-css/mesimet/lesson0.08.html">Vazhdo</a>
+      <a class="btn-next" href="../../html-css/ushtrime/ushtrime0.5.html">Vazhdo</a>
     </div>
   </footer>
 
@@ -243,14 +280,14 @@
 
 <script type="module">
   import { initLessonProgress } from "../../js/lessonProgressInit.js";
-  initLessonProgress("html-links");
+  initLessonProgress("html-images-advanced");
 </script>
 
 <script type="module">
   import { markLessonCompleted } from "../../js/courseProgressManager.js";
 
   const COURSE_SLUG = "html-fundamentals";
-  const LESSON_ID = "l11"; // HTML Links lesson
+  const LESSON_ID = "l12"; // HTML Images lesson
 
   const btn = document.querySelector(".btn-next");
   if (btn) {
