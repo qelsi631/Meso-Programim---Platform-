@@ -17,6 +17,12 @@ body{
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
+.topbar-actions{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .icon-btn{
   width: 42px; height: 42px;
   display:grid; place-items:center;

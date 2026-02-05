@@ -460,3 +460,14 @@ body {
     font-size: 0.9rem;
     color: #777;
 }
+
+/* ===================== LESSON SIDEBAR ACTIONS ============================ */
+
+.sidebar-actions {
+    margin-top: 16px;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
