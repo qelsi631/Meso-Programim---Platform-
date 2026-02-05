@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mësimi 0.08 | Imazhet në HTML</title>
+  <title>Mësimi 0.11 | Tabelat në HTML</title>
 
   <link rel="stylesheet" href="welcome.css">
   <link rel="stylesheet" href="../../sidebar.css">
@@ -29,7 +29,7 @@
 
     <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
 
-    <a href="../../html-css/mesimet/lesson0.07.html" class="goback">Kthehu Pas</a>
+    <a href="../../html-css/ushtrime/ushtrime0.6.html" class="goback">Kthehu Pas</a>
   </nav>
 
   <div class="overlay" id="overlay"></div>
@@ -51,44 +51,61 @@
 
   <header>
     <div class="welcome">
-      <h1>Imazhet në <span class="highlight">HTML</span></h1>
-      <p>Mëso si të përdorësh <span class="highlight">&lt;img&gt;</span>, si të shkruash <span class="highlight">alt</span> të mirë dhe si t’i bësh imazhet responsive.</p>
+      <h1>Tabelat në <span class="highlight">HTML</span></h1>
+      <p>Mëso si të krijosh tabela me <span class="highlight">&lt;table&gt;</span>, rreshta me <span class="highlight">&lt;tr&gt;</span> dhe qeliza me <span class="highlight">&lt;td&gt;</span> / <span class="highlight">&lt;th&gt;</span>.</p>
     </div>
 
     <section class="lesson-content">
 
       <section class="section-card">
         <div class="section-header">
-          <div class="section-icon">🖼️</div>
-          <h2>Çfarë është tag-u &lt;img&gt;?</h2>
+          <div class="section-icon">📊</div>
+          <h2>Çfarë është një tabelë?</h2>
         </div>
 
         <p class="highlight-gold">
-          <strong>&lt;img&gt;</strong> është një element pa mbyllje (void element). Ai ka dy atribute kryesore: <strong>src</strong> dhe <strong>alt</strong>.
+          Tabela përdoret për të paraqitur të dhëna në rreshta dhe kolona.
+          Ajo përbëhet nga <strong>&lt;table&gt;</strong>, rreshta <strong>&lt;tr&gt;</strong> dhe qeliza <strong>&lt;td&gt;</strong> / <strong>&lt;th&gt;</strong>.
         </p>
 
         <div class="subsection">
-          <h3>Atributet më të rëndësishme</h3>
+          <h3>Elementet kryesore</h3>
           <ul>
-            <li><strong>src</strong> – rruga e imazhit</li>
-            <li><strong>alt</strong> – përshkrimi i imazhit (aksesueshmëri)</li>
-            <li><strong>width</strong> / <strong>height</strong> – madhësia (opsionale)</li>
-            <li><strong>loading</strong> – ngarkim i vonuar (lazy)</li>
+            <li><strong>&lt;table&gt;</strong> – tabela</li>
+            <li><strong>&lt;tr&gt;</strong> – rreshti (table row)</li>
+            <li><strong>&lt;th&gt;</strong> – qeliza e kokës (header)</li>
+            <li><strong>&lt;td&gt;</strong> – qeliza e zakonshme (data)</li>
           </ul>
         </div>
       </section>
 
       <section class="section-card">
         <div class="section-header">
-          <h2>Imazh lokal (nga folderi i projektit)</h2>
+          <h2>Tabelë e thjeshtë</h2>
         </div>
 
-        <p>Kur imazhi është brenda projektit, përdor rrugë relative.</p>
+        <p>Shembull bazë me tituj dhe dy rreshta të dhënash.</p>
 
         <div class="mini-preview">
           <h4>Preview:</h4>
           <div class="preview-content">
-            <img src="../../imgs/html-5.png" alt="Logo HTML" width="140">
+            <table style="border-collapse: collapse; width: 100%; max-width: 420px;">
+              <tr>
+                <th style="border: 1px solid #3a3a3a; padding: 8px; text-align: left;">Emri</th>
+                <th style="border: 1px solid #3a3a3a; padding: 8px; text-align: left;">Mosha</th>
+                <th style="border: 1px solid #3a3a3a; padding: 8px; text-align: left;">Qyteti</th>
+              </tr>
+              <tr>
+                <td style="border: 1px solid #3a3a3a; padding: 8px;">Arta</td>
+                <td style="border: 1px solid #3a3a3a; padding: 8px;">23</td>
+                <td style="border: 1px solid #3a3a3a; padding: 8px;">Prishtinë</td>
+              </tr>
+              <tr>
+                <td style="border: 1px solid #3a3a3a; padding: 8px;">Luan</td>
+                <td style="border: 1px solid #3a3a3a; padding: 8px;">28</td>
+                <td style="border: 1px solid #3a3a3a; padding: 8px;">Prizren</td>
+              </tr>
+            </table>
           </div>
         </div>
 
@@ -101,22 +118,132 @@
             <button class="code-copy">Copy</button>
           </div>
 
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="../../imgs/html-5.png" alt="Logo HTML" width="140"&gt;
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Emri&lt;/th&gt;
+    &lt;th&gt;Mosha&lt;/th&gt;
+    &lt;th&gt;Qyteti&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Arta&lt;/td&gt;
+    &lt;td&gt;23&lt;/td&gt;
+    &lt;td&gt;Prishtinë&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Luan&lt;/td&gt;
+    &lt;td&gt;28&lt;/td&gt;
+    &lt;td&gt;Prizren&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
 </code></pre>
         </div>
       </section>
 
       <section class="section-card">
         <div class="section-header">
-          <h2>Imazh online (URL)</h2>
+          <h2>Tabela me &lt;thead&gt;, &lt;tbody&gt; dhe &lt;tfoot&gt;</h2>
         </div>
 
-        <p>Përdor një URL të plotë kur imazhi është në internet.</p>
+        <p>Përdor këto seksione për ta strukturuar më mirë tabelën.</p>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Produkti&lt;/th&gt;
+      &lt;th&gt;Sasia&lt;/th&gt;
+      &lt;th&gt;Çmimi&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Laptop&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;1200€&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Mouse&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;15€&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Totali&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;1230€&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <h2>Caption (titull i tabelës)</h2>
+        </div>
+
+        <p>Përdor <span class="highlight">&lt;caption&gt;</span> për të shtuar titull mbi tabelë.</p>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;table&gt;
+  &lt;caption&gt;Lista e nxënësve&lt;/caption&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Emri&lt;/th&gt;
+    &lt;th&gt;Nota&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Elira&lt;/td&gt;
+    &lt;td&gt;5&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <h2>Bashkim qelizash (colspan / rowspan)</h2>
+        </div>
+
+        <p>Kur ke nevojë të bashkosh kolona ose rreshta.</p>
 
         <div class="mini-preview">
           <h4>Preview:</h4>
           <div class="preview-content">
-            <img src="https://picsum.photos/240/140" alt="Imazh online" width="240" height="140">
+            <table style="border-collapse: collapse; width: 100%; max-width: 420px;">
+              <tr>
+                <th style="border: 1px solid #3a3a3a; padding: 8px;">Muaji</th>
+                <th style="border: 1px solid #3a3a3a; padding: 8px;">Të Ardhura</th>
+                <th style="border: 1px solid #3a3a3a; padding: 8px;">Shpenzime</th>
+              </tr>
+              <tr>
+                <td style="border: 1px solid #3a3a3a; padding: 8px;">Janar</td>
+                <td style="border: 1px solid #3a3a3a; padding: 8px;" colspan="2">950€</td>
+              </tr>
+              <tr>
+                <td style="border: 1px solid #3a3a3a; padding: 8px;">Shkurt</td>
+                <td style="border: 1px solid #3a3a3a; padding: 8px;">1200€</td>
+                <td style="border: 1px solid #3a3a3a; padding: 8px;">400€</td>
+              </tr>
+            </table>
           </div>
         </div>
 
@@ -129,84 +256,22 @@
             <button class="code-copy">Copy</button>
           </div>
 
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="https://picsum.photos/240/140" alt="Imazh online" width="240" height="140"&gt;
-</code></pre>
-        </div>
-      </section>
-
-      <section class="section-card">
-        <div class="section-header">
-          <h2>Si të shkruash një alt të mirë</h2>
-        </div>
-
-        <p><strong>alt</strong> duhet të përshkruajë shkurt se çfarë ka në imazh.</p>
-
-        <div class="mini-preview">
-          <h4>Preview (nëse imazhi s’ngarkohet):</h4>
-          <div class="preview-content">
-            <img src="../../imgs/jo-ekziston.png" alt="Logo HTML në ngjyrë portokalli" width="160">
-          </div>
-        </div>
-
-        <div class="code-card">
-          <div class="code-head">
-            <div class="code-left">
-              <span class="dots"><i></i><i></i><i></i></span>
-              <span class="code-lang">HTML</span>
-            </div>
-            <button class="code-copy">Copy</button>
-          </div>
-
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="logo.png" alt="Logo HTML në ngjyrë portokalli"&gt;
-</code></pre>
-        </div>
-      </section>
-
-      <section class="section-card">
-        <div class="section-header">
-          <h2>Imazhe responsive</h2>
-        </div>
-
-        <p>Për ta bërë imazhin të përshtatet me ekranin, përdor <span class="highlight">max-width: 100%</span> dhe <span class="highlight">height: auto</span>.</p>
-
-        <div class="mini-preview">
-          <h4>Preview:</h4>
-          <div class="preview-content">
-            <img src="../../imgs/planprogrami.jpg" alt="Plan mësimi" style="max-width: 100%; height: auto; border-radius: 8px;">
-          </div>
-        </div>
-
-        <div class="code-card">
-          <div class="code-head">
-            <div class="code-left">
-              <span class="dots"><i></i><i></i><i></i></span>
-              <span class="code-lang">HTML</span>
-            </div>
-            <button class="code-copy">Copy</button>
-          </div>
-
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="../../imgs/planprogrami.jpg" alt="Plan mësimi" style="max-width: 100%; height: auto;"&gt;
-</code></pre>
-        </div>
-      </section>
-
-      <section class="section-card">
-        <div class="section-header">
-          <h2>Ngarkim i shpejtë (lazy loading)</h2>
-        </div>
-
-        <p>Shto <strong>loading="lazy"</strong> që imazhet të ngarkohen vetëm kur duhen.</p>
-
-        <div class="code-card">
-          <div class="code-head">
-            <div class="code-left">
-              <span class="dots"><i></i><i></i><i></i></span>
-              <span class="code-lang">HTML</span>
-            </div>
-            <button class="code-copy">Copy</button>
-          </div>
-
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="../../imgs/planprogrami.jpg" alt="Plan mësimi" loading="lazy" decoding="async"&gt;
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Muaji&lt;/th&gt;
+    &lt;th&gt;Të Ardhura&lt;/th&gt;
+    &lt;th&gt;Shpenzime&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Janar&lt;/td&gt;
+    &lt;td colspan="2"&gt;950€&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Shkurt&lt;/td&gt;
+    &lt;td&gt;1200€&lt;/td&gt;
+    &lt;td&gt;400€&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
 </code></pre>
         </div>
       </section>
@@ -217,14 +282,12 @@
         </div>
 
         <ul>
-          <li>Gjithmonë vendos <strong>alt</strong> për aksesueshmëri dhe SEO.</li>
-          <li>Mbaj imazhet në folder të qartë (p.sh. <span class="highlight">imgs</span>).</li>
-          <li>Përdor madhësi të përshtatshme për të mos ngadalësuar faqen.</li>
-          <li>Përdor <span class="highlight">lazy loading</span> për imazhet që s’janë menjëherë në ekran.</li>
+          <li>Përdor <strong>&lt;th&gt;</strong> për titujt e kolonave/rreshtave.</li>
+          <li>Shto <strong>&lt;caption&gt;</strong> për përshkrim të shkurtër.</li>
+          <li>Përdor <strong>&lt;thead&gt;</strong>, <strong>&lt;tbody&gt;</strong>, <strong>&lt;tfoot&gt;</strong> për strukturë.</li>
+          <li>Shmang tabelat për layout; përdori vetëm për të dhëna.</li>
         </ul>
       </section>
-
-     
 
     </section>
   </header>
@@ -232,7 +295,7 @@
   <footer class="lesson-footer">
     <div class="footer-navigation">
       <div></div>
-      <a class="btn-next" href="../../html-css/mesimet/lesson0.09.html">Vazhdo</a>
+      <a class="btn-next" href="../../roadmap.html">Vazhdo</a>
     </div>
   </footer>
 
@@ -273,14 +336,14 @@
 
 <script type="module">
   import { initLessonProgress } from "../../js/lessonProgressInit.js";
-  initLessonProgress("html-images-advanced");
+  initLessonProgress("html-tables");
 </script>
 
 <script type="module">
   import { markLessonCompleted } from "../../js/courseProgressManager.js";
 
   const COURSE_SLUG = "html-fundamentals";
-  const LESSON_ID = "l12"; // HTML Images lesson
+  const LESSON_ID = "l19"; // HTML Tables lesson
 
   const btn = document.querySelector(".btn-next");
   if (btn) {

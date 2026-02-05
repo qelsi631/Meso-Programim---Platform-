@@ -204,7 +204,7 @@ function showContinue() {
     e.preventDefault();
     await markLessonCompleted(COURSE_SLUG, LESSON_ID);
     console.log("✓ Exercise lesson marked as completed");
-    window.location.href = "../../roadmap.html";
+    window.location.href = "../mesimet/lesson0.11.html";
   }, { once: true });
 }
 
