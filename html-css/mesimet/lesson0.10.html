@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mësimi 0.09 | Audio dhe Video në HTML</title>
+  <title>Mësimi 0.10 | Listat në HTML</title>
 
   <link rel="stylesheet" href="welcome.css">
   <link rel="stylesheet" href="../../sidebar.css">
@@ -29,7 +29,7 @@
 
     <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
 
-    <a href="../../html-css/mesimet/lesson0.08.html" class="goback">Kthehu Pas</a>
+    <a href="../../html-css/quiz/quiz-links-media.html" class="goback">Kthehu Pas</a>
   </nav>
 
   <div class="overlay" id="overlay"></div>
@@ -52,49 +52,49 @@
 
   <header>
     <div class="welcome">
-      <h1>Audio dhe Video në <span class="highlight">HTML</span></h1>
-      <p>Mëso si të shtosh <span class="highlight">audio</span> dhe <span class="highlight">video</span> në faqen tënde me tagët bazë.</p>
+      <h1>Listat në <span class="highlight">HTML</span></h1>
+      <p>Mëso si të krijosh lista të rregullta me <span class="highlight">&lt;ul&gt;</span>, <span class="highlight">&lt;ol&gt;</span> dhe <span class="highlight">&lt;li&gt;</span>.</p>
     </div>
 
     <section class="lesson-content">
 
       <section class="section-card">
         <div class="section-header">
-          <div class="section-icon">🎧</div>
-          <h2>Çfarë janë tagët &lt;audio&gt; dhe &lt;video&gt;?</h2>
+          <div class="section-icon">📋</div>
+          <h2>Çfarë janë listat?</h2>
         </div>
 
         <p class="highlight-gold">
-          <strong>&lt;audio&gt;</strong> dhe <strong>&lt;video&gt;</strong> lejojnë të shfaqësh media direkt në faqe, pa ndonjë plugin.
+          Listat ndihmojnë të paraqesësh informacione në mënyrë të qartë dhe të strukturuar.
+          Përdoren shumë në menu, detyra dhe përshkrime.
         </p>
 
         <div class="subsection">
-          <h3>Atributet më të përdorura</h3>
+          <h3>Elementet kryesore</h3>
           <ul>
-            <li><strong>controls</strong> – shfaq butonat e play/stop</li>
-            <li><strong>autoplay</strong> – nis automatikisht (jo e rekomanduar)</li>
-            <li><strong>loop</strong> – luan vazhdimisht</li>
-            <li><strong>muted</strong> – nis pa zë</li>
-            <li><strong>poster</strong> – imazh para fillimit (vetëm për video)</li>
+            <li><strong>&lt;ul&gt;</strong> – listë me pika (unordered)</li>
+            <li><strong>&lt;ol&gt;</strong> – listë me numra (ordered)</li>
+            <li><strong>&lt;li&gt;</strong> – çdo element i listës</li>
           </ul>
         </div>
       </section>
 
       <section class="section-card">
         <div class="section-header">
-          <div class="section-icon">🎵</div>
-          <h2>Audio i thjeshtë</h2>
+          <div class="section-icon">•</div>
+          <h2>Listë e thjeshtë me pika</h2>
         </div>
 
-        <p>Vendos <span class="highlight">controls</span> që përdoruesi ta dëgjojë lehtë.</p>
+        <p>Përdor <span class="highlight">&lt;ul&gt;</span> kur rendi nuk është i rëndësishëm.</p>
 
         <div class="mini-preview">
           <h4>Preview:</h4>
           <div class="preview-content">
-            <audio controls>
-              <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
-              Shfletuesi yt nuk e mbështet audio.
-            </audio>
+            <ul>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+            </ul>
           </div>
         </div>
 
@@ -107,29 +107,31 @@
             <button class="code-copy">Copy</button>
           </div>
 
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;audio controls&gt;
-  &lt;source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg"&gt;
-  Shfletuesi yt nuk e mbështet audio.
-&lt;/audio&gt;
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+  &lt;li&gt;CSS&lt;/li&gt;
+  &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ul&gt;
 </code></pre>
         </div>
       </section>
 
       <section class="section-card">
         <div class="section-header">
-          <div class="section-icon">🎬</div>
-          <h2>Video e thjeshtë</h2>
+          <div class="section-icon">1</div>
+          <h2>Listë e numëruar</h2>
         </div>
 
-        <p>Me <span class="highlight">controls</span> shfaqen butonat e videos.</p>
+        <p>Përdor <span class="highlight">&lt;ol&gt;</span> kur rendi ka rëndësi.</p>
 
         <div class="mini-preview">
           <h4>Preview:</h4>
           <div class="preview-content">
-            <video controls width="360">
-              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-              Shfletuesi yt nuk e mbështet videon.
-            </video>
+            <ol>
+              <li>Hape editorin</li>
+              <li>Shkruaj kodin</li>
+              <li>Shtyp Run</li>
+            </ol>
           </div>
         </div>
 
@@ -142,21 +144,37 @@
             <button class="code-copy">Copy</button>
           </div>
 
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;video controls width="360"&gt;
-  &lt;source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"&gt;
-  Shfletuesi yt nuk e mbështet videon.
-&lt;/video&gt;
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;ol&gt;
+  &lt;li&gt;Hape editorin&lt;/li&gt;
+  &lt;li&gt;Shkruaj kodin&lt;/li&gt;
+  &lt;li&gt;Shtyp Run&lt;/li&gt;
+&lt;/ol&gt;
 </code></pre>
         </div>
       </section>
 
       <section class="section-card">
         <div class="section-header">
-          <div class="section-icon">🖼️</div>
-          <h2>Poster (foto para videos)</h2>
+          <div class="section-icon">↳</div>
+          <h2>Lista të brendshme (nested)</h2>
         </div>
 
-        <p><span class="highlight">poster</span> vendos një imazh para se video të fillojë.</p>
+        <p>Mund të vendosësh një listë brenda një elementi <span class="highlight">&lt;li&gt;</span>.</p>
+
+        <div class="mini-preview">
+          <h4>Preview:</h4>
+          <div class="preview-content">
+            <ul>
+              <li>Fruta
+                <ul>
+                  <li>Mollë</li>
+                  <li>Banane</li>
+                </ul>
+              </li>
+              <li>Perime</li>
+            </ul>
+          </div>
+        </div>
 
         <div class="code-card">
           <div class="code-head">
@@ -167,27 +185,28 @@
             <button class="code-copy">Copy</button>
           </div>
 
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;video controls width="360" poster="../../imgs/planprogrami.jpg"&gt;
-  &lt;source src="video.mp4" type="video/mp4"&gt;
-  Shfletuesi yt nuk e mbështet videon.
-&lt;/video&gt;
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;ul&gt;
+  &lt;li&gt;Fruta
+    &lt;ul&gt;
+      &lt;li&gt;Mollë&lt;/li&gt;
+      &lt;li&gt;Banane&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Perime&lt;/li&gt;
+&lt;/ul&gt;
 </code></pre>
         </div>
       </section>
 
-      
+    
 
-      <section class="section-card">
-        <p>Në mësimin tjetër do të bëjmë një mini-quiz për linket, imazhet, audio dhe video.</p>
-      </section>
-
-    </section>
+   
   </header>
 
   <footer class="lesson-footer">
     <div class="footer-navigation">
       <div></div>
-      <a class="btn-next" href="../../html-css/quiz/quiz-links-media.html">Vazhdo</a>
+      <a class="btn-next" href="../../roadmap.html">Vazhdo</a>
     </div>
   </footer>
 
@@ -228,14 +247,14 @@
 
 <script type="module">
   import { initLessonProgress } from "../../js/lessonProgressInit.js";
-  initLessonProgress("html-audio-video");
+  initLessonProgress("html-lists");
 </script>
 
 <script type="module">
   import { markLessonCompleted } from "../../js/courseProgressManager.js";
 
   const COURSE_SLUG = "html-fundamentals";
-  const LESSON_ID = "l14"; // HTML Audio & Video lesson
+  const LESSON_ID = "l15"; // HTML Lists lesson
 
   const btn = document.querySelector(".btn-next");
   if (btn) {
