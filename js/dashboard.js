@@ -31,8 +31,7 @@ const courseData = {
     icon: "📄",
     slug: "html-fundamentals",
     roadmap: "roadmap.html?course=html-fundamentals",
-    lessonPath: "html-css/mesimet/welcome.html",
-    totalLessons: 10  // l1, l2, l3, l4, l5, l6, l7, l8, l9, l10
+    lessonPath: "html-css/mesimet/welcome.html"
   },
   "css-styling": {
     title: "CSS Styling",
@@ -211,7 +210,8 @@ async function renderCourses() {
     const course = courseData[enrollment.course_slug];
     if (!course) continue; // Skip unknown courses
 
-    const total = course.totalLessons || 10;
+    const roadmapLessons = getAllLessonsFromRoadmap(enrollment.course_slug);
+    const total = roadmapLessons.length || course.totalLessons || 10;
     const progressPercent = await getCourseProgress(enrollment.course_slug, total);
     const completed = await getCompletedCount(enrollment.course_slug);
 
