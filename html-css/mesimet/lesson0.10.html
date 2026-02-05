@@ -85,7 +85,8 @@
           <h2>Listë e thjeshtë me pika</h2>
         </div>
 
-        <p>Përdor <span class="highlight">&lt;ul&gt;</span> kur rendi nuk është i rëndësishëm.</p>
+        <p>(Unordered List) në HTML përdoret për të krijuar lista të parenditura, pra lista ku elementet nuk kanë rend numerik dhe zakonisht shfaqen me pika (•).
+Çdo element i listës vendoset brenda tagut &lt;li&gt;.</p>
 
         <div class="mini-preview">
           <h4>Preview:</h4>
@@ -122,7 +123,8 @@
           <h2>Listë e numëruar</h2>
         </div>
 
-        <p>Përdor <span class="highlight">&lt;ol&gt;</span> kur rendi ka rëndësi.</p>
+        <p>(Ordered List) në HTML përdoret për të krijuar lista të renditura, ku elementet shfaqen sipas një rendi të caktuar, zakonisht me numra, shkronja ose numra romakë.
+Çdo element i listës vendoset brenda tagut &lt;li&gt;.</p>
 
         <div class="mini-preview">
           <h4>Preview:</h4>
@@ -145,9 +147,9 @@
           </div>
 
           <pre class="code-pre line-numbers"><code class="language-html">&lt;ol&gt;
-  &lt;li&gt;Hape editorin&lt;/li&gt;
-  &lt;li&gt;Shkruaj kodin&lt;/li&gt;
-  &lt;li&gt;Shtyp Run&lt;/li&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+  &lt;li&gt;CSS&lt;/li&gt;
+  &lt;li&gt;JavaScript&lt;/li&gt;
 &lt;/ol&gt;
 </code></pre>
         </div>
@@ -156,23 +158,28 @@
       <section class="section-card">
         <div class="section-header">
           <div class="section-icon">↳</div>
-          <h2>Lista të brendshme (nested)</h2>
+          <h2>Shembull real: Daily Tasks</h2>
         </div>
 
-        <p>Mund të vendosësh një listë brenda një elementi <span class="highlight">&lt;li&gt;</span>.</p>
+        <p>Shembull praktik me <span class="highlight">&lt;ol&gt;</span> dhe <span class="highlight">&lt;ul&gt;</span> në një detyrë të përditshme.</p>
 
         <div class="mini-preview">
           <h4>Preview:</h4>
           <div class="preview-content">
-            <ul>
-              <li>Fruta
+            <h3>Detyrat Ditore</h3>
+            <ol>
+              <li>Shëtit qenin</li>
+              <li>Palos rrobat</li>
+              <li>Shko në market dhe blej:
                 <ul>
-                  <li>Mollë</li>
-                  <li>Banane</li>
+                  <li>Qumësht</li>
+                  <li>Bukë</li>
+                  <li>Djathe</li>
                 </ul>
               </li>
-              <li>Perime</li>
-            </ul>
+              <li>Kosit barin</li>
+              <li>Gatuaj darkën</li>
+            </ol>
           </div>
         </div>
 
@@ -185,15 +192,20 @@
             <button class="code-copy">Copy</button>
           </div>
 
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;ul&gt;
-  &lt;li&gt;Fruta
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;h3&gt;Detyrat Ditore&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;Shëtit qenin&lt;/li&gt;
+  &lt;li&gt;Palos rrobat&lt;/li&gt;
+  &lt;li&gt;Shko në market dhe blej:
     &lt;ul&gt;
-      &lt;li&gt;Mollë&lt;/li&gt;
-      &lt;li&gt;Banane&lt;/li&gt;
+      &lt;li&gt;Qumësht&lt;/li&gt;
+      &lt;li&gt;Bukë&lt;/li&gt;
+      &lt;li&gt;Djathe&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;Perime&lt;/li&gt;
-&lt;/ul&gt;
+  &lt;li&gt;Kosit barin&lt;/li&gt;
+  &lt;li&gt;Gatuaj darkën&lt;/li&gt;
+&lt;/ol&gt;
 </code></pre>
         </div>
       </section>
@@ -206,7 +218,7 @@
   <footer class="lesson-footer">
     <div class="footer-navigation">
       <div></div>
-      <a class="btn-next" href="../../roadmap.html">Vazhdo</a>
+      <a class="btn-next" href="../../html-css/quiz/quiz-lists.html">Vazhdo</a>
     </div>
   </footer>
 

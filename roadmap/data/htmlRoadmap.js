@@ -18,6 +18,8 @@ export const htmlRoadmap = {
         { id: "l14", title: "Audio dhe Video në HTML", type: "mësim", path: "html-css/mesimet/lesson0.09.html" },
         { id: "l16", title: "Quiz: Linke, Imazhe, Audio & Video", type: "vlerësim", path: "html-css/quiz/quiz-links-media.html" },
         { id: "l15", title: "Listat në HTML", type: "mësim", path: "html-css/mesimet/lesson0.10.html" },
+        { id: "l17", title: "Quiz: Listat në HTML", type: "vlerësim", path: "html-css/quiz/quiz-lists.html" },
+        { id: "l18", title: "Ushtrimi 6: Listat", type: "mësim", path: "html-css/ushtrime/ushtrime0.6.html" },
         { id: "l4", title: "Ushtrimi 1: Titujt & Paragrafët", type: "mësim", path: "html-css/ushtrime/ushtrime0.1.html" },
         { id: "l7", title: "Ushtrimi 2: Text Formatting", type: "mësim", path: "html-css/ushtrime/ushtrime0.2.html" },
         { id: "l5", title: "HTML Bazat", type: "vlerësim", path: "html-css/quiz/quiz.html" },

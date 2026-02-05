@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz — Listat në HTML | Mëso Programimin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="quiz.css" />
+</head>
+<body>
+
+  <div class="page">
+
+    <nav class="topbar">
+      <a class="icon-btn" href="../mesimet/lesson0.10.html" aria-label="Kthehu pas">←</a>
+
+      <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard" style="font-size: 20px;">📊</a>
+
+      <div class="topbar-title">
+        <p class="tiny">Quiz</p>
+        <h1>Listat në HTML</h1>
+      </div>
+      <div class="progress-wrap" aria-label="Progresi i quiz-it">
+        <span class="progress-text" id="progressText">1/3</span>
+        <div class="progress">
+          <div class="progress-bar" id="progressBar" style="width: 33%"></div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container">
+
+      <section class="card">
+        <p class="badge" id="badge">Pyetja 1</p>
+
+        <h2 class="question" id="questionText"></h2>
+
+        <form class="options" id="quizForm"></form>
+
+        <p class="result" id="resultMsg"></p>
+      </section>
+
+      <div class="right-actions">
+        <button class="btn primary" type="button" id="submitBtn">Dërgo</button>
+        <button class="btn ghost hidden" type="button" id="retryBtn">Provo prap</button>
+        <button class="btn next" type="button" id="nextBtn" disabled>Vazhdo</button>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module">
+    import { markLessonCompleted } from "../../js/courseProgressManager.js";
+
+    const COURSE_SLUG = "html-fundamentals";
+    const LESSON_ID = "l17"; // Quiz: HTML Lists
+
+    const quizData = [
+      {
+        badge: "Pyetja 1",
+        question: "Cili tag perdoret per nje liste me pika?",
+        answers: [
+          { text: "<ul>", correct: true },
+          { text: "<ol>", correct: false },
+          { text: "<li>", correct: false },
+          { text: "<list>", correct: false }
+        ]
+      },
+      {
+        badge: "Pyetja 2",
+        question: "Cili tag perdoret per nje liste te numeruar?",
+        answers: [
+          { text: "<ol>", correct: true },
+          { text: "<ul>", correct: false },
+          { text: "<li>", correct: false },
+          { text: "<dl>", correct: false }
+        ]
+      },
+      {
+        badge: "Pyetja 3",
+        question: "Cili tag perdoret per cdo element te listes?",
+        answers: [
+          { text: "<li>", correct: true },
+          { text: "<ul>", correct: false },
+          { text: "<ol>", correct: false },
+          { text: "<p>", correct: false }
+        ]
+      }
+    ];
+
+    const badgeEl = document.getElementById("badge");
+    const questionEl = document.getElementById("questionText");
+    const formEl = document.getElementById("quizForm");
+    const resultMsg = document.getElementById("resultMsg");
+    const submitBtn = document.getElementById("submitBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const retryBtn = document.getElementById("retryBtn");
+    const progressText = document.getElementById("progressText");
+    const progressBar = document.getElementById("progressBar");
+
+    let current = 0;
+
+    function getOptions() {
+      return Array.from(document.querySelectorAll(".option"));
+    }
+
+    function resetFeedback() {
+      const options = getOptions();
+      options.forEach(o => o.classList.remove("correct", "wrong", "disabled"));
+      resultMsg.className = "result";
+      resultMsg.textContent = "";
+    }
+
+    function lockOptions(lock) {
+      const options = getOptions();
+      options.forEach(o => {
+        if (lock) o.classList.add("disabled");
+        else o.classList.remove("disabled");
+      });
+    }
+
+    function updateProgress() {
+      const total = quizData.length;
+      const currentIndex = current + 1;
+      const percent = Math.round((currentIndex / total) * 100);
+      progressText.textContent = `${currentIndex}/${total}`;
+      progressBar.style.width = `${percent}%`;
+    }
+
+    function renderQuestion() {
+      const q = quizData[current];
+
+      resetFeedback();
+      submitBtn.disabled = false;
+      nextBtn.disabled = true;
+      retryBtn.classList.add("hidden");
+
+      badgeEl.textContent = q.badge;
+      questionEl.textContent = q.question;
+
+      formEl.innerHTML = "";
+      q.answers.forEach((a, idx) => {
+        const label = document.createElement("label");
+        label.className = "option";
+        if (a.correct) label.dataset.correct = "true";
+
+        label.innerHTML = `
+          <input type="radio" name="q" value="${idx}">
+          <span>${a.text.replaceAll("<", "&lt;").replaceAll(">", "&gt;")}</span>
+        `;
+        formEl.appendChild(label);
+      });
+
+      updateProgress();
+    }
+
+    submitBtn.addEventListener("click", () => {
+      const options = getOptions();
+      const selectedInput = document.querySelector('input[name="q"]:checked');
+
+      resetFeedback();
+      nextBtn.disabled = true;
+      retryBtn.classList.add("hidden");
+
+      if (!selectedInput) {
+        resultMsg.textContent = "Zgjedh nje pergjigje para se te dergosh.";
+        return;
+      }
+
+      const selectedLabel = selectedInput.closest(".option");
+      const correctLabel = options.find(o => o.dataset.correct === "true");
+
+      if (correctLabel) correctLabel.classList.add("correct");
+
+      const isCorrect = selectedLabel === correctLabel;
+
+      if (!isCorrect) {
+        selectedLabel.classList.add("wrong");
+        resultMsg.textContent = "Gabim ❌ Provo perseri.";
+        resultMsg.classList.add("bad");
+
+        retryBtn.classList.remove("hidden");
+        lockOptions(true);
+        submitBtn.disabled = false;
+      } else {
+        resultMsg.textContent = "Sakte ✅ Bravo! Tani mund te vazhdosh.";
+        resultMsg.classList.add("good");
+
+        nextBtn.disabled = false;
+        submitBtn.disabled = true;
+        lockOptions(true);
+      }
+    });
+
+    retryBtn.addEventListener("click", () => {
+      resetFeedback();
+      lockOptions(false);
+      retryBtn.classList.add("hidden");
+      nextBtn.disabled = true;
+
+      const checked = document.querySelector('input[name="q"]:checked');
+      if (checked) checked.checked = false;
+    });
+
+    nextBtn.addEventListener("click", () => {
+      if (nextBtn.disabled) return;
+
+      if (current < quizData.length - 1) {
+        current++;
+        renderQuestion();
+      } else {
+        (async () => {
+          await markLessonCompleted(COURSE_SLUG, LESSON_ID);
+          window.location.href = "/html-css/ushtrime/ushtrime0.6.html";
+        })();
+      }
+    });
+
+    renderQuestion();
+  </script>
+
+</body>
+</html>
