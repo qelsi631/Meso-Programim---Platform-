@@ -28,7 +28,11 @@ export const htmlRoadmap = {
         { id: "l15", title: "Listat në HTML", type: "mësim", path: "html-css/mesimet/lesson0.10.html" },
         { id: "l17", title: "Quiz: Listat në HTML", type: "vlerësim", path: "html-css/quiz/quiz-lists.html" },
         { id: "l18", title: "Ushtrimi 6: Listat në HTML", type: "mësim", path: "html-css/ushtrime/ushtrime0.6.html" },
-        { id: "l19", title: "Tabelat në HTML", type: "mësim", path: "html-css/mesimet/lesson0.11.html" }
+        { id: "l19", title: "Tabelat në HTML", type: "mësim", path: "html-css/mesimet/lesson0.11.html" },
+        { id: "l23", title: "Formularët në HTML", type: "mësim", path: "html-css/mesimet/lesson0.12.html" },
+        { id: "l24", title: "Input Types në HTML", type: "mësim", path: "html-css/mesimet/lesson0.13.html" },
+        { id: "l25", title: "Quiz: Formularët & Input Types", type: "vlerësim", path: "html-css/quiz/quiz-input-types.html" },
+        { id: "l26", title: "Ushtrimi 7: Formular i thjeshtë", type: "mësim", path: "html-css/ushtrime/ushtrime0.7.html" }
       ],
     },
   ],

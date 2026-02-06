@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mësimi 0.13 | Input Types në HTML</title>
+
+  <link rel="stylesheet" href="welcome.css">
+  <link rel="stylesheet" href="../../sidebar.css">
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Prism -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" defer></script>
+</head>
+<body>
+<div class="container">
+
+  <nav>
+    <a href="#" id="menuBtn"><img src="../../imgs/menu (1).png" alt="Menu"></a>
+
+    <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
+
+    <a href="../../html-css/mesimet/lesson0.12.html" class="goback">Kthehu Pas</a>
+  </nav>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <div class="sidebar-title">
+        <img class="ikonSidebar" src="../../imgs/icon_platformes-removebg-preview.png" alt="Logo">
+        <p>Mëso Programim</p>
+      </div>
+      <button class="sidebar-close" id="closeBtn">✕</button>
+    </div>
+
+    <div class="sidebar-links">
+      <a href="../../dashboard.html">Dashboard</a>
+      <a href="../../roadmap.html">Roadmap</a>
+      <a href="#" class="report-bug-link" data-report="bug">Report a bug</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="welcome">
+      <h1>Input Types në <span class="highlight">HTML</span></h1>
+      <p>Këtu do të kuptosh qartë çdo lloj input-i dhe kur përdoret.</p>
+    </div>
+
+    <section class="lesson-content">
+
+      <section class="section-card">
+        <div class="section-header">
+          <div class="section-icon">🔤</div>
+          <h2>Çfarë është type?</h2>
+        </div>
+
+        <p class="highlight-gold">
+          Atributi <strong>type</strong> i tregon browser-it çfarë lloj të dhënash priten.
+          Kjo e bën formularin më të lehtë për përdoruesin dhe më të saktë për verifikim.
+        </p>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;input type="text" name="emri"&gt;
+&lt;input type="email" name="email"&gt;
+&lt;input type="password" name="fjalekalimi"&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <h2>Input type="text"</h2>
+        </div>
+
+        <p><span class="highlight">type="text"</span> krijon një fushë teksti me një rresht.</p>
+
+        <div class="mini-preview">
+          <h4>Preview:</h4>
+          <div class="preview-content">
+            <form style="display: grid; gap: 6px; max-width: 320px;">
+              <label style="font-size: 14px;">First name:</label>
+              <input type="text" style="padding: 8px; border-radius: 6px; border: 1px solid #666; background: #222; color: #fff;">
+              <label style="font-size: 14px;">Last name:</label>
+              <input type="text" style="padding: 8px; border-radius: 6px; border: 1px solid #666; background: #222; color: #fff;">
+            </form>
+          </div>
+        </div>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;form&gt;
+  &lt;label for="fname"&gt;First name:&lt;/label&gt;&lt;br&gt;
+  &lt;input type="text" id="fname" name="fname"&gt;&lt;br&gt;
+  &lt;label for="lname"&gt;Last name:&lt;/label&gt;&lt;br&gt;
+  &lt;input type="text" id="lname" name="lname"&gt;
+&lt;/form&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <h2>Input type="password"</h2>
+        </div>
+
+        <p><span class="highlight">type="password"</span> fsheh karakteret kur përdoruesi shkruan.</p>
+
+        <div class="mini-preview">
+          <h4>Preview:</h4>
+          <div class="preview-content">
+            <form style="display: grid; gap: 6px; max-width: 320px;">
+              <label style="font-size: 14px;">Password:</label>
+              <input type="password" style="padding: 8px; border-radius: 6px; border: 1px solid #666; background: #222; color: #fff;">
+            </form>
+          </div>
+        </div>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;form&gt;
+  &lt;label for="pass"&gt;Password:&lt;/label&gt;&lt;br&gt;
+  &lt;input type="password" id="pass" name="pass"&gt;
+&lt;/form&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <h2>Input type="email"</h2>
+        </div>
+
+        <p><span class="highlight">type="email"</span> kërkon format të vlefshëm email-i.</p>
+
+        <div class="mini-preview">
+          <h4>Preview:</h4>
+          <div class="preview-content">
+            <form style="display: grid; gap: 6px; max-width: 320px;">
+              <label style="font-size: 14px;">Email:</label>
+              <input type="email" style="padding: 8px; border-radius: 6px; border: 1px solid #666; background: #222; color: #fff;">
+            </form>
+          </div>
+        </div>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;form&gt;
+  &lt;label for="email"&gt;Email:&lt;/label&gt;&lt;br&gt;
+  &lt;input type="email" id="email" name="email"&gt;
+&lt;/form&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <h2>Input type="number"</h2>
+        </div>
+
+        <p><span class="highlight">type="number"</span> pranon vetëm numra.</p>
+
+        <div class="mini-preview">
+          <h4>Preview:</h4>
+          <div class="preview-content">
+            <form style="display: grid; gap: 6px; max-width: 320px;">
+              <label style="font-size: 14px;">Mosha:</label>
+              <input type="number" min="1" max="120" style="padding: 8px; border-radius: 6px; border: 1px solid #666; background: #222; color: #fff;">
+            </form>
+          </div>
+        </div>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;form&gt;
+  &lt;label for="age"&gt;Mosha:&lt;/label&gt;&lt;br&gt;
+  &lt;input type="number" id="age" name="age" min="1" max="120"&gt;
+&lt;/form&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <h2>Input type="radio"</h2>
+        </div>
+
+        <p><span class="highlight">type="radio"</span> lejon vetëm një zgjedhje në grup (i njëjti <strong>name</strong>).</p>
+
+        <div class="mini-preview">
+          <h4>Preview:</h4>
+          <div class="preview-content">
+            <form style="display: grid; gap: 6px; max-width: 320px;">
+              <span style="font-size: 14px;">Gjinia:</span>
+              <label><input type="radio" name="gjinia"> F</label>
+              <label><input type="radio" name="gjinia"> M</label>
+            </form>
+          </div>
+        </div>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;form&gt;
+  &lt;p&gt;Gjinia:&lt;/p&gt;
+  &lt;input type="radio" id="f" name="gjinia" value="F"&gt;
+  &lt;label for="f"&gt;F&lt;/label&gt;&lt;br&gt;
+  &lt;input type="radio" id="m" name="gjinia" value="M"&gt;
+  &lt;label for="m"&gt;M&lt;/label&gt;
+&lt;/form&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <h2>Input type="checkbox"</h2>
+        </div>
+
+        <p><span class="highlight">type="checkbox"</span> lejon më shumë se një zgjedhje.</p>
+
+        <div class="mini-preview">
+          <h4>Preview:</h4>
+          <div class="preview-content">
+            <form style="display: grid; gap: 6px; max-width: 320px;">
+              <label><input type="checkbox"> Sport</label>
+              <label><input type="checkbox"> Muzikë</label>
+            </form>
+          </div>
+        </div>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;form&gt;
+  &lt;input type="checkbox" id="sport" name="hobi" value="sport"&gt;
+  &lt;label for="sport"&gt;Sport&lt;/label&gt;&lt;br&gt;
+  &lt;input type="checkbox" id="muzike" name="hobi" value="muzike"&gt;
+  &lt;label for="muzike"&gt;Muzikë&lt;/label&gt;
+&lt;/form&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <h2>Input type="button"</h2>
+        </div>
+
+        <p><span class="highlight">type="button"</span> krijon buton të zakonshëm (përdoret shpesh me JavaScript).</p>
+
+        <div class="mini-preview">
+          <h4>Preview:</h4>
+          <div class="preview-content">
+            <form>
+              <input type="button" value="Kliko" style="padding: 10px 20px; border: none; border-radius: 999px; background: #ff7a00; color: #fff; font-weight: 700;">
+            </form>
+          </div>
+        </div>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;form&gt;
+  &lt;input type="button" value="Kliko"&gt;
+&lt;/form&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <h2>Input type="submit"</h2>
+        </div>
+
+        <p><span class="highlight">type="submit"</span> dërgon të dhënat e formularit.</p>
+
+        <div class="mini-preview">
+          <h4>Preview:</h4>
+          <div class="preview-content">
+            <form style="display: grid; gap: 6px; max-width: 320px;">
+              <label style="font-size: 14px;">Email:</label>
+              <input type="email" style="padding: 8px; border-radius: 6px; border: 1px solid #666; background: #222; color: #fff;">
+              <input type="submit" value="Dërgo" style="padding: 10px; border: none; border-radius: 999px; background: #ff7a00; color: #fff; font-weight: 700;">
+            </form>
+          </div>
+        </div>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;form&gt;
+  &lt;label for="email"&gt;Email:&lt;/label&gt;&lt;br&gt;
+  &lt;input type="email" id="email" name="email"&gt;&lt;br&gt;
+  &lt;input type="submit" value="Dërgo"&gt;
+&lt;/form&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <h2>Shenime te shpejta</h2>
+        </div>
+
+        <ul>
+          <li><strong>name</strong> është i domosdoshëm për të dërguar vlerat.</li>
+          <li><strong>required</strong> e bën fushën të detyrueshme.</li>
+          <li>Me <strong>min</strong>, <strong>max</strong> dhe <strong>step</strong> kontrollon numrat.</li>
+          <li>Me <strong>checked</strong> zgjedh një checkbox/radio si parazgjedhje.</li>
+        </ul>
+      </section>
+
+    </section>
+  </header>
+
+  <footer class="lesson-footer">
+    <div class="footer-navigation">
+      <div></div>
+      <a class="btn-next" href="../../html-css/quiz/quiz-input-types.html">Vazhdo</a>
+    </div>
+  </footer>
+
+</div>
+
+<script src="../../js.lessons/sidebar.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".code-copy").forEach((button) => {
+      button.addEventListener("click", function() {
+        const codeCard = this.closest(".code-card");
+        const codeElement = codeCard.querySelector("code");
+        const textToCopy = codeElement.textContent;
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          const originalText = this.textContent;
+          this.textContent = "✅ Copied!";
+          this.style.background = "#34D399";
+          this.style.color = "#000";
+
+          setTimeout(() => {
+            this.textContent = originalText;
+            this.style.background = "";
+            this.style.color = "";
+          }, 2000);
+        });
+      });
+    });
+  });
+</script>
+
+<!-- Supabase CDN (gives window.supabase) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- Protect lesson (redirects to auth if not logged in) -->
+<script type="module" src="../../js/requireAuth.js"></script>
+
+<script type="module">
+  import { initLessonProgress } from "../../js/lessonProgressInit.js";
+  initLessonProgress("html-input-types");
+</script>
+
+<script type="module">
+  import { markLessonCompleted } from "../../js/courseProgressManager.js";
+
+  const COURSE_SLUG = "html-fundamentals";
+  const LESSON_ID = "l24"; // HTML Input Types lesson
+
+  const btn = document.querySelector(".btn-next");
+  if (btn) {
+    btn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const nextUrl = btn.getAttribute("href");
+      await markLessonCompleted(COURSE_SLUG, LESSON_ID);
+      window.location.href = nextUrl;
+    });
+  }
+</script>
+
+</body>
+</html>

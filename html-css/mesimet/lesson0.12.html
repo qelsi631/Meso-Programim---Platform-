@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mësimi 0.12 | Formularët në HTML</title>
+
+  <link rel="stylesheet" href="welcome.css">
+  <link rel="stylesheet" href="../../sidebar.css">
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Prism -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" defer></script>
+</head>
+<body>
+<div class="container">
+
+  <nav>
+    <a href="#" id="menuBtn"><img src="../../imgs/menu (1).png" alt="Menu"></a>
+
+    <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
+
+    <a href="../../html-css/mesimet/lesson0.11.html" class="goback">Kthehu Pas</a>
+  </nav>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <div class="sidebar-title">
+        <img class="ikonSidebar" src="../../imgs/icon_platformes-removebg-preview.png" alt="Logo">
+        <p>Mëso Programim</p>
+      </div>
+      <button class="sidebar-close" id="closeBtn">✕</button>
+    </div>
+
+    <div class="sidebar-links">
+      <a href="../../dashboard.html">Dashboard</a>
+      <a href="../../roadmap.html">Roadmap</a>
+      <a href="#" class="report-bug-link" data-report="bug">Report a bug</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="welcome">
+      <h1>Formularët në <span class="highlight">HTML</span></h1>
+      <p>Mëso si të krijosh forma me <span class="highlight">&lt;form&gt;</span>, input-e dhe butona për të mbledhur të dhëna.</p>
+    </div>
+
+    <section class="lesson-content">
+
+      <section class="section-card">
+        <div class="section-header">
+          <div class="section-icon">🧾</div>
+          <h2>Çfarë është një formular?</h2>
+        </div>
+
+        <p class="highlight-gold">
+          Formularët përdoren për të mbledhur të dhëna nga përdoruesit (p.sh. emër, email, mesazh).
+          Elementi kryesor është <strong>&lt;form&gt;</strong> dhe brenda tij vendosen input-e, textarea, select dhe butona.
+        </p>
+
+        <div class="subsection">
+          <h3>Elementet kryesore</h3>
+          <ul>
+            <li><strong>&lt;form&gt;</strong> – mbështjell gjithë formularin</li>
+            <li><strong>&lt;label&gt;</strong> – etiketa për çdo fushë</li>
+            <li><strong>&lt;input&gt;</strong> – fusha për tekst, email, numra, etj.</li>
+            <li><strong>&lt;textarea&gt;</strong> – fushë për tekst të gjatë</li>
+            <li><strong>&lt;select&gt;</strong> – listë zgjedhjesh</li>
+            <li><strong>&lt;button&gt;</strong> – dërgon ose pastron formularin</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <h2>Struktura bazë e një formulari</h2>
+        </div>
+
+        <p>Shembulli më i thjeshtë me dy fusha dhe një buton.</p>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;form&gt;
+  &lt;label for="emri"&gt;Emri&lt;/label&gt;
+  &lt;input type="text" id="emri" name="emri"&gt;
+
+  &lt;label for="email"&gt;Email&lt;/label&gt;
+  &lt;input type="email" id="email" name="email"&gt;
+
+  &lt;button type="submit"&gt;Dërgo&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <h2>Input types më të përdorura</h2>
+        </div>
+
+        <ul>
+          <li><strong>text</strong> – tekst i thjeshtë</li>
+          <li><strong>email</strong> – email me validim bazik</li>
+          <li><strong>password</strong> – fsheh tekstin</li>
+          <li><strong>number</strong> – vetëm numra</li>
+          <li><strong>date</strong> – zgjedhje date</li>
+          <li><strong>checkbox</strong> – zgjedhje të shumëfishta</li>
+          <li><strong>radio</strong> – vetëm një zgjedhje</li>
+        </ul>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <h2>Shembull: formë kontakti</h2>
+        </div>
+
+        <div class="mini-preview">
+          <h4>Preview:</h4>
+          <div class="preview-content">
+            <form style="display: grid; gap: 10px; max-width: 360px;">
+              <label style="font-size: 14px;">Emri</label>
+              <input type="text" style="padding: 8px; border-radius: 6px; border: 1px solid #666; background: #222; color: #fff;">
+
+              <label style="font-size: 14px;">Email</label>
+              <input type="email" style="padding: 8px; border-radius: 6px; border: 1px solid #666; background: #222; color: #fff;">
+
+              <label style="font-size: 14px;">Mesazhi</label>
+              <textarea rows="3" style="padding: 8px; border-radius: 6px; border: 1px solid #666; background: #222; color: #fff;"></textarea>
+
+              <button type="button" style="padding: 10px; border: none; border-radius: 999px; background: #ff7a00; color: #fff; font-weight: 700;">Dërgo</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;form&gt;
+  &lt;label for="emri"&gt;Emri&lt;/label&gt;
+  &lt;input type="text" id="emri" name="emri" required&gt;
+
+  &lt;label for="email"&gt;Email&lt;/label&gt;
+  &lt;input type="email" id="email" name="email" required&gt;
+
+  &lt;label for="mesazhi"&gt;Mesazhi&lt;/label&gt;
+  &lt;textarea id="mesazhi" name="mesazhi" rows="4" required&gt;&lt;/textarea&gt;
+
+  &lt;button type="submit"&gt;Dërgo&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <h2>Atribute të rëndësishme</h2>
+        </div>
+
+        <ul>
+          <li><strong>name</strong> – emri i fushës që dërgohet te serveri</li>
+          <li><strong>placeholder</strong> – tekst udhëzues brenda input-it</li>
+          <li><strong>required</strong> – e bën fushën të detyrueshme</li>
+          <li><strong>minlength</strong> / <strong>maxlength</strong> – kufizim i gjatësisë</li>
+          <li><strong>type</strong> – tregon çfarë lloj të dhënash priten</li>
+        </ul>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <h2>Label dhe aksesueshmëria</h2>
+        </div>
+
+        <p>Përdor gjithmonë <span class="highlight">label</span> të lidhur me <span class="highlight">id</span> për të ndihmuar përdoruesit dhe lexuesit e ekranit.</p>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;label for="telefoni"&gt;Numri i telefonit&lt;/label&gt;
+&lt;input type="tel" id="telefoni" name="telefoni"&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <h2>Fieldset dhe Legend</h2>
+        </div>
+
+        <p>Përdor <span class="highlight">&lt;fieldset&gt;</span> për të grupuar fusha të lidhura dhe <span class="highlight">&lt;legend&gt;</span> për titullin e grupit.</p>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;fieldset&gt;
+  &lt;legend&gt;Të dhënat personale&lt;/legend&gt;
+  &lt;label for="emri"&gt;Emri&lt;/label&gt;
+  &lt;input type="text" id="emri" name="emri"&gt;
+&lt;/fieldset&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <h2>Praktika të mira</h2>
+        </div>
+
+        <ul>
+          <li>Përdor <strong>label</strong> për çdo fushë.</li>
+          <li>Mos harro <strong>name</strong> te input-et që do dërgohen.</li>
+          <li>Mbaje formularin të thjeshtë dhe të qartë.</li>
+          <li>Testo validimin me <strong>required</strong> dhe tipe të sakta.</li>
+        </ul>
+      </section>
+
+    </section>
+  </header>
+
+  <footer class="lesson-footer">
+    <div class="footer-navigation">
+      <div></div>
+      <a class="btn-next" href="../../html-css/mesimet/lesson0.13.html">Vazhdo</a>
+    </div>
+  </footer>
+
+</div>
+
+<script src="../../js.lessons/sidebar.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".code-copy").forEach((button) => {
+      button.addEventListener("click", function() {
+        const codeCard = this.closest(".code-card");
+        const codeElement = codeCard.querySelector("code");
+        const textToCopy = codeElement.textContent;
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          const originalText = this.textContent;
+          this.textContent = "✅ Copied!";
+          this.style.background = "#34D399";
+          this.style.color = "#000";
+
+          setTimeout(() => {
+            this.textContent = originalText;
+            this.style.background = "";
+            this.style.color = "";
+          }, 2000);
+        });
+      });
+    });
+  });
+</script>
+
+<!-- Supabase CDN (gives window.supabase) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- Protect lesson (redirects to auth if not logged in) -->
+<script type="module" src="../../js/requireAuth.js"></script>
+
+<script type="module">
+  import { initLessonProgress } from "../../js/lessonProgressInit.js";
+  initLessonProgress("html-forms");
+</script>
+
+<script type="module">
+  import { markLessonCompleted } from "../../js/courseProgressManager.js";
+
+  const COURSE_SLUG = "html-fundamentals";
+  const LESSON_ID = "l23"; // HTML Forms lesson
+
+  const btn = document.querySelector(".btn-next");
+  if (btn) {
+    btn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const nextUrl = btn.getAttribute("href");
+      await markLessonCompleted(COURSE_SLUG, LESSON_ID);
+      window.location.href = nextUrl;
+    });
+  }
+</script>
+
+</body>
+</html>
