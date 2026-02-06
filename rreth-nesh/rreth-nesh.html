@@ -3,257 +3,157 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rreth Nesh | Mëso Programim</title>
+  <title>Rreth Nesh | Mëso Programimin</title>
 
-  <link rel="stylesheet" href="rreth-nesh.css" />
-  <link rel="stylesheet" href="../sidebar.css">
-
-  <!-- Fonts (nëse i ke global, mund ta heqësh) -->
+  <link rel="stylesheet" href="../css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <div class="container">
+  <header class="topbar">
+    <img src="../imgs/icon platformes.jpg" alt="Logo" class="logo-small">
 
-    <!-- NAV -->
-    <nav class="top-nav">
-      <a href="#" id="menuBtn" class="icon-btn" aria-label="Hap menunë">
-        <img src="../imgs/menu (1).png" alt="Menu">
-      </a>
-
-      <a href="#" class="goback">Kthehu Pas</a>
+    <nav class="nav-desktop">
+      <a href="../index.html">Ballina</a>
+      <a href="../roadmap.html">Mësimet</a>
+      <a href="rreth-nesh.html">Rreth Nesh</a>
     </nav>
 
-    <!-- SIDEBAR -->
-    <div class="overlay" id="overlay"></div>
+    <div class="topbar-actions">
+      <img src="../imgs/burger-bar.png" class="menu-icon" id="menuToggle" alt="Menu">
+      <p>Regjistrohu</p>
+      <a id="dashboardLink" href="../dashboard.html" style="display:none;">Dashboard</a>
+      <a id="authLink" href="../auth.html" class="profile-link" aria-label="Login" title="Login">
+        <img src="../imgs/profile-icon.svg" alt="Profile" class="profile-icon">
+      </a>
+    </div>
+  </header>
 
-    <div class="sidebar" id="sidebar" aria-hidden="true">
-      <div class="sidebar-head">
-        <div class="sidebar-title">
-          <img class="ikonSidebar" src="../imgs/icon_platformes-removebg-preview.png" alt="">
-          <p>Meso Programim</p>
-        </div>
-        <button class="sidebar-close" id="closeBtn" type="button">✕</button>
-      </div>
+  <section class="hero">
+    <div class="hero-left">
+      <h1 class="title">Rreth Nesh</h1>
 
-      <div class="sidebar-links">
-        <a href="#">Ballina</a>
-        <a href="#">Mësimet</a>
-        <a href="#">Profili</a>
-        <a class="active" href="#">Rreth Nesh</a>
-      </div>
+      <p class="desc">
+        Mëso Programimin është një platformë në <span class="highlight">shqip</span> për të mësuar
+        bazat e web-it dhe programimit: HTML/CSS, JavaScript dhe Java (OOP). Ne i mbajmë mësimet të
+        shkurtra, të qarta dhe të orientuara te praktika, që çdo fillestar të ecë i sigurt.
+      </p>
+
+      <button class="btn"><a href="../courses.html" class="btn-a">Shiko Mësimet</a></button>
     </div>
 
-    <!-- HERO -->
-    <header class="hero">
-       <div class="hero-left">
+    <div class="hero-right">
+      <img src="../imgs/meso-programim-high-resolution-logo-transparent.png" alt="Mëso Programimin Logo" class="big-logo">
+    </div>
+  </section>
 
-    <div class="brand-row">
-      <img class="brand-icon" src="../imgs/icon_platformes-removebg-preview.png" alt="Mëso Programim">
-      <div>
-        <div class="badge">Rreth Nesh</div>
-        <h1>Mëso Programim — platformë për të mësuar kodim, hap pas hapi.</h1>
-      </div>
+  <section class="about-section">
+    <div class="about-header">
+      <h2>Misioni dhe Vizioni</h2>
+      <p>Ne fokusohemi te qartesia, praktika dhe progresi i vazhdueshem.</p>
     </div>
 
-    <p>
-      Ne krijojmë mësime dhe ushtrime praktike në gjuhën shqipe për fillestarë,
-      me qëllim që secili të mund ta fillojë rrugën në programim pa konfuzion.
-    </p>
-
-        <div class="hero-actions">
-          <a class="btn" href="#">Shiko Mësimet</a>
-          <a class="btn ghost" href="#kontakt">Kontakt</a>
-        </div>
-
-        <div class="stats">
-          <div class="stat">
-            <div class="num">HTML</div>
-            <div class="label">Mësimi i parë</div>
-          </div>
-          <div class="stat">
-            <div class="num">Ushtrime</div>
-            <div class="label">Praktikë reale</div>
-          </div>
-          <div class="stat">
-            <div class="num">Shqip</div>
-            <div class="label">Gjuha kryesore</div>
-          </div>
-        </div>
+    <div class="about-body">
+      <div class="about-block">
+        <h3>Misioni</h3>
+        <p>
+          Te bejme mesimin e programimit te kuptueshem per cdo fillestar ne shqip, me mësime te
+          shkurtra, shembuj realiste dhe ushtrime qe e lidhin teorine me praktiken.
+        </p>
+        <p>
+          Qellimi yne eshte qe nxenesit te fitojne siguri hap pas hapi dhe te ndertojne bazat qe u
+          duhen per te vazhduar me projekte reale.
+        </p>
       </div>
 
-      
-    </header>
+      <div class="about-block">
+        <h3>Vizioni</h3>
+        <p>
+          Te krijojme nje komunitet ku mesimi i programimit eshte i aksesueshem, i strukturuar dhe
+          i motivueshem, pavaresisht nivelit fillestar.
+        </p>
+        <p>
+          Duam qe cdo nxenes te kete nje rruge te qarte nga bazat e web-it deri te aftesite praktike
+          qe i sherbejne studimeve, punes ose projekteve personale.
+        </p>
+      </div>
+    </div>
+  </section>
 
-    <!-- SECTIONS -->
-    <main class="content">
+  <section class="steps-section">
+    <h2 class="steps-title">Si funksionon platforma</h2>
 
-      <section class="grid-3">
-        <article class="card">
-          <h3>Misioni</h3>
-          <p>
-            Të bëjmë mësimin e programimit më të lehtë për fillestarët në gjuhën shqipe,
-            përmes praktikës dhe shembujve realë.
-          </p>
-        </article>
+    <div class="steps-grid">
+      <div class="step-item">
+        <div class="step-number">1</div>
+        <h3>Lexoni mësime të shkurtra</h3>
+        <p>Çdo kapitull shpjegon konceptin në mënyrë të thjeshtë dhe të qartë.</p>
+      </div>
 
-        <article class="card">
-          <h3>Vizioni</h3>
-          <p>
-            Një komunitet ku secili mund të mësojë web development dhe të ndërtojë projekte reale
-            për portfolio dhe punësim.
-          </p>
-        </article>
+      <div class="step-item">
+        <div class="step-number">2</div>
+        <h3>Mini quiz pas çdo mësimi</h3>
+        <p>Forco njohuritë menjëherë me pyetje të shkurtra.</p>
+      </div>
 
-        <article class="card">
-          <h3>Si funksionon</h3>
-          <p>
-            Lexon mësimin → sheh shembullin → bën ushtrimin në editor → kalon kontrollet → vazhdon te mësimi tjetër.
-          </p>
-        </article>
-      </section>
+      <div class="step-item">
+        <div class="step-number">3</div>
+        <h3>Ushtrime praktike</h3>
+        <p>Testo kuptimin me detyra reale dhe shembuj praktikë.</p>
+      </div>
 
-      <section class="section">
-        <div class="section-head">
-          <h2>Çfarë do të mësosh këtu</h2>
-          <p>Rruga është e ndërtuar që nga bazat deri te projektet.</p>
-        </div>
+      <div class="step-item">
+        <div class="step-number">4</div>
+        <h3>Progresi ruhet</h3>
+        <p>Hapen nivele të reja ndërsa avancon dhe puna ruhet automatikisht.</p>
+      </div>
+    </div>
+  </section>
 
-        <div class="grid-2">
-          <div class="card">
-            <h3>Web Basics</h3>
-            <p>Si funksionon web-i, browseri, serveri, HTML/CSS/JS.</p>
-          </div>
-          <div class="card">
-            <h3>HTML</h3>
-            <p>Struktura e faqes: headings, paragrafë, lista, forma, linka, imazhe.</p>
-          </div>
-          <div class="card">
-            <h3>CSS</h3>
-            <p>Stilizim modern: layout, responsive, Flexbox/Grid, komponentë.</p>
-          </div>
-          <div class="card">
-            <h3>JavaScript</h3>
-            <p>Interaktivitet: DOM, evente, funksione, array, projekte të vogla.</p>
-          </div>
-        </div>
-      </section>
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>Gati të fillosh rrugëtimin tënd?</h2>
+      <p>Mëso programimin nga zero, në mënyrë praktike dhe të qartë – në shqip.</p>
+      <button class="btn"><a href="../courses.html" class="btn-a">Fillo Tani</a></button>
+    </div>
+  </section>
 
-      <section class="section" id="kontakt">
-        <div class="section-head">
-          <h2>Kontakt</h2>
-          <p>Nëse do sugjerime, bashkëpunim, ose ide për mësime të reja.</p>
-        </div>
-
-        <div class="contact-grid">
-          <div class="card">
-            <h3>Na shkruaj</h3>
-            <p>Jep email-in ose rrjetet sociale (kur t’i kesh gati).</p>
-
-            <div class="contact-item">
-  <div class="left">
-    <img class="contact-ico" src="../imgs/email (2).png" alt="Email">
-    <span class="k">Email</span>
-  </div>
-  <span class="v">info@mesoprogramim.online</span>
-</div>
-
-<div class="contact-item">
-  <div class="left">
-    <img class="contact-ico" src="../imgs/instagram (6).png" alt="Instagram">
-    <span class="k">Instagram</span>
-  </div>
-  <span class="v">@mesoprogramim</span>
-</div>
-
-
-            <div class="note small">
-              (Ndrysho këto me të tuat reale kur t’i vendosësh.)
-            </div>
-          </div>
-
-          <form class="card form" action="#" method="post">
-            <h3>Mesazh i shpejtë</h3>
-
-            <label>
-              Emri
-              <input type="text" name="name" placeholder="Shkruaj emrin..." />
-            </label>
-
-            <label>
-              Email
-              <input type="email" name="email" placeholder="Shkruaj email-in..." />
-            </label>
-
-            <label>
-              Mesazhi
-              <textarea name="message" rows="5" placeholder="Shkruaj mesazhin..."></textarea>
-            </label>
-
-           <button class="btn" type="button" id="sendMailBtn">Dërgo</button>
-
-           
-          </form>
-        </div>
-      </section>
-
-    </main>
-
-    <footer class="footer">
-      <p>© <span id="year"></span> Mëso Programim. Të gjitha të drejtat e rezervuara.</p>
-    </footer>
-
-  </div>
+  <footer class="footer">
+    <div class="footer-content">
+      <img src="../imgs/icon platformes.jpg" alt="Logo" class="footer-logo">
+      <p class="footer-copy">© 2025 Mëso Programimin. Të gjitha të drejtat e rezervuara.</p>
+    </div>
+  </footer>
 
   <script>
-  const sendBtn = document.getElementById("sendMailBtn");
+    const menu = document.getElementById("menuToggle");
+    menu.addEventListener("click", () => {
+        document.body.classList.toggle("openNav");
+    });
+  </script>
 
-  sendBtn.addEventListener("click", () => {
-    const name = document.querySelector('input[name="name"]').value.trim();
-    const email = document.querySelector('input[name="email"]').value.trim();
-    const message = document.querySelector('textarea[name="message"]').value.trim();
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module">
+    import { supabase } from "../js/supabaseClient.js";
 
-    if (!name || !email || !message) {
-      alert("Ju lutem plotësoni të gjitha fushat.");
-      return;
+    const authLink = document.getElementById("authLink");
+    const dashboardLink = document.getElementById("dashboardLink");
+
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (user) {
+      dashboardLink.style.display = "inline-block";
+      authLink.href = "#";
+      authLink.setAttribute("aria-label", "Logout");
+      authLink.title = "Logout";
+      authLink.addEventListener("click", async (e) => {
+        e.preventDefault();
+        await supabase.auth.signOut();
+        window.location.href = "../index.html";
+      });
     }
-
-    const to = "qelsim2005@gmail.com"; // ndrysho këtu
-    const subject = encodeURIComponent(`Mesazh nga Rreth Nesh — ${name}`);
-    const body = encodeURIComponent(
-      `Emri: ${name}\nEmail: ${email}\n\nMesazhi:\n${message}`
-    );
-
-    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
-  });
-</script>
-
-  <script>
-    // Year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Sidebar
-    const sidebar = document.getElementById("sidebar");
-    const overlay = document.getElementById("overlay");
-    const menuBtn = document.getElementById("menuBtn");
-    const closeBtn = document.getElementById("closeBtn");
-
-    function openSidebar(){
-      sidebar.classList.add("open");
-      overlay.classList.add("show");
-      sidebar.setAttribute("aria-hidden", "false");
-    }
-    function closeSidebar(){
-      sidebar.classList.remove("open");
-      overlay.classList.remove("show");
-      sidebar.setAttribute("aria-hidden", "true");
-    }
-
-    menuBtn?.addEventListener("click", (e)=>{ e.preventDefault(); openSidebar(); });
-    closeBtn?.addEventListener("click", closeSidebar);
-    overlay?.addEventListener("click", closeSidebar);
   </script>
 
 </body>
