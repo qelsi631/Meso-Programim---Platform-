@@ -108,6 +108,14 @@ header p {
   margin-top: 20px;
 }
 
+.lesson-content,
+.lesson-content p,
+.lesson-content li {
+  font-size: 17px;
+  line-height: 1.8;
+  font-weight: 600;
+}
+
 .highlight {
   color: #ff7a00;
   font-weight: 700;

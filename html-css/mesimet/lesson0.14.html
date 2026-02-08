@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mësimi 0.14 | Bazat e Semantic HTML</title>
+
+  <link rel="stylesheet" href="welcome.css">
+  <link rel="stylesheet" href="../../sidebar.css">
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Prism -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" defer></script>
+</head>
+<body>
+<div class="container">
+
+  <nav>
+    <a href="#" id="menuBtn"><img src="../../imgs/menu (1).png" alt="Menu"></a>
+
+    <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
+
+    <a href="../../html-css/mesimet/lesson0.13.html" class="goback">Kthehu Pas</a>
+  </nav>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <div class="sidebar-title">
+        <img class="ikonSidebar" src="../../imgs/icon_platformes-removebg-preview.png" alt="Logo">
+        <p>Mëso Programim</p>
+      </div>
+      <button class="sidebar-close" id="closeBtn">✕</button>
+    </div>
+
+    <div class="sidebar-links">
+      <a href="../../dashboard.html">Dashboard</a>
+      <a href="../../roadmap.html">Roadmap</a>
+      <a href="#" class="report-bug-link" data-report="bug">Report a bug</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="welcome">
+      <h1>Bazat e <span class="highlight">Semantic HTML</span></h1>
+      <p>Mëso si të japësh kuptim strukturës së faqes me tag-e semantike.</p>
+    </div>
+
+   <section class="lesson-content">
+
+  <h2>Çfarë është &lt;div&gt; në HTML?</h2>
+  <p>
+    Në HTML, etiketa <strong>&lt;div&gt;</strong> përdoret për të <strong>grupuar elemente së bashku</strong>.
+    Ajo nuk ka kuptim të veçantë për përmbajtjen që mban brenda saj. Mund ta mendosh si një “kuti” që shërben
+    për organizim dhe stilim të pjesëve të faqes.
+  </p>
+  <p>
+    Kur je duke ndërtuar një faqe, shpesh të duhet të mbledhësh disa elemente në një vend, për shembull një titull,
+    një paragraf dhe një buton. Në këto raste, <strong>&lt;div&gt;</strong> të ndihmon t’i mbash së bashku dhe t’i kontrollosh më lehtë me CSS.
+  </p>
+
+  <h3>Shembull i thjeshtë me &lt;div&gt;</h3>
+  <pre class="line-numbers"><code class="language-html">&lt;div&gt;
+  &lt;h1&gt;Faqja ime&lt;/h1&gt;
+  &lt;p&gt;Kjo është një faqe e thjeshtë.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+  <h2>Pse vetëm &lt;div&gt; nuk mjafton?</h2>
+  <p>
+    <strong>&lt;div&gt;</strong> është shumë i dobishëm, por ka një kufizim të madh: është <strong>neutral</strong>.
+    Kjo do të thotë që nga vetë emri i tag-ut, nuk kuptohet nëse ajo pjesë është koka e faqes, menuja, përmbajtja kryesore
+    apo fundi i faqes.
+  </p>
+  <p>
+    Kur faqja bëhet më e madhe, një strukturë me shumë “kuti neutrale” e bën kodin më të vështirë për t’u lexuar dhe për t’u mirëmbajtur.
+    Pikërisht këtu hyn në punë HTML semantik.
+  </p>
+
+  <h2>Çfarë është Semantic HTML?</h2>
+  <p>
+    <strong>Semantic HTML</strong> do të thotë të përdorësh tag-e që <strong>shpjegojnë rolin e përmbajtjes</strong>.
+    Pra, në vend që çdo pjesë të jetë thjesht një “kuti”, ne përdorim emra tag-esh që tregojnë çfarë është ajo pjesë:
+    koka e faqes, navigimi, përmbajtja kryesore, seksione, artikuj, fundi i faqes, etj.
+  </p>
+  <p>
+    Kjo e bën kodin më të qartë për njerëzit, më të kuptueshëm për shfletuesit dhe më të dobishëm për aksesueshmëri dhe SEO.
+  </p>
+
+  <h2>&lt;div&gt; vs Semantic HTML</h2>
+  <p>
+    Dallimi kryesor është kuptimi. <strong>&lt;div&gt;</strong> përdoret kur ke nevojë për grupim/stilim pa e specifikuar rolin e asaj pjese.
+    Ndërsa tag-et semantike përdoren kur një pjesë e faqes ka rol të qartë, si “koka”, “menuja”, “përmbajtja kryesore” ose “fundi”.
+  </p>
+
+  <h3>Shembull jo-semantik (me &lt;div&gt;)</h3>
+  <pre class="line-numbers"><code class="language-html">&lt;div class="header"&gt;
+  &lt;h1&gt;Titulli&lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;div class="nav"&gt;
+  &lt;a href="#"&gt;Kryefaqja&lt;/a&gt;
+  &lt;a href="#"&gt;Rreth nesh&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class="content"&gt;
+  &lt;p&gt;Kjo është përmbajtja kryesore.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="footer"&gt;© 2026&lt;/div&gt;</code></pre>
+
+  <h3>Shembull semantik (me kuptim)</h3>
+  <pre class="line-numbers"><code class="language-html">&lt;header&gt;
+  &lt;h1&gt;Titulli&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;nav&gt;
+  &lt;a href="#"&gt;Kryefaqja&lt;/a&gt;
+  &lt;a href="#"&gt;Rreth nesh&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;main&gt;
+  &lt;p&gt;Kjo është përmbajtja kryesore.&lt;/p&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;© 2026&lt;/footer&gt;</code></pre>
+
+  <h2>Tag-et semantike më të përdorura</h2>
+  <p>
+    Në praktikë, këto tag-e përdoren më shpesh për të ndërtuar strukturën e faqes. Ato e bëjnë kodin më të lexueshëm,
+    sepse vetëm nga emri kupton rolin e tyre.
+  </p>
+
+  <p>
+    <strong>&lt;header&gt;</strong> zakonisht përdoret për pjesën hyrëse të faqes ose të një seksioni.
+    <strong>&lt;nav&gt;</strong> përdoret për linket e navigimit.
+    <strong>&lt;main&gt;</strong> është për përmbajtjen kryesore dhe duhet të jetë vetëm një herë në faqe.
+    <strong>&lt;section&gt;</strong> përdoret kur ke një temë të qartë brenda faqes.
+    <strong>&lt;article&gt;</strong> është për përmbajtje të pavarur që ka kuptim edhe e ndarë (p.sh. postim/lajm).
+    <strong>&lt;aside&gt;</strong> përdoret për përmbajtje ndihmëse/anësore.
+    Ndërsa <strong>&lt;footer&gt;</strong> përdoret për pjesën fundore të faqes ose të një seksioni.
+  </p>
+
+  <h2>Struktura bazë e një faqeje semantike</h2>
+  <p>
+    Ky është një skelet i thjeshtë që tregon si organizohet një faqe me tag-e semantike. Kjo strukturë është bazë shumë e mirë
+    për projekte reale.
+  </p>
+
+  <pre class="line-numbers"><code class="language-html">&lt;header&gt;
+  &lt;h1&gt;Titulli i faqes&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;nav&gt;
+  &lt;a href="#"&gt;Kryefaqja&lt;/a&gt;
+  &lt;a href="#"&gt;Rreth nesh&lt;/a&gt;
+  &lt;a href="#"&gt;Kontakt&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;main&gt;
+  &lt;section&gt;
+    &lt;h2&gt;Seksioni kryesor&lt;/h2&gt;
+    &lt;p&gt;Përmbajtja më e rëndësishme vendoset këtu.&lt;/p&gt;
+  &lt;/section&gt;
+
+  &lt;article&gt;
+    &lt;h3&gt;Artikull / postim&lt;/h3&gt;
+    &lt;p&gt;Kjo përmbajtje ka kuptim edhe vetë.&lt;/p&gt;
+  &lt;/article&gt;
+
+  &lt;aside&gt;
+    &lt;p&gt;Informacion ndihmës ose lidhje të shpejta.&lt;/p&gt;
+  &lt;/aside&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+  &lt;p&gt;© 2026 Mëso Programim&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+
+  <h2>Shënim i rëndësishëm</h2>
+  <p>
+    Ideja kryesore është kjo: <strong>&lt;div&gt;</strong> është i shkëlqyer për grupim dhe stilim,
+    ndërsa HTML semantik përdoret për të dhënë kuptim dhe strukturë të qartë. Sa më mirë ta strukturosh faqen,
+    aq më profesionale dhe më e kuptueshme bëhet.
+  </p>
+
+</section>
+
+
+      <section class="section-card">
+        <div class="section-header">
+          <h2>Shenime te shpejta</h2>
+        </div>
+
+        <ul>
+          <li>Përdor <strong>&lt;main&gt;</strong> vetëm një herë në faqe.</li>
+          <li><strong>&lt;article&gt;</strong> duhet të ketë kuptim edhe vetëm.</li>
+          <li><strong>&lt;section&gt;</strong> përdoret kur ka një temë të qartë.</li>
+          <li><strong>&lt;aside&gt;</strong> është për info ndihmës, jo thelbësor.</li>
+        </ul>
+      </section>
+
+    </section>
+  </header>
+
+  <footer class="lesson-footer">
+    <div class="footer-navigation">
+      <div></div>
+      <a class="btn-next" href="../../html-css/mesimet/lesson0.15.html">Vazhdo</a>
+    </div>
+  </footer>
+
+</div>
+
+<script src="../../js.lessons/sidebar.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".code-copy").forEach((button) => {
+      button.addEventListener("click", function() {
+        const codeCard = this.closest(".code-card");
+        const codeElement = codeCard.querySelector("code");
+        const textToCopy = codeElement.textContent;
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          const originalText = this.textContent;
+          this.textContent = "✅ Copied!";
+          this.style.background = "#34D399";
+          this.style.color = "#000";
+
+          setTimeout(() => {
+            this.textContent = originalText;
+            this.style.background = "";
+            this.style.color = "";
+          }, 2000);
+        });
+      });
+    });
+  });
+</script>
+
+<!-- Supabase CDN (gives window.supabase) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- Protect lesson (redirects to auth if not logged in) -->
+<script type="module" src="../../js/requireAuth.js"></script>
+
+<script type="module">
+  import { initLessonProgress } from "../../js/lessonProgressInit.js";
+  initLessonProgress("html-semantic-basics");
+</script>
+
+<script type="module">
+  import { markLessonCompleted } from "../../js/courseProgressManager.js";
+
+  const COURSE_SLUG = "html-fundamentals";
+  const LESSON_ID = "l27"; // Semantic HTML basics lesson
+
+  const btn = document.querySelector(".btn-next");
+  if (btn) {
+    btn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const nextUrl = btn.getAttribute("href");
+      await markLessonCompleted(COURSE_SLUG, LESSON_ID);
+      window.location.href = nextUrl;
+    });
+  }
+</script>
+
+</body>
+</html>

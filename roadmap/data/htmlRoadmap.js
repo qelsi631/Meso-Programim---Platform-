@@ -8,15 +8,15 @@ export const htmlRoadmap = {
       title: "MODULI 1 — Bazat e HTML",
       items: [
         { id: "l1", title: "Mirë se vini në kursin e HTML & CSS!", type: "mësim", path: "html-css/mesimet/welcome.html" },
-        { id: "l5", title: "Quiz: HTML Bazat", type: "vlerësim", path: "html-css/quiz/quiz.html" },
         { id: "l2", title: "Titujt në HTML", type: "mësim", path: "html-css/mesimet/lesson0.2.html" },
         { id: "l6", title: "Quiz: Html - Titujt (Headings)", type: "vlerësim", path: "html-css/quiz/quiz2.html" },
         { id: "l4", title: "Ushtrimi 1: Titujt & Paragrafët", type: "mësim", path: "html-css/ushtrime/ushtrime0.1.html" },
         { id: "l3", title: "Text Formatting në HTML", type: "mësim", path: "html-css/mesimet/lesson0.03.html" },
         { id: "l7", title: "Ushtrimi 2: Text Formatting", type: "mësim", path: "html-css/ushtrime/ushtrime0.2.html" },
+        { id: "l5", title: "Quiz: HTML Bazat", type: "vlerësim", path: "html-css/quiz/quiz.html" },
         { id: "l8", title: "Tag-et pa mbyllje: <br> dhe <hr>", type: "mësim", path: "html-css/mesimet/lesson0.04.html" },
-        { id: "l10", title: "Ushtrimi 3: Njoftim Eventi me <br> dhe <hr>", type: "mësim", path: "html-css/ushtrime/ushtrime0.3.html" },
         { id: "l9", title: "Quiz: <br> dhe <hr>", type: "vlerësim", path: "html-css/quiz/quiz-br-hr.html" },
+        { id: "l10", title: "Ushtrimi 3: Njoftim Eventi me <br> dhe <hr>", type: "mësim", path: "html-css/ushtrime/ushtrime0.3.html" },
         { id: "l20", title: "Komentet në HTML", type: "mësim", path: "html-css/mesimet/lesson0.05.html" },
         { id: "l11", title: "Ushtrimi 4: Komentet në HTML", type: "mësim", path: "html-css/ushtrime/ushtrime0.4.html" },
         { id: "l21", title: "Imazhet në HTML", type: "mësim", path: "html-css/mesimet/lesson0.06.html" },
@@ -32,7 +32,8 @@ export const htmlRoadmap = {
         { id: "l23", title: "Formularët në HTML", type: "mësim", path: "html-css/mesimet/lesson0.12.html" },
         { id: "l24", title: "Input Types në HTML", type: "mësim", path: "html-css/mesimet/lesson0.13.html" },
         { id: "l25", title: "Quiz: Formularët & Input Types", type: "vlerësim", path: "html-css/quiz/quiz-input-types.html" },
-        { id: "l26", title: "Ushtrimi 7: Formular i thjeshtë", type: "mësim", path: "html-css/ushtrime/ushtrime0.7.html" }
+        { id: "l26", title: "Ushtrimi 7: Formular i thjeshtë", type: "mësim", path: "html-css/ushtrime/ushtrime0.7.html" },
+        { id: "l27", title: "Bazat e Semantic HTML", type: "mësim", path: "html-css/mesimet/lesson0.14.html" }
       ],
     },
   ],
