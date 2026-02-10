@@ -14,12 +14,13 @@
 }
 
 
+
 /* Base */
 body {
   background-color: #313131;
   font-family: "Nunito Sans", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 700;
+  font-weight: 500;
   color: white;
   overflow-x: hidden;
 }
@@ -104,7 +105,7 @@ header span {
 
 header p {
   margin-top: 12px;
-  color: #c0c2ca;
+  color: #e2e6f0;
   line-height: 1.6;
 }
 
@@ -118,8 +119,12 @@ header p {
   max-width: 100%;
 }
 
+.lesson-content span {
+  color: gold;
+}
+
 .highlight {
-  color: orange;
+  color: gold;
 }
 
 .hapsira{
@@ -151,7 +156,7 @@ header p {
 }
 
 .muted{
-  color: #c0c2ca;
+  color: #e2e6f0;
   font-weight: 500;
   max-width: 850px;
 }
@@ -185,7 +190,7 @@ header p {
 }
 
 .anatomy-points span{
-  color: #c0c2ca;
+  color: #e2e6f0;
 }
 
 .anatomy-points b{

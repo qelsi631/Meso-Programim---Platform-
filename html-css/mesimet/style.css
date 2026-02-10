@@ -9,7 +9,7 @@ body {
   background-color: #313131;
   font-family: "Nunito Sans", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 700;
+  font-weight: 500;
   color: white;
   overflow-x: hidden;
   line-height: 1.6;
@@ -99,7 +99,7 @@ header h1 {
 
 header p {
   margin-top: 12px;
-  color: #c0c2ca;
+  color: #e2e6f0;
   line-height: 1.6;
   max-width: 800px;
 }
@@ -114,6 +114,10 @@ header p {
   font-size: 17px;
   line-height: 1.8;
   font-weight: 600;
+}
+
+.lesson-content span {
+  color: gold;
 }
 
 .highlight {
@@ -182,7 +186,7 @@ header p {
 
 .subsection li {
   margin-bottom: 8px;
-  color: #c0c2ca;
+  color: #e2e6f0;
 }
 
 /* Comparison Box */

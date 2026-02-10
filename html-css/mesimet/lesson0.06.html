@@ -52,85 +52,48 @@
   <header>
     <div class="welcome">
       <h1>Imazhet në <span class="highlight">HTML</span></h1>
-      <p>Mëso si të përdorësh tag-un <span class="highlight">&lt;img&gt;</span> për të vendosur foto dhe ikona në faqe.</p>
+      <p>“Një foto vlen sa një mijë fjalë.”</p>
     </div>
 
     <section class="lesson-content">
 
       <section class="section-card">
-        <div class="section-header">
-          <div class="section-icon">🖼️</div>
-          <h2>Çfarë është tag-u &lt;img&gt;?</h2>
-        </div>
+        
+          
+          <p>Imazhet i bëjnë faqet web më tërheqëse, ndihmojnë që ato të renditen më lart në rezultatet e kërkimit dhe rrisin shpërndarjen në rrjetet sociale.
+
+Në këtë mësim do të mësoni si të shtoni imazhe në faqet tuaja web dhe t’i përdorni ato në mënyrë korrekte.</p>
+        
 
         <p class="highlight-gold">
-          <strong>&lt;img&gt;</strong> është një element pa mbyllje (void element) që përdoret për të shfaqur imazhe në faqe.
+             
+          Per te krijuar nje imazh ne HTML na nevojitet tagu <strong>&lt;img&gt;</strong>
         </p>
 
-        <div class="subsection">
-          <h3>Atributet kryesore</h3>
-          <ul>
-            <li><strong>src</strong> – rruga e imazhit</li>
-            <li><strong>alt</strong> – përshkrimi i imazhit (për aksesueshmëri)</li>
-            <li><strong>width / height</strong> – madhësia e imazhit (opsionale)</li>
-          </ul>
+         <p>Imazhet kërkojnë vetëm një tag për t’u shfaqur në faqen tuaj web.</p>
+        <div class="section-header">
+          
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="foto.jpg" alt="Një shembull imazhi"&gt;
+</code></pre>
         </div>
+        <p>Që shfletuesi të shfaqë një imazh, duhet t’i tregoni se ku ndodhet ai. Atributi src përcakton vendndodhjen e imazhit në Internet.</p>
+
+        
       </section>
+
+     
 
       <section class="section-card">
         <div class="section-header">
-          <h2>Shembull me imazh lokal</h2>
+          <h2>Atributet e <span class="highlight">&lt;img&gt;</span></h2>
         </div>
 
-        <p>Përdor një imazh që ndodhet në folderin <span class="highlight">imgs</span> të projektit.</p>
-
-        <div class="mini-preview">
-          <h4>Preview:</h4>
-          <div class="preview-content">
-            <img src="../../imgs/html-5.png" alt="Logo HTML" width="140">
-          </div>
-        </div>
-
-        <div class="code-card">
-          <div class="code-head">
-            <div class="code-left">
-              <span class="dots"><i></i><i></i><i></i></span>
-              <span class="code-lang">HTML</span>
-            </div>
-            <button class="code-copy">Copy</button>
-          </div>
-
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="../../imgs/html-5.png" alt="Logo HTML" width="140"&gt;
-</code></pre>
-        </div>
-      </section>
-
-      <section class="section-card">
-        <div class="section-header">
-          <h2>Shembull me imazh online</h2>
-        </div>
-
-        <p>Mund të përdorësh edhe një URL nga interneti.</p>
-
-        <div class="mini-preview">
-          <h4>Preview:</h4>
-          <div class="preview-content">
-            <img src="https://media.istockphoto.com/id/1453838542/photo/last-light-on-mount-sneffels.jpg?s=612x612&w=0&k=20&c=IBOZYpAjhV5hFEL8yKYmY2ZCyCaGEOrXR5VZI13NMRI=" alt="Imazh online" width="220" height="130">
-          </div>
-        </div>
-
-        <div class="code-card">
-          <div class="code-head">
-            <div class="code-left">
-              <span class="dots"><i></i><i></i><i></i></span>
-              <span class="code-lang">HTML</span>
-            </div>
-            <button class="code-copy">Copy</button>
-          </div>
-
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="https://via.placeholder.com/220x130?text=Imazh" alt="Imazh online" width="220" height="130"&gt;
-</code></pre>
-        </div>
+        <p>Duhet t’i tregosh shfletuesit se ku ta gjejë imazhin. Burimi <span>src="" </span>është vendndodhja në internet ku ruhet imazhi.</p>
+        <p>Atributi <span>alt=""</span> përdoret për të dhënë një përshkrim të imazhit, i cili është i rëndësishëm për aksesueshmëri dhe SEO. <br> Kur një imazh nuk mund të shfaqet në faqe, shfletuesi shfaq tekstin e atributit alt në vend të tij, në mënyrë që përdoruesi të kuptojë se çfarë imazhi duhej të ishte aty.</p>
+        <p>Atributet <span>width=""</span> dhe <span>height=""</span> përcaktojnë madhësinë e imazhit. Sot ato përdoren rrallë direkt në HTML, sepse zakonisht kontrollohen me CSS.</p>
+        <br>
+        <img class="lesson-image" src="/imgs/imazhi ne HTML.png" alt="Një shembull imazhi në HTML">
+       
       </section>
 
       <section class="section-card">
