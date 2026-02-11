@@ -213,7 +213,7 @@ function showContinue() {
     e.preventDefault();
     await markLessonCompleted(COURSE_SLUG, LESSON_ID);
     console.log("✓ Exercise lesson marked as completed");
-    window.location.href = "../../roadmap.html";
+    window.location.href = "../../html-css/mesimet/lesson0.07.html";
   }, { once: true });
 }
 
