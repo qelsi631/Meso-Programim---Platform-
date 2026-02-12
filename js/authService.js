@@ -99,6 +99,7 @@ export async function loginWithGoogle() {
   }
 }
 
+
 /**
  * LISTEN FOR AUTH CHANGES - Auto refresh when needed
  */

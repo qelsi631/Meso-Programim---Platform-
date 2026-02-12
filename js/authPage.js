@@ -68,6 +68,8 @@ function isEmailConfirmed(user) {
 const params = new URLSearchParams(window.location.search);
 const next = params.get("next") || "index.html";
 
+showLoginForm();
+
 // Toggle between login and registration
 document.getElementById("btnSignup").addEventListener("click", showRegisterForm);
 document.getElementById("btnBackToLogin").addEventListener("click", showLoginForm);
@@ -195,3 +197,4 @@ document.getElementById("btnResend").addEventListener("click", async () => {
   if (error) return showMsg(error.message, false);
   showMsg("✅ Emaili i verifikimit u dërgua sërish.");
 });
+

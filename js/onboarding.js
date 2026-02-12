@@ -20,6 +20,10 @@ const progressSteps = document.querySelectorAll(".progress-step");
 let currentUser = null;
 let selectedCourses = [];
 
+function isDefaultUsername(username) {
+  return /^user_[a-f0-9]{8}$/i.test(username || "");
+}
+
 // Initialize
 async function init() {
   try {
@@ -34,18 +38,28 @@ async function init() {
     // Check if profile already completed
     const { data: existingProfile } = await supabase
       .from("profiles")
-      .select("full_name")
+      .select("full_name, username")
       .eq("id", user.id)
       .single();
 
-    if (existingProfile?.full_name) {
+    const profileHasName = Boolean(existingProfile?.full_name?.trim());
+    const profileHasUsername = Boolean(existingProfile?.username?.trim());
+    const profileUsernameDefault = isDefaultUsername(existingProfile?.username);
+
+    if (profileHasName && profileHasUsername && !profileUsernameDefault) {
       // Profile already completed, go to dashboard
       window.location.href = "dashboard.html";
       return;
     }
 
-    // Generate suggested username
-    const suggestedUsername = `user_${user.id.slice(0, 8)}`;
+    // Prefill full name if available
+    const metaName = user.user_metadata?.full_name || user.user_metadata?.name || "";
+    if (metaName) {
+      fullNameInput.value = metaName;
+    }
+
+    // Generate or reuse username
+    const suggestedUsername = profileHasUsername ? existingProfile.username : `user_${user.id.slice(0, 8)}`;
     usernameInput.value = suggestedUsername;
     checkUsernameAvailability(suggestedUsername);
   } catch (error) {
