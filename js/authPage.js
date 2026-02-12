@@ -9,6 +9,7 @@ const msgEl = document.getElementById("msg");
 const loginForm = document.getElementById("loginForm");
 const registerForm = document.getElementById("registerForm");
 const pageTitle = document.getElementById("pageTitle");
+const FUNCTIONS_BASE_URL = "https://jsedsajiygpifbxiquuu.functions.supabase.co";
 
 // Registration form fields
 const fullNameEl = document.getElementById("fullName");
@@ -63,6 +64,40 @@ function showRegisterForm() {
 
 function isEmailConfirmed(user) {
   return Boolean(user?.email_confirmed_at || user?.confirmed_at);
+}
+
+async function sendWelcomeEmailIfNeeded(user) {
+  if (!user?.email) return;
+
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("welcome_email_sent_at")
+    .eq("id", user.id)
+    .single();
+
+  if (profile?.welcome_email_sent_at) return;
+
+  try {
+    await fetch(`${FUNCTIONS_BASE_URL}/welcome-email`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: user.email,
+        user: {
+          email: user.email,
+          user_metadata: user.user_metadata || {}
+        }
+      })
+    });
+  } catch (error) {
+    console.warn("Welcome email failed:", error);
+    return;
+  }
+
+  await supabase
+    .from("profiles")
+    .update({ welcome_email_sent_at: new Date().toISOString() })
+    .eq("id", user.id);
 }
 
 const params = new URLSearchParams(window.location.search);
@@ -156,6 +191,7 @@ document.getElementById("btnLogin").addEventListener("click", async () => {
         await supabase.auth.signOut();
         return showMsg("Kjo llogarije u fshi. Nuk mund të hyni sërish.", false);
       }
+      await sendWelcomeEmailIfNeeded(user);
     }
   } catch (e) {
     console.error("Profile check error:", e);
