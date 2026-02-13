@@ -1,8 +1,12 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type"
+};
+
 type SignupPayload = {
   email?: string;
-  redirect_to?: string;
   skip_confirmation?: boolean;
   user?: {
     id?: string;
@@ -22,8 +26,12 @@ function getString(meta: Record<string, unknown> | undefined, key: string): stri
 }
 
 serve(async (req) => {
+  if (req.method === "OPTIONS") {
+    return new Response("ok", { status: 200, headers: corsHeaders });
+  }
+
   if (req.method !== "POST") {
-    return new Response("Method not allowed", { status: 405 });
+    return new Response("Method not allowed", { status: 405, headers: corsHeaders });
   }
 
   const apiKey = Deno.env.get("RESEND_API_KEY") || "";
@@ -32,19 +40,19 @@ serve(async (req) => {
   const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
 
   if (!apiKey) {
-    return new Response("Missing RESEND_API_KEY", { status: 500 });
+    return new Response("Missing RESEND_API_KEY", { status: 500, headers: corsHeaders });
   }
 
   let payload: SignupPayload;
   try {
     payload = await req.json();
   } catch {
-    return new Response("Invalid JSON", { status: 400 });
+    return new Response("Invalid JSON", { status: 400, headers: corsHeaders });
   }
 
   const email = payload.email || payload.user?.email || payload.record?.email;
   if (!email) {
-    return new Response("Missing email", { status: 400 });
+    return new Response("Missing email", { status: 400, headers: corsHeaders });
   }
 
   const userMeta = payload.user?.user_metadata || payload.record?.raw_user_meta_data;
@@ -57,12 +65,12 @@ serve(async (req) => {
 
   if (needsConfirmation) {
     if (!supabaseUrl || !serviceRoleKey) {
-      return new Response("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY", { status: 500 });
+      return new Response("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY", { status: 500, headers: corsHeaders });
     }
 
     const userId = payload.user?.id;
     if (!userId) {
-      return new Response("Missing user id", { status: 400 });
+      return new Response("Missing user id", { status: 400, headers: corsHeaders });
     }
 
     const linkResponse = await fetch(`${supabaseUrl}/auth/v1/admin/generate_link`, {
@@ -77,21 +85,21 @@ serve(async (req) => {
         email,
         user_id: userId,
         options: {
-          redirect_to: payload.redirect_to || `${supabaseUrl}/auth/v1/verify`
+          redirect_to: "https://mesoprogramim.online/auth-callback.html"
         }
       })
     });
 
     if (!linkResponse.ok) {
       const linkError = await linkResponse.text();
-      return new Response(linkError, { status: 502 });
+      return new Response(linkError, { status: 502, headers: corsHeaders });
     }
 
     const linkData = await linkResponse.json();
     confirmationUrl = linkData?.action_link || linkData?.properties?.action_link || "";
 
     if (!confirmationUrl) {
-      return new Response("Missing confirmation link", { status: 502 });
+      return new Response("Missing confirmation link", { status: 502, headers: corsHeaders });
     }
   }
 
@@ -130,7 +138,7 @@ serve(async (req) => {
 
   if (!resendResponse.ok) {
     const errorText = await resendResponse.text();
-    return new Response(errorText, { status: 502 });
+    return new Response(errorText, { status: 502, headers: corsHeaders });
   }
 
   const userId = payload.user?.id;
@@ -150,6 +158,6 @@ serve(async (req) => {
   const data = await resendResponse.json();
   return new Response(JSON.stringify({ ok: true, data }), {
     status: 200,
-    headers: { "Content-Type": "application/json" }
+    headers: { "Content-Type": "application/json", ...corsHeaders }
   });
 });
