@@ -11,8 +11,14 @@
     .logo img{height:60px;}
     h1{font-size:22px; margin:0 0 14px; text-align:center;}
     label{display:block; font-size:13px; opacity:.9; margin:12px 0 6px}
-    input{width:100%; padding:12px 12px; border-radius:10px; border:1px solid #e0e0e0; background:#ffffff; color:#333;}
+    input{width:100%; padding:12px 12px; border-radius:10px; border:1px solid #e0e0e0; background:#ffffff; color:#333; box-sizing:border-box;}
+    .input-wrap{position:relative}
+    .input-wrap input{padding-left:40px}
+    .input-icon{position:absolute; left:12px; top:50%; transform:translateY(-50%); width:18px; height:18px}
+    .input-icon svg{width:18px; height:18px; fill:#ff6600}
     button{width:100%; padding:12px; border:0; border-radius:10px; cursor:pointer; font-weight:600}
+    .oauth-btn{display:flex; align-items:center; justify-content:center; gap:10px}
+    .oauth-btn svg{width:18px; height:18px}
     .primary{background:#ff6600; color:#fff; margin-top:12px}
     .secondary{background:#f8f9fa; color:#333; margin-top:10px}
     .row{display:flex; gap:10px; margin-top:10px}
@@ -47,7 +53,15 @@
         <button class="secondary" id="btnSignup">Regjistrohuni</button>
       </div>
 
-      <button class="secondary" id="btnGoogle">Vazhdo me Google</button>
+      <button class="secondary oauth-btn" id="btnGoogle">
+        <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+          <path fill="#EA4335" d="M24 9.5c3.54 0 6.73 1.22 9.25 3.6l6.9-6.9C36.42 2.3 30.55 0 24 0 14.6 0 6.4 5.4 2.5 13.2l8.05 6.25C12.4 13 17.8 9.5 24 9.5z"/>
+          <path fill="#4285F4" d="M46.5 24c0-1.64-.15-3.21-.43-4.73H24v9.26h12.66c-.55 3-2.22 5.54-4.74 7.23l7.26 5.63C43.67 37.6 46.5 31.3 46.5 24z"/>
+          <path fill="#FBBC05" d="M10.55 28.45c-.48-1.44-.76-2.98-.76-4.45s.28-3.01.76-4.45L2.5 13.2C.88 16.44 0 20.08 0 24s.88 7.56 2.5 10.8l8.05-6.35z"/>
+          <path fill="#34A853" d="M24 48c6.55 0 12.06-2.16 16.08-5.86l-7.26-5.63c-2.02 1.36-4.6 2.17-8.82 2.17-6.2 0-11.6-3.5-13.45-8.6L2.5 34.8C6.4 42.6 14.6 48 24 48z"/>
+        </svg>
+        <span>Vazhdo me Google</span>
+      </button>
 
       <button class="secondary" id="btnForgotPassword">Keni harruar fjalëkalimin?</button>
 
@@ -61,19 +75,54 @@
     <!-- REGISTRATION FORM -->
     <div id="registerForm" style="display:none;">
       <label>Emri</label>
-      <input id="fullName" type="text" placeholder="Emri juaj" autocomplete="name" required />
+      <div class="input-wrap">
+        <span class="input-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-3.34 0-6 1.67-6 3.75V20h12v-2.25C18 15.67 15.34 14 12 14Z"/>
+          </svg>
+        </span>
+        <input id="fullName" type="text" placeholder="Emri juaj" autocomplete="name" required />
+      </div>
 
       <label>Emri i përdoruesit</label>
-      <input id="username" type="text" placeholder="emriperdoruesit" autocomplete="username" required />
+      <div class="input-wrap">
+        <span class="input-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 20v-2c0-2.21 3.58-4 8-4s8 1.79 8 4v2Zm8-8a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm8.5-1.5h-2v-2h-2v-2h2v-2h2v2h2v2h-2Z"/>
+          </svg>
+        </span>
+        <input id="username" type="text" placeholder="emriperdoruesit" autocomplete="username" required />
+      </div>
 
       <label>Email</label>
-      <input id="regEmail" type="email" placeholder="ju@shembull.com" autocomplete="email" required />
+      <div class="input-wrap">
+        <span class="input-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 6h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Zm0 2 8 5 8-5H4Zm16 10V10l-8 5-8-5v8Z"/>
+          </svg>
+        </span>
+        <input id="regEmail" type="email" placeholder="ju@shembull.com" autocomplete="email" required />
+      </div>
 
       <label>Fjalëkalimi</label>
-      <input id="regPassword" type="password" placeholder="••••••••" minlength="8" autocomplete="new-password" required />
+      <div class="input-wrap">
+        <span class="input-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2H10Z"/>
+          </svg>
+        </span>
+        <input id="regPassword" type="password" placeholder="••••••••" minlength="8" autocomplete="new-password" required />
+      </div>
 
       <label>Konfirmo fjalëkalimin</label>
-      <input id="regPasswordConfirm" type="password" placeholder="••••••••" minlength="8" autocomplete="new-password" required />
+      <div class="input-wrap">
+        <span class="input-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2a5 5 0 0 0-5 5v2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5Zm-3 7V7a3 3 0 0 1 6 0v2Zm7 7-4 4-2-2 1.41-1.41L12 17.17l2.59-2.58Z"/>
+          </svg>
+        </span>
+        <input id="regPasswordConfirm" type="password" placeholder="••••••••" minlength="8" autocomplete="new-password" required />
+      </div>
 
       <div class="row">
         <button class="primary" id="btnCreateAccount">Krijo Llogarinë</button>
