@@ -10,6 +10,8 @@ const loginForm = document.getElementById("loginForm");
 const registerForm = document.getElementById("registerForm");
 const pageTitle = document.getElementById("pageTitle");
 const FUNCTIONS_BASE_URL = "https://jsedsajiygpifbxiquuu.functions.supabase.co";
+const forgotPasswordForm = document.getElementById("forgotPasswordForm");
+const forgotEmailEl = document.getElementById("forgotEmail");
 
 // Registration form fields
 const fullNameEl = document.getElementById("fullName");
@@ -238,6 +240,23 @@ document.getElementById("btnGoogle").addEventListener("click", async () => {
   } catch (error) {
     showMsg(error.message, false);
   }
+});
+
+document.getElementById("btnForgotPassword").addEventListener("click", () => {
+  const isVisible = forgotPasswordForm.style.display === "block";
+  forgotPasswordForm.style.display = isVisible ? "none" : "block";
+});
+
+document.getElementById("btnSendRecovery").addEventListener("click", async () => {
+  const email = forgotEmailEl.value.trim() || emailEl.value.trim();
+  if (!email) return showMsg("Shkruani email-in për rikuperim.", false);
+
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${window.location.origin}/reset-password.html`
+  });
+
+  if (error) return showMsg(error.message, false);
+  showMsg("✅ Linku i rikuperimit u dërgua. Kontrolloni email-in.");
 });
 
 document.getElementById("btnResend").addEventListener("click", async () => {
