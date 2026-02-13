@@ -147,6 +147,29 @@ document.getElementById("btnCreateAccount").addEventListener("click", async () =
   });
   if (error) return showMsg(formatSignupError(error), false);
 
+  // Send confirmation link inside the welcome email
+  if (authData?.user?.id) {
+    try {
+      await fetch(`${FUNCTIONS_BASE_URL}/welcome-email`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          redirect_to: `${window.location.origin}/auth-callback.html`,
+          skip_confirmation: false,
+          user: {
+            id: authData.user.id,
+            email,
+            user_metadata: { full_name: fullName, username }
+          }
+        })
+      });
+    } catch (sendError) {
+      console.warn("Welcome email failed:", sendError);
+      return showMsg("Nuk arritëm të dërgojmë emailin e konfirmimit.", false);
+    }
+  }
+
   // If email confirmation is required, there may be no session yet.
   if (!authData?.session) {
     showMsg("✅ Kontrolloni email-in për të konfirmuar llogarinë.");

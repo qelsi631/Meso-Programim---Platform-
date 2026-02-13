@@ -26,8 +26,13 @@
       return /^user_[a-f0-9]{8}$/i.test(username || "");
     }
 
+    function getProvider(user) {
+      return user?.app_metadata?.provider || user?.identities?.[0]?.provider || "";
+    }
+
     async function sendWelcomeEmailIfNeeded(user) {
       if (!user?.email) return;
+      if (getProvider(user) !== "google") return;
 
       const { data: profile } = await supabase
         .from("profiles")
@@ -43,7 +48,9 @@
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             email: user.email,
+            skip_confirmation: true,
             user: {
+              id: user.id,
               email: user.email,
               user_metadata: user.user_metadata || {}
             }
