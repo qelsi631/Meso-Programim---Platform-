@@ -242,6 +242,14 @@ document.getElementById("btnGoogle").addEventListener("click", async () => {
   }
 });
 
+document.getElementById("btnGoogleSignup").addEventListener("click", async () => {
+  try {
+    await loginWithGoogle();
+  } catch (error) {
+    showMsg(error.message, false);
+  }
+});
+
 document.getElementById("btnForgotPassword").addEventListener("click", () => {
   const isVisible = forgotPasswordForm.style.display === "block";
   forgotPasswordForm.style.display = isVisible ? "none" : "block";
