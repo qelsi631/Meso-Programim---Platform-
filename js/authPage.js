@@ -71,14 +71,6 @@ function isEmailConfirmed(user) {
 async function sendWelcomeEmailIfNeeded(user) {
   if (!user?.email) return;
 
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("welcome_email_sent_at")
-    .eq("id", user.id)
-    .single();
-
-  if (profile?.welcome_email_sent_at) return;
-
   try {
     await fetch(`${FUNCTIONS_BASE_URL}/welcome-email`, {
       method: "POST",
