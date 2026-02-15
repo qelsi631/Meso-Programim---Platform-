@@ -5,8 +5,8 @@ import { enrollUserInCourse, getUserCourses } from "./profileManager.js";
 const availableCourses = [
   {
     slug: "html-fundamentals",
-    title: "HTML",
-    description: "Mëso bazat e HTML, themeli i zhvillimit të faqeve",
+    title: "HTML & CSS",
+    description: "Mëso bazat e HTML dhe CSS, themeli i zhvillimit të faqeve",
     icon: "📄",
     level: "beginner",
     lessons: 15,
@@ -19,7 +19,8 @@ const availableCourses = [
     icon: "⚙️",
     level: "beginner",
     lessons: 20,
-    duration: "6-8 weeks"
+    duration: "6-8 weeks",
+    locked: true
   },
   {
     slug: "java-basics",
@@ -28,7 +29,8 @@ const availableCourses = [
     icon: "☕",
     level: "beginner",
     lessons: 22,
-    duration: "8-10 weeks"
+    duration: "8-10 weeks",
+    locked: true
   }
 ];
 
@@ -71,13 +73,14 @@ async function init() {
 function renderCourses(courses) {
   if (courses.length === 0) {
     coursesGrid.innerHTML = `
-      <div class="loading" style="grid-column: 1/-1;">No courses found</div>
+      <div class="loading" style="grid-column: 1/-1;">Nuk u gjetën kurse</div>
     `;
     return;
   }
 
   coursesGrid.innerHTML = courses.map(course => {
     const isEnrolled = enrolledCourses.includes(course.slug);
+    const isLocked = course.locked === true;
 
     return `
       <div class="course-card" data-course="${course.slug}">
@@ -89,16 +92,17 @@ function renderCourses(courses) {
         <div class="course-card-body">
           <div class="course-info">
             <span class="course-level">${course.level.charAt(0).toUpperCase() + course.level.slice(1)}</span>
-            ${isEnrolled ? '<div class="course-enrolled-badge">✓ Already Enrolled</div>' : ''}
-            <div class="course-lessons">📚 ${course.lessons} lessons</div>
+            ${isEnrolled ? '<div class="course-enrolled-badge">✓ I regjistruar</div>' : ''}
+            ${isLocked ? '<div class="course-enrolled-badge">🔒 I mbyllur</div>' : ''}
+            <div class="course-lessons">📚 ${course.lessons} mësime</div>
             <div class="course-description">${course.description}</div>
           </div>
           <div class="course-card-footer">
-            <button class="btn-view" onclick="viewCourse('${course.slug}')">View</button>
-            <button class="btn-enroll ${isEnrolled ? 'disabled' : ''}" 
+            <button class="btn-view" onclick="viewCourse('${course.slug}')">Shiko</button>
+            <button class="btn-enroll ${isEnrolled || isLocked ? 'disabled' : ''}" 
                     onclick="openEnrollModal('${course.slug}')" 
-                    ${isEnrolled ? 'disabled' : ''}>
-              ${isEnrolled ? '✓ Enrolled' : 'Enroll'}
+                    ${isEnrolled || isLocked ? 'disabled' : ''}>
+              ${isLocked ? 'I mbyllur' : (isEnrolled ? '✓ I regjistruar' : 'Regjistrohu')}
             </button>
           </div>
         </div>
@@ -149,27 +153,35 @@ function openEnrollModal(courseSlug) {
   if (!selectedCourse) return;
 
   const isEnrolled = enrolledCourses.includes(selectedCourse.slug);
+  const isLocked = selectedCourse.locked === true;
 
   document.getElementById("enrollIcon").textContent = selectedCourse.icon;
   document.getElementById("enrollTitle").textContent = selectedCourse.title;
   document.getElementById("enrollDesc").textContent = selectedCourse.description;
   document.getElementById("enrollLevel").textContent = selectedCourse.level.charAt(0).toUpperCase() + selectedCourse.level.slice(1);
-  document.getElementById("enrollLessons").textContent = `${selectedCourse.lessons} lessons`;
+  document.getElementById("enrollLessons").textContent = `${selectedCourse.lessons} mësime`;
   document.getElementById("enrollDuration").textContent = selectedCourse.duration;
 
-  if (isEnrolled) {
+  if (isLocked) {
     document.getElementById("enrollMessage").innerHTML = `
-      <strong style="color: var(--success);">✓ You are already enrolled in this course</strong>
+      <strong style="color: var(--warning);">🔒 Ky kurs është i mbyllur për momentin</strong>
     `;
-    enrollBtn.textContent = "Go to Course";
+    enrollBtn.textContent = "Mbyllur";
+    enrollBtn.disabled = true;
+    enrollBtn.onclick = null;
+  } else if (isEnrolled) {
+    document.getElementById("enrollMessage").innerHTML = `
+      <strong style="color: var(--success);">✓ Ju jeni tashmë i regjistruar në këtë kurs</strong>
+    `;
+    enrollBtn.textContent = "Shko te kursi";
     enrollBtn.onclick = () => {
       window.location.href = "dashboard.html";
     };
   } else {
     document.getElementById("enrollMessage").innerHTML = `
-      Start learning ${selectedCourse.title} today!
+      Filloni të mësoni ${selectedCourse.title} sot!
     `;
-    enrollBtn.textContent = "Enroll Now";
+    enrollBtn.textContent = "Regjistrohu tani";
     enrollBtn.onclick = enrollInCourse;
   }
 
@@ -181,22 +193,22 @@ async function enrollInCourse() {
   if (!selectedCourse) return;
 
   enrollBtn.disabled = true;
-  enrollBtn.textContent = "Enrolling...";
+  enrollBtn.textContent = "Po regjistrohem...";
 
   try {
     const { error } = await enrollUserInCourse(currentUser.id, selectedCourse.slug);
 
     if (error && error.code !== "23505") {
-      alert("Error enrolling in course");
+      alert("Gabim gjatë regjistrimit në kurs");
       return;
     }
 
     enrolledCourses.push(selectedCourse.slug);
 
     document.getElementById("enrollMessage").innerHTML = `
-      <strong style="color: var(--success);">✓ Successfully enrolled!</strong>
+      <strong style="color: var(--success);">✓ U regjistruat me sukses!</strong>
     `;
-    enrollBtn.textContent = "Go to Dashboard";
+    enrollBtn.textContent = "Shko te paneli";
     enrollBtn.onclick = () => {
       window.location.href = "dashboard.html";
     };
@@ -205,7 +217,7 @@ async function enrollInCourse() {
     filterCourses();
   } catch (error) {
     console.error("Error enrolling in course:", error);
-    alert("Error enrolling in course");
+    alert("Gabim gjatë regjistrimit në kurs");
   } finally {
     enrollBtn.disabled = false;
   }

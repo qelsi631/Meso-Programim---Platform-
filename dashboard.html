@@ -5,70 +5,114 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Paneli im | Mëso Programimin</title>
   <link rel="stylesheet" href="css/dashboard.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="dashboard-container">
-    <!-- Header with Profile Section -->
-    <header class="dashboard-header">
-      <div class="header-content">
-        <div class="brand">
-          <img src="/imgs/icon ngjyr bardhe.png" alt="Logo" class="dashboard-logo">
-          <span class="brand-name">Meso Programim</span>
-        </div>
-        <div class="profile-quick">
-          <div class="profile-avatar-small" id="profileAvatarSmall">👤</div>
-          <div class="profile-info-quick">
-            <h2 id="profileNameQuick">Duke ngarkuar...</h2>
-            <p id="profileUsernameQuick" class="text-muted">@përdoruesi</p>
-          </div>
-        </div>
-        <div class="header-actions">
-          <a href="profile.html" class="btn btn-outline">Redakto Profilin</a>
-          <button id="logoutBtn" class="btn btn-danger">Dil</button>
+  <div class="dashboard-shell">
+    <aside class="sidebar">
+      <div class="sidebar-profile">
+        <div class="profile-avatar-small" id="profileAvatarSmall">👤</div>
+        <div>
+          <h2 id="profileNameQuick">Duke ngarkuar...</h2>
+          <p id="profileUsernameQuick">@përdoruesi</p>
         </div>
       </div>
-    </header>
 
-    <!-- Main Content -->
-    <main class="dashboard-main">
-      <!-- Welcome Section -->
-      <section class="welcome-section">
-        <h1 id="welcomeText">Mirë se erdhe!</h1>
-        <p id="welcomeSubtext">Vazhdo udhëtimin tënd të të mësuarit</p>
-      </section>
+      <nav class="sidebar-nav">
+        <a class="active" href="dashboard.html">Home</a>
+        <a href="courses.html">Kurset</a>
+        <a href="roadmap.html">Roadmap</a>
+        <a href="profile.html">Profili</a>
+        <a href="#">Raportet</a>
+        <a href="#">Rregullimet</a>
+      </nav>
 
-      <!-- Stats -->
-      <section class="stats-section">
-        <div class="stat-card">
-          <div class="stat-icon"><i class="bi bi-book"></i></div>
-          <div class="stat-content">
-          <div class="stat-label">Kurse të Regjistruara</div>
-            <div class="stat-value" id="enrolledCount">0</div>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon"><i class="bi bi-check2-circle"></i></div>
-          <div class="stat-content">
-          <div class="stat-label">Mësime të Përfunduara</div>
-            <div class="stat-value" id="lessonsCount">0</div>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon"><i class="bi bi-fire"></i></div>
-          <div class="stat-content">
-          <div class="stat-label">Seri Aktuale</div>
-          <div class="stat-value" id="streakCount">0 ditë</div>
-          </div>
-        </div>
-      </section>
+      <div class="sidebar-footer">
+        <button id="logoutBtn" class="btn btn-ghost">Dil</button>
+      </div>
+    </aside>
 
-      <!-- Courses Grid -->
-      <section class="courses-section">
-        <h2>Kurset e tua</h2>
-        <div class="courses-container" id="coursesContainer">
-          <div class="loading">Duke ngarkuar kurset e tua...</div>
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-title">
+          <span class="brand-pill">Meso Programim</span>
+          <h1 id="welcomeText">Mirë se erdhe!</h1>
+          <p id="welcomeSubtext">Vazhdo udhëtimin tënd të të mësuarit</p>
         </div>
+        <div class="topbar-actions">
+          <a href="profile.html" class="btn btn-outline">Redakto Profilin</a>
+          <button class="icon-btn" aria-label="Search">🔍</button>
+          <button class="icon-btn" aria-label="Notifications">🔔</button>
+        </div>
+      </header>
+
+      <section class="cards-grid">
+        <article class="card" id="cardProgress">
+          <div class="card-head">
+            <h3>Progresi</h3>
+            <span class="card-action">+</span>
+          </div>
+          <div class="card-stat">
+            <div>
+              <p class="card-label">Kurse të regjistruara</p>
+              <p class="card-value" id="enrolledCount">0</p>
+            </div>
+            <div>
+              <p class="card-label">Mësime të përfunduara</p>
+              <p class="card-value" id="lessonsCount">0</p>
+            </div>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="overallProgress" style="width: 0%;"></div>
+          </div>
+          <p class="card-foot">Seri aktuale: <span id="streakCount">0 ditë</span></p>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <h3>Aktiviteti i fundit</h3>
+            <span class="card-action">+</span>
+          </div>
+          <ul class="activity-list">
+            <li>✅ Mësimi i fundit i hapur ruhet automatikisht</li>
+            <li>📌 Kthehu te mësimi i fundit nga dashboard</li>
+            <li>🚀 Vazhdon progresi në pajisje të tjera</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <h3>Raporti i javës</h3>
+            <span class="card-action">+</span>
+          </div>
+          <div class="bars">
+            <div><span style="height: 40%"></span><label>Hën</label></div>
+            <div><span style="height: 65%"></span><label>Mar</label></div>
+            <div><span style="height: 55%"></span><label>Mër</label></div>
+            <div><span style="height: 30%"></span><label>Enj</label></div>
+            <div><span style="height: 70%"></span><label>Pre</label></div>
+          </div>
+        </article>
+
+        <article class="card" id="cardCourses">
+          <div class="card-head">
+            <h3>Kurset e tua</h3>
+            <span class="card-action">+</span>
+          </div>
+          <div class="courses-container" id="coursesContainer">
+            <div class="loading">Duke ngarkuar kurset e tua...</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <h3>Këshilla e ditës</h3>
+            <span class="card-action">+</span>
+          </div>
+          <p class="card-note">Bëj 10 minuta praktikë çdo ditë. Progresi vjen nga konsistenca.</p>
+        </article>
       </section>
     </main>
   </div>
