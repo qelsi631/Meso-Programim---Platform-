@@ -63,9 +63,25 @@ export async function loadProgress(lessonId) {
     const { data: { user } } = await supabase.auth.getUser();
     const KEY = localKeyFor(user?.id || null);
     const store = JSON.parse(localStorage.getItem(KEY) || "{}");
+
+    if (!user) return store[lessonId] ?? null;
+
+    const { data, error } = await supabase
+      .from("progress")
+      .select("percent,status,updated_at")
+      .eq("user_id", user.id)
+      .eq("lesson_id", lessonId)
+      .maybeSingle();
+
+    if (!error && data) {
+      store[lessonId] = data;
+      localStorage.setItem(KEY, JSON.stringify(store));
+      return data;
+    }
+
     return store[lessonId] ?? null;
   } catch (e) {
-    console.warn("Could not read progress from localStorage:", e?.message || e);
+    console.warn("Could not read progress:", e?.message || e);
     return null;
   }
 }

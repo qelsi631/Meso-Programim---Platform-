@@ -83,8 +83,27 @@ export async function getCompletedLessons(courseSlug) {
   try {
     const userId = await getCurrentUserId();
     const key = getProgressKey(courseSlug, userId);
-    
+
     const progressData = JSON.parse(localStorage.getItem(key) || "{}");
+
+    if (!userId) return progressData;
+
+    const { data, error } = await supabase
+      .from("course_progress")
+      .select("lesson_id, completed_at")
+      .eq("user_id", userId)
+      .eq("course_slug", courseSlug);
+
+    if (!error && data) {
+      data.forEach((row) => {
+        progressData[row.lesson_id] = {
+          completed: true,
+          completedAt: row.completed_at
+        };
+      });
+      localStorage.setItem(key, JSON.stringify(progressData));
+    }
+
     return progressData;
   } catch (e) {
     console.warn("Error getting completed lessons:", e);

@@ -186,9 +186,9 @@ document.getElementById("btnCreateAccount").addEventListener("click", async () =
     }
   }
 
-  showMsg("✅ Llogarija u krijua! Po ju përgatisim...");
+  showMsg("✅ Llogarija u krijua! Po ju ridrejtojmë...");
   setTimeout(() => {
-    window.location.href = "onboarding.html";
+    window.location.href = "dashboard.html";
   }, 1000);
 });
 
