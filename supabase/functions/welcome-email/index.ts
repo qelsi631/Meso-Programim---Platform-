@@ -8,6 +8,14 @@ const corsHeaders = {
 type SignupPayload = {
   email?: string;
   skip_confirmation?: boolean;
+  email_data?: {
+    token?: string;
+    token_hash?: string;
+    token_hash_new?: string;
+    redirect_to?: string;
+    email_action_type?: string;
+    site_url?: string;
+  };
   user?: {
     id?: string;
     email?: string;
@@ -60,10 +68,19 @@ serve(async (req) => {
   const firstName = name ? name.split(" ")[0] : "";
   const greetingName = firstName ? `, ${firstName}` : "";
 
-  const needsConfirmation = !payload.skip_confirmation;
+  const actionType = payload.email_data?.email_action_type || "";
+  const redirectTo = payload.email_data?.redirect_to || "https://mesoprogramim.online/auth-callback.html";
+  const hookTokenHash = payload.email_data?.token_hash || payload.email_data?.token_hash_new || "";
+
   let confirmationUrl = "";
 
-  if (needsConfirmation) {
+  if (supabaseUrl && actionType && hookTokenHash) {
+    confirmationUrl = `${supabaseUrl}/auth/v1/verify?token_hash=${encodeURIComponent(hookTokenHash)}&type=${encodeURIComponent(actionType)}&redirect_to=${encodeURIComponent(redirectTo)}`;
+  }
+
+  const needsGeneratedLink = !payload.skip_confirmation && !confirmationUrl;
+
+  if (needsGeneratedLink) {
     if (!supabaseUrl || !serviceRoleKey) {
       return new Response("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY", { status: 500, headers: corsHeaders });
     }
@@ -103,18 +120,29 @@ serve(async (req) => {
     }
   }
 
-  const subject = "Konfirmoni llogarinë tuaj në Mëso Programim";
+  const subject = actionType === "magiclink"
+    ? "Lidhja juaj e hyrjes në Mëso Programim"
+    : actionType === "recovery"
+      ? "Rivendos fjalëkalimin në Mëso Programim"
+      : "Konfirmoni llogarinë tuaj në Mëso Programim";
+
+  const introLine = actionType === "magiclink"
+    ? "Për të hyrë në llogarinë tuaj, përdorni lidhjen më poshtë."
+    : actionType === "recovery"
+      ? "Për të rivendosur fjalëkalimin, përdorni lidhjen më poshtë."
+      : "Për të aktivizuar llogarinë tuaj, ju lutem konfirmoni email-in.";
+
   const confirmLine = confirmationUrl
     ? `\nJu lutem konfirmoni llogarinë tuaj këtu: ${confirmationUrl}\n`
     : "";
-  const text = `Mirë se vini${greetingName}!\n\nPër të aktivizuar llogarinë tuaj, ju lutem konfirmoni email-in.${confirmLine}\nPasi të konfirmoni, mund të hyni në platformë këtu: https://mesoprogramim.online/dashboard.html\n\nNëse keni pyetje, na shkruani te support@mesoprogramim.online.\n`;
+  const text = `Mirë se vini${greetingName}!\n\n${introLine}${confirmLine}\nPas përfundimit, mund të vazhdoni këtu: https://mesoprogramim.online/dashboard.html\n\nNëse keni pyetje, na shkruani te support@mesoprogramim.online.\n`;
   const html = `
     <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111;">
-      <h2 style="margin: 0 0 12px;">Konfirmoni llogarinë tuaj${greetingName}!</h2>
-      <p>Për të aktivizuar llogarinë, ju lutem konfirmoni email-in tuaj.</p>
+      <h2 style="margin: 0 0 12px;">Mirë se vini${greetingName}!</h2>
+      <p>${introLine}</p>
       ${confirmationUrl ? `<p><strong>Konfirmo llogarinë:</strong><br><a href="${confirmationUrl}">Konfirmo email-in</a></p>` : ""}
       <p>
-        Pasi të konfirmoni, mund të hyni këtu:
+        Pas përfundimit, mund të vazhdoni këtu:
         <a href="https://mesoprogramim.online/dashboard.html">Dashboard</a>
       </p>
       <p>Nëse keni pyetje, na shkruani te support@mesoprogramim.online.</p>

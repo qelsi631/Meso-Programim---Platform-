@@ -72,7 +72,7 @@ async function sendWelcomeEmailIfNeeded(user) {
   if (!user?.email) return;
 
   try {
-    await fetch(`${FUNCTIONS_BASE_URL}/welcome-email`, {
+    const response = await fetch(`${FUNCTIONS_BASE_URL}/welcome-email`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -83,6 +83,11 @@ async function sendWelcomeEmailIfNeeded(user) {
         }
       })
     });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`welcome-email failed (${response.status}): ${errorText}`);
+    }
   } catch (error) {
     console.warn("Welcome email failed:", error);
     return;
