@@ -120,17 +120,23 @@ serve(async (req) => {
     }
   }
 
-  const subject = actionType === "magiclink"
-    ? "Lidhja juaj e hyrjes në Mëso Programim"
-    : actionType === "recovery"
-      ? "Rivendos fjalëkalimin në Mëso Programim"
-      : "Konfirmoni llogarinë tuaj në Mëso Programim";
+  const isWelcomeOnly = payload.skip_confirmation === true && !actionType;
 
-  const introLine = actionType === "magiclink"
-    ? "Për të hyrë në llogarinë tuaj, përdorni lidhjen më poshtë."
-    : actionType === "recovery"
-      ? "Për të rivendosur fjalëkalimin, përdorni lidhjen më poshtë."
-      : "Për të aktivizuar llogarinë tuaj, ju lutem konfirmoni email-in.";
+  const subject = isWelcomeOnly
+    ? "Mirësevjen në Mëso Programim"
+    : actionType === "magiclink"
+      ? "Lidhja juaj e hyrjes në Mëso Programim"
+      : actionType === "recovery"
+        ? "Rivendos fjalëkalimin në Mëso Programim"
+        : "Konfirmoni llogarinë tuaj në Mëso Programim";
+
+  const introLine = isWelcomeOnly
+    ? "Mirësevjen! Jemi shumë të lumtur që u ktheve në platformë."
+    : actionType === "magiclink"
+      ? "Për të hyrë në llogarinë tuaj, përdorni lidhjen më poshtë."
+      : actionType === "recovery"
+        ? "Për të rivendosur fjalëkalimin, përdorni lidhjen më poshtë."
+        : "Për të aktivizuar llogarinë tuaj, ju lutem konfirmoni email-in.";
 
   const confirmLine = confirmationUrl
     ? `\nJu lutem konfirmoni llogarinë tuaj këtu: ${confirmationUrl}\n`

@@ -77,7 +77,9 @@ async function sendWelcomeEmailIfNeeded(user) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email: user.email,
+        skip_confirmation: true,
         user: {
+          id: user.id,
           email: user.email,
           user_metadata: user.user_metadata || {}
         }
