@@ -2,10 +2,12 @@ import { supabase } from "./supabaseClient.js";
 import { getCurrentUserProfile, getUserCourses, createProfile } from "./profileManager.js";
 import { getCourseProgress, getCompletedCount, getCompletedLessons } from "./courseProgressManager.js";
 import { htmlRoadmap } from "../roadmap/data/htmlRoadmap.js";
+import { cssRoadmap } from "../roadmap/data/cssRoadmap.js";
 
 // Map course slugs to their roadmap data
 const courseRoadmaps = {
-  "html-fundamentals": htmlRoadmap
+  "html-fundamentals": htmlRoadmap,
+  "css-styling": cssRoadmap
   // Add other roadmaps here as they are created
 };
 
@@ -26,7 +28,7 @@ function getAllLessonsFromRoadmap(courseSlug) {
 // Course data mapping (shared with courses page)
 const courseData = {
   "html-fundamentals": {
-    title: "HTML Fundamentals",
+    title: "HTML & CSS",
     description: "Learn the basics of HTML, the foundation of web development",
     icon: "📄",
     slug: "html-fundamentals",
@@ -35,11 +37,12 @@ const courseData = {
   },
   "css-styling": {
     title: "CSS Styling",
-    description: "Master CSS to create beautiful and responsive web designs",
+    description: "Mëso CSS për të stilizuar faqet dhe ndërtuar UI moderne",
     icon: "🎨",
     slug: "css-styling",
     roadmap: "roadmap.html?course=css-styling",
-    totalLessons: 10
+    lessonPath: "html-css/css-mesimet/welcome-css.html",
+    totalLessons: 3
   },
   "javascript-basics": {
     title: "JavaScript Basics",

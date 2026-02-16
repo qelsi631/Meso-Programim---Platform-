@@ -35,5 +35,14 @@ export const htmlRoadmap = {
         { id: "l27", title: "Bazat e Semantic HTML", type: "mësim", path: "html-css/mesimet/lesson0.14.html" }
       ],
     },
+    {
+      id: "m2",
+      title: "MODULI 2 — Bazat e CSS",
+      items: [
+        { id: "c1", title: "Mirë se vini në kursin CSS", type: "mësim", path: "html-css/css-mesimet/welcome-css.html" },
+        { id: "c2", title: "Selektorët bazë në CSS", type: "mësim", path: "html-css/css-mesimet/lesson1-selectors.html" },
+        { id: "c3", title: "Ngjyrat dhe sfondi në CSS", type: "mësim", path: "html-css/css-mesimet/lesson2-colors.html" }
+      ]
+    }
   ],
 };

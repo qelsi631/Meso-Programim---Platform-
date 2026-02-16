@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS | Mirë se vini</title>
+
+  <link rel="stylesheet" href="../mesimet/welcome.css">
+  <link rel="stylesheet" href="../../sidebar.css">
+  <link rel="stylesheet" href="../mesimet/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <nav>
+    <a href="#" id="menuBtn"><img src="../../imgs/menu (1).png" alt="Menu"></a>
+    <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
+    <a href="../../dashboard.html" class="goback">Kthehu Pas</a>
+  </nav>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <div class="sidebar-title">
+        <img class="ikonSidebar" src="../../imgs/icon_platformes-removebg-preview.png" alt="Logo">
+        <p>Mëso Programim</p>
+      </div>
+      <button class="sidebar-close" id="closeBtn">✕</button>
+    </div>
+    <div class="sidebar-links">
+      <a href="../../dashboard.html">Dashboard</a>
+      <a href="../../roadmap.html?course=css-styling">Roadmap</a>
+      <a href="#" class="report-bug-link" data-report="bug">Report a bug</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="welcome">
+      <p style="color: orange">✨ Kursi i CSS</p>
+      <h1>Mirë se vini në <span>CSS Styling</span></h1>
+      <p style="color:#b0b6c8;">Në këtë kurs do të mësoni si të stilizoni faqet HTML me ngjyra, spacing, layout dhe tipografi.</p>
+    </div>
+
+    <section class="lesson-content">
+      <section class="section-card">
+        <div class="section-header"><h2>Çfarë është CSS?</h2></div>
+        <p><strong>CSS</strong> (Cascading Style Sheets) është gjuha që kontrollon pamjen e faqeve web: ngjyrat, madhësitë, distancat dhe pozicionimin e elementeve.</p>
+        <p>Nëse HTML është struktura, CSS është dizajni.</p>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header"><h2>Si shtohet CSS?</h2></div>
+        <p>Mënyra më e zakonshme është me file të jashtëm:</p>
+        <pre class="code-pre"><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
+        <p>Në mësimin tjetër do të fillojmë me selektorët bazë.</p>
+      </section>
+    </section>
+  </header>
+
+  <footer class="lesson-footer">
+    <div class="footer-navigation">
+      <div></div>
+      <a class="btn-next" href="lesson1-selectors.html">Vazhdo</a>
+    </div>
+  </footer>
+</div>
+
+<script src="../../js.lessons/sidebar.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script type="module" src="../../js/requireAuth.js"></script>
+
+<script type="module">
+  import { initLessonProgress } from "../../js/lessonProgressInit.js";
+  initLessonProgress("css-welcome");
+</script>
+
+<script type="module">
+  import { markLessonCompleted } from "../../js/courseProgressManager.js";
+
+  const COURSE_SLUG = "html-fundamentals";
+  const LESSON_ID = "c1";
+
+  const btn = document.querySelector(".btn-next");
+  if (btn) {
+    btn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const nextUrl = btn.getAttribute("href");
+      await markLessonCompleted(COURSE_SLUG, LESSON_ID);
+      window.location.href = nextUrl;
+    });
+  }
+</script>
+</body>
+</html>

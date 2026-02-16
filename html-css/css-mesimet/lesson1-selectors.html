@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS | Selektorët bazë</title>
+
+  <link rel="stylesheet" href="../mesimet/welcome.css">
+  <link rel="stylesheet" href="../../sidebar.css">
+  <link rel="stylesheet" href="../mesimet/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <nav>
+    <a href="#" id="menuBtn"><img src="../../imgs/menu (1).png" alt="Menu"></a>
+    <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
+    <a href="welcome-css.html" class="goback">Kthehu Pas</a>
+  </nav>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <div class="sidebar-title">
+        <img class="ikonSidebar" src="../../imgs/icon_platformes-removebg-preview.png" alt="Logo">
+        <p>Mëso Programim</p>
+      </div>
+      <button class="sidebar-close" id="closeBtn">✕</button>
+    </div>
+    <div class="sidebar-links">
+      <a href="../../dashboard.html">Dashboard</a>
+      <a href="../../roadmap.html?course=css-styling">Roadmap</a>
+      <a href="#" class="report-bug-link" data-report="bug">Report a bug</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="welcome">
+      <p style="color: orange">Mësimi 1</p>
+      <h1>Selektorët bazë në <span>CSS</span></h1>
+    </div>
+
+    <section class="lesson-content">
+      <section class="section-card">
+        <div class="section-header"><h2>Çfarë është selektori?</h2></div>
+        <p>Selektori tregon cilin element HTML do të stilizojmë.</p>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header"><h2>Shembuj kryesorë</h2></div>
+        <pre class="code-pre"><code>p {
+  color: blue;
+}
+
+#titulli {
+  font-size: 32px;
+}
+
+.karta {
+  background: #111;
+  color: #fff;
+}</code></pre>
+        <ul>
+          <li><strong>p</strong> = selektor tagu</li>
+          <li><strong>#id</strong> = selektor me id</li>
+          <li><strong>.class</strong> = selektor me class</li>
+        </ul>
+      </section>
+
+      <section class="section-card">
+        <p>Në mësimin tjetër do të punojmë me ngjyrat dhe sfondin.</p>
+      </section>
+    </section>
+  </header>
+
+  <footer class="lesson-footer">
+    <div class="footer-navigation">
+      <a class="btn-next" href="welcome-css.html" style="visibility:hidden;">Pas</a>
+      <a class="btn-next" href="lesson2-colors.html">Vazhdo</a>
+    </div>
+  </footer>
+</div>
+
+<script src="../../js.lessons/sidebar.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script type="module" src="../../js/requireAuth.js"></script>
+
+<script type="module">
+  import { initLessonProgress } from "../../js/lessonProgressInit.js";
+  initLessonProgress("css-selectors-1");
+</script>
+
+<script type="module">
+  import { markLessonCompleted } from "../../js/courseProgressManager.js";
+
+  const COURSE_SLUG = "html-fundamentals";
+  const LESSON_ID = "c2";
+
+  const btn = document.querySelector(".footer-navigation .btn-next:last-child");
+  if (btn) {
+    btn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const nextUrl = btn.getAttribute("href");
+      await markLessonCompleted(COURSE_SLUG, LESSON_ID);
+      window.location.href = nextUrl;
+    });
+  }
+</script>
+</body>
+</html>
