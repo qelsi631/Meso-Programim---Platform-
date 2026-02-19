@@ -62,9 +62,10 @@
           <div class="section-icon">🔗</div>
           <h2>Çfarë është tag-u &lt;a&gt;?</h2>
         </div>
+        <p>Linket gjenden pothuajse në të gjitha faqet web. Linket u lejojnë përdoruesve të klikojnë dhe të kalojnë nga një faqe në tjetrën.</p>
 
         <p class="highlight-gold">
-          <strong>&lt;a&gt;</strong> (anchor) përdoret për të krijuar linke. Atributi më i rëndësishëm është <strong>href</strong>, që tregon ku do të shkojë linku.
+          Tagu <strong>&lt;a&gt;</strong> (anchor) përdoret për të krijuar linke. Atributi më i rëndësishëm është <strong>href</strong>, që tregon ku do të shkojë linku.
         </p>
 
         <div class="subsection">
@@ -98,6 +99,14 @@
           <pre class="code-pre line-numbers"><code class="language-html">&lt;a href="https://linku.com"&gt;Vizito Linku.com&lt;/a&gt;
 </code></pre>
         </div>
+        <br>
+
+        <p class="highlight-gold">Shënim: Një link nuk duhet patjetër të jetë tekst. Një link mund të jetë një imazh ose çdo element tjetër HTML!</p>
+        <p>Çdo element bëhet link thjesht duke e futur brenda tagut <strong>&lt;a&gt;</strong> me atributin <strong>href</strong>.</p>
+         
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;a href="https://linku.com"&gt;Vizito Linku.com&lt;/a&gt;
+</code></pre>
       </section>
 
       <section class="section-card">
@@ -116,25 +125,14 @@
         
       </section>
 
+      
+
       <section class="section-card">
-        <div class="section-header">
-          <h2>Link brenda së njëjtës faqe</h2>
-        </div>
+        
 
-        <p>Mund të krijosh navigim të brendshëm me <span class="highlight">#id</span>.</p>
-
-        <div class="mini-preview">
-          <h4>Preview:</h4>
-          <div class="preview-content">
-            <a href="#seksioni1">Shko te Seksioni 1</a> | 
-            <a href="#seksioni2">Shko te Seksioni 2</a>
-            <div style="margin-top: 10px;">
-              <strong id="seksioni1">Seksioni 1</strong><br>
-              <strong id="seksioni2">Seksioni 2</strong>
-            </div>
-          </div>
-        </div>
-
+        
+        <p class="highlight-gold">Shënim: Një link nuk duhet patjetër të jetë tekst. Një link mund të jetë një imazh ose çdo element tjetër HTML!</p>
+        <p>Çdo element bëhet link thjesht duke e futur brenda tagut <strong>&lt;a&gt;</strong> me atributin <strong>href</strong>.</p>
         <div class="code-card">
           <div class="code-head">
             <div class="code-left">
@@ -144,48 +142,15 @@
             <button class="code-copy">Copy</button>
           </div>
 
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;a href="#seksioni1"&gt;Shko te Seksioni 1&lt;/a&gt;
-&lt;a href="#seksioni2"&gt;Shko te Seksioni 2&lt;/a&gt;
-
-&lt;h3 id="seksioni1"&gt;Seksioni 1&lt;/h3&gt;
-&lt;h3 id="seksioni2"&gt;Seksioni 2&lt;/h3&gt;
+         <pre class="code-pre line-numbers"><code class="language-html">&lt;a href="https://linku.com"&gt;
+  &lt;img src="https://via.placeholder.com/150" alt="Kliko për të vizituar Linku.com"&gt;
+&lt;/a&gt;
 </code></pre>
+
         </div>
       </section>
 
-      <section class="section-card">
-        <div class="section-header">
-          <h2>Linke speciale (mailto / tel)</h2>
-        </div>
-
-        <p>Linket mund të hapin aplikacionin e email-it ose telefonin.</p>
-
-        <div class="code-card">
-          <div class="code-head">
-            <div class="code-left">
-              <span class="dots"><i></i><i></i><i></i></span>
-              <span class="code-lang">HTML</span>
-            </div>
-            <button class="code-copy">Copy</button>
-          </div>
-
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;a href="mailto:info@example.com"&gt;Na shkruaj&lt;/a&gt;
-&lt;a href="tel:+38344111222"&gt;Na telefono&lt;/a&gt;
-</code></pre>
-        </div>
-      </section>
-
-      <section class="section-card">
-        <div class="section-header">
-          <h2>Praktika të mira</h2>
-        </div>
-
-        <ul>
-          <li>Përdor tekst të qartë për linkun (jo vetëm “kliko këtu”)</li>
-          <li>Kur përdor <span class="highlight">target="_blank"</span>, shto <strong>rel="noopener"</strong></li>
-          <li>Kontrollo që linket relative të jenë të sakta</li>
-        </ul>
-      </section>
+      
 
       <section class="section-card">
         <p>Në mësimin tjetër do të mësojmë si të shtojmë audio dhe video në HTML.</p>
