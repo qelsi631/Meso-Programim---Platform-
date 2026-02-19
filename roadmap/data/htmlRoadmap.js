@@ -32,7 +32,8 @@ export const htmlRoadmap = {
         { id: "l24", title: "Input Types në HTML", type: "mësim", path: "html-css/mesimet/lesson0.13.html" },
         { id: "l25", title: "Quiz: Formularët & Input Types", type: "vlerësim", path: "html-css/quiz/quiz-input-types.html" },
         { id: "l26", title: "Ushtrimi 7: Formular i thjeshtë", type: "mësim", path: "html-css/ushtrime/ushtrime0.7.html" },
-        { id: "l27", title: "Bazat e Semantic HTML", type: "mësim", path: "html-css/mesimet/lesson0.14.html" }
+        { id: "l27", title: "Bazat e Semantic HTML", type: "mësim", path: "html-css/mesimet/lesson0.14.html" },
+        { id: "l28", title: "Page Layout në HTML", type: "mësim", path: "html-css/mesimet/lesson0.15.html" }
       ],
     },
     {

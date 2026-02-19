@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mësimi 0.15 | Page Layout në HTML</title>
+
+  <link rel="stylesheet" href="welcome.css">
+  <link rel="stylesheet" href="../../sidebar.css">
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" defer></script>
+</head>
+<body>
+<div class="container">
+
+  <nav>
+    <a href="#" id="menuBtn"><img src="../../imgs/menu (1).png" alt="Menu"></a>
+
+    <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
+
+    <a href="../../html-css/mesimet/lesson0.14.html" class="goback">Kthehu Pas</a>
+  </nav>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <div class="sidebar-title">
+        <img class="ikonSidebar" src="../../imgs/icon_platformes-removebg-preview.png" alt="Logo">
+        <p>Mëso Programim</p>
+      </div>
+      <button class="sidebar-close" id="closeBtn">✕</button>
+    </div>
+
+    <div class="sidebar-links">
+      <a href="../../dashboard.html">Dashboard</a>
+      <a href="../../roadmap.html">Roadmap</a>
+      <a href="#" class="report-bug-link" data-report="bug">Report a bug</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="welcome">
+      <h1><span class="highlight">Page Layout</span> në HTML</h1>
+      <p>Në këtë mësim do të mësosh si të organizosh faqen në blloqe të qarta: header, nav, main, aside dhe footer.</p>
+    </div>
+
+    <section class="lesson-content">
+
+      <section class="section-card">
+        <div class="section-header">
+          <div class="section-icon">🧠</div>
+          <h2>Para layout-it: &lt;head&gt; dhe &lt;body&gt;</h2>
+        </div>
+
+        <p class="highlight-gold">
+          Çdo faqe HTML ndahet në dy pjesë kryesore: <strong>&lt;head&gt;</strong> dhe <strong>&lt;body&gt;</strong>.
+        </p>
+
+        <ul>
+          <li><strong>&lt;head&gt;</strong> përmban informacion për shfletuesin (title, meta, css, fonte).</li>
+          <li><strong>&lt;body&gt;</strong> përmban gjithçka që përdoruesi sheh në ekran (tituj, paragrafë, menu, imazhe).</li>
+        </ul>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="sq"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Faqja ime&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Pershendetje!&lt;/h1&gt;
+  &lt;p&gt;Kjo eshte permbajtja qe shihet ne faqe.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <div class="section-icon">🧩</div>
+          <h2>Çfarë është Page Layout?</h2>
+        </div>
+
+        <p class="highlight-gold">
+          <strong>Page Layout</strong> është mënyra si e ndan faqen në pjesë logjike që lexohen dhe mirëmbahen më lehtë.
+        </p>
+
+        <p>
+          Në vend që të shkruash gjithçka në një vend, e ndan faqen në zona: krye (header), menu (nav), përmbajtje kryesore (main),
+          pjesë anësore (aside) dhe fund (footer).
+        </p>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <h2>Blloqet bazë të layout-it</h2>
+        </div>
+
+        <ul>
+          <li><strong>&lt;header&gt;</strong> – pjesa e sipërme e faqes (logo, titull).</li>
+          <li><strong>&lt;nav&gt;</strong> – linket e navigimit.</li>
+          <li><strong>&lt;main&gt;</strong> – përmbajtja kryesore e faqes.</li>
+          <li><strong>&lt;aside&gt;</strong> – info ndihmëse/anësore.</li>
+          <li><strong>&lt;footer&gt;</strong> – pjesa e fundit (copyright, kontakt).</li>
+        </ul>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <h2>Shembull i thjeshtë i një Page Layout</h2>
+        </div>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+          <pre class="code-pre line-numbers"><code class="language-html">&lt;header&gt;
+  &lt;h1&gt;Mëso Programimin&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;nav&gt;
+  &lt;a href="#"&gt;Ballina&lt;/a&gt;
+  &lt;a href="#"&gt;Mësimet&lt;/a&gt;
+  &lt;a href="#"&gt;Kontakt&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;main&gt;
+  &lt;section&gt;
+    &lt;h2&gt;Përmbajtja kryesore&lt;/h2&gt;
+    &lt;p&gt;Këtu vendoset pjesa më e rëndësishme e faqes.&lt;/p&gt;
+  &lt;/section&gt;
+
+  &lt;aside&gt;
+    &lt;p&gt;Lidhje të shpejta ose informacion shtesë.&lt;/p&gt;
+  &lt;/aside&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+  &lt;p&gt;© 2026 Mëso Programimin&lt;/p&gt;
+&lt;/footer&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <h2>Këshilla për fillestarë</h2>
+        </div>
+
+        <ul>
+          <li>Fillo gjithmonë me strukturën, pastaj shto stilin me CSS.</li>
+          <li>Përdor <strong>&lt;main&gt;</strong> vetëm një herë në një faqe.</li>
+          <li>Mos përdor shumë <strong>&lt;div&gt;</strong> kur ekziston tag semantik i duhur.</li>
+          <li>Mbaj emrat dhe seksionet e qarta për ta lexuar kodin më lehtë.</li>
+        </ul>
+      </section>
+
+      <section class="section-card">
+        <p>Shumë mirë! Tani ke bazën e duhur për të organizuar çdo faqe HTML në mënyrë profesionale.</p>
+      </section>
+
+    </section>
+  </header>
+
+  <footer class="lesson-footer">
+    <div class="footer-navigation">
+      <div></div>
+      <a class="btn-next" href="../../html-css/css-mesimet/welcome-css.html">Vazhdo</a>
+    </div>
+  </footer>
+
+</div>
+
+<script src="../../js.lessons/sidebar.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".code-copy").forEach((button) => {
+      button.addEventListener("click", function() {
+        const codeCard = this.closest(".code-card");
+        const codeElement = codeCard.querySelector("code");
+        const textToCopy = codeElement.textContent;
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          const originalText = this.textContent;
+          this.textContent = "✅ Copied!";
+          this.style.background = "#34D399";
+          this.style.color = "#000";
+
+          setTimeout(() => {
+            this.textContent = originalText;
+            this.style.background = "";
+            this.style.color = "";
+          }, 2000);
+        });
+      });
+    });
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script type="module" src="../../js/requireAuth.js"></script>
+
+<script type="module">
+  import { initLessonProgress } from "../../js/lessonProgressInit.js";
+  initLessonProgress("html-page-layout-basics");
+</script>
+
+<script type="module">
+  import { markLessonCompleted } from "../../js/courseProgressManager.js";
+
+  const COURSE_SLUG = "html-fundamentals";
+  const LESSON_ID = "l28";
+
+  const btn = document.querySelector(".btn-next");
+  if (btn) {
+    btn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const nextUrl = btn.getAttribute("href");
+      await markLessonCompleted(COURSE_SLUG, LESSON_ID);
+      window.location.href = nextUrl;
+    });
+  }
+</script>
+
+</body>
+</html>
