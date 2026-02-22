@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz — CSS Properties | Mëso Programimin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="quiz.css" />
+</head>
+<body>
+
+  <div class="page">
+    <nav class="topbar">
+      <a class="icon-btn" href="/html-css/css-mesimet/welcome-css.html" aria-label="Kthehu pas">←</a>
+      <div class="topbar-actions">
+        <a href="../../dashboard.html" class="icon-btn" title="Dashboard">📊</a>
+        <a href="#" class="icon-btn report-bug-link" data-report="bug" title="Report a bug">🐞</a>
+      </div>
+      <div class="topbar-title">
+        <p class="tiny">Quiz</p>
+        <h1>CSS Properties</h1>
+      </div>
+      <div class="progress-wrap" aria-label="Progresi i quiz-it">
+        <span class="progress-text">1/1</span>
+        <div class="progress">
+          <div class="progress-bar" style="width: 100%"></div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container">
+      <section class="card">
+        <p class="badge" id="badge">Pyetja 1</p>
+        <h2 class="question" id="questionText">Add the correct value to the <code>color</code> property to make the text red.</h2>
+        <div class="code-preview" style="background:#181818;color:#fff;padding:12px;border-radius:8px;margin-bottom:10px;">
+          <pre style="margin:0;"><code>&lt;p style = "color: <span id="userValue" style="color:#e2777a;">?</span>"&gt;Text&lt;/p&gt;</code></pre>
+        </div>
+        <form class="options" id="quizForm" style="margin-bottom:10px; display:flex; gap:12px; justify-content:center;">
+          <!-- Answer options will be rendered here by JS -->
+        </form>
+        <p class="result" id="resultMsg"></p>
+      </section>
+
+      <div class="right-actions">
+        <button class="btn primary" type="button" id="submitBtn">Dërgo</button>
+        <button class="btn ghost hidden" type="button" id="retryBtn">Provo prap</button>
+        <button class="btn next" type="button" id="nextBtn" disabled>Vazhdo</button>
+      </div>
+    </main>
+  </div>
+
+  <script type="module">
+    // Quiz logic for CSS property value
+    const badgeEl = document.getElementById("badge");
+    const questionEl = document.getElementById("questionText");
+    const formEl = document.getElementById("quizForm");
+    const resultMsg = document.getElementById("resultMsg");
+    const submitBtn = document.getElementById("submitBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const retryBtn = document.getElementById("retryBtn");
+    const userValueSpan = document.getElementById("userValue");
+
+    const quizData = [
+      {
+        badge: "Pyetja 1",
+        question: "Add the correct value to the color property to make the text red.",
+        answers: [
+          { text: "red", correct: true },
+          { text: "small", correct: false }
+        ]
+      }
+    ];
+
+    let current = 0;
+    let selectedIdx = null;
+
+    function getOptions() {
+      return Array.from(document.querySelectorAll(".option"));
+    }
+
+    function resetFeedback() {
+      const options = getOptions();
+      options.forEach(o => o.classList.remove("correct", "wrong", "disabled"));
+      resultMsg.className = "result";
+      resultMsg.textContent = "";
+      // Only reset preview if no answer is selected
+      if (selectedIdx === null) {
+        userValueSpan.textContent = "?";
+      }
+    }
+
+    function lockOptions(lock) {
+      const options = getOptions();
+      options.forEach(o => {
+        if (lock) o.classList.add("disabled");
+        else o.classList.remove("disabled");
+      });
+    }
+
+    function renderQuestion() {
+      const q = quizData[current];
+      resetFeedback();
+      submitBtn.disabled = false;
+      nextBtn.disabled = true;
+      retryBtn.classList.add("hidden");
+      badgeEl.textContent = q.badge;
+      questionEl.textContent = q.question;
+      formEl.innerHTML = "";
+      q.answers.forEach((a, idx) => {
+        const label = document.createElement("label");
+        label.className = "option";
+        if (a.correct) label.dataset.correct = "true";
+        label.style.fontSize = "0.95em";
+        label.style.padding = "4px 10px";
+        label.style.borderRadius = "6px";
+        label.style.border = "1px solid #e0e0e0";
+        label.style.background = "unset";
+        label.style.cursor = "pointer";
+        label.innerHTML = `
+          <input type="radio" name="q" value="${idx}" style="transform:scale(0.9);margin-right:6px;">
+          <span>${a.text}</span>
+        `;
+        formEl.appendChild(label);
+      });
+      // Option click updates preview
+      formEl.querySelectorAll('input[type="radio"]').forEach(input => {
+        input.addEventListener('change', function() {
+          selectedIdx = parseInt(this.value);
+          userValueSpan.textContent = quizData[current].answers[selectedIdx].text;
+        });
+      });
+    }
+
+    submitBtn.addEventListener("click", () => {
+      const options = getOptions();
+      const selectedInput = document.querySelector('input[name="q"]:checked');
+      resetFeedback();
+      nextBtn.disabled = true;
+      retryBtn.classList.add("hidden");
+      if (!selectedInput) {
+        resultMsg.textContent = "Zgjedh një përgjigje para se të dërgosh.";
+        return;
+      }
+      const selectedLabel = selectedInput.closest(".option");
+      const correctLabel = options.find(o => o.dataset.correct === "true");
+      if (correctLabel) correctLabel.classList.add("correct");
+      const isCorrect = selectedLabel === correctLabel;
+      if (!isCorrect) {
+        selectedLabel.classList.add("wrong");
+        resultMsg.textContent = "Gabim ❌ Provo përsëri.";
+        resultMsg.classList.add("bad");
+        retryBtn.classList.remove("hidden");
+        lockOptions(true);
+        submitBtn.disabled = false;
+      } else {
+        resultMsg.textContent = "Saktë ✅ Bravo! Tani mund të vazhdosh.";
+        resultMsg.classList.add("good");
+        nextBtn.disabled = false;
+        submitBtn.disabled = true;
+        lockOptions(true);
+      }
+    });
+
+    retryBtn.addEventListener("click", () => {
+      selectedIdx = null;
+      resetFeedback();
+      lockOptions(false);
+      retryBtn.classList.add("hidden");
+      nextBtn.disabled = true;
+      const checked = document.querySelector('input[name="q"]:checked');
+      if (checked) checked.checked = false;
+    });
+
+    nextBtn.addEventListener("click", () => {
+      if (nextBtn.disabled) return;
+      // Only one question, so go back to lesson
+      window.location.href = "../css-mesimet/welcome-css.html";
+    });
+
+    renderQuestion();
+  </script>
+</body>
+</html>

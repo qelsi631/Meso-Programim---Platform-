@@ -13,6 +13,12 @@ export const cssRoadmap = {
           path: "html-css/css-mesimet/welcome-css.html"
         },
         {
+          id: "q1",
+          title: "Quiz: CSS Properties",
+          type: "vlerësim",
+          path: "html-css/quiz/quiz-css-property-value.html"
+        },
+        {
           id: "c2",
           title: "Selektorët bazë në CSS",
           type: "mësim",

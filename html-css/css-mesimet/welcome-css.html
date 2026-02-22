@@ -60,9 +60,37 @@
 
       <section class="section-card">
         <div class="section-header"><h2>Si shtohet CSS?</h2></div>
-        <p>Mënyra më e zakonshme është me file të jashtëm:</p>
-        <pre class="code-pre"><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
-        <p>Në mësimin tjetër do të fillojmë me selektorët bazë.</p>
+        <p class="highlight-gold">Egzistojne 3 menyra kryesore per te shtuar CSS ne HTML, dhe ne do ti mesojme nje nga nje.</p>
+        <h3>Inline CSS</h3>
+        <p>Inline CSS është mënyra më e thjeshtë për të stilizuar një element HTML duke përdorur atributin style direkt brenda tagut. <br> Ne kete raste kemi nje shembull se si shkruhet sintaksa per Inline CSS:</p>
+        <pre class="code-block line-numbers" style="background:#222;color:#fff;padding:12px;border-radius:8px;">
+      <code class="language-html" id="exampleCode">
+<span style="color:#7ec699">&lt;p <span style="color:#e2777a">style</span>=<span style="color:#f8c555">"color: blue;"</span>&gt;</span><span style="color:#fff">Ky eshte paragraf me ngjyre te kaltër</span><span style="color:#7ec699">&lt;/p&gt;</span>
+</code>
+</pre>
+<div class="preview-card">
+  <div class="preview-title">Preview</div>
+  <div class="preview-box" id="examplePreview">
+    <p style="color: blue !important;">Ky eshte paragraf me ngjyre te kaltër </p>
+  </div>
+</div>
+    <div class="property-value-explanation" style="margin-top:24px;padding:18px 16px;background:#f8f9fa;color:#222;border-radius:10px;border-left:4px solid #ff6600;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+      <div style="font-weight:700;font-size:16px;margin-bottom:8px;color:#ff6600;">Shpjegim</div>
+      <div style="margin-bottom:10px;background:#fff;border-radius:6px;padding:8px 12px;display:inline-block;font-family:monospace;font-size:15px;border:1px solid #e0e0e0;color:#333;">
+        <span style="color:#e2777a">style</span>=<span style="color:#f8c555">"color: blue;"</span>
+      </div>
+      <div style="margin-bottom:6px;">
+        <span style="color:#e2777a;font-weight:600">color</span> është <b>property</b> (vetia) e CSS-së,<br>
+        ndërsa <span style="color:#f8c555;font-weight:600">blue</span> është <b>value</b> (vlera) që i jepet property-t.
+      </div>
+      <div style="font-size:14px;opacity:.85;">
+        Pra, <b>property</b> tregon se çfarë do të ndryshojmë (ngjyrën ne rastin tonë), ndërsa <b>value</b> tregon se çfarë ngjyre do të vendosim (<span style="color:#f8c555">blue</span>).
+      </div>
+    </div>
+<br>
+<p>Ky kod krijon një paragraf dhe përdor CSS brenda atributit <span>style</span> për ta stiluar tekstin.</p>
+
+        
       </section>
     </section>
   </header>
@@ -70,7 +98,7 @@
   <footer class="lesson-footer">
     <div class="footer-navigation">
       <div></div>
-      <a class="btn-next" href="lesson1-selectors.html">Vazhdo</a>
+      <a class="btn-next" href="/html-css/quiz/quiz-css-property-value.html">Vazhdo</a>
     </div>
   </footer>
 </div>

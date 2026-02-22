@@ -1,8 +1,10 @@
 import { htmlRoadmap } from "./data/htmlRoadmap.js";
+import { cssRoadmap } from "./data/cssRoadmap.js";
 import { getCompletedLessons, resetCourseProgress, markLessonCompleted } from "../js/courseProgressManager.js";
 
 const roadmaps = {
-  "html-fundamentals": htmlRoadmap
+  "html-fundamentals": htmlRoadmap,
+  "css-styling": cssRoadmap
 };
 
 const urlParams = new URLSearchParams(window.location.search);
