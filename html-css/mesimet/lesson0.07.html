@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="welcome.css">
   <link rel="stylesheet" href="../../sidebar.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../css/playground.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -157,6 +158,16 @@
       </section>
 
     </section>
+
+      <!-- Interactive Playground -->
+      <section class="section-card">
+        <div class="section-header">
+          <h2>🧪 Provoje vetë!</h2>
+        </div>
+        <p>Krijo linke të ndryshme dhe shiko si duken:</p>
+        <div class="playground" id="linksPlayground"></div>
+      </section>
+
   </header>
 
   <footer class="lesson-footer">
@@ -169,6 +180,25 @@
 </div>
 
 <script src="../../js.lessons/sidebar.js"></script>
+
+<!-- Interactive Playground -->
+<script type="module">
+  import { createPlayground } from "../../js/playground.js";
+  createPlayground(document.getElementById("linksPlayground"), {
+    defaultCode:
+`<!-- Provo linket! -->
+<h3>Linke të ndryshme</h3>
+
+<p><a href="https://google.com">Shko te Google</a></p>
+
+<p><a href="https://google.com" target="_blank">Hape në tab të re</a></p>
+
+<p><a href="#" title="Ky është një tooltip">Vendos miun sipër meje</a></p>
+
+<p>Shto një link tëndin më posht! 👇</p>`,
+    hint: "Krijo linke me href, target dhe title 👉"
+  });
+</script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {

@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../sidebar.css">
+    <link rel="stylesheet" href="../../css/playground.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
   
@@ -145,6 +146,14 @@
 
 
 </header>
+
+     <!-- Interactive Playground -->
+     <section class="section-card" style="margin: 0 0 20px; padding: 20px;">
+       <h2>🧪 Provoje vetë!</h2>
+       <p>Eksperimento me titujt HTML — ndrysho kodin dhe shiko rezultatin:</p>
+       <div class="playground" id="headingsPlayground"></div>
+     </section>
+
      <footer class="lesson-footer">
   <a class="btn-next" href="../../html-css/quiz/quiz2.html">Vazhdo</a>
 </footer>
@@ -155,6 +164,25 @@
 
  
 <script src="../../js.lessons/sidebar.js"></script>
+
+<!-- Interactive Playground -->
+<script type="module">
+  import { createPlayground } from "../../js/playground.js";
+  createPlayground(document.getElementById("headingsPlayground"), {
+    defaultCode:
+`<!-- Provo titujt HTML! Ndrysho madhësinë dhe tekstin -->
+<h1>Titulli më i madh (h1)</h1>
+<h2>Nëntitull (h2)</h2>
+<h3>Seksion (h3)</h3>
+<h4>Nënseksion (h4)</h4>
+<h5>Titull i vogël (h5)</h5>
+<h6>Titulli më i vogël (h6)</h6>
+
+<p>Ky është tekst normal për krahasim.</p>`,
+    hint: "Ndrysho titujt dhe shiko madhësinë e tyre 👉"
+  });
+</script>
+
 <script src="../../js.lessons/code-preview.js"></script>
 <script src="../../js.lessons/copy.js"></script>
 

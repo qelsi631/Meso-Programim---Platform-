@@ -1,4 +1,6 @@
 import { supabase } from "./supabaseClient.js";
+import { awardLessonXP, getGamificationState, initGamification } from "./gamification.js";
+import { processGamificationResult } from "./gamificationUI.js";
 
 /**
  * Unified course progress tracking system
@@ -30,6 +32,47 @@ function getProgressKey(courseSlug, userId = null) {
 }
 
 /**
+ * Remove stale lesson progress entries that are no longer in the roadmap
+ * @param {string} courseSlug
+ * @param {string[]} validLessonIds
+ * @returns {number} number of removed stale entries
+ */
+export async function pruneStaleCourseProgress(courseSlug, validLessonIds = []) {
+  try {
+    const validIdsSet = new Set(validLessonIds || []);
+    if (validIdsSet.size === 0) return 0;
+
+    const userId = await getCurrentUserId();
+    const key = getProgressKey(courseSlug, userId);
+    const progressData = JSON.parse(localStorage.getItem(key) || "{}");
+
+    const staleIds = Object.keys(progressData).filter((id) => !validIdsSet.has(id));
+    if (staleIds.length === 0) return 0;
+
+    staleIds.forEach((id) => delete progressData[id]);
+    localStorage.setItem(key, JSON.stringify(progressData));
+
+    if (userId) {
+      try {
+        await supabase
+          .from("course_progress")
+          .delete()
+          .eq("user_id", userId)
+          .eq("course_slug", courseSlug)
+          .in("lesson_id", staleIds);
+      } catch (e) {
+        console.warn("Could not remove stale Supabase progress:", e?.message);
+      }
+    }
+
+    return staleIds.length;
+  } catch (e) {
+    console.warn("Error pruning stale progress:", e);
+    return 0;
+  }
+}
+
+/**
  * Mark a lesson as completed in a course
  * @param {string} courseSlug - e.g., "html-fundamentals"
  * @param {string} lessonId - e.g., "l1", "l2"
@@ -41,6 +84,9 @@ export async function markLessonCompleted(courseSlug, lessonId) {
     
     // Get current progress
     const progressData = JSON.parse(localStorage.getItem(key) || "{}");
+
+    // Only award XP if this is a fresh completion
+    const alreadyCompleted = progressData[lessonId]?.completed === true;
     
     // Mark this lesson as completed
     progressData[lessonId] = {
@@ -52,6 +98,18 @@ export async function markLessonCompleted(courseSlug, lessonId) {
     localStorage.setItem(key, JSON.stringify(progressData));
     
     console.log(`Marked ${lessonId} as completed for ${courseSlug}`);
+
+    // Award gamification XP for fresh completions
+    if (!alreadyCompleted) {
+      try {
+        await initGamification();
+        const prevLevel = getGamificationState(userId).level;
+        const result = await awardLessonXP(userId);
+        processGamificationResult(result, prevLevel);
+      } catch (e) {
+        console.warn("Gamification XP award failed:", e);
+      }
+    }
     
     // Also save to Supabase if user is authenticated
     if (userId) {

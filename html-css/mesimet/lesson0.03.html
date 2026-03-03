@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="welcome.css">
   <link rel="stylesheet" href="../../sidebar.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../css/playground.css">
   
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -295,6 +296,16 @@
         </div>
       </section>
 
+      <!-- SECTION 6 - Interactive Playground -->
+      <section class="section-card">
+        <div class="section-header">
+          <h2>🧪 Provoje vetë!</h2>
+        </div>
+        <p>Shkruaj ose ndrysho kodin HTML më poshtë dhe shiko rezultatin menjëherë:</p>
+
+        <div class="playground" id="textPlayground"></div>
+      </section>
+
       <footer class="lesson-footer">
         <div class="footer-navigation">
           <div></div>
@@ -304,6 +315,29 @@
 
 
 <script src="../../js.lessons/sidebar.js"></script>
+
+<!-- Interactive Playground -->
+<script type="module">
+  import { createPlayground } from "../../js/playground.js";
+  createPlayground(document.getElementById("textPlayground"), {
+    defaultCode:
+`<!-- Provoji këto tag-e! Ndrysho tekstin dhe shiko çfarë ndodh -->
+<h2>Përshëndetje!</h2>
+
+<p>Kjo fjalë është <strong>e rëndësishme</strong> dhe kjo <em>e theksuar</em>.</p>
+
+<p>Kjo është <mark>e theksuar me marker</mark>.</p>
+
+<p><del>Tekst i fshirë</del> dhe <ins>tekst i shtuar</ins>.</p>
+
+<p><small>Tekst i vogël</small> — H<sub>2</sub>O — x<sup>2</sup></p>
+
+<hr>
+<p><b>Provoje:</b> shto tag-e të reja më poshtë! 👇</p>`,
+    hint: "Ndrysho kodin në të majtë dhe shiko rezultatin live në të djathtë 👉"
+  });
+</script>
+
 <script>
   // Interactive functionality
   document.addEventListener('DOMContentLoaded', function() {

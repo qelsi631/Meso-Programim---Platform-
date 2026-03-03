@@ -1,0 +1,251 @@
+/* ═══════════════════════════════════════════════════
+   Interactive Code Playground — Styles
+   Matches the dark lesson theme (#313131 bg, orange accent)
+   ═══════════════════════════════════════════════════ */
+
+/* ── Root ──────────────────────────────────────────── */
+.pg-root {
+  margin: 24px 0;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+/* ── Header (dots + label + buttons) ──────────────── */
+.pg-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.30);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pg-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pg-dots {
+  display: flex;
+  gap: 6px;
+}
+.pg-dots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.pg-dots i:nth-child(1) { background: #ff5f57; }
+.pg-dots i:nth-child(2) { background: #febc2e; }
+.pg-dots i:nth-child(3) { background: #28c840; }
+
+.pg-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+}
+
+.pg-header-right {
+  display: flex;
+  gap: 8px;
+}
+
+.pg-btn {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  transition: all 0.25s ease;
+}
+.pg-btn:hover {
+  background: rgba(255, 122, 0, 0.18);
+  border-color: rgba(255, 122, 0, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Run button — accent style */
+.pg-run {
+  background: rgba(255, 122, 0, 0.22);
+  border-color: rgba(255, 122, 0, 0.5);
+  color: #ffb366;
+  font-weight: 700;
+}
+.pg-run:hover {
+  background: rgba(255, 122, 0, 0.35);
+  border-color: #ff7a1a;
+  color: #fff;
+}
+
+/* ── Hint ──────────────────────────────────────────── */
+.pg-hint {
+  padding: 8px 14px 4px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+}
+
+/* ── Body (editor + preview side-by-side) ─────────── */
+.pg-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 260px;
+}
+
+/* ── Editor panel ─────────────────────────────────── */
+.pg-editor-wrap {
+  display: flex;
+  position: relative;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(900px 300px at 0% 0%, rgba(79, 193, 255, 0.07), transparent 55%),
+    rgba(0, 0, 0, 0.22);
+}
+
+.pg-line-numbers {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 0 14px 10px;
+  width: 38px;
+  min-width: 38px;
+  text-align: right;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.25);
+  user-select: none;
+  overflow: hidden;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.18);
+}
+.pg-line-numbers span {
+  display: block;
+  padding-right: 8px;
+}
+
+.pg-editor {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  resize: none;
+  padding: 14px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #d4d4d4;
+  background: transparent;
+  tab-size: 2;
+  white-space: pre;
+  overflow: auto;
+}
+.pg-editor::placeholder {
+  color: rgba(255, 255, 255, 0.22);
+}
+.pg-editor:focus {
+  outline: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 122, 0, 0.35);
+}
+
+/* ── Preview panel ────────────────────────────────── */
+.pg-preview-wrap {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+.pg-preview-bar {
+  padding: 8px 14px;
+  background: rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.pg-preview-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: #555;
+  text-transform: uppercase;
+}
+
+.pg-preview {
+  flex: 1;
+  border: 0;
+  width: 100%;
+  min-height: 200px;
+  background: #fff;
+}
+
+/* ── Responsive: stack on mobile ──────────────────── */
+@media (max-width: 720px) {
+  .pg-body {
+    grid-template-columns: 1fr;
+  }
+
+  .pg-editor-wrap {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    min-height: 180px;
+  }
+
+  .pg-preview-wrap {
+    min-height: 180px;
+  }
+}
+
+/* ── Autocomplete Dropdown ───────────────────────── */
+.pg-autocomplete {
+  position: absolute;
+  z-index: 100;
+  min-width: 220px;
+  max-width: 320px;
+  max-height: 260px;
+  overflow-y: auto;
+  background: #1e1e1e;
+  border: 1px solid rgba(255, 122, 26, 0.35);
+  border-radius: 10px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255,255,255,0.06);
+  padding: 4px;
+  backdrop-filter: blur(12px);
+}
+
+.pg-ac-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.pg-ac-item.pg-ac-active,
+.pg-ac-item:hover {
+  background: rgba(255, 122, 26, 0.18);
+}
+
+.pg-ac-tag {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: #4fc1ff;
+  white-space: nowrap;
+}
+
+.pg-ac-desc {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

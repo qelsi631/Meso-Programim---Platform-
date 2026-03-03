@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="quiz.css" />
+  <link rel="stylesheet" href="../../css/gamification.css" />
 </head>
 <body>
 
@@ -67,7 +68,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script type="module">
   import { markLessonCompleted } from "../../js/courseProgressManager.js";
-
+    import { quizTracker } from "../../js/quizGamification.js";
   const COURSE_SLUG = "html-fundamentals";
   const LESSON_ID = "l5"; // First Quiz
 
@@ -113,6 +114,7 @@
   const retryBtn = document.getElementById("retryBtn");
 
   let current = 0;
+  const tracker = quizTracker(quizData.length);
 
   function getOptions() {
     return Array.from(document.querySelectorAll(".option"));
@@ -190,6 +192,7 @@
       selectedLabel.classList.add("wrong");
       resultMsg.textContent = "Gabim ❌ Provo përsëri.";
       resultMsg.classList.add("bad");
+      tracker.wrong();
 
       // shfaq Retry dhe ç'lejo me provu prap
       retryBtn.classList.remove("hidden");
@@ -202,6 +205,7 @@
     } else {
       resultMsg.textContent = "Saktë ✅ Bravo! Tani mund të vazhdosh.";
       resultMsg.classList.add("good");
+      tracker.correct();
 
       nextBtn.disabled = false;
       submitBtn.disabled = true;
@@ -232,10 +236,9 @@
       current++;
       renderQuestion();
     } else {
-      // Mark quiz as completed before navigating
+      // Show score screen then navigate
       (async () => {
-        await markLessonCompleted(COURSE_SLUG, LESSON_ID);
-        window.location.href = "../../html-css/mesimet/lesson0.03.html";
+        await tracker.finish(COURSE_SLUG, LESSON_ID, "../../html-css/mesimet/lesson0.03.html");
       })();
     }
   });

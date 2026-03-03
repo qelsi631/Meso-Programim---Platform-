@@ -1,13 +1,13 @@
 import { supabase } from "./supabaseClient.js";
 import { getCurrentUserProfile, getUserCourses, createProfile } from "./profileManager.js";
-import { getCourseProgress, getCompletedCount, getCompletedLessons } from "./courseProgressManager.js";
+import { getCompletedCount, getCompletedLessons, pruneStaleCourseProgress } from "./courseProgressManager.js";
+import { initGamification, getGamificationState, touchStreak } from "./gamification.js";
+import { showStreakToast } from "./gamificationUI.js";
 import { htmlRoadmap } from "../roadmap/data/htmlRoadmap.js";
-import { cssRoadmap } from "../roadmap/data/cssRoadmap.js";
 
 // Map course slugs to their roadmap data
 const courseRoadmaps = {
-  "html-fundamentals": htmlRoadmap,
-  "css-styling": cssRoadmap
+  "html-fundamentals": htmlRoadmap
   // Add other roadmaps here as they are created
 };
 
@@ -25,24 +25,30 @@ function getAllLessonsFromRoadmap(courseSlug) {
   return lessons;
 }
 
+async function getValidCompletedCount(courseSlug) {
+  const roadmapLessons = getAllLessonsFromRoadmap(courseSlug);
+
+  if (roadmapLessons.length === 0) {
+    return getCompletedCount(courseSlug);
+  }
+
+  const validLessonIds = new Set(roadmapLessons.map((lesson) => lesson.id));
+  const completedLessons = await getCompletedLessons(courseSlug);
+
+  return Object.keys(completedLessons).filter(
+    (id) => completedLessons[id]?.completed && validLessonIds.has(id)
+  ).length;
+}
+
 // Course data mapping (shared with courses page)
 const courseData = {
   "html-fundamentals": {
     title: "HTML & CSS",
-    description: "Learn the basics of HTML, the foundation of web development",
+    description: "Mëso bazat e HTML dhe CSS, themelin e zhvillimit web",
     icon: "📄",
     slug: "html-fundamentals",
     roadmap: "roadmap.html?course=html-fundamentals",
     lessonPath: "html-css/mesimet/welcome.html"
-  },
-  "css-styling": {
-    title: "CSS Styling",
-    description: "Mëso CSS për të stilizuar faqet dhe ndërtuar UI moderne",
-    icon: "🎨",
-    slug: "css-styling",
-    roadmap: "roadmap.html?course=css-styling",
-    lessonPath: "html-css/css-mesimet/welcome-css.html",
-    totalLessons: 3
   },
   "javascript-basics": {
     title: "JavaScript Basics",
@@ -137,10 +143,14 @@ async function init() {
     userCourses = courses || [];
     console.log("User Courses:", userCourses);
 
+    // Initialize gamification (loads from Supabase if authenticated)
+    await initGamification();
+
     // Render UI
     renderProfile();
     await renderStats();
     await renderCourses();
+    await renderGamification();
   } catch (error) {
     console.error("Error initializing dashboard:", error);
   }
@@ -173,25 +183,19 @@ async function renderStats() {
   // Calculate total lessons completed (from courseProgressManager)
   let totalLessons = 0;
   for (const course of userCourses) {
-    const completedCount = await getCompletedCount(course.course_slug);
+    const roadmapLessons = getAllLessonsFromRoadmap(course.course_slug);
+    if (roadmapLessons.length > 0) {
+      await pruneStaleCourseProgress(course.course_slug, roadmapLessons.map((lesson) => lesson.id));
+    }
+
+    const completedCount = await getValidCompletedCount(course.course_slug);
     totalLessons += completedCount;
   }
   lessonsCount.textContent = totalLessons;
 
-  // Streak calculation (simple - check if accessed today)
-  const lastAccessKey = "last_access_date";
-  const today = new Date().toDateString();
-  const lastAccess = localStorage.getItem(lastAccessKey);
-  
-  if (lastAccess === today) {
-    const streakKey = "current_streak";
-    const streak = parseInt(localStorage.getItem(streakKey)) || 1;
-    streakCount.textContent = `${streak} day${streak !== 1 ? 's' : ''}`;
-  } else {
-    localStorage.setItem(lastAccessKey, today);
-    localStorage.setItem("current_streak", "1");
-    streakCount.textContent = "1 day";
-  }
+  // Use gamification streak (server-side when authenticated)
+  const gfState = await touchStreak();
+  streakCount.textContent = `${gfState.streak} ditë`;
 }
 
 async function renderCourses() {
@@ -215,8 +219,8 @@ async function renderCourses() {
 
     const roadmapLessons = getAllLessonsFromRoadmap(enrollment.course_slug);
     const total = roadmapLessons.length || course.totalLessons || 10;
-    const progressPercent = await getCourseProgress(enrollment.course_slug, total);
-    const completed = await getCompletedCount(enrollment.course_slug);
+    const completed = await getValidCompletedCount(enrollment.course_slug);
+    const progressPercent = total ? Math.round((completed / total) * 100) : 0;
 
     html += `
       <div class="course-card" data-course="${enrollment.course_slug}">
@@ -341,6 +345,72 @@ logoutBtn.addEventListener("click", async () => {
   await supabase.auth.signOut();
   window.location.href = "index.html";
 });
+
+// ─── Gamification Dashboard Rendering ───
+async function renderGamification() {
+  const gf = getGamificationState();
+
+  // XP & Level card
+  const levelBadge = document.getElementById("gfLevelBadge");
+  const xpAmount = document.getElementById("gfXPAmount");
+  const xpLabel = document.getElementById("gfXPLabel");
+  const levelFill = document.getElementById("gfLevelFill");
+  const levelCurrent = document.getElementById("gfLevelCurrent");
+  const levelNext = document.getElementById("gfLevelNext");
+
+  if (levelBadge) {
+    levelBadge.textContent = `⭐ Nivel ${gf.levelInfo.current.level} — ${gf.levelInfo.current.title}`;
+  }
+  if (xpAmount) xpAmount.textContent = `${gf.totalXP} XP`;
+  if (xpLabel) {
+    if (gf.levelInfo.next) {
+      xpLabel.textContent = `${gf.levelInfo.next.xpNeeded - gf.totalXP} XP deri në nivel ${gf.levelInfo.next.level}`;
+    } else {
+      xpLabel.textContent = "Nivel maksimal i arritur!";
+    }
+  }
+  if (levelFill) levelFill.style.width = `${gf.levelInfo.percent}%`;
+  if (levelCurrent) levelCurrent.textContent = `Nivel ${gf.levelInfo.current.level}`;
+  if (levelNext) levelNext.textContent = gf.levelInfo.next ? `Nivel ${gf.levelInfo.next.level}` : "MAX";
+
+  // Streak card
+  const streakNumber = document.getElementById("gfStreakNumber");
+  const streakLongest = document.getElementById("gfStreakLongest");
+  if (streakNumber) streakNumber.textContent = gf.streak;
+  if (streakLongest) streakLongest.textContent = `Më e gjata: ${gf.longestStreak} ditë`;
+
+  // Show streak toast if 2+
+  if (gf.streak >= 2) {
+    setTimeout(() => showStreakToast(gf.streak), 800);
+  }
+
+  // Daily Quest
+  const questDesc = document.getElementById("gfQuestDesc");
+  const questFill = document.getElementById("gfQuestFill");
+  const questReward = document.getElementById("gfQuestReward");
+  const dq = gf.dailyQuest;
+
+  if (questDesc && dq.quest) {
+    questDesc.textContent = dq.quest.desc;
+    const pct = dq.done ? 100 : Math.min(100, Math.round((dq.progress / (dq.quest.target || 1)) * (dq.quest.type === "combo" ? 50 : 100)));
+    if (questFill) questFill.style.width = `${pct}%`;
+    if (questReward) {
+      questReward.innerHTML = dq.done
+        ? `<span class="gf-quest-done">✅ Përfunduar!</span>`
+        : `+40 XP`;
+    }
+  }
+
+  // Achievements
+  const achContainer = document.getElementById("gfAchievements");
+  if (achContainer && gf.allAchievements) {
+    achContainer.innerHTML = gf.allAchievements.map((a) => `
+      <div class="gf-ach-badge ${a.unlocked ? '' : 'locked'}" title="${a.title}: ${a.desc}">
+        ${a.icon}
+      </div>
+    `).join("");
+  }
+}
 
 // Make functions global
 window.viewCourseRoadmap = viewCourseRoadmap;

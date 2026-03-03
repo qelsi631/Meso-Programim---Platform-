@@ -22,14 +22,9 @@ export const cssRoadmap = {
           id: "c2",
           title: "Selektorët bazë në CSS",
           type: "mësim",
-          path: "html-css/css-mesimet/lesson1-selectors.html"
-        },
-        {
-          id: "c3",
-          title: "Ngjyrat dhe sfondi në CSS",
-          type: "mësim",
-          path: "html-css/css-mesimet/lesson2-colors.html"
+          path: "html-css/css-mesimet/lesson.0.17.html"
         }
+
       ]
     }
   ]

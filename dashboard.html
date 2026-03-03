@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Paneli im | Mëso Programimin</title>
   <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/gamification.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -70,29 +71,43 @@
           <p class="card-foot">Seri aktuale: <span id="streakCount">0 ditë</span></p>
         </article>
 
-        <article class="card">
+        <!-- XP & Level Card -->
+        <article class="card gf-xp-card" id="cardXP">
           <div class="card-head">
-            <h3>Aktiviteti i fundit</h3>
-            <span class="card-action">+</span>
+            <h3>XP & Niveli</h3>
           </div>
-          <ul class="activity-list">
-            <li><span class="activity-icon"></span>Mësimi i fundit i hapur ruhet automatikisht</li>
-            <li><span class="activity-icon"></span>Kthehu te mësimi i fundit nga dashboard</li>
-            <li><span class="activity-icon"></span>Vazhdon progresi në pajisje të tjera</li>
-          </ul>
+          <div class="gf-level-badge" id="gfLevelBadge">⭐ Nivel 1 — Fillestar</div>
+          <div class="gf-xp-amount" id="gfXPAmount">0 XP</div>
+          <div class="gf-xp-label" id="gfXPLabel">deri në nivelin tjetër</div>
+          <div class="gf-level-progress">
+            <div class="gf-level-fill" id="gfLevelFill" style="width: 0%"></div>
+          </div>
+          <div class="gf-level-text">
+            <span id="gfLevelCurrent">Nivel 1</span>
+            <span id="gfLevelNext">Nivel 2</span>
+          </div>
         </article>
 
-        <article class="card">
+        <!-- Streak & Daily Quest -->
+        <article class="card" id="cardStreak">
           <div class="card-head">
-            <h3>Raporti i javës</h3>
-            <span class="card-action">+</span>
+            <h3>🔥 Seria & Misioni</h3>
           </div>
-          <div class="bars">
-            <div><span style="height: 40%"></span><label>Hën</label></div>
-            <div><span style="height: 65%"></span><label>Mar</label></div>
-            <div><span style="height: 55%"></span><label>Mër</label></div>
-            <div><span style="height: 30%"></span><label>Enj</label></div>
-            <div><span style="height: 70%"></span><label>Pre</label></div>
+          <div class="gf-streak-card" style="border:none;padding:0;margin-bottom:14px;background:none;">
+            <div class="gf-streak-number" id="gfStreakNumber">0</div>
+            <div class="gf-streak-label">ditë radhazi</div>
+            <div class="gf-streak-longest" id="gfStreakLongest">Më e gjata: 0 ditë</div>
+          </div>
+          <div class="gf-quest-card" style="border:none;padding:0;background:none;">
+            <div class="gf-quest-header">
+              <span class="gf-quest-icon">🎯</span>
+              <span class="gf-quest-title">Misioni i ditës</span>
+            </div>
+            <div class="gf-quest-desc" id="gfQuestDesc">Duke ngarkuar...</div>
+            <div class="gf-quest-progress">
+              <div class="gf-quest-fill" id="gfQuestFill" style="width: 0%"></div>
+            </div>
+            <div class="gf-quest-reward" id="gfQuestReward">+40 XP</div>
           </div>
         </article>
 
@@ -106,12 +121,14 @@
           </div>
         </article>
 
-        <article class="card">
+        <!-- Achievements Card -->
+        <article class="card" id="cardAchievements">
           <div class="card-head">
-            <h3>Këshilla e ditës</h3>
-            <span class="card-action">+</span>
+            <h3>🏆 Arritjet</h3>
           </div>
-          <p class="card-note">Bëj 10 minuta praktikë çdo ditë. Progresi vjen nga konsistenca.</p>
+          <div class="gf-achievements" id="gfAchievements">
+            <!-- filled by JS -->
+          </div>
         </article>
       </section>
     </main>

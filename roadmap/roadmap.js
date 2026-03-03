@@ -1,6 +1,6 @@
 import { htmlRoadmap } from "./data/htmlRoadmap.js";
 import { cssRoadmap } from "./data/cssRoadmap.js";
-import { getCompletedLessons, resetCourseProgress, markLessonCompleted } from "../js/courseProgressManager.js";
+import { getCompletedLessons, resetCourseProgress, markLessonCompleted, pruneStaleCourseProgress } from "../js/courseProgressManager.js";
 
 const roadmaps = {
   "html-fundamentals": htmlRoadmap,
@@ -14,7 +14,10 @@ const activeRoadmap = roadmaps[COURSE_SLUG] || htmlRoadmap;
 async function getCompleted() {
   try {
     const progressData = await getCompletedLessons(COURSE_SLUG);
-    return Object.keys(progressData).filter(id => progressData[id]?.completed);
+    const validIds = new Set(getAllItems().map((item) => item.id));
+    return Object.keys(progressData).filter(
+      (id) => progressData[id]?.completed && validIds.has(id)
+    );
   } catch {
     return [];
   }
@@ -92,8 +95,10 @@ async function render() {
 
   title.textContent = activeRoadmap.title;
 
-  const completed = await getCompleted();
   const all = getAllItems();
+  await pruneStaleCourseProgress(COURSE_SLUG, all.map((item) => item.id));
+
+  const completed = await getCompleted();
   const next = getNextItem(all, completed);
   const nextId = next?.id;
 
@@ -108,26 +113,49 @@ async function render() {
   const baseTop = 95;
   const step = 104;
   const nodeOffset = 60;
+  const moduleGap = 120;  // extra space before each module divider (except first)
   const offsets = [-60, 0, 60, 0, -60, 0, 60, 0];
 
-  // For placing module dividers: track the first global index for each module
-  const firstIndexByModule = new Map();
-  all.forEach((it, globalIndex) => {
-    if (!firstIndexByModule.has(it.moduleId)) firstIndexByModule.set(it.moduleId, globalIndex);
+  // Build a position map — each item gets a Y position that accounts for module gaps
+  const itemPositions = [];    // { top, leftOffset } for each item in `all`
+  const moduleDividerTops = new Map(); // moduleId → top of divider card
+
+  let runningTop = baseTop;
+
+  activeRoadmap.modules.forEach((m, mIdx) => {
+    const moduleItems = all.filter(x => x.moduleId === m.id);
+    if (moduleItems.length === 0) return;
+
+    // Add module gap (except before first module)
+    if (mIdx > 0) {
+      runningTop += moduleGap;
+    }
+
+    // Divider position
+    moduleDividerTops.set(m.id, runningTop);
+    runningTop += 80; // space taken by the divider card itself
+
+    // Place each item
+    moduleItems.forEach((item, idxInModule) => {
+      const globalIndex = all.indexOf(item);
+      const leftOffset = offsets[globalIndex % offsets.length];
+      const top = runningTop + idxInModule * step + nodeOffset;
+      itemPositions[globalIndex] = { top, leftOffset };
+    });
+
+    // Advance past all items in this module
+    runningTop += moduleItems.length * step + nodeOffset;
   });
 
-  // Render module dividers first (so they appear behind nodes nicely)
+  // Render module dividers
   activeRoadmap.modules.forEach((m) => {
-    const firstIndex = firstIndexByModule.get(m.id);
-    if (firstIndex == null) return;
-
-    const top = baseTop + firstIndex * step - 80; // divider appears above its first node
+    const dividerTop = moduleDividerTops.get(m.id);
+    if (dividerTop == null) return;
 
     const divider = document.createElement("div");
     divider.className = "module-divider";
-    divider.style.top = `${top}px`;
+    divider.style.top = `${dividerTop}px`;
 
-    // progress badge: completed in this module / total
     const moduleItems = all.filter(x => x.moduleId === m.id);
     const doneCount = moduleItems.filter(x => completed.includes(x.id)).length;
 
@@ -144,8 +172,9 @@ async function render() {
 
   // Render nodes
   all.forEach((item, i) => {
-    const top = baseTop + i * step + nodeOffset;
-    const leftOffset = offsets[i % offsets.length];
+    const pos = itemPositions[i];
+    if (!pos) return;
+    const { top, leftOffset } = pos;
     const status = statusOf(item, completed, nextId);
 
     const node = document.createElement("div");
@@ -189,9 +218,10 @@ path.appendChild(label);
     }
   });
 
-  // Set container height based on items count (prevents cut-off)
-  const lastY = baseTop + (all.length - 1) * step + nodeOffset;
-  path.style.minHeight = `${lastY + 120}px`;
+  // Set container height based on last item position (prevents cut-off)
+  const lastPos = itemPositions[itemPositions.length - 1];
+  const lastY = lastPos ? lastPos.top : 400;
+  path.style.minHeight = `${lastY + 140}px`;
 
   // Quick test: press "C" to mark next as completed (remove later)
   window.addEventListener("keydown", async (e) => {

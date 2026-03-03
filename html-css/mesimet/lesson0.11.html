@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="welcome.css">
   <link rel="stylesheet" href="../../sidebar.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../css/playground.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -279,6 +280,16 @@
       
 
     </section>
+
+      <!-- Interactive Playground -->
+      <section class="section-card">
+        <div class="section-header">
+          <h2>🧪 Provoje vetë!</h2>
+        </div>
+        <p>Krijo tabelën tënde — shto rreshta, kolona dhe header:</p>
+        <div class="playground" id="tablesPlayground"></div>
+      </section>
+
   </header>
 
   <footer class="lesson-footer">
@@ -291,6 +302,40 @@
 </div>
 
 <script src="../../js.lessons/sidebar.js"></script>
+
+<!-- Interactive Playground -->
+<script type="module">
+  import { createPlayground } from "../../js/playground.js";
+  createPlayground(document.getElementById("tablesPlayground"), {
+    defaultCode:
+`<!-- Provo tabelat! -->
+<table border="1" cellpadding="8" cellspacing="0">
+  <tr>
+    <th>Emër</th>
+    <th>Moshë</th>
+    <th>Qytet</th>
+  </tr>
+  <tr>
+    <td>Arban</td>
+    <td>22</td>
+    <td>Prishtinë</td>
+  </tr>
+  <tr>
+    <td>Elira</td>
+    <td>25</td>
+    <td>Tiranë</td>
+  </tr>
+  <tr>
+    <td>Drini</td>
+    <td>19</td>
+    <td>Shkup</td>
+  </tr>
+</table>
+
+<p>Shto një rresht të ri më posht! 👇</p>`,
+    hint: "Shto rreshta, kolona ose ndrysho të dhënat 👉"
+  });
+</script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {

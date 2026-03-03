@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="quiz.css" />
+  <link rel="stylesheet" href="../../css/gamification.css" />
 </head>
 <body>
 
@@ -58,6 +59,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script type="module">
     import { markLessonCompleted } from "../../js/courseProgressManager.js";
+    import { quizTracker } from "../../js/quizGamification.js";
 
     const COURSE_SLUG = "html-fundamentals";
     const LESSON_ID = "l16"; // Quiz: Links, Images, Audio, Video
@@ -126,6 +128,7 @@
     const progressBar = document.getElementById("progressBar");
 
     let current = 0;
+    const tracker = quizTracker(quizData.length);
 
     function getOptions() {
       return Array.from(document.querySelectorAll(".option"));
@@ -205,6 +208,7 @@
         selectedLabel.classList.add("wrong");
         resultMsg.textContent = "Gabim ❌ Provo perseri.";
         resultMsg.classList.add("bad");
+        tracker.wrong();
 
         retryBtn.classList.remove("hidden");
         lockOptions(true);
@@ -212,6 +216,7 @@
       } else {
         resultMsg.textContent = "Sakte ✅ Bravo! Tani mund te vazhdosh.";
         resultMsg.classList.add("good");
+        tracker.correct();
 
         nextBtn.disabled = false;
         submitBtn.disabled = true;
@@ -237,8 +242,7 @@
         renderQuestion();
       } else {
         (async () => {
-          await markLessonCompleted(COURSE_SLUG, LESSON_ID);
-          window.location.href = "/html-css/mesimet/lesson0.10.html";
+          await tracker.finish(COURSE_SLUG, LESSON_ID, "/html-css/mesimet/lesson0.10.html");
         })();
       }
     });

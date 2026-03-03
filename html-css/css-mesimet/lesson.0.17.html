@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS | Selektorët bazë</title>
+
+  <link rel="stylesheet" href="../mesimet/welcome.css">
+  <link rel="stylesheet" href="../../sidebar.css">
+  <link rel="stylesheet" href="../mesimet/style.css">
+  <link rel="stylesheet" href="../../css/playground.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <nav>
+    <a href="#" id="menuBtn"><img src="../../imgs/menu (1).png" alt="Menu"></a>
+    <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
+    <a href="welcome-css.html" class="goback">Kthehu Pas</a>
+  </nav>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <div class="sidebar-title">
+        <img class="ikonSidebar" src="../../imgs/icon_platformes-removebg-preview.png" alt="Logo">
+        <p>Mëso Programim</p>
+      </div>
+      <button class="sidebar-close" id="closeBtn">✕</button>
+    </div>
+    <div class="sidebar-links">
+      <a href="../../dashboard.html">Dashboard</a>
+      <a href="../../roadmap.html?course=css-styling">Roadmap</a>
+      <a href="#" class="report-bug-link" data-report="bug">Report a bug</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="welcome">
+      
+      <h1>Shtimi i CSS në HTML: <span>Internal dhe External</span></h1>
+    </div>
+
+    <section class="lesson-content">
+      <section class="section-card">
+        
+        <p>Ne mesimin paraprak mesuam si shtohet CSS në HTML duke perdorur <span>style=""</span> brenda elementeve HTML. <br>
+           Kjo metode e perdorimit te CSS do te na merrte shume kohe dhe do te bente kodin te vështirë për t'u menaxhuar. <br>Kur punojme ne projekte reale, perdorimi i tepert i Inline CSS do te krijonte organizim te dobet dhe te nderlikuar, prandaj ne do te mesojme dy menyra me te perdorura per te shtuar CSS ne HTML: <strong>Internal</strong> dhe <strong>External</strong>.
+</p>
+        
+
+
+
+
+
+
+      </section>
+
+      <section class="section-card">
+        <div class="section-header"><h2>Internal CSS</h2></div>
+        <p>Internal CSS shkruhet brenda tags <span>&lt;style&gt;</span> në pjesën <span>&lt;head&gt;</span> të dokumentit HTML. Kjo mënyrë është e përshtatshme për një faqe të vetme.</p>
+        <p><strong>Si funksionon?</strong> Shfletuesi e lexon kodin brenda <span>&lt;style&gt;</span> dhe i aplikon rregullat për elementet përkatëse në të njëjtën faqe.</p>
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+        <pre class="code-pre line-numbers internal-code"><code class="language-html"><span class="punct">&lt;!</span>DOCTYPE html<span class="punct">&gt;</span>
+<span class="punct">&lt;</span><span class="tag">html</span> <span class="attr-name">lang</span>=<span class="attr-value">"sq"</span><span class="punct">&gt;</span>
+<span class="punct">&lt;</span><span class="tag">head</span><span class="punct">&gt;</span>
+  <span class="punct">&lt;</span><span class="tag">meta</span> <span class="attr-name">charset</span>=<span class="attr-value">"UTF-8"</span><span class="punct">&gt;</span>
+  <span class="punct">&lt;</span><span class="tag">title</span><span class="punct">&gt;</span>Shembull Internal CSS<span class="punct">&lt;/</span><span class="tag">title</span><span class="punct">&gt;</span>
+  <span class="punct">&lt;</span><span class="tag">style</span><span class="punct">&gt;</span>
+    <span class="selector">h1</span> <span class="punct">{</span>
+      <span class="property">color</span><span class="punct">:</span> <span class="value">#7c3aed</span><span class="punct">;</span>
+      <span class="property">text-align</span><span class="punct">:</span> <span class="value">center</span><span class="punct">;</span>
+      <span class="property">margin-bottom</span><span class="punct">:</span> <span class="number">10px</span><span class="punct">;</span>
+    <span class="punct">}</span>
+
+    <span class="selector">p</span> <span class="punct">{</span>
+      <span class="property">font-size</span><span class="punct">:</span> <span class="number">18px</span><span class="punct">;</span>
+      <span class="property">color</span><span class="punct">:</span> <span class="value">#374151</span><span class="punct">;</span>
+      <span class="property">line-height</span><span class="punct">:</span> <span class="number">1.6</span><span class="punct">;</span>
+      <span class="property">text-align</span><span class="punct">:</span> <span class="value">center</span><span class="punct">;</span>
+    <span class="punct">}</span>
+  <span class="punct">&lt;/</span><span class="tag">style</span><span class="punct">&gt;</span>
+<span class="punct">&lt;/</span><span class="tag">head</span><span class="punct">&gt;</span>
+<span class="punct">&lt;</span><span class="tag">body</span><span class="punct">&gt;</span>
+  <span class="punct">&lt;</span><span class="tag">h1</span><span class="punct">&gt;</span>Mire se erdhe!<span class="punct">&lt;/</span><span class="tag">h1</span><span class="punct">&gt;</span>
+  <span class="punct">&lt;</span><span class="tag">p</span><span class="punct">&gt;</span>Ky tekst po stilizohet me Internal CSS.<span class="punct">&lt;/</span><span class="tag">p</span><span class="punct">&gt;</span>
+<span class="punct">&lt;/</span><span class="tag">body</span><span class="punct">&gt;</span>
+<span class="punct">&lt;/</span><span class="tag">html</span><span class="punct">&gt;</span></code></pre>
+        </div>
+
+        <h3>Kur përdoret Internal CSS?</h3>
+        <ul>
+          <li>Kur ke një faqe të vetme dhe dëshiron stilim të shpejtë.</li>
+          <li>Kur po teston një ide pa krijuar ende file të veçantë <span>.css</span>.</li>
+          <li>Kur po ndërton një shembull të vogël mësimor.</li>
+        </ul>
+
+        <h3>Avantazhe dhe kufizime</h3>
+        <ul>
+          <li><strong>Avantazh:</strong> gjithçka është në një file, e lehtë për fillestarin.</li>
+          <li><strong>Kufizim:</strong> nëse ke shumë faqe, duhet ta kopjosh CSS-në në secilën faqe.</li>
+          <li><strong>Kufizim:</strong> mirëmbajtja bëhet më e vështirë sa më shumë rritet projekti.</li>
+        </ul>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header"><h2>External CSS</h2></div>
+        <p>External CSS ruhet në një file të veçantë <span>.css</span> dhe lidhet me HTML përmes tags <span>&lt;link&gt;</span>. Kjo është metoda më e mirë për projekte reale sepse e mban kodin të organizuar.</p>
+        <p><strong>Si funksionon?</strong> HTML lidh file-in <span>style.css</span> me <span>&lt;link&gt;</span>, dhe i njëjti file CSS mund të përdoret nga shumë faqe njëkohësisht.</p>
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">HTML + CSS</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+
+        <pre class="code-pre line-numbers external-code"><code class="language-html"><span class="comment">&lt;!-- index.html --&gt;</span>
+<span class="punct">&lt;!</span>DOCTYPE html<span class="punct">&gt;</span>
+<span class="punct">&lt;</span><span class="tag">html</span> <span class="attr-name">lang</span>=<span class="attr-value">"sq"</span><span class="punct">&gt;</span>
+<span class="punct">&lt;</span><span class="tag">head</span><span class="punct">&gt;</span>
+  <span class="punct">&lt;</span><span class="tag">meta</span> <span class="attr-name">charset</span>=<span class="attr-value">"UTF-8"</span><span class="punct">&gt;</span>
+  <span class="punct">&lt;</span><span class="tag">title</span><span class="punct">&gt;</span>Shembull External CSS<span class="punct">&lt;/</span><span class="tag">title</span><span class="punct">&gt;</span>
+  <span class="punct">&lt;</span><span class="tag">link</span> <span class="attr-name">rel</span>=<span class="attr-value">"stylesheet"</span> <span class="attr-name">href</span>=<span class="attr-value">"style.css"</span><span class="punct">&gt;</span>
+<span class="punct">&lt;/</span><span class="tag">head</span><span class="punct">&gt;</span>
+<span class="punct">&lt;</span><span class="tag">body</span><span class="punct">&gt;</span>
+  <span class="punct">&lt;</span><span class="tag">h1</span><span class="punct">&gt;</span>Titulli i faqes<span class="punct">&lt;/</span><span class="tag">h1</span><span class="punct">&gt;</span>
+  <span class="punct">&lt;</span><span class="tag">button</span><span class="punct">&gt;</span>Kliko<span class="punct">&lt;/</span><span class="tag">button</span><span class="punct">&gt;</span>
+<span class="punct">&lt;/</span><span class="tag">body</span><span class="punct">&gt;</span>
+<span class="punct">&lt;/</span><span class="tag">html</span><span class="punct">&gt;</span>
+
+<span class="comment">/* style.css */</span>
+<span class="selector">h1</span> <span class="punct">{</span>
+  <span class="property">color</span><span class="punct">:</span> <span class="value">#16a34a</span><span class="punct">;</span>
+<span class="punct">}</span>
+
+<span class="selector">button</span> <span class="punct">{</span>
+  <span class="property">background</span><span class="punct">:</span> <span class="value">#16a34a</span><span class="punct">;</span>
+  <span class="property">color</span><span class="punct">:</span> <span class="value">white</span><span class="punct">;</span>
+  <span class="property">border</span><span class="punct">:</span> <span class="value">none</span><span class="punct">;</span>
+  <span class="property">padding</span><span class="punct">:</span> <span class="number">10px</span> <span class="number">16px</span><span class="punct">;</span>
+  <span class="property">border-radius</span><span class="punct">:</span> <span class="number">8px</span><span class="punct">;</span>
+<span class="punct">}</span></code></pre>
+        </div>
+
+        <h3>Hapat për ta përdorur saktë</h3>
+        <ol>
+          <li>Krijo file-in <span>style.css</span>.</li>
+          <li>Shkruaj rregullat CSS në atë file.</li>
+          <li>Lidhe në <span>&lt;head&gt;</span> me: <span>&lt;link rel="stylesheet" href="style.css"&gt;</span>.</li>
+          <li>Ruaji të dy file-at dhe rifresko faqen.</li>
+        </ol>
+
+        <h3>Gabime të zakonshme</h3>
+        <ul>
+          <li>Rruga e gabuar te <span>href</span> (p.sh. file-i nuk gjendet).</li>
+          <li>Emri i file-it nuk përputhet saktë (p.sh. <span>Style.css</span> vs <span>style.css</span>).</li>
+          <li>Harrohet tag-u <span>&lt;link&gt;</span> brenda <span>&lt;head&gt;</span>.</li>
+        </ul>
+
+        <h3>Pse External CSS është më i mirë për projekte reale?</h3>
+        <ul>
+          <li>Ndryshon dizajnin e shumë faqeve nga një vend i vetëm.</li>
+          <li>Kodi HTML mbetet më i pastër dhe më i lexueshëm.</li>
+          <li>Punon më mirë në ekip sepse struktura ndahet qartë.</li>
+        </ul>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header"><h2>Përmbledhje e shpejtë</h2></div>
+        <ul>
+          <li><strong>Internal CSS</strong> = për faqe të vetme dhe testime të shpejta.</li>
+          <li><strong>External CSS</strong> = zgjedhja kryesore për projekte të vërteta.</li>
+          <li>Nëse projekti rritet, kalo gjithmonë te External CSS për organizim më të mirë.</li>
+        </ul>
+      </section>
+    </section>
+
+      <!-- Interactive Playground -->
+      <section class="section-card">
+        <div class="section-header">
+          <h2>🧪 Provoje vetë!</h2>
+        </div>
+        <p>Shkruaj HTML dhe CSS së bashku — shiko stilimin live:</p>
+        <div class="playground" id="cssPlayground"></div>
+      </section>
+
+  </header>
+
+  <footer class="lesson-footer">
+    <div class="footer-navigation">
+      <a class="btn-next" href="welcome-css.html" style="visibility:hidden;">Pas</a>
+      <a class="btn-next" href="../../roadmap.html?course=css-styling">Përfundo modulin</a>
+    </div>
+  </footer>
+</div>
+
+<script src="../../js.lessons/sidebar.js"></script>
+
+<!-- Interactive Playground -->
+<script type="module">
+  import { createPlayground } from "../../js/playground.js";
+  createPlayground(document.getElementById("cssPlayground"), {
+    defaultCode:
+`<style>
+  h1 {
+    color: #ff7a1a;
+    font-family: Arial, sans-serif;
+  }
+
+  .kutia {
+    background: #2d2d2d;
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #ff7a1a;
+    text-align: center;
+  }
+
+  .kutia:hover {
+    background: #ff7a1a;
+    color: #000;
+  }
+</style>
+
+<h1>Përshëndetje nga CSS!</h1>
+
+<div class="kutia">
+  <p>Vendos miun sipër meje 👆</p>
+</div>
+
+<p style="color: tomato; font-size: 18px;">Ky tekst ka <b>inline CSS</b>.</p>`,
+    hint: "Ndrysho ngjyrat, madhësinë ose shto CSS të re 👉"
+  });
+</script>
+
+<script src="../../js.lessons/code-copy-global.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script type="module" src="../../js/requireAuth.js"></script>
+
+<script type="module">
+  import { initLessonProgress } from "../../js/lessonProgressInit.js";
+  initLessonProgress("css-selectors-1");
+</script>
+
+<script type="module">
+  import { markLessonCompleted } from "../../js/courseProgressManager.js";
+
+  const COURSE_SLUG = "html-fundamentals";
+  const LESSON_ID = "c2";
+
+  const btn = document.querySelector(".footer-navigation .btn-next:last-child");
+  if (btn) {
+    btn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const nextUrl = btn.getAttribute("href");
+      await markLessonCompleted(COURSE_SLUG, LESSON_ID);
+      window.location.href = nextUrl;
+    });
+  }
+</script>
+</body>
+</html>

@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="welcome.css">
   <link rel="stylesheet" href="../../sidebar.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../css/playground.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -238,6 +239,16 @@
      
 
     </section>
+
+      <!-- Interactive Playground -->
+      <section class="section-card">
+        <div class="section-header">
+          <h2>🧪 Provoje vetë!</h2>
+        </div>
+        <p>Krijo një formular tëndin me fusha të ndryshme:</p>
+        <div class="playground" id="formsPlayground"></div>
+      </section>
+
   </header>
 
   <footer class="lesson-footer">
@@ -250,6 +261,39 @@
 </div>
 
 <script src="../../js.lessons/sidebar.js"></script>
+
+<!-- Interactive Playground -->
+<script type="module">
+  import { createPlayground } from "../../js/playground.js";
+  createPlayground(document.getElementById("formsPlayground"), {
+    defaultCode:
+`<!-- Provo formularet! -->
+<form>
+  <h3>Regjistrohu</h3>
+
+  <label>Emër:</label><br>
+  <input type="text" placeholder="Shkruaj emërin"><br><br>
+
+  <label>Email:</label><br>
+  <input type="email" placeholder="email@shembull.com"><br><br>
+
+  <label>Fjalëkalimi:</label><br>
+  <input type="password" placeholder="********"><br><br>
+
+  <label>Mosha:</label><br>
+  <input type="number" min="1" max="120"><br><br>
+
+  <label>Gjinia:</label><br>
+  <select>
+    <option>Mashkull</option>
+    <option>Femër</option>
+  </select><br><br>
+
+  <button type="submit">Dërgo</button>
+</form>`,
+    hint: "Shto fusha të reja ose ndrysho tipet e input 👉"
+  });
+</script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {

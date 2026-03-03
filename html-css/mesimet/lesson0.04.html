@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="welcome.css">
   <link rel="stylesheet" href="../../sidebar.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../css/playground.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -148,6 +149,16 @@
       </section>
 
     </section>
+
+      <!-- Interactive Playground -->
+      <section class="section-card">
+        <div class="section-header">
+          <h2>🧪 Provoje vetë!</h2>
+        </div>
+        <p>Eksperimento me <code>&lt;br&gt;</code> dhe <code>&lt;hr&gt;</code> — shiko ku shfaqen ndërprerjet:</p>
+        <div class="playground" id="brHrPlayground"></div>
+      </section>
+
   </header>
 
   <footer class="lesson-footer">
@@ -160,6 +171,25 @@
 </div>
 
 <script src="../../js.lessons/sidebar.js"></script>
+
+<!-- Interactive Playground -->
+<script type="module">
+  import { createPlayground } from "../../js/playground.js";
+  createPlayground(document.getElementById("brHrPlayground"), {
+    defaultCode:
+`<!-- Provo <br> dhe <hr> -->
+<p>Rreshti i parë<br>Rreshti i dytë<br>Rreshti i tretë</p>
+
+<hr>
+
+<p>Kjo është një paragraf pas vijës ndarëse.</p>
+
+<hr>
+
+<p>Shto më shumë <br> dhe <hr> më posht! 👇</p>`,
+    hint: "Shto ose fshi <br> / <hr> dhe shiko ndryshimet 👉"
+  });
+</script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {

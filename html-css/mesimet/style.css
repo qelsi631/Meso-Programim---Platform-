@@ -355,7 +355,7 @@ header p {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   font-size: 14px;
   line-height: 1.65;
-  color: #4e6ba6;
+  color: #d4d4d4;
   background: radial-gradient(1200px 400px at 0% 0%, rgba(79, 193, 255, .10), transparent 55%),
               radial-gradient(1000px 400px at 100% 0%, rgba(52, 211, 153, .08), transparent 60%),
               rgba(0, 0, 0, .22);
@@ -394,6 +394,44 @@ header p {
 .token.comment {
   color: rgba(255, 255, 255, .35);
   font-style: italic;
+}
+
+/* VS Code-like manual tokens (for span-based highlighting) */
+.code-pre .tag {
+  color: #569cd6;
+  font-weight: 700;
+}
+
+.code-pre .attr-name {
+  color: #9cdcfe;
+}
+
+.code-pre .attr-value {
+  color: #ce9178;
+}
+
+.code-pre .comment {
+  color: #6a9955;
+}
+
+.code-pre .selector {
+  color: #d7ba7d;
+}
+
+.code-pre .property {
+  color: #9cdcfe;
+}
+
+.code-pre .value {
+  color: #ce9178;
+}
+
+.code-pre .number {
+  color: #b5cea8;
+}
+
+.code-pre .punct {
+  color: #d4d4d4;
 }
 
 /* Preview Card */

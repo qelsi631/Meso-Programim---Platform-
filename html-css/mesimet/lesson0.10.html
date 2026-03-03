@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="welcome.css">
   <link rel="stylesheet" href="../../sidebar.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../css/playground.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -208,7 +209,14 @@
         </div>
       </section>
 
-    
+      <!-- Interactive Playground -->
+      <section class="section-card">
+        <div class="section-header">
+          <h2>🧪 Provoje vetë!</h2>
+        </div>
+        <p>Krijo lista të ndryshme — me numra, pa numra, ose të brendshme:</p>
+        <div class="playground" id="listsPlayground"></div>
+      </section>
 
    
   </header>
@@ -223,6 +231,40 @@
 </div>
 
 <script src="../../js.lessons/sidebar.js"></script>
+
+<!-- Interactive Playground -->
+<script type="module">
+  import { createPlayground } from "../../js/playground.js";
+  createPlayground(document.getElementById("listsPlayground"), {
+    defaultCode:
+`<!-- Provo listat! -->
+<h3>Lista pa numra</h3>
+<ul>
+  <li>Mollë</li>
+  <li>Banane</li>
+  <li>Portokall</li>
+</ul>
+
+<h3>Listë me numra</h3>
+<ol>
+  <li>Hapi i parë</li>
+  <li>Hapi i dytë</li>
+  <li>Hapi i tretë</li>
+</ol>
+
+<h3>Listë e brendshme (nested)</h3>
+<ul>
+  <li>Fruta
+    <ul>
+      <li>Mollë</li>
+      <li>Dardhë</li>
+    </ul>
+  </li>
+  <li>Perime</li>
+</ul>`,
+    hint: "Shto, fshi ose ndryshoj elementet e listës 👉"
+  });
+</script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
