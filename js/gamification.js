@@ -305,14 +305,19 @@ function yesterdayStr() {
   return d.toISOString().slice(0, 10);
 }
 
-/** Local streak update (fallback when not authenticated or RPC fails) */
+/**
+ * Local streak update (fallback when not authenticated or RPC fails).
+ * Only called from awardLessonXP / awardQuizCompleteXP — i.e. when
+ * the user actually completes something.
+ */
 function updateStreakLocal(state) {
   const today = todayStr();
-  if (state.lastActiveDate === today) return state;
+  if (state.lastActiveDate === today) return state; // already counted today
 
   if (state.lastActiveDate === yesterdayStr()) {
     state.streak += 1;
   } else {
+    // First activity ever, or gap of 2+ days → start at 1
     state.streak = 1;
   }
 
@@ -554,13 +559,29 @@ export function getGamificationState(userId = null) {
 }
 
 /**
- * Touch streak on page load — uses server-side RPC when authenticated
- * for tamper-proof, cross-device streak tracking.
+ * Read the current streak on page load — does NOT increment or create a streak.
+ * Streak is only updated when the user completes a lesson or quiz.
+ * If the user missed a day (gap ≥2 days) it resets streak to 0 here
+ * so the dashboard accurately reflects the broken streak.
  */
 export async function touchStreak(userId = null) {
   await ensureInitialized();
   let state = loadState();
-  state = await updateStreak(state);
+
+  // If user has never completed anything, streak stays 0
+  if (!state.lastActiveDate) {
+    state.streak = 0;
+    state.longestStreak = 0;
+  } else {
+    // Check if streak is still valid (not broken by inactivity)
+    const today = todayStr();
+    const yesterday = yesterdayStr();
+    if (state.lastActiveDate !== today && state.lastActiveDate !== yesterday) {
+      // Gap of 2+ days — streak is broken
+      state.streak = 0;
+    }
+  }
+
   state = ensureDailyQuest(state);
   saveState(state);
   return state;

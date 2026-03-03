@@ -43,6 +43,7 @@ CREATE POLICY "Users can update own gamification"
 -- 4. Server-side streak RPC
 --    Uses CURRENT_DATE (server UTC) so users cannot manipulate their clock.
 --    Atomically handles: already-touched-today, continue streak, reset streak.
+--    Only called when user completes a lesson/quiz (NOT on page load).
 CREATE OR REPLACE FUNCTION touch_streak()
 RETURNS JSONB
 LANGUAGE plpgsql
@@ -61,9 +62,9 @@ BEGIN
     RAISE EXCEPTION 'Not authenticated';
   END IF;
 
-  -- Ensure row exists (first-time user)
-  INSERT INTO user_gamification (user_id, streak, last_active_date)
-  VALUES (v_user_id, 0, NULL)
+  -- Ensure row exists (first-time user gets streak=0, no active date)
+  INSERT INTO user_gamification (user_id, streak, longest_streak, last_active_date)
+  VALUES (v_user_id, 0, 0, NULL)
   ON CONFLICT (user_id) DO NOTHING;
 
   -- Lock the row for atomic update
@@ -87,7 +88,7 @@ BEGIN
   IF v_row.last_active_date = v_yesterday THEN
     v_new_streak := v_row.streak + 1;
   ELSE
-    -- Gap of 2+ days (or first ever) → reset to 1
+    -- First-ever activity or gap of 2+ days → start at 1
     v_new_streak := 1;
   END IF;
 

@@ -193,19 +193,35 @@ async function renderStats() {
   }
   lessonsCount.textContent = totalLessons;
 
-  // Use gamification streak (server-side when authenticated)
+  // Read current streak (does NOT create/increment — only lessons/quizzes do)
   const gfState = await touchStreak();
-  streakCount.textContent = `${gfState.streak} ditë`;
+  if (gfState.streak === 0) {
+    streakCount.textContent = `0 ditë`;
+  } else {
+    streakCount.textContent = `${gfState.streak} ditë`;
+  }
 }
 
 async function renderCourses() {
   if (userCourses.length === 0) {
     coursesContainer.innerHTML = `
-      <div class="empty-state" style="grid-column: 1/-1; text-align: center; padding: 60px 20px;">
-        <div style="font-size: 48px; margin-bottom: 20px;">📚</div>
-        <h3>No Courses Yet</h3>
-        <p style="color: #666; margin: 10px 0 20px;">Explore and enroll in courses to get started</p>
-        <a href="courses.html" class="btn btn-primary">Browse Courses</a>
+      <div class="empty-state" style="grid-column: 1/-1; text-align: center; padding: 50px 20px;">
+        <div style="font-size: 56px; margin-bottom: 16px;">🚀</div>
+        <h3 style="font-size: 22px; margin-bottom: 8px;">Fillo udhëtimin tënd!</h3>
+        <p style="color: #888; margin: 0 0 24px; font-size: 15px; line-height: 1.5;">Nuk ke asnjë kurs ende. Regjistrohu në kursin e parë<br>dhe fillo të mësosh programimin hap pas hapi.</p>
+        <a href="courses.html" class="btn btn-primary" style="
+          display: inline-flex; align-items: center; gap: 8px;
+          padding: 14px 28px; font-size: 16px; font-weight: 700;
+          border-radius: 12px; background: #ff6600; color: #fff;
+          text-decoration: none; border: none; cursor: pointer;
+          animation: pulse-cta 2s ease-in-out infinite;
+        ">📚 Shfleto Kurset</a>
+        <style>
+          @keyframes pulse-cta {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,102,0,0.4); }
+            50% { transform: scale(1.04); box-shadow: 0 0 20px 4px rgba(255,102,0,0.25); }
+          }
+        </style>
       </div>
     `;
     return;
@@ -376,8 +392,24 @@ async function renderGamification() {
   // Streak card
   const streakNumber = document.getElementById("gfStreakNumber");
   const streakLongest = document.getElementById("gfStreakLongest");
+  const streakHint = document.getElementById("gfStreakHint");
   if (streakNumber) streakNumber.textContent = gf.streak;
-  if (streakLongest) streakLongest.textContent = `Më e gjata: ${gf.longestStreak} ditë`;
+  if (streakLongest) {
+    if (gf.streak === 0 && gf.longestStreak === 0) {
+      streakLongest.textContent = "";
+    } else {
+      streakLongest.textContent = `Më e gjata: ${gf.longestStreak} ditë`;
+    }
+  }
+  // Show hint for zero streak
+  if (streakHint) {
+    if (gf.streak === 0) {
+      streakHint.textContent = "Fillo kursin dhe ndërto serinë tënde të parë!";
+      streakHint.style.display = "block";
+    } else {
+      streakHint.style.display = "none";
+    }
+  }
 
   // Show streak toast if 2+
   if (gf.streak >= 2) {
