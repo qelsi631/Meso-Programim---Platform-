@@ -44,6 +44,15 @@ BEGIN
     DELETE FROM public.user_courses WHERE user_id = v_user_id;
   END IF;
 
+  -- Delete gamification data
+  IF EXISTS (
+    SELECT 1
+    FROM information_schema.tables
+    WHERE table_schema = 'public' AND table_name = 'user_gamification'
+  ) THEN
+    DELETE FROM public.user_gamification WHERE user_id = v_user_id;
+  END IF;
+
   -- Delete profile row
   IF EXISTS (
     SELECT 1

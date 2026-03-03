@@ -340,7 +340,8 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script type="module">
     import { supabase } from "./js/supabaseClient.js";
-    import { getCurrentUserProfile, updateProfile, uploadAvatar, deleteUserAccount } from "./js/profileManager.js";
+    import { getCurrentUserProfile, updateProfile, uploadAvatar } from "./js/profileManager.js";
+    import { deleteAccountSecurely } from "./js/authService.js";
 
     const usernameEl = document.getElementById("username");
     const fullNameEl = document.getElementById("fullName");
@@ -523,14 +524,18 @@
       deleteAccountBtn.textContent = "Duke fshirë...";
 
       try {
-        const { error } = await deleteUserAccount(currentUser.id);
+        await deleteAccountSecurely();
 
-        if (error) {
-          showMsg("Gabim gjatë fshirjes së llogarisë: " + error.message, false);
-          deleteAccountBtn.disabled = false;
-          deleteAccountBtn.textContent = "Fshi llogarinë";
-          return;
+        // Clear all localStorage data for this user
+        const uid = currentUser.id;
+        const keysToRemove = [];
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key && (key.includes(uid) || key.startsWith('gamification:') || key.startsWith('course_progress_') || key.startsWith('lesson_'))) {
+            keysToRemove.push(key);
+          }
         }
+        keysToRemove.forEach(k => localStorage.removeItem(k));
 
         showMsg("✅ Llogaria u fshi me sukses. Duke ridrejtuar...");
         setTimeout(() => {
@@ -538,7 +543,7 @@
         }, 1500);
       } catch (error) {
         console.error("Error deleting account:", error);
-        showMsg("Gabim gjatë fshirjes së llogarisë", false);
+        showMsg("Gabim gjatë fshirjes së llogarisë: " + (error.message || error), false);
         deleteAccountBtn.disabled = false;
         deleteAccountBtn.textContent = "Fshi llogarinë";
       }
