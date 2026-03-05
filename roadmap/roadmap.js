@@ -4,7 +4,7 @@ import { getCompletedLessons, resetCourseProgress, markLessonCompleted, pruneSta
 
 const roadmaps = {
   "html-fundamentals": htmlRoadmap,
-  "css-styling": cssRoadmap
+  "css-styling": htmlRoadmap
 };
 
 const urlParams = new URLSearchParams(window.location.search);

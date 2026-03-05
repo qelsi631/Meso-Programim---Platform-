@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quiz — CSS Properties | Mëso Programimin</title>
+  <title>Quiz — CSS Selectors | Mëso Programimin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
@@ -22,12 +22,12 @@
       </div>
       <div class="topbar-title">
         <p class="tiny">Quiz</p>
-        <h1>CSS Properties</h1>
+        <h1>CSS Selectors</h1>
       </div>
       <div class="progress-wrap" aria-label="Progresi i quiz-it">
-        <span class="progress-text" id="progressText">1/5</span>
+        <span class="progress-text" id="progressText">1/6</span>
         <div class="progress">
-          <div class="progress-bar" id="progressBar" style="width: 20%"></div>
+          <div class="progress-bar" id="progressBar" style="width: 16.6%"></div>
         </div>
       </div>
     </nav>
@@ -76,100 +76,124 @@
     import { createQuizLives } from "../../js/quizLives.js";
 
     const COURSE_SLUG = "html-fundamentals";
-    const LESSON_ID = "q1";
+    const LESSON_ID = "q2";
 
     // ─── QUIZ DATA ───
-    // Types: "fill-blank" | "type-answer" | "mcq"
     const quizData = [
       {
         type: "fill-blank",
         badge: "Pyetja 1",
-        question: "Plotëso kodin për të bërë tekstin me ngjyrë të kuqe:",
+        question: "Plotëso selektorin për të stilizuar <strong>të gjithë</strong> paragrafët:",
         code: [
-          { text: 'p {', class: 'punct' },
-          { text: '  ', class: '' },
+          { blank: 0 },
+          { text: ' {', class: 'punct' },
+          { text: '\n  ', class: '' },
           { text: 'color', class: 'prop' },
           { text: ': ', class: 'punct' },
-          { blank: 0 },
+          { text: 'blue', class: 'value' },
           { text: ';', class: 'punct' },
-          { text: '}', class: 'punct' },
+          { text: '\n', class: '' },
+          { text: '}', class: 'punct' }
         ],
         blanks: [
-          { answer: "red", placeholder: "___" }
+          { answer: "p", placeholder: "___" }
         ],
-        chips: ["red", "big", "bold", "left"],
-        explanation: "<code>color: red;</code> ndryshon ngjyrën e tekstit në të kuqe."
+        chips: ["p", ".p", "#p", "paragraph"],
+        explanation: "<code>p</code> është selektori i elementit — zgjedh <strong>të gjithë</strong> elementet &lt;p&gt; në faqe. Nuk ka pikë (.) as hash (#)."
       },
       {
         type: "fill-blank",
         badge: "Pyetja 2",
-        question: "Plotëso kodin për të ndryshuar madhësinë e fontit në 20px:",
+        question: "Plotëso kodin për të stilizuar elementet me klasën <code>kartela</code>:",
         code: [
-          { text: 'h1 {', class: 'punct' },
-          { text: '  ', class: '' },
           { blank: 0 },
+          { text: ' {', class: 'punct' },
+          { text: '\n  ', class: '' },
+          { text: 'background', class: 'prop' },
           { text: ': ', class: 'punct' },
-          { blank: 1 },
+          { text: '#1e1b4b', class: 'value' },
           { text: ';', class: 'punct' },
-          { text: '}', class: 'punct' },
+          { text: '\n  ', class: '' },
+          { text: 'color', class: 'prop' },
+          { text: ': ', class: 'punct' },
+          { text: 'white', class: 'value' },
+          { text: ';', class: 'punct' },
+          { text: '\n', class: '' },
+          { text: '}', class: 'punct' }
         ],
         blanks: [
-          { answer: "font-size", placeholder: "___" },
-          { answer: "20px", placeholder: "___" }
+          { answer: ".kartela", placeholder: "___" }
         ],
-        chips: ["font-size", "text-size", "20px", "20"],
-        explanation: "<code>font-size</code> kontrollon madhësinë e tekstit. Vlera mund të jetë në px, em, rem, etj."
+        chips: [".kartela", "kartela", "#kartela", ".Kartela"],
+        explanation: "Selektori i klasës shkruhet me <code>.</code> (pikë) para emrit: <code>.kartela</code>. Pa pikë, CSS mendon se po kërkojmë një element HTML me emrin 'kartela'."
       },
       {
         type: "type-answer",
         badge: "Pyetja 3",
-        question: "Cila vlerë e <code>background-color</code> e bën sfondinin blu?",
+        question: "Shkruaj selektorin CSS për elementin me <code>id=\"logo\"</code>:",
         code: [
-          { text: 'div {', class: 'punct' },
-          { text: '  ', class: '' },
-          { text: 'background-color', class: 'prop' },
-          { text: ': ', class: 'punct' },
           { blank: 0 },
+          { text: ' {', class: 'punct' },
+          { text: '\n  ', class: '' },
+          { text: 'width', class: 'prop' },
+          { text: ': ', class: 'punct' },
+          { text: '120px', class: 'value' },
           { text: ';', class: 'punct' },
-          { text: '}', class: 'punct' },
+          { text: '\n', class: '' },
+          { text: '}', class: 'punct' }
         ],
         blanks: [
-          { answer: "blue", placeholder: "shkruaj ngjyrën..." }
+          { answer: "#logo", placeholder: "shkruaj selektorin..." }
         ],
-        acceptAlternatives: ["blue", "#0000ff", "#00f", "rgb(0,0,255)", "rgb(0, 0, 255)"],
-        explanation: "Vlera <code>blue</code> është njëra nga ngjyrat e emëruara (named colors) në CSS."
+        acceptAlternatives: ["#logo"],
+        explanation: "Selektori i ID-së shkruhet me <code>#</code> para emrit: <code>#logo</code>. ID duhet të jetë unik — vetëm një element mund ta ketë."
       },
       {
         type: "mcq",
         badge: "Pyetja 4",
-        question: "Cila pronë CSS përdoret për të ndryshuar ngjyrën e sfondit?",
+        question: "Cili selektor ka <strong>prioritetin më të lartë</strong> në CSS?",
         answers: [
-          { text: "color", correct: false },
-          { text: "background-color", correct: true },
-          { text: "font-color", correct: false },
-          { text: "bg-color", correct: false }
+          { text: "Selektori i elementit (p, h1)", correct: false },
+          { text: "Selektori i klasës (.emri)", correct: false },
+          { text: "Selektori i ID-së (#emri)", correct: true },
+          { text: "Të gjithë kanë prioritet të njëjtë", correct: false }
         ],
-        explanation: "<code>background-color</code> ndryshon ngjyrën e sfondit të elementit."
+        explanation: "Prioriteti (specificity): <code>#id</code> > <code>.class</code> > <code>element</code>. ID fiton gjithmonë mbi klasën dhe elementin."
       },
       {
         type: "fill-blank",
         badge: "Pyetja 5",
-        question: "Plotëso kodin për të vendosur teksin në qendër:",
+        question: "Plotëso HTML-në për t'i dhënë paragrafës klasën <code>theksuar</code>:",
         code: [
-          { text: 'p {', class: 'punct' },
-          { text: '  ', class: '' },
+          { text: '<', class: 'punct' },
+          { text: 'p', class: 'tag' },
+          { text: ' ', class: '' },
           { blank: 0 },
-          { text: ': ', class: 'punct' },
-          { blank: 1 },
-          { text: ';', class: 'punct' },
-          { text: '}', class: 'punct' },
+          { text: '=', class: 'punct' },
+          { text: '"theksuar"', class: 'attr-value' },
+          { text: '>', class: 'punct' },
+          { text: 'Teksti', class: '' },
+          { text: '</', class: 'punct' },
+          { text: 'p', class: 'tag' },
+          { text: '>', class: 'punct' }
         ],
         blanks: [
-          { answer: "text-align", placeholder: "___" },
-          { answer: "center", placeholder: "___" }
+          { answer: "class", placeholder: "___" }
         ],
-        chips: ["text-align", "align", "center", "middle"],
-        explanation: "<code>text-align: center;</code> vendos tekstin në qendër të elementit."
+        chips: ["class", "id", "style", "name"],
+        explanation: "Atributi <code>class</code> përdoret për t'i dhënë elementit një ose më shumë klasa. Në CSS pastaj zgjedhim me <code>.theksuar</code>."
+      },
+      {
+        type: "mcq",
+        badge: "Pyetja 6",
+        question: "Çfarë bën kodi i mëposhtëm?<br><code>.kutia { border: 2px solid red; }</code>",
+        answers: [
+          { text: "Stilon elementin me id=\"kutia\"", correct: false },
+          { text: "Stilon të gjithë elementet <kutia>", correct: false },
+          { text: "Stilon elementet me class=\"kutia\"", correct: true },
+          { text: "Krijon një element të ri kutia", correct: false }
+        ],
+        explanation: "Pika <code>.</code> para emrit do të thotë se po zgjedhim elementet me klasën <code>kutia</code>. Nëse do të ishte ID, do të shkruhej <code>#kutia</code>."
       }
     ];
 
@@ -194,7 +218,7 @@
     let current = 0;
     const tracker = quizTracker(quizData.length);
     const lives = createQuizLives(LESSON_ID);
-    let blankValues = [];       // current values for each blank
+    let blankValues = [];
     let answered = false;
 
     // ─── RENDER ───
@@ -242,7 +266,6 @@
       codeBlock.style.display = "block";
       wordBank.style.display = "flex";
 
-      // Build code HTML with blank slots
       let html = '';
       for (const part of q.code) {
         if (part.blank !== undefined) {
@@ -250,32 +273,26 @@
           html += `<span class="blank-slot" data-blank="${part.blank}"><span class="placeholder-dots">${b.placeholder}</span></span>`;
         } else {
           const cls = part.class ? ` class="${part.class}"` : '';
-          // Replace newlines
           const text = part.text.replace(/\n/g, '<br>');
           html += `<span${cls}>${text}</span>`;
         }
       }
       codeBlock.innerHTML = html;
 
-      // Build word bank chips (shuffled)
       const shuffled = [...q.chips].sort(() => Math.random() - 0.5);
       wordBank.innerHTML = shuffled.map(chip =>
         `<button type="button" class="word-chip" data-value="${chip}">${chip}</button>`
       ).join('');
 
-      // Click on chip → fill next empty blank
       wordBank.querySelectorAll('.word-chip').forEach(btn => {
         btn.addEventListener('click', () => {
           if (answered || btn.classList.contains('used')) return;
-
-          // Find first empty blank
           const emptyIdx = blankValues.indexOf(null);
-          if (emptyIdx === -1) return; // all filled
+          if (emptyIdx === -1) return;
 
           blankValues[emptyIdx] = btn.dataset.value;
           btn.classList.add('used');
 
-          // Update the blank slot
           const slot = codeBlock.querySelector(`.blank-slot[data-blank="${emptyIdx}"]`);
           slot.textContent = btn.dataset.value;
           slot.classList.add('filled');
@@ -283,7 +300,6 @@
         });
       });
 
-      // Click on filled blank → remove value, return chip
       codeBlock.addEventListener('click', (e) => {
         const slot = e.target.closest('.blank-slot');
         if (!slot || !slot.classList.contains('filled') || answered) return;
@@ -291,11 +307,9 @@
         const idx = parseInt(slot.dataset.blank);
         const val = blankValues[idx];
 
-        // Return chip
         const chip = wordBank.querySelector(`.word-chip[data-value="${val}"]`);
         if (chip) chip.classList.remove('used');
 
-        // Clear blank
         blankValues[idx] = null;
         slot.classList.remove('filled');
         slot.innerHTML = `<span class="placeholder-dots">${q.blanks[idx].placeholder}</span>`;
@@ -308,14 +322,13 @@
       codeBlock.style.display = "block";
       typeWrap.style.display = "flex";
 
-      // Build code with blank
       let html = '';
       for (const part of q.code) {
         if (part.blank !== undefined) {
           html += `<span class="blank-slot" data-blank="${part.blank}" id="typeBlank"><span class="placeholder-dots">${q.blanks[part.blank].placeholder}</span></span>`;
         } else {
           const cls = part.class ? ` class="${part.class}"` : '';
-          html += `<span${cls}>${part.text}</span>`;
+          html += `<span${cls}>${part.text.replace(/\n/g, '<br>')}</span>`;
         }
       }
       codeBlock.innerHTML = html;
@@ -325,7 +338,6 @@
       typeInput.placeholder = q.blanks[0].placeholder;
       typeInput.focus();
 
-      // Live update the code blank as user types
       typeInput.addEventListener('input', () => {
         if (answered) return;
         const val = typeInput.value.trim();
@@ -341,7 +353,6 @@
         }
       });
 
-      // Enter key submits
       typeInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
           e.preventDefault();
@@ -366,17 +377,12 @@
       if (answered) return;
       const q = quizData[current];
 
-      if (q.type === "fill-blank") {
-        submitFillBlank(q);
-      } else if (q.type === "type-answer") {
-        submitTypeAnswer(q);
-      } else if (q.type === "mcq") {
-        submitMCQ(q);
-      }
+      if (q.type === "fill-blank") submitFillBlank(q);
+      else if (q.type === "type-answer") submitTypeAnswer(q);
+      else if (q.type === "mcq") submitMCQ(q);
     });
 
     function submitFillBlank(q) {
-      // Check all blanks filled
       if (blankValues.some(v => v === null)) {
         showResult("bad", "Plotëso të gjitha boshllëqet!");
         return;
@@ -388,14 +394,12 @@
 
       answered = true;
 
-      // Highlight blanks
       codeBlock.querySelectorAll('.blank-slot').forEach(slot => {
         const idx = parseInt(slot.dataset.blank);
         const isRight = blankValues[idx]?.toLowerCase() === q.blanks[idx].answer.toLowerCase();
         slot.classList.add(isRight ? 'correct' : 'wrong');
       });
 
-      // Highlight chips
       wordBank.querySelectorAll('.word-chip').forEach(chip => {
         const val = chip.dataset.value;
         const isAnswer = q.blanks.some(b => b.answer.toLowerCase() === val.toLowerCase());
@@ -466,7 +470,6 @@
       const selectedIdx = parseInt(selected.value);
       const isCorrect = q.answers[selectedIdx].correct;
 
-      // Highlight options
       quizForm.querySelectorAll('.option').forEach(opt => {
         opt.classList.add('disabled');
         if (opt.dataset.correct === "true") opt.classList.add('correct');
@@ -502,7 +505,7 @@
       if (current < quizData.length) {
         renderQuestion();
       } else {
-        await tracker.finish(COURSE_SLUG, LESSON_ID, "../css-mesimet/lesson.0.17.html");
+        await tracker.finish(COURSE_SLUG, LESSON_ID, "../css-mesimet/lesson.0.19.html");
       }
     });
 
