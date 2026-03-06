@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ushtrime CSS: Tipografia | Mëso Programim</title>
+
+  <link rel="stylesheet" href="../../css/codingExercise.css">
+  <link rel="stylesheet" href="../../sidebar.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Nunito Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #1e1e2e;
+      color: #e0e0f0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 18px 14px 40px;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    nav img { width: 28px; height: 28px; }
+    .dashboard-btn {
+      font-size: 20px;
+      text-decoration: none;
+    }
+    .goback {
+      margin-left: auto;
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color .2s;
+    }
+    .goback:hover { color: #fff; }
+    .exercise-header {
+      margin-bottom: 24px;
+    }
+    .exercise-header h1 {
+      font-size: 22px;
+      font-weight: 800;
+      margin: 0 0 6px;
+      color: #fff;
+    }
+    .exercise-header p {
+      font-size: 14px;
+      color: #94a3b8;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- TOP NAV -->
+    <nav>
+      <a href="#" id="menuBtn" aria-label="Hap menunë">
+        <img src="../../imgs/menu (1).png" alt="Menu">
+      </a>
+      <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
+      <a href="../quiz/quiz-css-typography.html" class="goback">Kthehu Pas</a>
+    </nav>
+
+    <!-- SIDEBAR -->
+    <div class="overlay" id="overlay"></div>
+    <div class="sidebar" id="sidebar" aria-hidden="true">
+      <div class="sidebar-head">
+        <div class="sidebar-title">
+          <img class="ikonSidebar" src="../../imgs/icon_platformes-removebg-preview.png" alt="">
+          <p>Meso Programim</p>
+        </div>
+        <button class="sidebar-close" id="closeBtn" type="button">✕</button>
+      </div>
+      <div class="sidebar-links">
+        <a href="../../dashboard.html">Dashboard</a>
+        <a href="../../roadmap.html?course=html-fundamentals">Roadmap</a>
+        <a href="#" class="report-bug-link" data-report="bug">Report a bug</a>
+      </div>
+    </div>
+
+    <!-- EXERCISE HEADER -->
+    <div class="exercise-header">
+      <h1>💻 Ushtrime: CSS Tipografia</h1>
+      <p>Praktiko atë që mësove — stilizo tekstin me CSS dhe kontrollo rezultatin live!</p>
+    </div>
+
+    <!-- CODING EXERCISE -->
+    <div id="typographyExercise"></div>
+
+  </div>
+
+  <script src="../../js.lessons/sidebar.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module" src="../../js/requireAuth.js"></script>
+
+  <script type="module">
+    import { createCodingExercise } from "../../js/codingExercise.js";
+    createCodingExercise(document.getElementById("typographyExercise"), {
+      instructions: `
+        <h3>Detyrë: Stilizo një faqe me Tipografi</h3>
+        <p>Ke një <code>&lt;h1&gt;</code> dhe një <code>&lt;p&gt;</code> në <strong>index.html</strong>.
+           Shkruaj kodin CSS në <strong>style.css</strong> që të kenë këto cilësi:</p>
+        <ol>
+          <li><code>h1</code> — <strong>font-size: 32px</strong></li>
+          <li><code>h1</code> — <strong>font-weight: 800</strong></li>
+          <li><code>h1</code> — <strong>text-align: center</strong></li>
+          <li><code>h1</code> — <strong>text-transform: uppercase</strong></li>
+          <li><code>p</code> — <strong>font-size: 16px</strong></li>
+          <li><code>p</code> — <strong>line-height: 1.6</strong></li>
+          <li><code>p</code> — <strong>text-align: center</strong></li>
+        </ol>
+        <p><em>Bonus: Shto <code>letter-spacing</code>, <code>color</code>, ose <code>font-family</code> për ta bërë më të bukur!</em></p>
+      `,
+      htmlDefault: '<h1>Mëso Programim</h1>\n<p>Tipografia është arti i stilizimit të tekstit në faqe web. Me CSS mund të kontrollojmë fontin, madhësinë, peshën dhe shumë më tepër.</p>',
+      cssDefault: '/* Stilizo h1 dhe p */\n\nh1 {\n\n}\n\np {\n\n}',
+      tests: [
+        {
+          description: "h1 ka font-size: 32px",
+          test: (doc) => {
+            const el = doc.querySelector('h1');
+            return el && getComputedStyle(el).fontSize === '32px';
+          }
+        },
+        {
+          description: "h1 ka font-weight: 800",
+          test: (doc) => {
+            const el = doc.querySelector('h1');
+            return el && getComputedStyle(el).fontWeight === '800';
+          }
+        },
+        {
+          description: "h1 ka text-align: center",
+          test: (doc) => {
+            const el = doc.querySelector('h1');
+            return el && getComputedStyle(el).textAlign === 'center';
+          }
+        },
+        {
+          description: "h1 ka text-transform: uppercase",
+          test: (doc) => {
+            const el = doc.querySelector('h1');
+            return el && getComputedStyle(el).textTransform === 'uppercase';
+          }
+        },
+        {
+          description: "p ka font-size: 16px",
+          test: (doc) => {
+            const el = doc.querySelector('p');
+            return el && getComputedStyle(el).fontSize === '16px';
+          }
+        },
+        {
+          description: "p ka line-height: 1.6",
+          test: (doc) => {
+            const el = doc.querySelector('p');
+            if (!el) return false;
+            const lh = parseFloat(getComputedStyle(el).lineHeight);
+            const fs = parseFloat(getComputedStyle(el).fontSize);
+            const ratio = lh / fs;
+            return Math.abs(ratio - 1.6) < 0.1;
+          }
+        },
+        {
+          description: "p ka text-align: center",
+          test: (doc) => {
+            const el = doc.querySelector('p');
+            return el && getComputedStyle(el).textAlign === 'center';
+          }
+        }
+      ],
+      successMessage: "Shkëlqyeshëm! E kuptove tipografinë CSS! 🎉"
+    });
+  </script>
+
+  <script type="module">
+    import { markLessonCompleted } from "../../js/courseProgressManager.js";
+    const COURSE_SLUG = "html-fundamentals";
+    const LESSON_ID = "e-css-typography";
+
+    document.addEventListener("ce-all-passed", async () => {
+      await markLessonCompleted(COURSE_SLUG, LESSON_ID);
+    });
+  </script>
+</body>
+</html>

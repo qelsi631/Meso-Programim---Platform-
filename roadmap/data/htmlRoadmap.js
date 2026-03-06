@@ -48,7 +48,10 @@ export const htmlRoadmap = {
         { id: "c4", title: "Ngjyrat në CSS",                      type: "mësim",    path: "html-css/css-mesimet/lesson.0.19.html" },
         { id: "q3", title: "Quiz: CSS Colors",                    type: "vlerësim", path: "html-css/quiz/quiz-css-colors.html" },
         { id: "c5", title: "Teksti dhe Tipografia në CSS",        type: "mësim",    path: "html-css/css-mesimet/lesson.0.20.html" },
-        { id: "q4", title: "Quiz: CSS Typography",                type: "vlerësim", path: "html-css/quiz/quiz-css-typography.html" }
+        { id: "q4", title: "Quiz: CSS Typography",                type: "vlerësim", path: "html-css/quiz/quiz-css-typography.html" },
+        { id: "c6", title: "CSS Box Model",                        type: "mësim",    path: "html-css/css-mesimet/lesson.0.21.html" },
+        { id: "q5", title: "Quiz: CSS Box Model",                  type: "vlerësim", path: "html-css/quiz/quiz-css-box-model.html" },
+        { id: "e1", title: "Ushtrime: CSS Box Model",              type: "ushtrime", path: "html-css/ushtrime/ushtrime-css.html" }
       ],
     }
   ],

@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="sq">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ushtrime: Formular i thjesht | Meso Programim</title>
+  <title>Ushtrime CSS: Box Model | Mëso Programim</title>
 
   <link rel="stylesheet" href="../../css/codingExercise.css">
   <link rel="stylesheet" href="../../sidebar.css">
@@ -65,14 +65,16 @@
 
   <div class="container">
 
+    <!-- TOP NAV -->
     <nav>
-      <a href="#" id="menuBtn" aria-label="Hap menune">
+      <a href="#" id="menuBtn" aria-label="Hap menunë">
         <img src="../../imgs/menu (1).png" alt="Menu">
       </a>
       <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
-      <a href="../quiz/quiz-input-types.html" class="goback">Kthehu Pas</a>
+      <a href="../quiz/quiz-css-box-model.html" class="goback">Kthehu Pas</a>
     </nav>
 
+    <!-- SIDEBAR -->
     <div class="overlay" id="overlay"></div>
     <div class="sidebar" id="sidebar" aria-hidden="true">
       <div class="sidebar-head">
@@ -80,7 +82,7 @@
           <img class="ikonSidebar" src="../../imgs/icon_platformes-removebg-preview.png" alt="">
           <p>Meso Programim</p>
         </div>
-        <button class="sidebar-close" id="closeBtn" type="button">&#10005;</button>
+        <button class="sidebar-close" id="closeBtn" type="button">✕</button>
       </div>
       <div class="sidebar-links">
         <a href="../../dashboard.html">Dashboard</a>
@@ -89,76 +91,99 @@
       </div>
     </div>
 
+    <!-- EXERCISE HEADER -->
     <div class="exercise-header">
-      <h1>&#128187; Ushtrime: Formular i Thjesht</h1>
-      <p>Praktiko formularet — shkruaj kodin HTML dhe kontrollo rezultatin live!</p>
+      <h1>💻 Ushtrime: CSS Box Model</h1>
+      <p>Praktiko atë që mësove — shkruaj kodin CSS dhe kontrollo rezultatin live!</p>
     </div>
 
-    <div id="formExercise"></div>
+    <!-- CODING EXERCISE -->
+    <div id="boxModelExercise"></div>
 
   </div>
 
   <script src="../../js.lessons/sidebar.js"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script type="module" src="../../js/requireAuth.js"></script>
 
   <script type="module">
     import { createCodingExercise } from "../../js/codingExercise.js";
-    createCodingExercise(document.getElementById("formExercise"), {
+    createCodingExercise(document.getElementById("boxModelExercise"), {
       instructions: `
-        <h3>Detyre: Krijo nje Formular</h3>
-        <p>Krijo nje formular te thjesht me disa input types:</p>
+        <h3>Detyrë: Stilizo një kartë me Box Model</h3>
+        <p>Ke një <code>&lt;div class="card"&gt;</code> në <strong>index.html</strong>.
+           Shkruaj kodin CSS në <strong>style.css</strong> që karta të ketë këto cilësi:</p>
         <ol>
-          <li>Krijo nje <code>&lt;form&gt;</code></li>
-          <li>Shto nje input <code>type="text"</code> per emrin</li>
-          <li>Shto nje input <code>type="password"</code> per fjalekalimin</li>
-          <li>Shto dy <code>radio</code> me te njejtin <code>name</code> (p.sh. F/M)</li>
-          <li>Shto nje <code>checkbox</code> per "Pranoj kushtet"</li>
-          <li>Shto nje buton <code>submit</code></li>
+          <li>Gjerësi: <strong>width: 300px</strong></li>
+          <li>Padding: <strong>padding: 20px</strong></li>
+          <li>Kufi: <strong>border: 2px solid #7c3aed</strong></li>
+          <li>Cepa të rrumbullakët: <strong>border-radius: 12px</strong></li>
+          <li>Qendërzim: <strong>margin: 20px auto</strong></li>
+          <li>Box sizing: <strong>box-sizing: border-box</strong></li>
         </ol>
-        <p><em>Sugjerim: perdor edhe &lt;label&gt; qe te jete me i qarte.</em></p>
+        <p><em>Bonus: Shto <code>background-color</code> dhe <code>color</code> për ta bërë kartën më të bukur!</em></p>
       `,
-      htmlDefault: '<!-- Shkruaj ketu HTML-in tend -->\n\n<form>\n  <label>Emri</label>\n  <input type="text" name="emri">\n</form>\n',
-      cssDefault: '',
+      htmlDefault: '<div class="card">\\n  <h2>Karta Ime</h2>\\n  <p>Kjo eshte nje karte e ndertuar me Box Model!</p>\\n</div>',
+      cssDefault: '/* Shkruaj kodin CSS ketu */\\n\\n.card {\\n\\n}',
       tests: [
         {
-          description: "Ka <form>",
-          test: (doc) => !!doc.querySelector('form')
-        },
-        {
-          description: "Ka input type=\"text\"",
-          test: (doc) => !!doc.querySelector('input[type="text"]')
-        },
-        {
-          description: "Ka input type=\"password\"",
-          test: (doc) => !!doc.querySelector('input[type="password"]')
-        },
-        {
-          description: "Ka 2 radio me te njejtin name",
+          description: "Karta ka width: 300px",
           test: (doc) => {
-            const radios = Array.from(doc.querySelectorAll('input[type="radio"]'));
-            if (radios.length < 2) return false;
-            const names = radios.map(el => el.getAttribute('name')).filter(Boolean);
-            return names.some(n => names.filter(x => x === n).length >= 2);
+            const el = doc.querySelector('.card');
+            return el && getComputedStyle(el).width === '300px';
           }
         },
         {
-          description: "Ka checkbox",
-          test: (doc) => !!doc.querySelector('input[type="checkbox"]')
+          description: "Karta ka padding: 20px",
+          test: (doc) => {
+            const el = doc.querySelector('.card');
+            return el && getComputedStyle(el).paddingTop === '20px';
+          }
         },
         {
-          description: "Ka submit",
-          test: (doc) => !!doc.querySelector('input[type="submit"], button[type="submit"]')
+          description: "Karta ka border: 2px solid",
+          test: (doc) => {
+            const el = doc.querySelector('.card');
+            if (!el) return false;
+            const style = getComputedStyle(el);
+            return style.borderTopStyle === 'solid' && style.borderTopWidth === '2px';
+          }
+        },
+        {
+          description: "Karta ka border-radius: 12px",
+          test: (doc) => {
+            const el = doc.querySelector('.card');
+            return el && getComputedStyle(el).borderRadius === '12px';
+          }
+        },
+        {
+          description: "Karta ka margin: 20px auto (qendërzim)",
+          test: (doc) => {
+            const el = doc.querySelector('.card');
+            if (!el) return false;
+            const mt = getComputedStyle(el).marginTop;
+            const ml = getComputedStyle(el).marginLeft;
+            const mr = getComputedStyle(el).marginRight;
+            return mt === '20px' && ml === mr;
+          }
+        },
+        {
+          description: "Karta ka box-sizing: border-box",
+          test: (doc) => {
+            const el = doc.querySelector('.card');
+            return el && getComputedStyle(el).boxSizing === 'border-box';
+          }
         }
       ],
-      successMessage: "Shkelqyeshem! Formularet u mesuan! \ud83c\udf89"
+      successMessage: "Shkëlqyeshëm! E kuptove Box Model-in! 🎉"
     });
   </script>
 
   <script type="module">
     import { markLessonCompleted } from "../../js/courseProgressManager.js";
     const COURSE_SLUG = "html-fundamentals";
-    const LESSON_ID = "l26";
+    const LESSON_ID = "e1";
 
     document.addEventListener("ce-all-passed", async () => {
       await markLessonCompleted(COURSE_SLUG, LESSON_ID);

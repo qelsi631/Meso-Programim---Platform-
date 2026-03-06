@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quiz — HTML Titujt (Headings) | Mëso Programimin</title>
+  <title>Quiz — CSS Box Model | Mëso Programimin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
@@ -15,14 +15,14 @@
 
   <div class="page">
     <nav class="topbar">
-      <a class="icon-btn" href="../mesimet/lesson0.2.html" aria-label="Kthehu pas">←</a>
+      <a class="icon-btn" href="/html-css/css-mesimet/welcome-css.html" aria-label="Kthehu pas">←</a>
       <div class="topbar-actions">
         <a href="../../dashboard.html" class="icon-btn" title="Dashboard">📊</a>
         <a href="#" class="icon-btn report-bug-link" data-report="bug" title="Report a bug">🐞</a>
       </div>
       <div class="topbar-title">
         <p class="tiny">Quiz</p>
-        <h1>HTML — Titujt (Headings)</h1>
+        <h1>CSS Box Model</h1>
       </div>
       <div class="progress-wrap" aria-label="Progresi i quiz-it">
         <span class="progress-text" id="progressText">1/5</span>
@@ -66,92 +66,104 @@
     import { createQuizLives } from "../../js/quizLives.js";
 
     const COURSE_SLUG = "html-fundamentals";
-    const LESSON_ID = "l6";
+    const LESSON_ID = "q5";
 
+    // ─── QUIZ DATA ───
     const quizData = [
       {
-        type: "fill-blank",
+        type: "mcq",
         badge: "Pyetja 1",
-        question: "Plotëso kodin për të krijuar titullin kryesor dhe një nën-titull:",
-        code: [
-          { text: '&lt;', class: 'tag' },
-          { blank: 0 },
-          { text: '&gt;Mirësevini në faqe&lt;/h1&gt;', class: 'tag' },
-          { text: '\n', class: '' },
-          { text: '&lt;', class: 'tag' },
-          { blank: 1 },
-          { text: '&gt;Rreth nesh&lt;/h2&gt;', class: 'tag' }
+        question: "Cili është rendi i saktë i shtresave në Box Model (nga brenda drejt jashtë)?",
+        answers: [
+          { text: "Margin → Border → Padding → Content", correct: false },
+          { text: "Content → Padding → Border → Margin", correct: true },
+          { text: "Border → Padding → Content → Margin", correct: false },
+          { text: "Content → Margin → Padding → Border", correct: false }
         ],
-        blanks: [
-          { answer: "h1", placeholder: "___" },
-          { answer: "h2", placeholder: "___" }
-        ],
-        chips: ["h1", "h2", "h3", "p"],
-        explanation: "<code>&lt;h1&gt;</code> është titulli kryesor (më i madhi) dhe <code>&lt;h2&gt;</code> është nën-titulli. Hierarkia shkon nga <code>h1</code> deri <code>h6</code>."
+        explanation: "Rendi i saktë nga brenda drejt jashtë: <code>Content → Padding → Border → Margin</code>."
       },
       {
-        type: "mcq",
+        type: "fill-blank",
         badge: "Pyetja 2",
-        question: "Sa nivele të titujve (headings) ekzistojnë në HTML?",
-        answers: [
-          { text: "4 (h1 – h4)", correct: false },
-          { text: "6 (h1 – h6)", correct: true },
-          { text: "3 (h1 – h3)", correct: false },
-          { text: "10 (h1 – h10)", correct: false }
+        question: "Plotëso kodin për të shtuar hapësirë brenda kutisë dhe kufi të plotë vjollcë:",
+        code: [
+          { text: '.kutia {', class: 'punct' },
+          { text: '\n  ', class: '' },
+          { blank: 0 },
+          { text: ': 20px;', class: 'punct' },
+          { text: '\n  ', class: '' },
+          { blank: 1 },
+          { text: ': 2px solid #7c3aed;', class: 'punct' },
+          { text: '\n', class: '' },
+          { text: '}', class: 'punct' }
         ],
-        explanation: "HTML ka gjashtë nivele titujsh: <code>&lt;h1&gt;</code> (më i madhi) deri <code>&lt;h6&gt;</code> (më i vogli)."
+        blanks: [
+          { answer: "padding", placeholder: "___" },
+          { answer: "border", placeholder: "___" }
+        ],
+        chips: ["padding", "margin", "border", "outline"],
+        explanation: "<code>padding</code> shton hapësirë brenda kufifit. <code>border</code> vizaton kufirin rreth elementit."
       },
       {
         type: "type-answer",
         badge: "Pyetja 3",
-        question: "Cili tag përdoret për titullin <strong>më të madh</strong> në HTML?",
+        question: "Çfarë vlere i jepni margin-it për të <strong>qendërzuar</strong> horizontalisht një element me width fiks?",
         code: [
-          { text: '&lt;', class: 'tag' },
+          { text: '.qender {', class: 'punct' },
+          { text: '\n  ', class: '' },
+          { text: 'width', class: 'prop' },
+          { text: ': 300px;', class: 'punct' },
+          { text: '\n  ', class: '' },
+          { text: 'margin', class: 'prop' },
+          { text: ': ', class: 'punct' },
           { blank: 0 },
-          { text: '&gt;Titulli kryesor&lt;/h1&gt;', class: 'tag' }
+          { text: ';', class: 'punct' },
+          { text: '\n', class: '' },
+          { text: '}', class: 'punct' }
         ],
         blanks: [
-          { answer: "h1", placeholder: "shkruaj tag-un..." }
+          { answer: "0 auto", placeholder: "shkruaj vlerën..." }
         ],
-        acceptAlternatives: ["h1"],
-        explanation: "<code>&lt;h1&gt;</code> është titulli më i madh dhe më i rëndësishëm. Çdo faqe duhet të ketë vetëm një <code>&lt;h1&gt;</code>."
-      },
-      {
-        type: "fill-blank",
-        badge: "Pyetja 4",
-        question: "Plotëso hierarkinë e saktë të titujve:",
-        code: [
-          { text: '&lt;h1&gt;Kreu kryesor&lt;/h1&gt;', class: 'tag' },
-          { text: '\n', class: '' },
-          { text: '&lt;', class: 'tag' },
-          { blank: 0 },
-          { text: '&gt;Nën-seksion&lt;/h2&gt;', class: 'tag' },
-          { text: '\n', class: '' },
-          { text: '&lt;', class: 'tag' },
-          { blank: 1 },
-          { text: '&gt;Detaj&lt;/h3&gt;', class: 'tag' }
-        ],
-        blanks: [
-          { answer: "h2", placeholder: "___" },
-          { answer: "h3", placeholder: "___" }
-        ],
-        chips: ["h2", "h3", "h4", "h5"],
-        explanation: "Titujt duhet të ndjekin hierarkinë: <code>h1 → h2 → h3</code>. Nuk duhet të kapërcejmë nivele (p.sh. nga h1 direkt te h4)."
+        acceptAlternatives: ["0 auto", "auto"],
+        explanation: "<code>margin: 0 auto</code> qendërzon elementin horizontalisht. <code>auto</code> i jep hapësirë të barabartë majtas dhe djathtas."
       },
       {
         type: "mcq",
-        badge: "Pyetja 5",
-        question: "Cili titull shfaqet <strong>më i vogël</strong> vizualisht?",
+        badge: "Pyetja 4",
+        question: "Çfarë bën <code>box-sizing: border-box</code>?",
         answers: [
-          { text: "&lt;h1&gt;", correct: false },
-          { text: "&lt;h3&gt;", correct: false },
-          { text: "&lt;h6&gt;", correct: true },
-          { text: "&lt;h2&gt;", correct: false }
+          { text: "E bën elementin më të madh", correct: false },
+          { text: "Padding dhe border llogariten brenda width-it total", correct: true },
+          { text: "Heq border nga elementi", correct: false },
+          { text: "Shton margin automatik", correct: false }
         ],
-        explanation: "<code>&lt;h6&gt;</code> është titulli më i vogël vizualisht. Sa më i madh numri, aq më i vogël shfaqet titulli."
+        explanation: "Me <code>border-box</code>, width përfshin padding + border. Pa të, ato shtohen sipër width-it dhe elementi bëhet më i gjerë se pritej."
+      },
+      {
+        type: "fill-blank",
+        badge: "Pyetja 5",
+        question: "Plotëso kodin për rrumbullakimin e cepave dhe hapësirë jashtë kutisë:",
+        code: [
+          { text: '.kartela {', class: 'punct' },
+          { text: '\n  ', class: '' },
+          { blank: 0 },
+          { text: ': 12px;', class: 'punct' },
+          { text: '\n  ', class: '' },
+          { blank: 1 },
+          { text: ': 24px;', class: 'punct' },
+          { text: '\n', class: '' },
+          { text: '}', class: 'punct' }
+        ],
+        blanks: [
+          { answer: "border-radius", placeholder: "___" },
+          { answer: "margin", placeholder: "___" }
+        ],
+        chips: ["border-radius", "border-style", "margin", "padding"],
+        explanation: "<code>border-radius</code> rrumbullakon cepat. <code>margin</code> krijon hapësirë jashtë elementit."
       }
     ];
 
+    // ─── DOM REFS ───
     const badge = document.getElementById("badge");
     const qTypeLabel = document.getElementById("qTypeLabel");
     const questionText = document.getElementById("questionText");
@@ -175,6 +187,7 @@
     let blankValues = [];
     let answered = false;
 
+    // ─── RENDER ───
     function renderQuestion() {
       const q = quizData[current];
       answered = false;
@@ -199,14 +212,23 @@
       typeWrap.style.display = "none";
       quizForm.style.display = "none";
 
-      if (q.type === "fill-blank") { qTypeLabel.textContent = "plotëso kodin"; renderFillBlank(q); }
-      else if (q.type === "type-answer") { qTypeLabel.textContent = "shkruaj përgjigjen"; renderTypeAnswer(q); }
-      else if (q.type === "mcq") { qTypeLabel.textContent = "zgjedh përgjigjen"; renderMCQ(q); }
+      if (q.type === "fill-blank") {
+        qTypeLabel.textContent = "plotëso kodin";
+        renderFillBlank(q);
+      } else if (q.type === "type-answer") {
+        qTypeLabel.textContent = "shkruaj përgjigjen";
+        renderTypeAnswer(q);
+      } else if (q.type === "mcq") {
+        qTypeLabel.textContent = "zgjedh përgjigjen";
+        renderMCQ(q);
+      }
     }
 
+    // ─── FILL-IN-THE-BLANK ───
     function renderFillBlank(q) {
       codeBlock.style.display = "block";
       wordBank.style.display = "flex";
+
       let html = '';
       for (const part of q.code) {
         if (part.blank !== undefined) {
@@ -214,12 +236,17 @@
           html += `<span class="blank-slot" data-blank="${part.blank}"><span class="placeholder-dots">${b.placeholder}</span></span>`;
         } else {
           const cls = part.class ? ` class="${part.class}"` : '';
-          html += `<span${cls}>${part.text.replace(/\n/g, '<br>')}</span>`;
+          const text = part.text.replace(/\n/g, '<br>');
+          html += `<span${cls}>${text}</span>`;
         }
       }
       codeBlock.innerHTML = html;
+
       const shuffled = [...q.chips].sort(() => Math.random() - 0.5);
-      wordBank.innerHTML = shuffled.map(chip => `<button type="button" class="word-chip" data-value="${chip}">${chip}</button>`).join('');
+      wordBank.innerHTML = shuffled.map(chip =>
+        `<button type="button" class="word-chip" data-value="${chip}">${chip}</button>`
+      ).join('');
+
       wordBank.querySelectorAll('.word-chip').forEach(btn => {
         btn.addEventListener('click', () => {
           if (answered || btn.classList.contains('used')) return;
@@ -233,6 +260,7 @@
           slot.dataset.chipValue = btn.dataset.value;
         });
       });
+
       codeBlock.addEventListener('click', (e) => {
         const slot = e.target.closest('.blank-slot');
         if (!slot || !slot.classList.contains('filled') || answered) return;
@@ -247,9 +275,11 @@
       });
     }
 
+    // ─── TYPE ANSWER ───
     function renderTypeAnswer(q) {
       codeBlock.style.display = "block";
       typeWrap.style.display = "flex";
+
       let html = '';
       for (const part of q.code) {
         if (part.blank !== undefined) {
@@ -260,20 +290,33 @@
         }
       }
       codeBlock.innerHTML = html;
+
       typeInput.value = "";
       typeInput.className = "type-answer-input";
       typeInput.placeholder = q.blanks[0].placeholder;
       typeInput.focus();
+
       typeInput.addEventListener('input', () => {
         if (answered) return;
         const val = typeInput.value.trim();
         const slot = document.getElementById('typeBlank');
-        if (val) { slot.textContent = val; slot.classList.add('filled'); blankValues[0] = val; }
-        else { slot.innerHTML = `<span class="placeholder-dots">${q.blanks[0].placeholder}</span>`; slot.classList.remove('filled'); blankValues[0] = null; }
+        if (val) {
+          slot.textContent = val;
+          slot.classList.add('filled');
+          blankValues[0] = val;
+        } else {
+          slot.innerHTML = `<span class="placeholder-dots">${q.blanks[0].placeholder}</span>`;
+          slot.classList.remove('filled');
+          blankValues[0] = null;
+        }
       });
-      typeInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); submitBtn.click(); } });
+
+      typeInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') { e.preventDefault(); submitBtn.click(); }
+      });
     }
 
+    // ─── MULTIPLE CHOICE ───
     function renderMCQ(q) {
       quizForm.style.display = "flex";
       quizForm.innerHTML = q.answers.map((a, idx) => `
@@ -284,6 +327,7 @@
       `).join('');
     }
 
+    // ─── SUBMIT ───
     submitBtn.addEventListener("click", () => {
       if (answered) return;
       const q = quizData[current];
@@ -342,14 +386,17 @@
       submitBtn.disabled = true;
     }
 
+    // ─── RETRY ───
     retryBtn.addEventListener("click", () => { renderQuestion(); });
 
+    // ─── NEXT ───
     nextBtn.addEventListener("click", async () => {
       current++;
       if (current < quizData.length) renderQuestion();
-      else await tracker.finish(COURSE_SLUG, LESSON_ID, "/html-css/ushtrime/ushtrime0.1.html");
+      else await tracker.finish(COURSE_SLUG, LESSON_ID, "../ushtrime/ushtrime-css.html");
     });
 
+    // ─── HELPERS ───
     function showResult(type, msg) {
       resultBanner.textContent = msg;
       resultBanner.className = `result-banner show ${type}`;
@@ -357,6 +404,5 @@
 
     renderQuestion();
   </script>
-
 </body>
 </html>

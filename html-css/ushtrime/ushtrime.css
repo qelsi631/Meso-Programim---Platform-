@@ -307,6 +307,19 @@ body{
   border-radius: 12px;
   background: rgba(255,255,255,.05);
   border: 1px solid rgba(255,255,255,.10);
+  color: var(--muted);
+  cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.file-tab:hover { background: rgba(255,255,255,.08); color: var(--text); }
+.file-tab-active {
+  background: rgba(255,127,0,.12);
+  border-color: var(--accent);
+  color: #fff;
+}
+.file-tabs-wrap {
+  display: flex;
+  gap: 6px;
 }
 
 .actions{

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS | Box Model</title>
+
+  <link rel="stylesheet" href="../mesimet/welcome.css">
+  <link rel="stylesheet" href="../../sidebar.css">
+  <link rel="stylesheet" href="../mesimet/style.css">
+  <link rel="stylesheet" href="../../css/playground.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <nav>
+    <a href="#" id="menuBtn"><img src="../../imgs/menu (1).png" alt="Menu"></a>
+    <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
+    <a href="welcome-css.html" class="goback">Kthehu Pas</a>
+  </nav>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <div class="sidebar-title">
+        <img class="ikonSidebar" src="../../imgs/icon_platformes-removebg-preview.png" alt="Logo">
+        <p>Mëso Programim</p>
+      </div>
+      <button class="sidebar-close" id="closeBtn">✕</button>
+    </div>
+    <div class="sidebar-links">
+      <a href="../../dashboard.html">Dashboard</a>
+      <a href="../../roadmap.html?course=html-fundamentals">Roadmap</a>
+      <a href="#" class="report-bug-link" data-report="bug">Report a bug</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="welcome">
+      <h1>CSS Box Model: <span>Si funksionon kutia e çdo elementi</span></h1>
+    </div>
+
+    <section class="lesson-content">
+
+      <!-- Intro -->
+      <section class="section-card">
+        <p>Çdo element HTML është si një <strong>kuti</strong>. Kjo kuti ka 4 shtresa: <strong>Content</strong> (përmbajtja), <strong>Padding</strong> (mbushja), <strong>Border</strong> (kufiri), dhe <strong>Margin</strong> (hapësira e jashtme). Kjo quhet <strong>Box Model</strong>.</p>
+        <p>Kuptimi i Box Model është thelbësor për pozicionimin dhe madhësinë e elementeve në faqe.</p>
+      </section>
+
+      <!-- Visual Diagram -->
+      <section class="section-card">
+        <div class="section-header"><h2>Diagrami i Box Model</h2></div>
+        <div class="preview-card" style="margin-top:12px;">
+          <div class="preview-title">Vizualizim</div>
+          <div class="preview-box" style="display:flex;justify-content:center;align-items:center;padding:20px;">
+            <!-- Box Model visual -->
+            <div style="background:#ff6600;padding:24px;border-radius:12px;text-align:center;color:#fff;font-size:13px;font-weight:700;min-width:280px;">
+              MARGIN (hapësira e jashtme)
+              <div style="background:#22c55e;padding:20px;border-radius:10px;margin-top:10px;color:#fff;font-size:13px;">
+                BORDER (kufiri)
+                <div style="background:#3b82f6;padding:18px;border-radius:8px;margin-top:8px;color:#fff;font-size:13px;">
+                  PADDING (mbushja)
+                  <div style="background:#7c3aed;padding:16px;border-radius:6px;margin-top:8px;color:#fff;font-size:14px;font-weight:800;">
+                    CONTENT<br><span style="font-weight:400;font-size:12px;">(tekst, imazh, etj.)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="property-value-explanation" style="margin-top:18px;padding:18px 16px;background:#ffffff;color:#222;border-radius:10px;border-left:4px solid #7c3aed;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+          <div style="font-weight:700;font-size:16px;margin-bottom:8px;color:#7c3aed;">Rendi nga brenda drejt jashtë:</div>
+          <p style="margin:0;">
+            <strong>Content</strong> → <strong>Padding</strong> → <strong>Border</strong> → <strong>Margin</strong><br>
+            Mendo sikur kuti e një dhurate: përmbajtja brenda, mbushja (sfungjer), kufiri (kartoni), hapësira jashtë (distanca nga kutitë e tjera).
+          </p>
+        </div>
+      </section>
+
+      <!-- 1. Width & Height -->
+      <section class="section-card">
+        <div class="section-header"><h2>1. width dhe height — Madhësia e përmbajtjes</h2></div>
+        <p>Pronat <span>width</span> dhe <span>height</span> caktojnë madhësinë e <strong>përmbajtjes</strong> (content area).</p>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">CSS</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+          <pre class="code-pre line-numbers"><code class="language-css"><span class="selector">.kutia</span> <span class="punct">{</span>
+  <span class="property">width</span><span class="punct">:</span> <span class="number">300px</span><span class="punct">;</span>
+  <span class="property">height</span><span class="punct">:</span> <span class="number">150px</span><span class="punct">;</span>
+  <span class="property">background-color</span><span class="punct">:</span> <span class="value">#7c3aed</span><span class="punct">;</span>
+<span class="punct">}</span></code></pre>
+        </div>
+
+        <div class="preview-card" style="margin-top:16px;">
+          <div class="preview-title">Preview</div>
+          <div class="preview-box" style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end;">
+            <div style="width:120px;height:80px;background:#7c3aed;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:600;">120 × 80</div>
+            <div style="width:200px;height:60px;background:#3b82f6;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:600;">200 × 60</div>
+            <div style="width:100px;height:100px;background:#22c55e;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:600;">100 × 100</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Padding -->
+      <section class="section-card">
+        <div class="section-header"><h2>2. padding — Mbushja e brendshme</h2></div>
+        <p>Padding krijon <strong>hapësirë ndërmjet përmbajtjes dhe kufifit</strong>. Shtyn përmbajtjen nga skajet.</p>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">CSS</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+          <pre class="code-pre line-numbers"><code class="language-css"><span class="comment">/* Padding i njëjtë nga të 4 anët */</span>
+<span class="selector">.kutia-1</span> <span class="punct">{</span>
+  <span class="property">padding</span><span class="punct">:</span> <span class="number">20px</span><span class="punct">;</span>
+<span class="punct">}</span>
+
+<span class="comment">/* Padding i ndryshëm: sipër/poshtë, majtas/djathtas */</span>
+<span class="selector">.kutia-2</span> <span class="punct">{</span>
+  <span class="property">padding</span><span class="punct">:</span> <span class="number">10px</span> <span class="number">30px</span><span class="punct">;</span>
+<span class="punct">}</span>
+
+<span class="comment">/* Padding për secilën anë veçmas */</span>
+<span class="selector">.kutia-3</span> <span class="punct">{</span>
+  <span class="property">padding-top</span><span class="punct">:</span> <span class="number">10px</span><span class="punct">;</span>
+  <span class="property">padding-right</span><span class="punct">:</span> <span class="number">20px</span><span class="punct">;</span>
+  <span class="property">padding-bottom</span><span class="punct">:</span> <span class="number">10px</span><span class="punct">;</span>
+  <span class="property">padding-left</span><span class="punct">:</span> <span class="number">20px</span><span class="punct">;</span>
+<span class="punct">}</span></code></pre>
+        </div>
+
+        <div class="preview-card" style="margin-top:16px;">
+          <div class="preview-title">Pa padding vs Me padding</div>
+          <div class="preview-box" style="display:flex;gap:24px;flex-wrap:wrap;">
+            <div>
+              <span style="font-size:12px;color:#94a3b8;display:block;margin-bottom:6px;">padding: 0</span>
+              <div style="background:#7c3aed;color:#fff;font-size:13px;border-radius:6px;">Tekst pa padding</div>
+            </div>
+            <div>
+              <span style="font-size:12px;color:#94a3b8;display:block;margin-bottom:6px;">padding: 20px</span>
+              <div style="background:#7c3aed;color:#fff;font-size:13px;border-radius:6px;padding:20px;">Tekst me padding</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="property-value-explanation" style="margin-top:18px;padding:18px 16px;background:#ffffff;color:#222;border-radius:10px;border-left:4px solid #3b82f6;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+          <div style="font-weight:700;font-size:16px;margin-bottom:8px;color:#3b82f6;">Shorthand (shkurtim)</div>
+          <p style="margin:0;">
+            <code>padding: 10px 20px 10px 20px;</code> → sipër, djathtas, poshtë, majtas (si rrotë e orës).<br>
+            <code>padding: 10px 20px;</code> → sipër/poshtë 10px, majtas/djathtas 20px.<br>
+            <code>padding: 20px;</code> → 20px nga të 4 anët.
+          </p>
+        </div>
+      </section>
+
+      <!-- 3. Border -->
+      <section class="section-card">
+        <div class="section-header"><h2>3. border — Kufiri</h2></div>
+        <p>Border vizaton një <strong>vijë rreth elementit</strong>, ndërmjet padding-ut dhe margin-it.</p>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">CSS</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+          <pre class="code-pre line-numbers"><code class="language-css"><span class="comment">/* Shorthand: trashësia stili ngjyra */</span>
+<span class="selector">.kutia</span> <span class="punct">{</span>
+  <span class="property">border</span><span class="punct">:</span> <span class="number">2px</span> <span class="value">solid</span> <span class="value">#7c3aed</span><span class="punct">;</span>
+<span class="punct">}</span>
+
+<span class="comment">/* Stile të ndryshme */</span>
+<span class="selector">.vize</span>   <span class="punct">{</span> <span class="property">border</span><span class="punct">:</span> <span class="number">2px</span> <span class="value">dashed</span> <span class="value">#ff6600</span><span class="punct">;</span> <span class="punct">}</span>
+<span class="selector">.pika</span>   <span class="punct">{</span> <span class="property">border</span><span class="punct">:</span> <span class="number">3px</span> <span class="value">dotted</span> <span class="value">#22c55e</span><span class="punct">;</span> <span class="punct">}</span>
+<span class="selector">.dyshe</span>  <span class="punct">{</span> <span class="property">border</span><span class="punct">:</span> <span class="number">4px</span> <span class="value">double</span> <span class="value">#3b82f6</span><span class="punct">;</span> <span class="punct">}</span>
+
+<span class="comment">/* Vetëm njëra anë */</span>
+<span class="selector">.posht</span>  <span class="punct">{</span> <span class="property">border-bottom</span><span class="punct">:</span> <span class="number">3px</span> <span class="value">solid</span> <span class="value">#ef4444</span><span class="punct">;</span> <span class="punct">}</span></code></pre>
+        </div>
+
+        <div class="preview-card" style="margin-top:16px;">
+          <div class="preview-title">Stilet e kufifit</div>
+          <div class="preview-box" style="display:flex;flex-direction:column;gap:12px;">
+            <div style="border:2px solid #7c3aed;padding:12px;border-radius:6px;color:#e2e8f0;font-size:14px;">solid — vijë e plotë</div>
+            <div style="border:2px dashed #ff6600;padding:12px;border-radius:6px;color:#e2e8f0;font-size:14px;">dashed — viza</div>
+            <div style="border:3px dotted #22c55e;padding:12px;border-radius:6px;color:#e2e8f0;font-size:14px;">dotted — pika</div>
+            <div style="border:4px double #3b82f6;padding:12px;border-radius:6px;color:#e2e8f0;font-size:14px;">double — dyshe</div>
+            <div style="border-bottom:3px solid #ef4444;padding:12px;color:#e2e8f0;font-size:14px;">border-bottom — vetëm poshtë</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. border-radius -->
+      <section class="section-card">
+        <div class="section-header"><h2>4. border-radius — Cepat e rrumbullakët</h2></div>
+        <p>Rrumbullakon cepat e elementit. Vlera më e madhe = më i rrumbullakët.</p>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">CSS</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+          <pre class="code-pre line-numbers"><code class="language-css"><span class="selector">.pak</span>   <span class="punct">{</span> <span class="property">border-radius</span><span class="punct">:</span> <span class="number">4px</span><span class="punct">;</span> <span class="punct">}</span>
+<span class="selector">.mesem</span> <span class="punct">{</span> <span class="property">border-radius</span><span class="punct">:</span> <span class="number">12px</span><span class="punct">;</span> <span class="punct">}</span>
+<span class="selector">.shume</span> <span class="punct">{</span> <span class="property">border-radius</span><span class="punct">:</span> <span class="number">50%</span><span class="punct">;</span> <span class="punct">}</span>  <span class="comment">/* rreth i plotë */</span></code></pre>
+        </div>
+
+        <div class="preview-card" style="margin-top:16px;">
+          <div class="preview-title">Preview</div>
+          <div class="preview-box" style="display:flex;gap:20px;flex-wrap:wrap;align-items:center;justify-content:center;">
+            <div style="text-align:center;">
+              <div style="width:80px;height:80px;background:#7c3aed;border-radius:0px;"></div>
+              <span style="font-size:12px;color:#94a3b8;margin-top:6px;display:block;">0px</span>
+            </div>
+            <div style="text-align:center;">
+              <div style="width:80px;height:80px;background:#3b82f6;border-radius:8px;"></div>
+              <span style="font-size:12px;color:#94a3b8;margin-top:6px;display:block;">8px</span>
+            </div>
+            <div style="text-align:center;">
+              <div style="width:80px;height:80px;background:#22c55e;border-radius:20px;"></div>
+              <span style="font-size:12px;color:#94a3b8;margin-top:6px;display:block;">20px</span>
+            </div>
+            <div style="text-align:center;">
+              <div style="width:80px;height:80px;background:#ff6600;border-radius:50%;"></div>
+              <span style="font-size:12px;color:#94a3b8;margin-top:6px;display:block;">50% (rreth)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Margin -->
+      <section class="section-card">
+        <div class="section-header"><h2>5. margin — Hapësira e jashtme</h2></div>
+        <p>Margin krijon <strong>hapësirë jashtë kufifit</strong> — distancë ndërmjet elementit dhe elementeve përreth. Funksionon njësoj si padding por <strong>jashtë</strong>.</p>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">CSS</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+          <pre class="code-pre line-numbers"><code class="language-css"><span class="selector">.kutia</span> <span class="punct">{</span>
+  <span class="property">margin</span><span class="punct">:</span> <span class="number">20px</span><span class="punct">;</span>            <span class="comment">/* 20px nga të 4 anët */</span>
+<span class="punct">}</span>
+
+<span class="selector">.qender</span> <span class="punct">{</span>
+  <span class="property">width</span><span class="punct">:</span> <span class="number">300px</span><span class="punct">;</span>
+  <span class="property">margin</span><span class="punct">:</span> <span class="number">0</span> <span class="value">auto</span><span class="punct">;</span>          <span class="comment">/* qendërzim horizontal! */</span>
+<span class="punct">}</span>
+
+<span class="selector">.larg</span> <span class="punct">{</span>
+  <span class="property">margin-top</span><span class="punct">:</span> <span class="number">40px</span><span class="punct">;</span>       <span class="comment">/* hapësirë vetëm sipër */</span>
+  <span class="property">margin-bottom</span><span class="punct">:</span> <span class="number">40px</span><span class="punct">;</span>    <span class="comment">/* hapësirë vetëm poshtë */</span>
+<span class="punct">}</span></code></pre>
+        </div>
+
+        <div class="preview-card" style="margin-top:16px;">
+          <div class="preview-title">margin: 0 auto (qendërzim)</div>
+          <div class="preview-box">
+            <div style="width:200px;margin:0 auto;background:#7c3aed;padding:16px;border-radius:8px;text-align:center;color:#fff;font-size:14px;font-weight:600;">
+              Jam në qendër!
+            </div>
+          </div>
+        </div>
+
+        <div class="property-value-explanation" style="margin-top:18px;padding:18px 16px;background:#ffffff;color:#222;border-radius:10px;border-left:4px solid #ff6600;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+          <div style="font-weight:700;font-size:16px;margin-bottom:8px;color:#ff6600;">margin: auto</div>
+          <p style="margin:0;"><code>margin: 0 auto</code> qendërzon elementin horizontalisht. Kushti: elementi duhet të ketë <code>width</code> të caktuar. Kjo përdoret shumë shpesh në projekte reale!</p>
+        </div>
+      </section>
+
+      <!-- 6. Padding vs Margin -->
+      <section class="section-card">
+        <div class="section-header"><h2>Padding vs Margin — Dallimi</h2></div>
+
+        <div class="preview-card" style="margin-top:12px;">
+          <div class="preview-title">Vizualizim</div>
+          <div class="preview-box" style="display:flex;gap:30px;flex-wrap:wrap;justify-content:center;">
+            <div style="text-align:center;">
+              <span style="color:#94a3b8;font-size:13px;display:block;margin-bottom:8px;">Padding (brenda)</span>
+              <div style="border:2px solid #3b82f6;display:inline-block;border-radius:8px;">
+                <div style="background:rgba(59,130,246,0.15);padding:24px;">
+                  <div style="background:#3b82f6;padding:12px;border-radius:4px;color:#fff;font-size:13px;">Content</div>
+                </div>
+              </div>
+            </div>
+            <div style="text-align:center;">
+              <span style="color:#94a3b8;font-size:13px;display:block;margin-bottom:8px;">Margin (jashtë)</span>
+              <div style="background:rgba(255,102,0,0.15);padding:24px;border-radius:12px;display:inline-block;">
+                <div style="border:2px solid #ff6600;border-radius:8px;">
+                  <div style="background:#ff6600;padding:12px;border-radius:6px;color:#fff;font-size:13px;">Content</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="overflow-x:auto;margin-top:18px;">
+          <table style="width:100%;border-collapse:collapse;font-size:14px;">
+            <thead>
+              <tr style="background:#7c3aed;color:#fff;">
+                <th style="padding:10px 12px;text-align:left;border-radius:8px 0 0 0;"></th>
+                <th style="padding:10px 12px;text-align:left;">Padding</th>
+                <th style="padding:10px 12px;text-align:left;border-radius:0 8px 0 0;">Margin</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:#f8f9fa;"><td style="padding:8px 12px;font-weight:600;">Ku ndodhet?</td><td style="padding:8px 12px;">Brenda kufifit</td><td style="padding:8px 12px;">Jashtë kufifit</td></tr>
+              <tr style="background:#fff;"><td style="padding:8px 12px;font-weight:600;">Sfondi?</td><td style="padding:8px 12px;">Po — mbulohet nga background</td><td style="padding:8px 12px;">Jo — gjithmonë transparent</td></tr>
+              <tr style="background:#f8f9fa;"><td style="padding:8px 12px;font-weight:600;">auto?</td><td style="padding:8px 12px;">Nuk mbështetet</td><td style="padding:8px 12px;">Po — përdoret për qendërzim</td></tr>
+              <tr style="background:#fff;"><td style="padding:8px 12px;font-weight:600;">Vlera negative?</td><td style="padding:8px 12px;">Jo</td><td style="padding:8px 12px;">Po (mund të mbishtrihen)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 7. box-sizing -->
+      <section class="section-card">
+        <div class="section-header"><h2>7. box-sizing — Si llogaritet madhësia</h2></div>
+        <p>Me parazgjedhje, <code>width</code> cakton vetëm <strong>përmbajtjen</strong>. Padding dhe border i shtohen <strong>sipër</strong>! Me <code>box-sizing: border-box</code>, gjithçka futet <strong>brenda</strong> width-it.</p>
+
+        <div class="code-card">
+          <div class="code-head">
+            <div class="code-left">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="code-lang">CSS</span>
+            </div>
+            <button class="code-copy">Copy</button>
+          </div>
+          <pre class="code-pre line-numbers"><code class="language-css"><span class="comment">/* Rekomandohet — vendose në fillim të CSS */</span>
+<span class="selector">*</span> <span class="punct">{</span>
+  <span class="property">box-sizing</span><span class="punct">:</span> <span class="value">border-box</span><span class="punct">;</span>
+<span class="punct">}</span></code></pre>
+        </div>
+
+        <div class="preview-card" style="margin-top:16px;">
+          <div class="preview-title">Krahasim</div>
+          <div class="preview-box" style="display:flex;flex-direction:column;gap:16px;">
+            <div>
+              <span style="font-size:12px;color:#ef4444;font-weight:600;display:block;margin-bottom:4px;">content-box (default) — width: 200px + padding: 20px = 240px total</span>
+              <div style="width:240px;background:#ef4444;padding:20px;border-radius:6px;color:#fff;font-size:13px;box-sizing:content-box;">Kutia del 240px e gjerë!</div>
+            </div>
+            <div>
+              <span style="font-size:12px;color:#22c55e;font-weight:600;display:block;margin-bottom:4px;">border-box — width: 200px total (padding përfshihet)</span>
+              <div style="width:200px;background:#22c55e;padding:20px;border-radius:6px;color:#fff;font-size:13px;box-sizing:border-box;">Kutia qëndron 200px!</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="property-value-explanation" style="margin-top:18px;padding:18px 16px;background:#ffffff;color:#222;border-radius:10px;border-left:4px solid #22c55e;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+          <div style="font-weight:700;font-size:16px;margin-bottom:8px;color:#22c55e;">Best Practice</div>
+          <p style="margin:0;"><code>* { box-sizing: border-box; }</code> përdoret pothuajse në çdo project modern. Kjo e bën llogaritjen e madhësive shumë më të thjeshtë.</p>
+        </div>
+      </section>
+
+      <!-- Summary -->
+      <section class="section-card">
+        <div class="section-header"><h2>Përmbledhje e shpejtë</h2></div>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:14px;margin-top:8px;">
+            <thead>
+              <tr style="background:#7c3aed;color:#fff;">
+                <th style="padding:10px 12px;text-align:left;border-radius:8px 0 0 0;">Prona</th>
+                <th style="padding:10px 12px;text-align:left;">Çfarë bën</th>
+                <th style="padding:10px 12px;text-align:left;border-radius:0 8px 0 0;">Shembull</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:#f8f9fa;"><td style="padding:8px 12px;font-weight:600;">width / height</td><td style="padding:8px 12px;">Madhësia e përmbajtjes</td><td style="padding:8px 12px;font-family:monospace;font-size:13px;">300px, 50%</td></tr>
+              <tr style="background:#fff;"><td style="padding:8px 12px;font-weight:600;">padding</td><td style="padding:8px 12px;">Hapësirë brenda kufifit</td><td style="padding:8px 12px;font-family:monospace;font-size:13px;">20px, 10px 20px</td></tr>
+              <tr style="background:#f8f9fa;"><td style="padding:8px 12px;font-weight:600;">border</td><td style="padding:8px 12px;">Kufiri rreth elementit</td><td style="padding:8px 12px;font-family:monospace;font-size:13px;">2px solid #7c3aed</td></tr>
+              <tr style="background:#fff;"><td style="padding:8px 12px;font-weight:600;">border-radius</td><td style="padding:8px 12px;">Cepa të rrumbullakët</td><td style="padding:8px 12px;font-family:monospace;font-size:13px;">8px, 50%</td></tr>
+              <tr style="background:#f8f9fa;"><td style="padding:8px 12px;font-weight:600;">margin</td><td style="padding:8px 12px;">Hapësirë jashtë kufifit</td><td style="padding:8px 12px;font-family:monospace;font-size:13px;">20px, 0 auto</td></tr>
+              <tr style="background:#fff;"><td style="padding:8px 12px;font-weight:600;">box-sizing</td><td style="padding:8px 12px;">Si llogaritet madhësia</td><td style="padding:8px 12px;font-family:monospace;font-size:13px;">border-box</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </section>
+
+    <!-- Interactive Playground -->
+    <section class="section-card">
+      <div class="section-header">
+        <h2>🧪 Provoje vetë!</h2>
+      </div>
+      <p>Eksperimento me Box Model:</p>
+      <div class="playground" id="cssPlayground"></div>
+    </section>
+
+
+
+  </header>
+
+  <footer class="lesson-footer">
+    <div class="footer-navigation">
+      <a class="btn-next" href="lesson.0.20.html">Pas</a>
+      <a class="btn-next" href="../quiz/quiz-css-box-model.html">Vazhdo me Quiz</a>
+    </div>
+  </footer>
+</div>
+
+<script src="../../js.lessons/sidebar.js"></script>
+
+<!-- Interactive Playground -->
+<script type="module">
+  import { createPlayground } from "../../js/playground.js";
+  createPlayground(document.getElementById("cssPlayground"), {
+    defaultCode:
+`<style>
+  body { background: #1a1a2e; }
+
+  .kutia {
+    width: 250px;
+    padding: 24px;
+    border: 3px solid #7c3aed;
+    border-radius: 12px;
+    margin: 30px auto;
+    background: #1e1e3f;
+    color: #e2e8f0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+
+  .kutia h2 {
+    color: #7c3aed;
+    margin-top: 0;
+  }
+
+  .kutia p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #94a3b8;
+  }
+</style>
+
+<div class="kutia">
+  <h2>Box Model</h2>
+  <p>Ndrysho padding, margin, border dhe shiko si ndryshon kutia!</p>
+</div>`,
+    hint: "Ndrysho padding, margin, border, border-radius 👉"
+  });
+</script>
+
+<script src="../../js.lessons/code-copy-global.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script type="module" src="../../js/requireAuth.js"></script>
+
+<script type="module">
+  import { initLessonProgress } from "../../js/lessonProgressInit.js";
+  initLessonProgress("css-box-model");
+</script>
+
+<script type="module">
+  import { markLessonCompleted } from "../../js/courseProgressManager.js";
+
+  const COURSE_SLUG = "html-fundamentals";
+  const LESSON_ID = "c6";
+
+  const btn = document.querySelector(".footer-navigation .btn-next:last-child");
+  if (btn) {
+    btn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const nextUrl = btn.getAttribute("href");
+      await markLessonCompleted(COURSE_SLUG, LESSON_ID);
+      window.location.href = nextUrl;
+    });
+  }
+</script>
+</body>
+</html>

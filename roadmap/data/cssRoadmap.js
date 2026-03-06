@@ -59,6 +59,24 @@ export const cssRoadmap = {
           title: "Quiz: CSS Typography",
           type: "vlerësim",
           path: "html-css/quiz/quiz-css-typography.html"
+        },
+        {
+          id: "c6",
+          title: "CSS Box Model",
+          type: "mësim",
+          path: "html-css/css-mesimet/lesson.0.21.html"
+        },
+        {
+          id: "q5",
+          title: "Quiz: CSS Box Model",
+          type: "vlerësim",
+          path: "html-css/quiz/quiz-css-box-model.html"
+        },
+        {
+          id: "e1",
+          title: "Ushtrime: CSS Box Model",
+          type: "ushtrime",
+          path: "html-css/ushtrime/ushtrime-css.html"
         }
 
       ]
