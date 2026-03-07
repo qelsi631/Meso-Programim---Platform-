@@ -588,6 +588,17 @@ export async function touchStreak(userId = null) {
 }
 
 /**
+ * Update streak only (no XP awarded). Call when user re-completes
+ * an already-finished lesson/quiz — they're still active today.
+ */
+export async function updateStreakOnly() {
+  await ensureInitialized();
+  let state = loadState();
+  state = await updateStreak(state);
+  saveState(state);
+}
+
+/**
  * Get XP rewards config (for UI display)
  */
 export function getXPRewards() {

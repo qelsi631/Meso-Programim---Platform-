@@ -1,5 +1,5 @@
 import { supabase } from "./supabaseClient.js";
-import { awardLessonXP, getGamificationState, initGamification } from "./gamification.js";
+import { awardLessonXP, getGamificationState, initGamification, updateStreakOnly } from "./gamification.js";
 import { processGamificationResult } from "./gamificationUI.js";
 
 /**
@@ -86,7 +86,23 @@ export async function markLessonCompleted(courseSlug, lessonId) {
     const progressData = JSON.parse(localStorage.getItem(key) || "{}");
 
     // Only award XP if this is a fresh completion
-    const alreadyCompleted = progressData[lessonId]?.completed === true;
+    let alreadyCompleted = progressData[lessonId]?.completed === true;
+
+    // For authenticated users, also check Supabase (handles cleared localStorage / different device)
+    if (!alreadyCompleted && userId) {
+      try {
+        const { data } = await supabase
+          .from("course_progress")
+          .select("lesson_id")
+          .eq("user_id", userId)
+          .eq("course_slug", courseSlug)
+          .eq("lesson_id", lessonId)
+          .maybeSingle();
+        if (data) alreadyCompleted = true;
+      } catch (e) {
+        console.warn("Could not verify completion in Supabase:", e?.message);
+      }
+    }
     
     // Mark this lesson as completed
     progressData[lessonId] = {
@@ -108,6 +124,14 @@ export async function markLessonCompleted(courseSlug, lessonId) {
         processGamificationResult(result, prevLevel);
       } catch (e) {
         console.warn("Gamification XP award failed:", e);
+      }
+    } else {
+      // Still update streak (user is active today) without awarding XP
+      try {
+        await initGamification();
+        await updateStreakOnly();
+      } catch (e) {
+        console.warn("Streak update on re-completion failed:", e);
       }
     }
     

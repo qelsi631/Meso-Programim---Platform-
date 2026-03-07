@@ -164,7 +164,7 @@
     const progressBar = document.getElementById("progressBar");
 
     let current = 0;
-    const tracker = quizTracker(quizData.length);
+    const tracker = quizTracker(quizData.length, COURSE_SLUG, LESSON_ID);
     const lives = createQuizLives(LESSON_ID);
     let blankValues = [];
     let answered = false;
