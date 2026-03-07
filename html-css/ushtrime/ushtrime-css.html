@@ -124,8 +124,15 @@
         </ol>
         <p><em>Bonus: Shto <code>background-color</code> dhe <code>color</code> për ta bërë kartën më të bukur!</em></p>
       `,
-      htmlDefault: '<div class="card">\\n  <h2>Karta Ime</h2>\\n  <p>Kjo eshte nje karte e ndertuar me Box Model!</p>\\n</div>',
-      cssDefault: '/* Shkruaj kodin CSS ketu */\\n\\n.card {\\n\\n}',
+      htmlDefault: `<div class="card">
+  <h2>Karta Ime</h2>
+  <p>Kjo eshte nje karte e ndertuar me Box Model!</p>
+</div>`,
+      cssDefault: `/* Shkruaj kodin CSS ketu */
+
+.card {
+
+}`,
       tests: [
         {
           description: "Karta ka width: 300px",
@@ -176,6 +183,16 @@
           }
         }
       ],
+      cssSolution: `.card {
+  width: 300px;
+  padding: 20px;
+  border: 2px solid #7c3aed;
+  border-radius: 12px;
+  margin: 20px auto;
+  box-sizing: border-box;
+  background-color: #2e2e44;
+  color: #e0e0f0;
+}`,
       successMessage: "Shkëlqyeshëm! E kuptove Box Model-in! 🎉"
     });
   </script>

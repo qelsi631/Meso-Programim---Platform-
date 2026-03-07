@@ -118,6 +118,9 @@ export function createCodingExercise(container, opts = {}) {
   const instructions = opts.instructions || "<p>Complete the task below.</p>";
   const tests = opts.tests || [];
   const successMessage = opts.successMessage || "🎉 Bravo! Detyra u përfundua me sukses!";
+  const cssSolution = opts.cssSolution || null;
+  let failedAttempts = 0;
+  let allPassed = false;
 
   container.classList.add("ce-root");
 
@@ -146,6 +149,7 @@ export function createCodingExercise(container, opts = {}) {
           <button class="ce-btn ce-reset-btn" id="ceReset" title="Rikthe kodin fillestar">
             ↺ Reset
           </button>
+          ${cssSolution ? '<button class="ce-btn ce-solution-btn" id="ceSolution" title="Shiko zgjidhjen" disabled>🔒 Zgjidhja</button>' : ''}
         </div>
       </div>
 
@@ -185,6 +189,7 @@ export function createCodingExercise(container, opts = {}) {
   const previewPanel= container.querySelector("#cePreviewWrap");
   const runBtn      = container.querySelector("#ceRunTests");
   const resetBtn    = container.querySelector("#ceReset");
+  const solutionBtn = container.querySelector("#ceSolution");
 
   let activeFile = "html"; // "html" | "css"
   let activeRight = "instructions";
@@ -445,9 +450,16 @@ export function createCodingExercise(container, opts = {}) {
 
       if (passCount === tests.length) {
         html += `<div class="ce-test-success">${successMessage}</div>`;
+        allPassed = true;
         container.dispatchEvent(new CustomEvent("ce-all-passed", { bubbles: true }));
       } else {
         html += `<div class="ce-test-hint">Provo përsëri — ${passCount}/${tests.length} kaluan.</div>`;
+        failedAttempts++;
+        if (solutionBtn && failedAttempts >= 3 && !allPassed) {
+          solutionBtn.disabled = false;
+          solutionBtn.innerHTML = '💡 Zgjidhja';
+          solutionBtn.title = 'Shiko zgjidhjen e detyrës';
+        }
       }
 
       testResults.innerHTML = html;
@@ -467,6 +479,57 @@ export function createCodingExercise(container, opts = {}) {
     updateLineNumbers();
     updatePreview();
   });
+
+  /* ── Solution Modal ────────────────────────── */
+  if (solutionBtn && cssSolution) {
+    // Build modal once
+    const modal = document.createElement('div');
+    modal.className = 'ce-solution-overlay';
+    modal.innerHTML = `
+      <div class="ce-solution-modal">
+        <div class="ce-solution-header">
+          <h3>💡 Zgjidhja e detyrës</h3>
+          <button class="ce-solution-close" title="Mbyll">✕</button>
+        </div>
+        <div class="ce-solution-body">
+          <div class="ce-solution-col">
+            <div class="ce-solution-col-header">
+              <span>✅ Zgjidhja e saktë</span>
+              <button class="ce-solution-copy" title="Kopjo zgjidhjen">📋 Kopjo</button>
+            </div>
+            <pre class="ce-solution-code" id="ceSolutionCode"></pre>
+          </div>
+          <div class="ce-solution-col">
+            <div class="ce-solution-col-header">
+              <span>📝 Kodi yt</span>
+            </div>
+            <pre class="ce-solution-code ce-solution-user" id="ceUserCode"></pre>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    const closeModal = () => modal.classList.remove('ce-solution-visible');
+    modal.querySelector('.ce-solution-close').addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+    modal.querySelector('.ce-solution-copy').addEventListener('click', () => {
+      navigator.clipboard.writeText(cssSolution).then(() => {
+        const btn = modal.querySelector('.ce-solution-copy');
+        btn.textContent = '✅ U kopjua!';
+        setTimeout(() => { btn.innerHTML = '📋 Kopjo'; }, 2000);
+      });
+    });
+
+    solutionBtn.addEventListener('click', () => {
+      if (solutionBtn.disabled) return;
+      files[activeFile] = editor.value;
+      modal.querySelector('#ceSolutionCode').textContent = cssSolution;
+      modal.querySelector('#ceUserCode').textContent = files.css;
+      modal.classList.add('ce-solution-visible');
+    });
+  }
 
   /* ── Init ──────────────────────────────────── */
   editor.value = files[activeFile];

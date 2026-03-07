@@ -77,6 +77,24 @@ export const cssRoadmap = {
           title: "Ushtrime: CSS Box Model",
           type: "ushtrime",
           path: "html-css/ushtrime/ushtrime-css.html"
+        },
+        {
+          id: "c7",
+          title: "Display dhe Position",
+          type: "mësim",
+          path: "html-css/css-mesimet/lesson.0.22.html"
+        },
+        {
+          id: "q6",
+          title: "Quiz: Display & Position",
+          type: "vlerësim",
+          path: "html-css/quiz/quiz-display-position.html"
+        },
+        {
+          id: "e2",
+          title: "Ushtrime: Display & Position",
+          type: "ushtrime",
+          path: "html-css/ushtrime/ushtrime-display-position.html"
         }
 
       ]
