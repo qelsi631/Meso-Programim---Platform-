@@ -62,6 +62,15 @@ BEGIN
     DELETE FROM public.profiles WHERE id = v_user_id;
   END IF;
 
+  -- Delete audit logs (prevents FK violation)
+  IF EXISTS (
+    SELECT 1
+    FROM information_schema.tables
+    WHERE table_schema = 'public' AND table_name = 'audit_logs'
+  ) THEN
+    DELETE FROM public.audit_logs WHERE user_id = v_user_id;
+  END IF;
+
   -- Finally delete auth user row itself
   DELETE FROM auth.users WHERE id = v_user_id;
 

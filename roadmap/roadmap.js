@@ -1,6 +1,8 @@
 import { htmlRoadmap } from "./data/htmlRoadmap.js";
 import { cssRoadmap } from "./data/cssRoadmap.js";
 import { getCompletedLessons, resetCourseProgress, markLessonCompleted, pruneStaleCourseProgress } from "../js/courseProgressManager.js";
+import { supabase } from "../js/supabaseClient.js";
+import { getUserCourses } from "../js/profileManager.js";
 
 const roadmaps = {
   "html-fundamentals": htmlRoadmap,
@@ -235,4 +237,33 @@ path.appendChild(label);
   }, { once: true });
 }
 
-render();
+async function init() {
+  // Check if user is enrolled in this course
+  try {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (user) {
+      const { data: courses } = await getUserCourses(user.id);
+      const enrolledSlugs = (courses || []).map(c => c.course_slug);
+      if (!enrolledSlugs.includes(COURSE_SLUG)) {
+        const page = document.querySelector(".page");
+        if (page) {
+          page.innerHTML = `
+            <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:80vh;text-align:center;padding:20px;">
+              <div style="font-size:64px;margin-bottom:16px;">🔒</div>
+              <h2 style="font-size:22px;margin-bottom:8px;">Nuk je i regjistruar në këtë kurs</h2>
+              <p style="color:#94a3b8;margin-bottom:24px;font-size:15px;">Regjistrohu në kurs për të parë roadmap-in.</p>
+              <a href="../courses.html" style="background:#ff6600;color:#fff;padding:12px 28px;border-radius:10px;text-decoration:none;font-weight:700;font-size:15px;">Shko te Kurset</a>
+            </div>
+          `;
+        }
+        return;
+      }
+    }
+  } catch (e) {
+    console.warn("Enrollment check failed:", e);
+  }
+
+  render();
+}
+
+init();

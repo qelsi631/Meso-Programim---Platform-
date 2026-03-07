@@ -173,7 +173,8 @@ function openEnrollModal(courseSlug) {
     document.getElementById("enrollMessage").innerHTML = `
       <strong style="color: var(--success);">✓ Ju jeni tashmë i regjistruar në këtë kurs</strong>
     `;
-    enrollBtn.textContent = "Shko te kursi";
+    enrollBtn.textContent = "🚀 Shko te kursi";
+    enrollBtn.className = "btn btn-primary cta-enrolled";
     enrollBtn.onclick = () => {
       window.location.href = "dashboard.html";
     };
@@ -208,7 +209,8 @@ async function enrollInCourse() {
     document.getElementById("enrollMessage").innerHTML = `
       <strong style="color: var(--success);">✓ U regjistruat me sukses!</strong>
     `;
-    enrollBtn.textContent = "Shko te paneli";
+    enrollBtn.textContent = "🚀 Shko te paneli";
+    enrollBtn.className = "btn btn-primary cta-enrolled";
     enrollBtn.onclick = () => {
       window.location.href = "dashboard.html";
     };

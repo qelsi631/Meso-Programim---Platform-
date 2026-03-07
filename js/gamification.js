@@ -234,6 +234,8 @@ async function _doInit() {
       // Migrate to DB
       if (localState.totalXP > 0 || localState.lessonsCompleted > 0) {
         saveToSupabase(localState, _userId).catch(() => {});
+        // Clear anon data after migration to prevent re-migration
+        try { localStorage.removeItem('gamification:anon'); } catch {}
       }
     }
   } else {
@@ -254,8 +256,15 @@ async function ensureInitialized() {
 
 /** Sync read — uses in-memory cache or localStorage fallback */
 function loadState() {
-  if (_cachedState) return { ...getDefaultState(), ..._cachedState };
-  return loadFromLocal(_userId);
+  let state;
+  if (_cachedState) {
+    state = { ...getDefaultState(), ..._cachedState };
+  } else {
+    state = loadFromLocal(_userId);
+  }
+  // Always derive level from XP (source of truth)
+  state.level = getLevelForXP(state.totalXP).level;
+  return state;
 }
 
 /** Save to cache + localStorage, then async to Supabase */
