@@ -95,6 +95,24 @@ export const cssRoadmap = {
           title: "Ushtrime: Display & Position",
           type: "ushtrime",
           path: "html-css/ushtrime/ushtrime-display-position.html"
+        },
+        {
+          id: "c8",
+          title: "CSS Flexbox",
+          type: "mësim",
+          path: "html-css/css-mesimet/lesson.0.23.html"
+        },
+        {
+          id: "q7",
+          title: "Quiz: CSS Flexbox",
+          type: "vlerësim",
+          path: "html-css/quiz/quiz-flexbox.html"
+        },
+        {
+          id: "e3",
+          title: "Ushtrime: CSS Flexbox",
+          type: "ushtrime",
+          path: "html-css/ushtrime/ushtrime-flexbox.html"
         }
 
       ]

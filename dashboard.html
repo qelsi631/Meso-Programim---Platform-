@@ -50,25 +50,14 @@
       </header>
 
       <section class="cards-grid">
-        <article class="card" id="cardProgress">
+        <article class="card" id="cardCourses">
           <div class="card-head">
-            <h3>Progresi</h3>
+            <h3>Kurset e tua</h3>
             <span class="card-action">+</span>
           </div>
-          <div class="card-stat">
-            <div>
-              <p class="card-label">Kurse të regjistruara</p>
-              <p class="card-value" id="enrolledCount">0</p>
-            </div>
-            <div>
-              <p class="card-label">Mësime të përfunduara</p>
-              <p class="card-value" id="lessonsCount">0</p>
-            </div>
+          <div class="courses-container" id="coursesContainer">
+            <div class="loading">Duke ngarkuar kurset e tua...</div>
           </div>
-          <div class="progress-bar">
-            <div class="progress-fill" id="overallProgress" style="width: 0%;"></div>
-          </div>
-          <p class="card-foot">Seri aktuale: <span id="streakCount">0 ditë</span></p>
         </article>
 
         <!-- XP & Level Card -->
@@ -112,14 +101,25 @@
           </div>
         </article>
 
-        <article class="card" id="cardCourses">
+        <article class="card" id="cardProgress">
           <div class="card-head">
-            <h3>Kurset e tua</h3>
+            <h3>Progresi</h3>
             <span class="card-action">+</span>
           </div>
-          <div class="courses-container" id="coursesContainer">
-            <div class="loading">Duke ngarkuar kurset e tua...</div>
+          <div class="card-stat">
+            <div>
+              <p class="card-label">Kurse të regjistruara</p>
+              <p class="card-value" id="enrolledCount">0</p>
+            </div>
+            <div>
+              <p class="card-label">Mësime të përfunduara</p>
+              <p class="card-value" id="lessonsCount">0</p>
+            </div>
           </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="overallProgress" style="width: 0%;"></div>
+          </div>
+          <p class="card-foot">Seri aktuale: <span id="streakCount">0 ditë</span></p>
         </article>
 
         <!-- Achievements Card -->
