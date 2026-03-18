@@ -376,6 +376,14 @@ a {
 .course-card-icon {
   font-size: 32px;
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.course-card-icon img {
+  height: 32px;
+  object-fit: contain;
 }
 
 .course-card-title {

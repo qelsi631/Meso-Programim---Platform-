@@ -45,7 +45,7 @@ const courseData = {
   "html-fundamentals": {
     title: "HTML & CSS",
     description: "Mëso bazat e HTML dhe CSS, themelin e zhvillimit web",
-    icon: "📄",
+    icon: '<img src="imgs/html-5.png" alt="HTML" style="height:32px"><img src="imgs/css-3.png" alt="CSS" style="height:32px">',
     slug: "html-fundamentals",
     roadmap: "roadmap.html?course=html-fundamentals",
     lessonPath: "html-css/mesimet/welcome.html"
@@ -53,7 +53,7 @@ const courseData = {
   "javascript-basics": {
     title: "JavaScript Basics",
     description: "Start your programming journey with JavaScript fundamentals",
-    icon: "⚙️",
+    icon: '<img src="imgs/js (1).png" alt="JavaScript" style="height:32px">',
     slug: "javascript-basics",
     roadmap: "roadmap.html?course=javascript-basics",
     lessonPath: "javascript/mesimet/hyrje.html",
@@ -62,7 +62,7 @@ const courseData = {
   "java-basics": {
     title: "Java",
     description: "Learn Java, one of the most popular programming languages",
-    icon: "☕",
+    icon: '<img src="imgs/java (1).png" alt="Java" style="height:32px">',
     slug: "java-basics",
     roadmap: "roadmap.html?course=java-basics",
     totalLessons: 10

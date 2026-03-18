@@ -480,3 +480,9 @@ header p {
     font-size: 26px;
   }
 }
+
+
+.blackTextOfExplainTemplate{
+  color: black;
+  margin: 0;
+}

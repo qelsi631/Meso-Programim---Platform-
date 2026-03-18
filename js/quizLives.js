@@ -2,8 +2,9 @@
  * Quiz Lives System
  * ─────────────────
  * Per-quiz hearts: 5 lives per quiz attempt.
- * Wrong answer → lose a heart.
- * All hearts lost → quiz locked, hearts regenerate 1 every 30 min.
+ * Wrong answer → lose a heart → that heart starts a 30-min recovery timer.
+ * Each lost heart recovers independently after 30 minutes.
+ * All hearts lost → quiz locked until the first heart regenerates.
  *
  * Usage in quiz HTML:
  *   import { createQuizLives } from "../../js/quizLives.js";
@@ -24,8 +25,9 @@ const REGEN_MS = 30 * 60 * 1000; // 30 minutes per heart
  */
 export function createQuizLives(quizId, opts = {}) {
   const storageKey = `quiz_lives:${quizId}`;
-  let hearts = MAX_HEARTS;
-  let lockedAt = null; // timestamp when all hearts were lost
+  // Each entry is the timestamp when that heart was lost.
+  // Hearts recover individually: each one returns after REGEN_MS.
+  let lostTimes = [];
 
   // ── Restore state from localStorage ──
   _loadState();
@@ -35,39 +37,52 @@ export function createQuizLives(quizId, opts = {}) {
   heartsContainer.className = "quiz-hearts";
   heartsContainer.id = "quizHearts";
 
-  // Insert after progress-wrap in topbar
+  // Timer label shown below hearts when recovering
+  const timerLabel = document.createElement("div");
+  timerLabel.className = "quiz-hearts-timer";
+  timerLabel.id = "quizHeartsTimer";
+  timerLabel.style.display = "none";
+
+  // Insert into topbar
   const topbar = document.querySelector(".topbar");
   if (topbar) {
     topbar.appendChild(heartsContainer);
+    topbar.appendChild(timerLabel);
   }
 
   _render();
 
-  // If currently locked, check regen and potentially show overlay
-  if (lockedAt) {
-    _checkRegen();
+  // Start the recovery tick (checks every second)
+  setInterval(_tick, 1000);
+  _tick(); // run once immediately
+
+  // If all hearts gone on load, show lock
+  if (_hearts() <= 0) {
+    _showLockOverlay();
   }
 
   // ── Public API ──
   return {
     loseHeart,
     onRetry,
-    isLocked: () => lockedAt !== null && hearts <= 0,
-    getHearts: () => hearts,
+    isLocked: () => _hearts() <= 0,
+    getHearts: _hearts,
   };
 
   // ────────────────────────────────────
 
+  function _hearts() {
+    return MAX_HEARTS - lostTimes.length;
+  }
+
   function loseHeart() {
-    if (hearts <= 0) return;
-    hearts--;
+    if (_hearts() <= 0) return;
+    lostTimes.push(Date.now());
     _saveState();
     _render();
     _animateLoss();
 
-    if (hearts <= 0) {
-      lockedAt = Date.now();
-      _saveState();
+    if (_hearts() <= 0) {
       // Small delay so user sees the last heart break
       setTimeout(() => {
         _showLockOverlay();
@@ -81,47 +96,82 @@ export function createQuizLives(quizId, opts = {}) {
     // (the lock overlay prevents retry when hearts === 0)
   }
 
+  /** Migrate old format { hearts, lockedAt } → new { lostTimes } */
+  function _migrateOldState(saved) {
+    if (saved.lostTimes) return saved.lostTimes;
+    const oldHearts = saved.hearts ?? MAX_HEARTS;
+    const oldLockedAt = saved.lockedAt ?? null;
+    const lost = MAX_HEARTS - oldHearts;
+    if (lost <= 0) return [];
+    const base = oldLockedAt || Date.now();
+    const times = [];
+    for (let i = 0; i < lost; i++) times.push(base);
+    return times;
+  }
+
   function _loadState() {
     try {
       const raw = localStorage.getItem(storageKey);
       if (!raw) return;
       const saved = JSON.parse(raw);
-      hearts = saved.hearts ?? MAX_HEARTS;
-      lockedAt = saved.lockedAt ?? null;
-
-      // Check regeneration
-      if (lockedAt) {
-        const elapsed = Date.now() - lockedAt;
-        const regened = Math.floor(elapsed / REGEN_MS);
-        if (regened > 0) {
-          hearts = Math.min(MAX_HEARTS, hearts + regened);
-          if (hearts >= MAX_HEARTS) {
-            hearts = MAX_HEARTS;
-            lockedAt = null;
-          } else {
-            // Advance lockedAt so remaining regen timing is correct
-            lockedAt = lockedAt + regened * REGEN_MS;
-          }
-          _saveState();
-        }
-      }
+      lostTimes = _migrateOldState(saved);
+      _recoverHearts();
     } catch (e) {
       console.warn("quizLives: could not load state", e);
     }
   }
 
   function _saveState() {
-    localStorage.setItem(storageKey, JSON.stringify({ hearts, lockedAt }));
+    localStorage.setItem(storageKey, JSON.stringify({ lostTimes }));
+  }
+
+  /** Remove lostTimes entries older than REGEN_MS (those hearts recovered) */
+  function _recoverHearts() {
+    const now = Date.now();
+    const before = lostTimes.length;
+    lostTimes = lostTimes.filter(t => (now - t) < REGEN_MS);
+    if (lostTimes.length !== before) _saveState();
+  }
+
+  /** Called every second — recovers hearts, updates timer UI */
+  function _tick() {
+    const had = _hearts();
+    _recoverHearts();
+    const now = _hearts();
+
+    if (now !== had) {
+      _render();
+      if (had <= 0 && now > 0) {
+        const overlay = document.getElementById("quizLockOverlay");
+        if (overlay) overlay.remove();
+      }
+    }
+
+    _updateTimerLabel();
+    _updateLockTimer();
+  }
+
+  /** Show "next heart in X:XX" under hearts when recovering */
+  function _updateTimerLabel() {
+    if (lostTimes.length === 0) {
+      timerLabel.style.display = "none";
+      return;
+    }
+    const oldest = Math.min(...lostTimes);
+    const remaining = Math.max(0, (oldest + REGEN_MS) - Date.now());
+    timerLabel.style.display = "block";
+    timerLabel.innerHTML = `<span style="font-size:12px">&#10084;&#65039; ${_formatTime(remaining)}</span>`;
   }
 
   function _render() {
     if (!heartsContainer) return;
+    const h = _hearts();
     let html = "";
     for (let i = 0; i < MAX_HEARTS; i++) {
-      if (i < hearts) {
-        html += `<span class="heart full" data-idx="${i}">❤️</span>`;
+      if (i < h) {
+        html += `<span class="heart full" data-idx="${i}">&#10084;&#65039;</span>`;
       } else {
-        html += `<span class="heart empty" data-idx="${i}">🖤</span>`;
+        html += `<span class="heart empty" data-idx="${i}">&#128420;</span>`;
       }
     }
     heartsContainer.innerHTML = html;
@@ -135,48 +185,26 @@ export function createQuizLives(quizId, opts = {}) {
     }
   }
 
-  function _checkRegen() {
-    if (!lockedAt) return;
-
-    const elapsed = Date.now() - lockedAt;
-    const regened = Math.floor(elapsed / REGEN_MS);
-
-    if (regened > 0) {
-      hearts = Math.min(MAX_HEARTS, hearts + regened);
-      if (hearts >= MAX_HEARTS) {
-        hearts = MAX_HEARTS;
-        lockedAt = null;
-      } else {
-        lockedAt = lockedAt + regened * REGEN_MS;
-      }
-      _saveState();
-      _render();
-    }
-
-    if (hearts <= 0) {
-      _showLockOverlay();
-    }
-  }
-
   function _showLockOverlay() {
-    // Remove existing overlay if any
     const existing = document.getElementById("quizLockOverlay");
     if (existing) existing.remove();
+
+    if (_hearts() > 0) return;
+
+    const oldest = Math.min(...lostTimes);
+    const remaining = Math.max(0, (oldest + REGEN_MS) - Date.now());
 
     const overlay = document.createElement("div");
     overlay.id = "quizLockOverlay";
     overlay.className = "quiz-lock-overlay";
 
-    const nextRegenAt = lockedAt + REGEN_MS;
-    const remaining = Math.max(0, nextRegenAt - Date.now());
-
     overlay.innerHTML = `
       <div class="quiz-lock-card">
-        <div class="lock-icon">💔</div>
-        <h2>Të mbaruan jetët!</h2>
-        <p>Ke humbur të 5 jetët. Prit pak derisa jetët të rikthehen.</p>
+        <div class="lock-icon">&#128148;</div>
+        <h2>T\u00eb mbaruan jet\u00ebt!</h2>
+        <p>Ke humbur t\u00eb 5 jet\u00ebt. Prit pak derisa jet\u00ebt t\u00eb rikthehen.</p>
         <div class="lock-timer-wrap">
-          <span class="lock-timer-label">Jeta e radhës për:</span>
+          <span class="lock-timer-label">Jeta e radh\u00ebs p\u00ebr:</span>
           <span class="lock-timer" id="lockTimer">${_formatTime(remaining)}</span>
         </div>
         <div class="lock-hearts-preview" id="lockHeartsPreview">${_renderLockHearts()}</div>
@@ -185,47 +213,27 @@ export function createQuizLives(quizId, opts = {}) {
     `;
 
     document.body.appendChild(overlay);
+  }
 
-    // Start countdown timer
+  /** Update the lock overlay timer (called by _tick every second) */
+  function _updateLockTimer() {
     const timerEl = document.getElementById("lockTimer");
     const heartsPreview = document.getElementById("lockHeartsPreview");
-
-    const interval = setInterval(() => {
-      const now = Date.now();
-      const elapsed = now - lockedAt;
-      const regened = Math.floor(elapsed / REGEN_MS);
-
-      if (regened > 0) {
-        hearts = Math.min(MAX_HEARTS, regened);
-        if (hearts >= MAX_HEARTS) {
-          hearts = MAX_HEARTS;
-          lockedAt = null;
-        } else {
-          lockedAt = lockedAt + regened * REGEN_MS;
-        }
-        _saveState();
-        _render();
-
-        if (hearts > 0) {
-          clearInterval(interval);
-          overlay.remove();
-          return;
-        }
-      }
-
-      const nextAt = lockedAt + REGEN_MS;
-      const rem = Math.max(0, nextAt - now);
-      if (timerEl) timerEl.textContent = _formatTime(rem);
-      if (heartsPreview) heartsPreview.innerHTML = _renderLockHearts();
-    }, 1000);
+    if (!timerEl) return;
+    if (lostTimes.length === 0) return;
+    const oldest = Math.min(...lostTimes);
+    const remaining = Math.max(0, (oldest + REGEN_MS) - Date.now());
+    timerEl.textContent = _formatTime(remaining);
+    if (heartsPreview) heartsPreview.innerHTML = _renderLockHearts();
   }
 
   function _renderLockHearts() {
+    const h = _hearts();
     let html = "";
     for (let i = 0; i < MAX_HEARTS; i++) {
-      html += i < hearts
-        ? `<span class="heart full">❤️</span>`
-        : `<span class="heart empty">🖤</span>`;
+      html += i < h
+        ? `<span class="heart full">&#10084;&#65039;</span>`
+        : `<span class="heart empty">&#128420;</span>`;
     }
     return html;
   }

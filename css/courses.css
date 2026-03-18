@@ -238,6 +238,15 @@ body {
   font-size: 52px;
   margin-bottom: 12px;
   filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.course-card-icon img {
+  height: 44px;
+  object-fit: contain;
 }
 
 .course-card-title {
@@ -461,7 +470,15 @@ body {
 .enroll-icon {
   font-size: 52px;
   margin-bottom: 14px;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.enroll-icon img {
+  height: 48px;
+  object-fit: contain;
 }
 
 .enroll-header h2 {

@@ -6,30 +6,31 @@ const availableCourses = [
   {
     slug: "html-fundamentals",
     title: "HTML & CSS",
-    description: "Mëso bazat e HTML dhe CSS, themeli i zhvillimit të faqeve",
-    icon: "📄",
+    description: "Mëso bazat e HTML dhe CSS, themeli i zhvillimit të faqeve web.",
+    fullDescription: "Ky kurs mbulon gjithçka nga bazat e HTML si titujt, paragrafët, listat, tabelat, formularët, deri te CSS me selektorë, ngjyra, tipografi, Box Model, Flexbox, Grid, Responsive Design dhe Animations.",
+    icon: '<img src="imgs/html-5.png" alt="HTML" style="height:40px"><img src="imgs/css-3.png" alt="CSS" style="height:40px">',
     level: "beginner",
-    lessons: 15,
-    duration: "4-6 weeks"
+    lessons: 54,
+    duration: "4-6 javë"
   },
   {
     slug: "javascript-basics",
     title: "JavaScript",
     description: "Nise udhëtimin tënd me bazat e JavaScript",
-    icon: "⚙️",
+    icon: '<img src="imgs/js (1).png" alt="JavaScript" style="height:44px">',
     level: "beginner",
-    lessons: 20,
-    duration: "6-8 weeks",
+    lessons: 7,
+    duration: "6-8 javë",
     locked: true
   },
   {
     slug: "java-basics",
     title: "Java",
     description: "Mëso Java, një nga gjuhët më të përdorura",
-    icon: "☕",
+    icon: '<img src="imgs/java (1).png" alt="Java" style="height:44px">',
     level: "beginner",
-    lessons: 22,
-    duration: "8-10 weeks",
+    lessons: 0,
+    duration: "8-10 javë",
     locked: true
   }
 ];
@@ -155,9 +156,9 @@ function openEnrollModal(courseSlug) {
   const isEnrolled = enrolledCourses.includes(selectedCourse.slug);
   const isLocked = selectedCourse.locked === true;
 
-  document.getElementById("enrollIcon").textContent = selectedCourse.icon;
+  document.getElementById("enrollIcon").innerHTML = selectedCourse.icon;
   document.getElementById("enrollTitle").textContent = selectedCourse.title;
-  document.getElementById("enrollDesc").textContent = selectedCourse.description;
+  document.getElementById("enrollDesc").innerHTML = selectedCourse.fullDescription || selectedCourse.description;
   document.getElementById("enrollLevel").textContent = selectedCourse.level.charAt(0).toUpperCase() + selectedCourse.level.slice(1);
   document.getElementById("enrollLessons").textContent = `${selectedCourse.lessons} mësime`;
   document.getElementById("enrollDuration").textContent = selectedCourse.duration;

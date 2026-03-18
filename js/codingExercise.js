@@ -118,7 +118,9 @@ export function createCodingExercise(container, opts = {}) {
   const instructions = opts.instructions || "<p>Complete the task below.</p>";
   const tests = opts.tests || [];
   const successMessage = opts.successMessage || "🎉 Bravo! Detyra u përfundua me sukses!";
+  const nextUrl = opts.nextUrl || null;
   const cssSolution = opts.cssSolution || null;
+  const htmlSolution = opts.htmlSolution || null;
   let failedAttempts = 0;
   let allPassed = false;
 
@@ -149,7 +151,8 @@ export function createCodingExercise(container, opts = {}) {
           <button class="ce-btn ce-reset-btn" id="ceReset" title="Rikthe kodin fillestar">
             ↺ Reset
           </button>
-          ${cssSolution ? '<button class="ce-btn ce-solution-btn" id="ceSolution" title="Shiko zgjidhjen" disabled>🔒 Zgjidhja</button>' : ''}
+          ${(cssSolution || htmlSolution) ? `<div class="ce-solution-wrap"><button class="ce-btn ce-solution-btn" id="ceSolution" title="Shiko zgjidhjen" disabled>🔒 Zgjidhja</button><div class="ce-solution-tooltip">Kliko "Kontrollo" 3 herë për të zhbllokuar zgjidhjen</div></div>` : ''}
+          ${nextUrl ? `<a class="ce-btn ce-next-btn ce-next-disabled" id="ceContinueBtn">🔒 Vazhdo ➜</a>` : ''}
         </div>
       </div>
 
@@ -452,6 +455,13 @@ export function createCodingExercise(container, opts = {}) {
         html += `<div class="ce-test-success">${successMessage}</div>`;
         allPassed = true;
         container.dispatchEvent(new CustomEvent("ce-all-passed", { bubbles: true }));
+        // Enable the Vazhdo button in footer
+        const continueBtn = container.querySelector("#ceContinueBtn");
+        if (continueBtn) {
+          continueBtn.href = nextUrl;
+          continueBtn.classList.remove("ce-next-disabled");
+          continueBtn.textContent = "Vazhdo ➜";
+        }
       } else {
         html += `<div class="ce-test-hint">Provo përsëri — ${passCount}/${tests.length} kaluan.</div>`;
         failedAttempts++;
@@ -481,7 +491,8 @@ export function createCodingExercise(container, opts = {}) {
   });
 
   /* ── Solution Modal ────────────────────────── */
-  if (solutionBtn && cssSolution) {
+  const hasSolution = cssSolution || htmlSolution;
+  if (solutionBtn && hasSolution) {
     // Build modal once
     const modal = document.createElement('div');
     modal.className = 'ce-solution-overlay';
@@ -515,7 +526,8 @@ export function createCodingExercise(container, opts = {}) {
     modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
     modal.querySelector('.ce-solution-copy').addEventListener('click', () => {
-      navigator.clipboard.writeText(cssSolution).then(() => {
+      const solutionText = htmlSolution || cssSolution;
+      navigator.clipboard.writeText(solutionText).then(() => {
         const btn = modal.querySelector('.ce-solution-copy');
         btn.textContent = '✅ U kopjua!';
         setTimeout(() => { btn.innerHTML = '📋 Kopjo'; }, 2000);
@@ -525,8 +537,8 @@ export function createCodingExercise(container, opts = {}) {
     solutionBtn.addEventListener('click', () => {
       if (solutionBtn.disabled) return;
       files[activeFile] = editor.value;
-      modal.querySelector('#ceSolutionCode').textContent = cssSolution;
-      modal.querySelector('#ceUserCode').textContent = files.css;
+      modal.querySelector('#ceSolutionCode').textContent = htmlSolution || cssSolution;
+      modal.querySelector('#ceUserCode').textContent = htmlSolution ? files.html : files.css;
       modal.classList.add('ce-solution-visible');
     });
   }

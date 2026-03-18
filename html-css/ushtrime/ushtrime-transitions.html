@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ushtrime CSS: Transitions & Animations | Mëso Programim</title>
+
+  <link rel="stylesheet" href="../../css/codingExercise.css">
+  <link rel="stylesheet" href="../../sidebar.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Nunito Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #1e1e2e;
+      color: #e0e0f0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 18px 14px 40px;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    nav img { width: 28px; height: 28px; }
+    .dashboard-btn {
+      font-size: 20px;
+      text-decoration: none;
+    }
+    .goback {
+      margin-left: auto;
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color .2s;
+    }
+    .goback:hover { color: #fff; }
+    .exercise-header {
+      margin-bottom: 24px;
+    }
+    .exercise-header h1 {
+      font-size: 22px;
+      font-weight: 800;
+      margin: 0 0 6px;
+      color: #fff;
+    }
+    .exercise-header p {
+      font-size: 14px;
+      color: #94a3b8;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- TOP NAV -->
+    <nav>
+      <a href="#" id="menuBtn" aria-label="Hap menunë">
+        <img src="../../imgs/menu (1).png" alt="Menu">
+      </a>
+      <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
+      <a href="../quiz/quiz-transitions.html" class="goback">Kthehu Pas</a>
+    </nav>
+
+    <!-- SIDEBAR -->
+    <div class="overlay" id="overlay"></div>
+    <div class="sidebar" id="sidebar" aria-hidden="true">
+      <div class="sidebar-head">
+        <div class="sidebar-title">
+          <img class="ikonSidebar" src="../../imgs/icon_platformes-removebg-preview.png" alt="">
+          <p>Meso Programim</p>
+        </div>
+        <button class="sidebar-close" id="closeBtn" type="button">✕</button>
+      </div>
+      <div class="sidebar-links">
+        <a href="../../dashboard.html">Dashboard</a>
+        <a href="../../roadmap.html?course=html-fundamentals">Roadmap</a>
+        <a href="#" class="report-bug-link" data-report="bug">Report a bug</a>
+      </div>
+    </div>
+
+    <!-- EXERCISE HEADER -->
+    <div class="exercise-header">
+      <h1>💻 Ushtrime: CSS Transitions & Animations</h1>
+      <p>Praktiko transitions dhe animations — krijo efekte hover të buta dhe një animacion me @keyframes!</p>
+    </div>
+
+    <!-- CODING EXERCISE -->
+    <div id="transitionsExercise"></div>
+
+  </div>
+
+  <script src="../../js.lessons/sidebar.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module" src="../../js/requireAuth.js"></script>
+
+  <script type="module">
+    import { createCodingExercise } from "../../js/codingExercise.js";
+    createCodingExercise(document.getElementById("transitionsExercise"), {
+      instructions: `
+        <h3>Detyrë: Shto Transitions & Animations</h3>
+        <p>Ke HTML-në e gatshme me një buton dhe një kartë. Shkruaj CSS-në në <strong>style.css</strong>:</p>
+        <ol>
+          <li>Butonit (.btn): shto <strong>transition: all 0.3s ease</strong></li>
+          <li>Kur bën hover mbi butonin (.btn:hover): <strong>background: #6d28d9</strong></li>
+          <li>Kur bën hover mbi butonin: <strong>transform: scale(1.05)</strong></li>
+          <li>Kartës (.karta): shto <strong>transition: transform 0.3s ease</strong></li>
+          <li>Kur bën hover mbi kartën (.karta:hover): <strong>transform: translateY(-5px)</strong></li>
+          <li>Krijo një <strong>@keyframes fadeIn</strong> (from: opacity 0 → to: opacity 1)</li>
+          <li>Kartës (.karta): apliko <strong>animation: fadeIn 1s ease</strong></li>
+        </ol>
+      `,
+      htmlDefault: `<button class="btn">Kliko Mua</button>
+
+<div class="karta">
+  <h2>Karta Ime</h2>
+  <p>Kjo kartë ka animacion dhe efekt hover!</p>
+</div>`,
+      cssDefault: `/* Shkruaj kodin CSS ketu */
+
+.btn {
+  background: #7c3aed;
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.btn:hover {
+
+}
+
+.karta {
+  background: #2e2e44;
+  padding: 24px;
+  border-radius: 12px;
+  color: #e0e0f0;
+  max-width: 320px;
+}
+
+.karta:hover {
+
+}`,
+      tests: [
+        {
+          description: "Butoni ka transition: all 0.3s ease",
+          test: (doc) => {
+            const el = doc.querySelector('.btn');
+            if (!el) return false;
+            const s = getComputedStyle(el);
+            return s.transitionDuration === '0.3s' && s.transitionTimingFunction === 'ease';
+          }
+        },
+        {
+          description: "Butoni hover ka background: #6d28d9",
+          test: (doc) => {
+            const styles = Array.from(doc.querySelectorAll('style'));
+            const css = styles.map(s => s.textContent).join(' ');
+            return /\.btn:hover\s*\{[^}]*background\s*:\s*#6d28d9/i.test(css);
+          }
+        },
+        {
+          description: "Butoni hover ka transform: scale(1.05)",
+          test: (doc) => {
+            const styles = Array.from(doc.querySelectorAll('style'));
+            const css = styles.map(s => s.textContent).join(' ');
+            return /\.btn:hover\s*\{[^}]*transform\s*:\s*scale\(\s*1\.05\s*\)/i.test(css);
+          }
+        },
+        {
+          description: "Karta ka transition: transform 0.3s ease",
+          test: (doc) => {
+            const el = doc.querySelector('.karta');
+            if (!el) return false;
+            const s = getComputedStyle(el);
+            return s.transitionProperty.includes('transform') && s.transitionDuration === '0.3s';
+          }
+        },
+        {
+          description: "Karta hover ka transform: translateY(-5px)",
+          test: (doc) => {
+            const styles = Array.from(doc.querySelectorAll('style'));
+            const css = styles.map(s => s.textContent).join(' ');
+            return /\.karta:hover\s*\{[^}]*transform\s*:\s*translateY\(\s*-5px\s*\)/i.test(css);
+          }
+        },
+        {
+          description: "@keyframes fadeIn ekziston",
+          test: (doc) => {
+            const styles = Array.from(doc.querySelectorAll('style'));
+            const css = styles.map(s => s.textContent).join(' ');
+            return /@keyframes\s+fadeIn\s*\{/i.test(css);
+          }
+        },
+        {
+          description: "Karta ka animation: fadeIn 1s ease",
+          test: (doc) => {
+            const el = doc.querySelector('.karta');
+            if (!el) return false;
+            const s = getComputedStyle(el);
+            return s.animationName === 'fadeIn' && s.animationDuration === '1s';
+          }
+        }
+      ],
+      cssSolution: `.btn {
+  background: #7c3aed;
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: #6d28d9;
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.karta {
+  background: #2e2e44;
+  padding: 24px;
+  border-radius: 12px;
+  color: #e0e0f0;
+  max-width: 320px;
+  transition: transform 0.3s ease;
+  animation: fadeIn 1s ease;
+}
+
+.karta:hover {
+  transform: translateY(-5px);
+}`,
+      successMessage: "Urime! E përfundove kursin e CSS-së! 🎉🏆",
+      nextUrl: "../course-complete.html"
+    });
+  </script>
+
+  <script type="module">
+    import { markLessonCompleted } from "../../js/courseProgressManager.js";
+    const COURSE_SLUG = "html-fundamentals";
+    const LESSON_ID = "e5";
+
+    document.addEventListener("ce-all-passed", async () => {
+      await markLessonCompleted(COURSE_SLUG, LESSON_ID);
+    });
+  </script>
+</body>
+</html>

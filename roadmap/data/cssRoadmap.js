@@ -113,6 +113,60 @@ export const cssRoadmap = {
           title: "Ushtrime: CSS Flexbox",
           type: "ushtrime",
           path: "html-css/ushtrime/ushtrime-flexbox.html"
+        },
+        {
+          id: "c9",
+          title: "CSS Grid",
+          type: "mësim",
+          path: "html-css/css-mesimet/lesson.0.24.html"
+        },
+        {
+          id: "q8",
+          title: "Quiz: CSS Grid",
+          type: "vlerësim",
+          path: "html-css/quiz/quiz-grid.html"
+        },
+        {
+          id: "e4",
+          title: "Ushtrime: CSS Grid",
+          type: "ushtrime",
+          path: "html-css/ushtrime/ushtrime-grid.html"
+        },
+        {
+          id: "c10",
+          title: "Responsive Design & Media Queries",
+          type: "mësim",
+          path: "html-css/css-mesimet/lesson.0.25.html"
+        },
+        {
+          id: "q9",
+          title: "Quiz: Responsive Design",
+          type: "vlerësim",
+          path: "html-css/quiz/quiz-responsive.html"
+        },
+        {
+          id: "c11",
+          title: "CSS Transitions & Animations",
+          type: "mësim",
+          path: "html-css/css-mesimet/lesson.0.26.html"
+        },
+        {
+          id: "q10",
+          title: "Quiz: Transitions & Animations",
+          type: "vlerësim",
+          path: "html-css/quiz/quiz-transitions.html"
+        },
+        {
+          id: "e5",
+          title: "Ushtrime: CSS Transitions & Animations",
+          type: "ushtrime",
+          path: "html-css/ushtrime/ushtrime-transitions.html"
+        },
+        {
+          id: "course-complete",
+          title: "🏆 Kursi u përfundua!",
+          type: "mësim",
+          path: "html-css/course-complete.html"
         }
 
       ]

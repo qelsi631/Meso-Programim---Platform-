@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Urime! Kursi i HTML & CSS u përfundua! | Mëso Programim</title>
+
+  <link rel="stylesheet" href="mesimet/welcome.css">
+  <link rel="stylesheet" href="../sidebar.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    .completion-hero {
+      text-align: center;
+      padding: 40px 20px 30px;
+    }
+
+    .trophy {
+      font-size: 80px;
+      display: block;
+      margin-bottom: 16px;
+      animation: bounceIn 0.8s ease;
+    }
+
+    .completion-hero h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .completion-hero h1 span {
+      color: #ff7a00;
+    }
+
+    .completion-hero .subtitle {
+      color: #b0b6c8;
+      font-size: 17px;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Stats */
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 36px 0;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 20px 28px;
+      text-align: center;
+      min-width: 130px;
+      backdrop-filter: blur(8px);
+    }
+
+    .stat-card .stat-num {
+      font-size: 32px;
+      font-weight: 800;
+      color: #ff7a00;
+      display: block;
+    }
+
+    .stat-card .stat-label {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-top: 4px;
+      font-weight: 600;
+    }
+
+    /* What you can do */
+    .section-block {
+      margin: 40px 0;
+    }
+
+    .section-block h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .section-block h2 span {
+      color: #ff7a00;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 22px 20px;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255, 122, 0, 0.4);
+    }
+
+    .skill-card .skill-icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .skill-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+
+    .skill-card p {
+      font-size: 14px;
+      color: #94a3b8;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Next steps */
+    .next-steps {
+      margin: 50px 0 30px;
+      text-align: center;
+    }
+
+    .next-steps h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .next-steps p {
+      color: #b0b6c8;
+      font-size: 15px;
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .cta-primary {
+      background: #ff7a00;
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(255, 122, 0, 0.3);
+    }
+
+    .cta-primary:hover {
+      box-shadow: 0 8px 30px rgba(255, 122, 0, 0.45);
+    }
+
+    .cta-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #e0e0f0;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .cta-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    /* Confetti animation */
+    @keyframes bounceIn {
+      0%   { transform: scale(0.3); opacity: 0; }
+      50%  { transform: scale(1.1); }
+      70%  { transform: scale(0.95); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .stats-row   { animation: fadeUp 0.6s ease 0.3s both; }
+    .section-block { animation: fadeUp 0.6s ease 0.5s both; }
+    .next-steps  { animation: fadeUp 0.6s ease 0.7s both; }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 122, 0, 0.3), transparent);
+      margin: 10px 0;
+      border: none;
+    }
+
+    /* Share badge */
+    .badge-earned {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, rgba(255, 122, 0, 0.15), rgba(124, 58, 237, 0.15));
+      border: 1px solid rgba(255, 122, 0, 0.3);
+      border-radius: 999px;
+      padding: 8px 20px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #ff7a00;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <nav>
+    <a href="#" id="menuBtn"><img src="../imgs/menu (1).png" alt="Menu"></a>
+    <a href="../dashboard.html" class="dashboard-btn" title="Dashboard">📊</a>
+    <a href="../roadmap.html?course=html-fundamentals" class="goback">Roadmap</a>
+  </nav>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <div class="sidebar-title">
+        <img class="ikonSidebar" src="../imgs/icon_platformes-removebg-preview.png" alt="Logo">
+        <p>Mëso Programim</p>
+      </div>
+      <button class="sidebar-close" id="closeBtn">✕</button>
+    </div>
+    <div class="sidebar-links">
+      <a href="../dashboard.html">Dashboard</a>
+      <a href="../roadmap.html?course=html-fundamentals">Roadmap</a>
+      <a href="#" class="report-bug-link" data-report="bug">Report a bug</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="completion-hero">
+    <span class="trophy">🏆</span>
+    <h1>Urime! E përfundove kursin e <span>HTML & CSS</span>!</h1>
+    <p class="subtitle">
+      Tani ke njohuritë themelore për të ndërtuar faqe web të bukura dhe funksionale. Kjo është një arritje e madhe!
+    </p>
+    <div class="badge-earned">🎖️ Certifikatë: HTML & CSS Basics</div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <span class="stat-num">25+</span>
+      <span class="stat-label">Mësime</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">10</span>
+      <span class="stat-label">Kuize</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">12+</span>
+      <span class="stat-label">Ushtrime</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">2</span>
+      <span class="stat-label">Module</span>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- WHAT YOU CAN DO -->
+  <div class="section-block">
+    <h2>Çfarë mund të bësh tani me <span>HTML & CSS</span>?</h2>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <span class="skill-icon">🌐</span>
+        <h3>Ndërto faqe web personale</h3>
+        <p>Krijo portfolion tënd, CV online, ose një faqe personale për të treguar punën tënde.</p>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon">📱</span>
+        <h3>Dizajno faqe responsive</h3>
+        <p>Bëj faqe që duken shkëlqyeshëm në telefon, tablet dhe kompjuter me media queries.</p>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon">🎨</span>
+        <h3>Stilizo çdo element</h3>
+        <p>Përdor ngjyra, tipografi, Box Model, Flexbox dhe Grid për layout-e profesionale.</p>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon">✨</span>
+        <h3>Shto animacione</h3>
+        <p>Krijo efekte hover të buta, transitions dhe animations me @keyframes.</p>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon">📝</span>
+        <h3>Ndërto formularë</h3>
+        <p>Krijo formularë kontakti, regjistrimi dhe login me input types të ndryshme.</p>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon">🔗</span>
+        <h3>Strukturo përmbajtje</h3>
+        <p>Përdor HTML semantik me header, nav, main, footer për faqe të organizuara mirë.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- NEXT STEPS -->
+  <div class="next-steps">
+    <h2>Hapi tjetër? 🚀</h2>
+    <p>
+      Tani që e kupton HTML & CSS, hapi logjik tjetër është <strong>JavaScript</strong> — gjuha që i jep jetë faqeve web!
+      Me JavaScript do të mësosh të bësh faqe interaktive, të trajtosh klikime, të ndryshosh përmbajtjen dinamikisht dhe shumë më tepër.
+    </p>
+
+    <div class="cta-buttons">
+      <a href="../roadmap.html?course=html-fundamentals" class="cta-btn cta-secondary">📋 Shiko Roadmap-in</a>
+      <a href="../dashboard.html" class="cta-btn cta-secondary">📊 Dashboard</a>
+    </div>
+  </div>
+
+</div>
+
+<script src="../js.lessons/sidebar.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script type="module" src="../js/requireAuth.js"></script>
+
+<script type="module">
+  import { markLessonCompleted } from "../js/courseProgressManager.js";
+  await markLessonCompleted("html-fundamentals", "course-complete");
+</script>
+</body>
+</html>

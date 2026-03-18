@@ -151,7 +151,25 @@
           test: (doc) => !!doc.querySelector('input[type="submit"], button[type="submit"]')
         }
       ],
-      successMessage: "Shkelqyeshem! Formularet u mesuan! \ud83c\udf89"
+      successMessage: "Shkelqyeshem! Formularet u mesuan! 🎉",
+      nextUrl: "../mesimet/lesson0.14.html",
+      htmlSolution: `<form>
+  <label>Emri</label>
+  <input type="text" name="emri">
+
+  <label>Fjalekalimi</label>
+  <input type="password" name="fjalekalimi">
+
+  <p>Gjinia:</p>
+  <input type="radio" name="gjinia" value="mashkull"> Mashkull
+  <input type="radio" name="gjinia" value="femer"> Femer
+
+  <br><br>
+  <input type="checkbox" name="kushtet"> Pranoj kushtet
+
+  <br><br>
+  <button type="submit">Dergo</button>
+</form>`
     });
   </script>
 
