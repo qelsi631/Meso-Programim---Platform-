@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="../mesimet/welcome.css">
   <link rel="stylesheet" href="../../sidebar.css">
   <link rel="stylesheet" href="../mesimet/style.css">
-  <link rel="stylesheet" href="../../css/playground.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -99,19 +98,10 @@
 <span class="punct">&lt;/</span><span class="tag">html</span><span class="punct">&gt;</span></code></pre>
         </div>
 
-        <h3>Kur përdoret Internal CSS?</h3>
-        <ul>
-          <li>Kur ke një faqe të vetme dhe dëshiron stilim të shpejtë.</li>
-          <li>Kur po teston një ide pa krijuar ende file të veçantë <span>.css</span>.</li>
-          <li>Kur po ndërton një shembull të vogël mësimor.</li>
-        </ul>
-
-        <h3>Avantazhe dhe kufizime</h3>
-        <ul>
-          <li><strong>Avantazh:</strong> gjithçka është në një file, e lehtë për fillestarin.</li>
-          <li><strong>Kufizim:</strong> nëse ke shumë faqe, duhet ta kopjosh CSS-në në secilën faqe.</li>
-          <li><strong>Kufizim:</strong> mirëmbajtja bëhet më e vështirë sa më shumë rritet projekti.</li>
-        </ul>
+        <div class="property-value-explanation" style="margin-top:18px;padding:18px 16px;background:#ffffff;color:#222;border-radius:10px;border-left:4px solid #7c3aed;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+          <div style="font-weight:700;font-size:16px;margin-bottom:8px;color:#7c3aed;">Kur përdoret Internal CSS?</div>
+          <p class="blackTextOfExplainTemplate" style="margin:0;">Internal CSS është i mirë për <strong>faqe të vetme</strong> ose kur po teston diçka shpejt. Por nëse ke shumë faqe, do të duhet ta kopjosh kodin kudo — prandaj për projekte të vërteta, përdor External CSS.</p>
+        </div>
       </section>
 
       <section class="section-card">
@@ -155,27 +145,10 @@
 <span class="punct">}</span></code></pre>
         </div>
 
-        <h3>Hapat për ta përdorur saktë</h3>
-        <ol>
-          <li>Krijo file-in <span>style.css</span>.</li>
-          <li>Shkruaj rregullat CSS në atë file.</li>
-          <li>Lidhe në <span>&lt;head&gt;</span> me: <span>&lt;link rel="stylesheet" href="style.css"&gt;</span>.</li>
-          <li>Ruaji të dy file-at dhe rifresko faqen.</li>
-        </ol>
-
-        <h3>Gabime të zakonshme</h3>
-        <ul>
-          <li>Rruga e gabuar te <span>href</span> (p.sh. file-i nuk gjendet).</li>
-          <li>Emri i file-it nuk përputhet saktë (p.sh. <span>Style.css</span> vs <span>style.css</span>).</li>
-          <li>Harrohet tag-u <span>&lt;link&gt;</span> brenda <span>&lt;head&gt;</span>.</li>
-        </ul>
-
-        <h3>Pse External CSS është më i mirë për projekte reale?</h3>
-        <ul>
-          <li>Ndryshon dizajnin e shumë faqeve nga një vend i vetëm.</li>
-          <li>Kodi HTML mbetet më i pastër dhe më i lexueshëm.</li>
-          <li>Punon më mirë në ekip sepse struktura ndahet qartë.</li>
-        </ul>
+        <div class="property-value-explanation" style="margin-top:18px;padding:18px 16px;background:#ffffff;color:#222;border-radius:10px;border-left:4px solid #16a34a;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+          <div style="font-weight:700;font-size:16px;margin-bottom:8px;color:#16a34a;">Pse External CSS?</div>
+          <p class="blackTextOfExplainTemplate" style="margin:0;">Me External CSS, shkruan stilin <strong>një herë</strong> në file-in <span>.css</span> dhe e lidh me sa faqe të duash. Kështu ndryshon dizajnin nga një vend i vetëm pa kopjuar asgjë. Kjo është mënyra standarde në projekte reale.</p>
+        </div>
       </section>
 
       <section class="section-card">
@@ -188,14 +161,7 @@
       </section>
     </section>
 
-      <!-- Interactive Playground -->
-      <section class="section-card">
-        <div class="section-header">
-          <h2>🧪 Provoje vetë!</h2>
-        </div>
-        <p>Shkruaj HTML dhe CSS së bashku — shiko stilimin live:</p>
-        <div class="playground" id="cssPlayground"></div>
-      </section>
+     
 
   </header>
 
@@ -208,43 +174,6 @@
 </div>
 
 <script src="../../js.lessons/sidebar.js"></script>
-
-<!-- Interactive Playground -->
-<script type="module">
-  import { createPlayground } from "../../js/playground.js";
-  createPlayground(document.getElementById("cssPlayground"), {
-    defaultCode:
-`<style>
-  h1 {
-    color: #ff7a1a;
-    font-family: Arial, sans-serif;
-  }
-
-  .kutia {
-    background: #2d2d2d;
-    color: white;
-    padding: 20px;
-    border-radius: 12px;
-    border: 2px solid #ff7a1a;
-    text-align: center;
-  }
-
-  .kutia:hover {
-    background: #ff7a1a;
-    color: #000;
-  }
-</style>
-
-<h1>Përshëndetje nga CSS!</h1>
-
-<div class="kutia">
-  <p>Vendos miun sipër meje 👆</p>
-</div>
-
-<p style="color: tomato; font-size: 18px;">Ky tekst ka <b>inline CSS</b>.</p>`,
-    hint: "Ndrysho ngjyrat, madhësinë ose shto CSS të re 👉"
-  });
-</script>
 
 <script src="../../js.lessons/code-copy-global.js"></script>
 

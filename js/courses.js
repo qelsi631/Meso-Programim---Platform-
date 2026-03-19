@@ -21,7 +21,8 @@ const availableCourses = [
     level: "beginner",
     lessons: 7,
     duration: "6-8 javë",
-    locked: true
+    locked: true,
+    comingSoon: true
   },
   {
     slug: "java-basics",
@@ -31,7 +32,8 @@ const availableCourses = [
     level: "beginner",
     lessons: 0,
     duration: "8-10 javë",
-    locked: true
+    locked: true,
+    comingSoon: true
   }
 ];
 
@@ -94,7 +96,7 @@ function renderCourses(courses) {
           <div class="course-info">
             <span class="course-level">${course.level.charAt(0).toUpperCase() + course.level.slice(1)}</span>
             ${isEnrolled ? '<div class="course-enrolled-badge">✓ I regjistruar</div>' : ''}
-            ${isLocked ? '<div class="course-enrolled-badge">🔒 I mbyllur</div>' : ''}
+            ${isLocked ? `<div class="course-enrolled-badge">🔒 ${course.comingSoon ? 'Së shpejti' : 'I mbyllur'}</div>` : ''}
             <div class="course-lessons">📚 ${course.lessons} mësime</div>
             <div class="course-description">${course.description}</div>
           </div>
@@ -165,9 +167,9 @@ function openEnrollModal(courseSlug) {
 
   if (isLocked) {
     document.getElementById("enrollMessage").innerHTML = `
-      <strong style="color: var(--warning);">🔒 Ky kurs është i mbyllur për momentin</strong>
+      <strong style="color: var(--warning);">🔒 ${selectedCourse.comingSoon ? 'Ky kurs vjen së shpejti! Po punojmë për ta sjellë sa më parë.' : 'Ky kurs është i mbyllur për momentin.'}</strong>
     `;
-    enrollBtn.textContent = "Mbyllur";
+    enrollBtn.textContent = selectedCourse.comingSoon ? "Së shpejti" : "Mbyllur";
     enrollBtn.disabled = true;
     enrollBtn.onclick = null;
   } else if (isEnrolled) {

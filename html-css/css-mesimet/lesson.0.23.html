@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="../mesimet/welcome.css">
   <link rel="stylesheet" href="../../sidebar.css">
   <link rel="stylesheet" href="../mesimet/style.css">
-  <link rel="stylesheet" href="../../css/playground.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -448,71 +447,11 @@
       </section>
 
       <!-- ═══════════════════════════════════════ -->
-      <!-- 8. flex (grow, shrink, basis) -->
+      <!-- 8. Navbar me Flexbox -->
       <!-- ═══════════════════════════════════════ -->
 
       <section class="section-card">
-        <div class="section-header"><h2>8. flex — Si rriten dhe zvogëlohen elementet</h2></div>
-        <p>Prona <code>flex</code> tek flex items kontrollon <strong>sa hapësirë e lirë merr secili</strong>. Është shorthand për flex-grow, flex-shrink, flex-basis.</p>
-
-        <div class="code-card">
-          <div class="code-head">
-            <div class="code-left">
-              <span class="dots"><i></i><i></i><i></i></span>
-              <span class="code-lang">CSS</span>
-            </div>
-            <button class="code-copy">Copy</button>
-          </div>
-          <pre class="code-pre line-numbers"><code class="language-css"><span class="comment">/* Secili merr hapësirë të barabartë */</span>
-<span class="selector">.item</span> <span class="punct">{</span>
-  <span class="property">flex</span><span class="punct">:</span> <span class="number">1</span><span class="punct">;</span>
-<span class="punct">}</span>
-
-<span class="comment">/* I pari merr 2x më shumë hapësirë se të tjerët */</span>
-<span class="selector">.item-i-madh</span> <span class="punct">{</span>
-  <span class="property">flex</span><span class="punct">:</span> <span class="number">2</span><span class="punct">;</span>
-<span class="punct">}</span>
-
-<span class="comment">/* Shorthand i plotë: grow shrink basis */</span>
-<span class="selector">.item-fiks</span> <span class="punct">{</span>
-  <span class="property">flex</span><span class="punct">:</span> <span class="number">0</span> <span class="number">0</span> <span class="number">200px</span><span class="punct">;</span>  <span class="comment">/* nuk rritet, nuk zvogëlohet, 200px */</span>
-<span class="punct">}</span></code></pre>
-        </div>
-
-        <div class="preview-card" style="margin-top:16px;">
-          <div class="preview-title">flex: 1 vs flex: 2 — shpërndarja e hapësirës</div>
-          <div class="preview-box" style="display:flex;flex-direction:column;gap:16px;">
-            <div>
-              <span style="color:#94a3b8;font-size:11px;display:block;margin-bottom:4px;">Të gjithë flex: 1 (të barabartë):</span>
-              <div style="display:flex;gap:6px;">
-                <div style="flex:1;background:#7c3aed;padding:12px;border-radius:6px;color:#fff;font-size:13px;text-align:center;">flex: 1</div>
-                <div style="flex:1;background:#3b82f6;padding:12px;border-radius:6px;color:#fff;font-size:13px;text-align:center;">flex: 1</div>
-                <div style="flex:1;background:#22c55e;padding:12px;border-radius:6px;color:#fff;font-size:13px;text-align:center;">flex: 1</div>
-              </div>
-            </div>
-            <div>
-              <span style="color:#94a3b8;font-size:11px;display:block;margin-bottom:4px;">I pari flex: 2, të tjerët flex: 1:</span>
-              <div style="display:flex;gap:6px;">
-                <div style="flex:2;background:#7c3aed;padding:12px;border-radius:6px;color:#fff;font-size:13px;text-align:center;">flex: 2</div>
-                <div style="flex:1;background:#3b82f6;padding:12px;border-radius:6px;color:#fff;font-size:13px;text-align:center;">flex: 1</div>
-                <div style="flex:1;background:#22c55e;padding:12px;border-radius:6px;color:#fff;font-size:13px;text-align:center;">flex: 1</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="property-value-explanation" style="margin-top:18px;padding:18px 16px;background:#ffffff;color:#222;border-radius:10px;border-left:4px solid #3b82f6;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
-          <div style="font-weight:700;font-size:16px;margin-bottom:8px;color:#3b82f6;">Si funksionon flex-grow?</div>
-          <p class="blackTextOfExplainTemplate" style="margin:0;">Nëse kontejneri ka 300px hapësirë të lirë dhe 3 items me <code>flex: 1</code>, secili merr 100px. Nëse njëri ka <code>flex: 2</code>, ai merr 150px dhe dy të tjerët 75px secili.</p>
-        </div>
-      </section>
-
-      <!-- ═══════════════════════════════════════ -->
-      <!-- 9. Navbar me Flexbox -->
-      <!-- ═══════════════════════════════════════ -->
-
-      <section class="section-card">
-        <div class="section-header"><h2>9. Shembull praktik — Navbar me Flexbox</h2></div>
+        <div class="section-header"><h2>8. Shembull praktik — Navbar me Flexbox</h2></div>
         <p>Le të ndërtojmë një navbar profesionale. Logo në të majtë, linqet në të djathtë, të gjitha të qendërzuara vertikalisht:</p>
 
         <div class="code-card">
@@ -554,11 +493,11 @@
       </section>
 
       <!-- ═══════════════════════════════════════ -->
-      <!-- 10. Karta me Flexbox -->
+      <!-- 9. Karta me Flexbox -->
       <!-- ═══════════════════════════════════════ -->
 
       <section class="section-card">
-        <div class="section-header"><h2>10. Shembull praktik — Layout me karta</h2></div>
+        <div class="section-header"><h2>9. Shembull praktik — Layout me karta</h2></div>
         <p>Tre karta njëra pranë tjetrës, që adaptohen kur ekrani zvogëlohet:</p>
 
         <div class="code-card">
@@ -630,7 +569,6 @@
               <tr style="background:#fff;"><td style="padding:8px 12px;font-weight:600;">align-items</td><td style="padding:8px 12px;">Kontejner</td><td style="padding:8px 12px;">Rreshtim vertikal</td><td style="padding:8px 12px;">center, flex-start, flex-end, stretch</td></tr>
               <tr style="background:#f8f9fa;"><td style="padding:8px 12px;font-weight:600;">gap</td><td style="padding:8px 12px;">Kontejner</td><td style="padding:8px 12px;">Hapësirë ndërmjet</td><td style="padding:8px 12px;">px, rem, %</td></tr>
               <tr style="background:#fff;"><td style="padding:8px 12px;font-weight:600;">flex-wrap</td><td style="padding:8px 12px;">Kontejner</td><td style="padding:8px 12px;">Mbështjellje</td><td style="padding:8px 12px;">nowrap, wrap</td></tr>
-              <tr style="background:#f8f9fa;"><td style="padding:8px 12px;font-weight:600;">flex</td><td style="padding:8px 12px;">Item</td><td style="padding:8px 12px;">Sa rritet/zvogëlohet</td><td style="padding:8px 12px;">1, 2, 0 0 200px</td></tr>
             </tbody>
           </table>
         </div>
@@ -651,54 +589,6 @@
 </div>
 
 <script src="../../js.lessons/sidebar.js"></script>
-
-<!-- Interactive Playground -->
-<script type="module">
-  import { createPlayground } from "../../js/playground.js";
-  createPlayground(document.getElementById("flexPlayground"), {
-    defaultCode:
-`<style>
-  body {
-    background: #1a1a2e;
-    font-family: Arial, sans-serif;
-  }
-
-  .kontejner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-    min-height: 250px;
-    background: #1e1e3f;
-    border: 2px dashed #7c3aed;
-    border-radius: 12px;
-    padding: 20px;
-  }
-
-  .kutia {
-    background: #7c3aed;
-    color: white;
-    padding: 16px 24px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 700;
-  }
-
-  .kutia:nth-child(2) { background: #3b82f6; }
-  .kutia:nth-child(3) { background: #22c55e; }
-  .kutia:nth-child(4) { background: #ef4444; }
-</style>
-
-<div class="kontejner">
-  <div class="kutia">Kutia 1</div>
-  <div class="kutia">Kutia 2</div>
-  <div class="kutia">Kutia 3</div>
-  <div class="kutia">Kutia 4</div>
-</div>`,
-    hint: "Ndrysho justify-content, align-items, flex-direction, gap 👉"
-  });
-</script>
 
 <script src="../../js.lessons/code-copy-global.js"></script>
 

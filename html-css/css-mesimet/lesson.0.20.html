@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="../mesimet/welcome.css">
   <link rel="stylesheet" href="../../sidebar.css">
   <link rel="stylesheet" href="../mesimet/style.css">
-  <link rel="stylesheet" href="../../css/playground.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -410,15 +409,6 @@
 
     </section>
 
-    <!-- Interactive Playground -->
-    <section class="section-card">
-      <div class="section-header">
-        <h2>🧪 Provoje vetë!</h2>
-      </div>
-      <p>Eksperimento me pronat e tipografisë:</p>
-      <div class="playground" id="cssPlayground"></div>
-    </section>
-
 
 
   </header>
@@ -432,52 +422,6 @@
 </div>
 
 <script src="../../js.lessons/sidebar.js"></script>
-
-<!-- Interactive Playground -->
-<script type="module">
-  import { createPlayground } from "../../js/playground.js";
-  createPlayground(document.getElementById("cssPlayground"), {
-    defaultCode:
-`<style>
-  body { background: #1a1a2e; }
-
-  h1 {
-    font-family: Georgia, serif;
-    font-size: 32px;
-    font-weight: 800;
-    color: #7c3aed;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-  }
-
-  p {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    color: #cbd5e1;
-    line-height: 1.7;
-    text-align: center;
-  }
-
-  .dekoruar {
-    text-decoration: underline;
-    text-decoration-color: #ff6600;
-    font-weight: 600;
-  }
-
-  .i-vogel {
-    font-size: 12px;
-    color: #64748b;
-    text-transform: capitalize;
-  }
-</style>
-
-<h1>Tipografia CSS</h1>
-<p>Ndrysho <span class="dekoruar">pronat e tekstit</span> dhe shiko rezultatin live!</p>
-<p class="i-vogel">provo font-size, font-weight, letter-spacing, text-transform</p>`,
-    hint: "Ndrysho font-family, font-size, text-align, letter-spacing 👉"
-  });
-</script>
 
 <script src="../../js.lessons/code-copy-global.js"></script>
 

@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="../mesimet/welcome.css">
   <link rel="stylesheet" href="../../sidebar.css">
   <link rel="stylesheet" href="../mesimet/style.css">
-  <link rel="stylesheet" href="../../css/playground.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -401,15 +400,6 @@
 
     </section>
 
-    <!-- Interactive Playground -->
-    <section class="section-card">
-      <div class="section-header">
-        <h2>🧪 Provoje vetë!</h2>
-      </div>
-      <p>Eksperimento me Box Model:</p>
-      <div class="playground" id="cssPlayground"></div>
-    </section>
-
 
 
   </header>
@@ -423,46 +413,6 @@
 </div>
 
 <script src="../../js.lessons/sidebar.js"></script>
-
-<!-- Interactive Playground -->
-<script type="module">
-  import { createPlayground } from "../../js/playground.js";
-  createPlayground(document.getElementById("cssPlayground"), {
-    defaultCode:
-`<style>
-  body { background: #1a1a2e; }
-
-  .kutia {
-    width: 250px;
-    padding: 24px;
-    border: 3px solid #7c3aed;
-    border-radius: 12px;
-    margin: 30px auto;
-    background: #1e1e3f;
-    color: #e2e8f0;
-    font-family: Arial, sans-serif;
-    text-align: center;
-  }
-
-  .kutia h2 {
-    color: #7c3aed;
-    margin-top: 0;
-  }
-
-  .kutia p {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #94a3b8;
-  }
-</style>
-
-<div class="kutia">
-  <h2>Box Model</h2>
-  <p>Ndrysho padding, margin, border dhe shiko si ndryshon kutia!</p>
-</div>`,
-    hint: "Ndrysho padding, margin, border, border-radius 👉"
-  });
-</script>
 
 <script src="../../js.lessons/code-copy-global.js"></script>
 

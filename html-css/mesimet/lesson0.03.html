@@ -76,15 +76,7 @@
         
         <p class="highlight-gold">Text Formatting në HTML është mënyra se si e bëjmë tekstin të duket dhe të kuptohet më mirë, duke theksuar fjalë ose pjesë të rëndësishme pa përdorur CSS.</p>
         
-        <div class="subsection">
-          <h3>Pse e përdorim?</h3>
-          <ul>
-            <li>Për të theksuar informacion të rëndësishëm</li>
-            <li>Për ta bërë tekstin më të lehtë për t’u lexuar</li>
-            <li>Për t'u kuptuar më lehtë nga shfletuesit dhe screen readers</li>
-            <li>Për ta organizuar tekstin në mënyrë më të rregullt dhe të qartë</li>
-          </ul>
-        </div>
+
       </section>
 
       <!-- SECTION 2 - Semantic vs Visual -->
@@ -190,19 +182,6 @@
 
   <div class="element-row">
     <div class="element-meta">
-      <div class="element-tag"><code>&lt;sub&gt;</code> <code>&lt;sup&gt;</code></div>
-      <div class="element-text">
-        <p class="element-title">Indeks poshtë / sipër</p>
-        <p class="element-note">Për formula dhe fuqi.</p>
-      </div>
-    </div>
-    <div class="element-demo">
-      H<sub>2</sub>O, x<sup>2</sup>
-    </div>
-  </div>
-
-  <div class="element-row">
-    <div class="element-meta">
       <div class="element-tag"><code>&lt;small&gt;</code></div>
       <div class="element-text">
         <p class="element-title">Tekst i vogël</p>
@@ -296,16 +275,6 @@
         </div>
       </section>
 
-      <!-- SECTION 6 - Interactive Playground -->
-      <section class="section-card">
-        <div class="section-header">
-          <h2>🧪 Provoje vetë!</h2>
-        </div>
-        <p>Shkruaj ose ndrysho kodin HTML më poshtë dhe shiko rezultatin menjëherë:</p>
-
-        <div class="playground" id="textPlayground"></div>
-      </section>
-
       <footer class="lesson-footer">
         <div class="footer-navigation">
           <div></div>
@@ -315,28 +284,6 @@
 
 
 <script src="../../js.lessons/sidebar.js"></script>
-
-<!-- Interactive Playground -->
-<script type="module">
-  import { createPlayground } from "../../js/playground.js";
-  createPlayground(document.getElementById("textPlayground"), {
-    defaultCode:
-`<!-- Provoji këto tag-e! Ndrysho tekstin dhe shiko çfarë ndodh -->
-<h2>Përshëndetje!</h2>
-
-<p>Kjo fjalë është <strong>e rëndësishme</strong> dhe kjo <em>e theksuar</em>.</p>
-
-<p>Kjo është <mark>e theksuar me marker</mark>.</p>
-
-<p><del>Tekst i fshirë</del> dhe <ins>tekst i shtuar</ins>.</p>
-
-<p><small>Tekst i vogël</small> — H<sub>2</sub>O — x<sup>2</sup></p>
-
-<hr>
-<p><b>Provoje:</b> shto tag-e të reja më poshtë! 👇</p>`,
-    hint: "Ndrysho kodin në të majtë dhe shiko rezultatin live në të djathtë 👉"
-  });
-</script>
 
 <script>
   // Interactive functionality

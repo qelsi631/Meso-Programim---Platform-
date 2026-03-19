@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="../mesimet/welcome.css">
   <link rel="stylesheet" href="../../sidebar.css">
   <link rel="stylesheet" href="../mesimet/style.css">
-  <link rel="stylesheet" href="../../css/playground.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -325,14 +324,6 @@
 
     </section>
 
-    <!-- Interactive Playground -->
-    <section class="section-card">
-      <div class="section-header">
-        <h2>🧪 Provoje vetë!</h2>
-      </div>
-      <p>Shkruaj HTML dhe CSS — provo selektorët e ndryshëm:</p>
-      <div class="playground" id="cssPlayground"></div>
-    </section>
 
   </header>
 
@@ -345,54 +336,6 @@
 </div>
 
 <script src="../../js.lessons/sidebar.js"></script>
-
-<!-- Interactive Playground -->
-<script type="module">
-  import { createPlayground } from "../../js/playground.js";
-  createPlayground(document.getElementById("cssPlayground"), {
-    defaultCode:
-`<style>
-  /* Selektori i elementit */
-  h1 {
-    color: #7c3aed;
-    text-align: center;
-  }
-
-  /* Selektori i klasës */
-  .kartela {
-    background: #1e1b4b;
-    color: white;
-    padding: 16px;
-    border-radius: 10px;
-    margin: 10px 0;
-    border-left: 4px solid #ff6600;
-  }
-
-  /* Selektori i ID-së */
-  #mesazhi {
-    color: #16a34a;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-  }
-</style>
-
-<h1>Selektorët CSS</h1>
-
-<div class="kartela">
-  <p>Kjo kartele ka klasën "kartela" 🟠</p>
-</div>
-
-<div class="kartela">
-  <p>Edhe kjo ka klasën e njëjtë!</p>
-</div>
-
-<p id="mesazhi">Ky paragraf ka ID unik 🟢</p>
-
-<p>Ky paragraf nuk ka as klasë as ID.</p>`,
-    hint: "Ndrysho selektorët, shto klasa të reja, apo luaj me prioritetin 👉"
-  });
-</script>
 
 <script src="../../js.lessons/code-copy-global.js"></script>
 

@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="../mesimet/welcome.css">
   <link rel="stylesheet" href="../../sidebar.css">
   <link rel="stylesheet" href="../mesimet/style.css">
-  <link rel="stylesheet" href="../../css/playground.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -303,107 +302,11 @@
       </section>
 
       <!-- ═══════════════════════════════════════ -->
-      <!-- 7. grid-template-areas -->
+      <!-- 7. Grid vs Flexbox -->
       <!-- ═══════════════════════════════════════ -->
 
       <section class="section-card">
-        <div class="section-header"><h2>7. grid-template-areas — Layout me emra</h2></div>
-        <p>Kjo është mënyra <strong>më e lehtë</strong> për të ndërtuar një layout faqesh! Thjesht i jep emra zonave dhe i vizaton si hartë:</p>
-
-        <div class="code-card">
-          <div class="code-head">
-            <div class="code-left">
-              <span class="dots"><i></i><i></i><i></i></span>
-              <span class="code-lang">CSS</span>
-            </div>
-            <button class="code-copy">Copy</button>
-          </div>
-          <pre class="code-pre line-numbers"><code class="language-css"><span class="selector">.kontejner</span> <span class="punct">{</span>
-  <span class="property">display</span><span class="punct">:</span> <span class="value">grid</span><span class="punct">;</span>
-  <span class="property">grid-template-columns</span><span class="punct">:</span> <span class="number">200px</span> <span class="number">1fr</span><span class="punct">;</span>
-  <span class="property">grid-template-areas</span><span class="punct">:</span>
-    <span class="value">"header  header"</span>
-    <span class="value">"sidebar main"</span>
-    <span class="value">"footer  footer"</span><span class="punct">;</span>
-  <span class="property">gap</span><span class="punct">:</span> <span class="number">10px</span><span class="punct">;</span>
-<span class="punct">}</span>
-
-<span class="comment">/* Çdo element merr emrin e zonës */</span>
-<span class="selector">.header</span>  <span class="punct">{</span> <span class="property">grid-area</span><span class="punct">:</span> <span class="value">header</span><span class="punct">;</span> <span class="punct">}</span>
-<span class="selector">.sidebar</span> <span class="punct">{</span> <span class="property">grid-area</span><span class="punct">:</span> <span class="value">sidebar</span><span class="punct">;</span> <span class="punct">}</span>
-<span class="selector">.main</span>    <span class="punct">{</span> <span class="property">grid-area</span><span class="punct">:</span> <span class="value">main</span><span class="punct">;</span> <span class="punct">}</span>
-<span class="selector">.footer</span>  <span class="punct">{</span> <span class="property">grid-area</span><span class="punct">:</span> <span class="value">footer</span><span class="punct">;</span> <span class="punct">}</span></code></pre>
-        </div>
-
-        <div class="preview-card" style="margin-top:16px;">
-          <div class="preview-title">Layout me emra — header, sidebar, main, footer</div>
-          <div class="preview-box">
-            <div style="display:grid;grid-template-columns:140px 1fr;grid-template-rows:50px 120px 40px;grid-template-areas:'header header' 'sidebar main' 'footer footer';gap:8px;">
-              <div style="grid-area:header;background:#7c3aed;border-radius:6px;color:#fff;font-size:13px;display:flex;align-items:center;padding:0 14px;font-weight:700;">header</div>
-              <div style="grid-area:sidebar;background:#3b82f6;border-radius:6px;color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center;">sidebar</div>
-              <div style="grid-area:main;background:#22c55e;border-radius:6px;color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center;">main</div>
-              <div style="grid-area:footer;background:#f59e0b;border-radius:6px;color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center;">footer</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="property-value-explanation" style="margin-top:18px;padding:18px 16px;background:#ffffff;color:#222;border-radius:10px;border-left:4px solid #22c55e;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
-          <div style="font-weight:700;font-size:16px;margin-bottom:8px;color:#22c55e;">💡 Si funksionon?</div>
-          <p class="blackTextOfExplainTemplate" style="margin:0;">Çdo fjalë brenda thonjëzave është një qelize. Kur emri përsëritet (si <code>"header header"</code>), elementi zë dy kolona! Pastaj çdo element merr <code>grid-area: emri;</code> për tu vendosur atje.</p>
-        </div>
-      </section>
-
-      <!-- ═══════════════════════════════════════ -->
-      <!-- 8. Shembull praktik -->
-      <!-- ═══════════════════════════════════════ -->
-
-      <section class="section-card">
-        <div class="section-header"><h2>8. Shembull — Layout i thjeshtë faqesh</h2></div>
-        <p>Ja si duket një layout i thjeshtë me gjithçka që mësove deri tani:</p>
-
-        <div class="code-card">
-          <div class="code-head">
-            <div class="code-left">
-              <span class="dots"><i></i><i></i><i></i></span>
-              <span class="code-lang">HTML + CSS</span>
-            </div>
-            <button class="code-copy">Copy</button>
-          </div>
-          <pre class="code-pre line-numbers"><code class="language-css"><span class="selector">.faqja</span> <span class="punct">{</span>
-  <span class="property">display</span><span class="punct">:</span> <span class="value">grid</span><span class="punct">;</span>
-  <span class="property">grid-template-columns</span><span class="punct">:</span> <span class="number">200px</span> <span class="number">1fr</span><span class="punct">;</span>
-  <span class="property">grid-template-areas</span><span class="punct">:</span>
-    <span class="value">"header  header"</span>
-    <span class="value">"sidebar main"</span>
-    <span class="value">"footer  footer"</span><span class="punct">;</span>
-  <span class="property">gap</span><span class="punct">:</span> <span class="number">8px</span><span class="punct">;</span>
-<span class="punct">}</span>
-
-<span class="selector">.header</span>  <span class="punct">{</span> <span class="property">grid-area</span><span class="punct">:</span> <span class="value">header</span><span class="punct">;</span> <span class="punct">}</span>
-<span class="selector">.sidebar</span> <span class="punct">{</span> <span class="property">grid-area</span><span class="punct">:</span> <span class="value">sidebar</span><span class="punct">;</span> <span class="punct">}</span>
-<span class="selector">.main</span>    <span class="punct">{</span> <span class="property">grid-area</span><span class="punct">:</span> <span class="value">main</span><span class="punct">;</span> <span class="punct">}</span>
-<span class="selector">.footer</span>  <span class="punct">{</span> <span class="property">grid-area</span><span class="punct">:</span> <span class="value">footer</span><span class="punct">;</span> <span class="punct">}</span></code></pre>
-        </div>
-
-        <div class="preview-card" style="margin-top:16px;">
-          <div class="preview-title">Layout i plotë — Header, Sidebar, Main, Footer</div>
-          <div class="preview-box" style="padding:12px;background:#f0f0f5;">
-            <div style="display:grid;grid-template-columns:120px 1fr;grid-template-rows:40px 1fr 35px;grid-template-areas:'header header' 'sidebar main' 'footer footer';min-height:220px;gap:6px;border-radius:8px;overflow:hidden;">
-              <div style="grid-area:header;background:#7c3aed;color:#fff;padding:8px 14px;display:flex;align-items:center;font-weight:800;font-size:14px;border-radius:6px;">🏠 Faqja Ime</div>
-              <div style="grid-area:sidebar;background:#3b82f6;color:#fff;padding:12px;font-size:12px;border-radius:6px;">📁 Sidebar<br><span style="font-size:11px;margin-top:6px;display:block;opacity:0.85;">Linqe<br>Mësimet<br>Profili</span></div>
-              <div style="grid-area:main;background:#22c55e;color:#fff;padding:14px;font-size:13px;border-radius:6px;">📄 Përmbajtja kryesore<br><span style="font-size:11px;opacity:0.85;">Kjo është zona main.</span></div>
-              <div style="grid-area:footer;background:#f59e0b;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;border-radius:6px;">© 2026 Faqja Ime</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════════════════════════════════ -->
-      <!-- 9. Grid vs Flexbox -->
-      <!-- ═══════════════════════════════════════ -->
-
-      <section class="section-card">
-        <div class="section-header"><h2>9. Grid vs Flexbox — Kur cilën?</h2></div>
+        <div class="section-header"><h2>7. Grid vs Flexbox — Kur cilën?</h2></div>
         <p>Tani njeh dy sisteme layout: <strong>Flexbox</strong> dhe <strong>Grid</strong>. Ja kur ta përdorësh secilën:</p>
 
         <div style="overflow-x:auto;">
@@ -449,8 +352,6 @@
               <tr style="background:#fff;color:#222;"><td style="padding:8px 12px;font-weight:600;">gap</td><td style="padding:8px 12px;">Hapësirë ndërmjet kutive</td></tr>
               <tr style="background:#f8f9fa;color:#222;"><td style="padding:8px 12px;font-weight:600;">repeat(3, 1fr)</td><td style="padding:8px 12px;">Shkurtim: 3 kolona të barabarta</td></tr>
               <tr style="background:#fff;color:#222;"><td style="padding:8px 12px;font-weight:600;">grid-column: span 3</td><td style="padding:8px 12px;">Elementi zë 3 kolona</td></tr>
-              <tr style="background:#f8f9fa;color:#222;"><td style="padding:8px 12px;font-weight:600;">grid-template-areas</td><td style="padding:8px 12px;">Layout me emra (si hartë)</td></tr>
-              <tr style="background:#fff;color:#222;"><td style="padding:8px 12px;font-weight:600;">grid-area</td><td style="padding:8px 12px;">Cakton emrin e zonës për elementin</td></tr>
             </tbody>
           </table>
         </div>
@@ -471,53 +372,6 @@
 </div>
 
 <script src="../../js.lessons/sidebar.js"></script>
-
-<!-- Interactive Playground -->
-<script type="module">
-  import { createPlayground } from "../../js/playground.js";
-  createPlayground(document.getElementById("gridPlayground"), {
-    defaultCode:
-`<style>
-  body {
-    background: #f5f5f5;
-    font-family: Arial, sans-serif;
-    padding: 20px;
-  }
-
-  .grid-kontejner {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
-  }
-
-  .kutia {
-    background: #7c3aed;
-    color: white;
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    font-weight: 700;
-    font-size: 18px;
-  }
-
-  .kutia:nth-child(2) { background: #3b82f6; }
-  .kutia:nth-child(3) { background: #22c55e; }
-  .kutia:nth-child(4) { background: #f59e0b; }
-  .kutia:nth-child(5) { background: #ef4444; }
-  .kutia:nth-child(6) { background: #06b6d4; }
-</style>
-
-<div class="grid-kontejner">
-  <div class="kutia">1</div>
-  <div class="kutia">2</div>
-  <div class="kutia">3</div>
-  <div class="kutia">4</div>
-  <div class="kutia">5</div>
-  <div class="kutia">6</div>
-</div>`,
-    hint: "Ndrysho grid-template-columns dhe gap 👉"
-  });
-</script>
 
 <script src="../../js.lessons/code-copy-global.js"></script>
 

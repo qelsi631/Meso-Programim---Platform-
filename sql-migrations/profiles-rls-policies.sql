@@ -6,13 +6,13 @@ ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
 DO $$
 BEGIN
   IF NOT EXISTS (
-    SELECT 1 FROM pg_policies WHERE schemaname = 'public' AND tablename = 'profiles' AND policyname = 'Profiles are viewable by authenticated users'
+    SELECT 1 FROM pg_policies WHERE schemaname = 'public' AND tablename = 'profiles' AND policyname = 'Users can view own profile'
   ) THEN
-    CREATE POLICY "Profiles are viewable by authenticated users"
+    CREATE POLICY "Users can view own profile"
     ON public.profiles
     FOR SELECT
     TO authenticated
-    USING (true);
+    USING (auth.uid() = id);
   END IF;
 
   IF NOT EXISTS (

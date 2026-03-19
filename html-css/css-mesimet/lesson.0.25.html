@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="../mesimet/welcome.css">
   <link rel="stylesheet" href="../../sidebar.css">
   <link rel="stylesheet" href="../mesimet/style.css">
-  <link rel="stylesheet" href="../../css/playground.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -486,63 +485,6 @@
 </div>
 
 <script src="../../js.lessons/sidebar.js"></script>
-
-<!-- Interactive Playground -->
-<script type="module">
-  import { createPlayground } from "../../js/playground.js";
-  createPlayground(document.getElementById("responsivePlayground"), {
-    defaultCode:
-`<style>
-  body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    background: #f5f5f5;
-  }
-
-  h1 {
-    font-size: 36px;
-    color: #7c3aed;
-  }
-
-  .kartat {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
-  }
-
-  .karta {
-    background: #7c3aed;
-    color: white;
-    padding: 24px;
-    border-radius: 10px;
-    text-align: center;
-    font-weight: 700;
-  }
-
-  .karta:nth-child(2) { background: #3b82f6; }
-  .karta:nth-child(3) { background: #22c55e; }
-
-  /* Provo: ndrysho 768 në 400 ose 1000 */
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 22px;
-    }
-
-    .kartat {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
-
-<h1>Faqja Ime</h1>
-<div class="kartat">
-  <div class="karta">Karta 1</div>
-  <div class="karta">Karta 2</div>
-  <div class="karta">Karta 3</div>
-</div>`,
-    hint: "Ndrysho vleren e max-width ose shto stile të reja brenda @media 👉"
-  });
-</script>
 
 <script src="../../js.lessons/code-copy-global.js"></script>
 

@@ -52,14 +52,13 @@
   <header>
     <div class="welcome">
       <h1>Imazhet në <span class="highlight">HTML</span></h1>
-      <p>Mëso si të përdorësh <span class="highlight">&lt;img&gt;</span>, si të shkruash <span class="highlight">alt</span> të mirë dhe si t’i bësh imazhet responsive.</p>
+      <p>Mëso si të përdorësh <span class="highlight">&lt;img&gt;</span>, si të shkruash <span class="highlight">alt</span> të mirë dhe atribute bazë të imazheve.</p>
     </div>
 
     <section class="lesson-content">
 
       <section class="section-card">
         <div class="section-header">
-          <div class="section-icon">🖼️</div>
           <h2>Çfarë është tag-u &lt;img&gt;?</h2>
         </div>
 
@@ -67,15 +66,6 @@
           <strong>&lt;img&gt;</strong> është një element pa mbyllje (void element). Ai ka dy atribute kryesore: <strong>src</strong> dhe <strong>alt</strong>.
         </p>
 
-        <div class="subsection">
-          <h3>Atributet më të rëndësishme</h3>
-          <ul>
-            <li><strong>src</strong> – rruga e imazhit</li>
-            <li><strong>alt</strong> – përshkrimi i imazhit (aksesueshmëri)</li>
-            <li><strong>width</strong> / <strong>height</strong> – madhësia (opsionale)</li>
-            <li><strong>loading</strong> – ngarkim i vonuar (lazy)</li>
-          </ul>
-        </div>
       </section>
 
       <section class="section-card">
@@ -164,55 +154,6 @@
 
       <section class="section-card">
         <div class="section-header">
-          <h2>Imazhe responsive</h2>
-        </div>
-
-        <p>Për ta bërë imazhin të përshtatet me ekranin, përdor <span class="highlight">max-width: 100%</span> dhe <span class="highlight">height: auto</span>.</p>
-
-        <div class="mini-preview">
-          <h4>Preview:</h4>
-          <div class="preview-content">
-            <img src="../../imgs/planprogrami.jpg" alt="Plan mësimi" style="max-width: 100%; height: auto; border-radius: 8px;">
-          </div>
-        </div>
-
-        <div class="code-card">
-          <div class="code-head">
-            <div class="code-left">
-              <span class="dots"><i></i><i></i><i></i></span>
-              <span class="code-lang">HTML</span>
-            </div>
-            <button class="code-copy">Copy</button>
-          </div>
-
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="../../imgs/planprogrami.jpg" alt="Plan mësimi" style="max-width: 100%; height: auto;"&gt;
-</code></pre>
-        </div>
-      </section>
-
-      <section class="section-card">
-        <div class="section-header">
-          <h2>Ngarkim i shpejtë (lazy loading)</h2>
-        </div>
-
-        <p>Shto <strong>loading="lazy"</strong> që imazhet të ngarkohen vetëm kur duhen.</p>
-
-        <div class="code-card">
-          <div class="code-head">
-            <div class="code-left">
-              <span class="dots"><i></i><i></i><i></i></span>
-              <span class="code-lang">HTML</span>
-            </div>
-            <button class="code-copy">Copy</button>
-          </div>
-
-          <pre class="code-pre line-numbers"><code class="language-html">&lt;img src="../../imgs/planprogrami.jpg" alt="Plan mësimi" loading="lazy" decoding="async"&gt;
-</code></pre>
-        </div>
-      </section>
-
-      <section class="section-card">
-        <div class="section-header">
           <h2>Praktika të mira</h2>
         </div>
 
@@ -220,7 +161,7 @@
           <li>Gjithmonë vendos <strong>alt</strong> për aksesueshmëri dhe SEO.</li>
           <li>Mbaj imazhet në folder të qartë (p.sh. <span class="highlight">imgs</span>).</li>
           <li>Përdor madhësi të përshtatshme për të mos ngadalësuar faqen.</li>
-          <li>Përdor <span class="highlight">lazy loading</span> për imazhet që s’janë menjëherë në ekran.</li>
+
         </ul>
       </section>
 

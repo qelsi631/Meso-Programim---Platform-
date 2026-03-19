@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="../mesimet/welcome.css">
   <link rel="stylesheet" href="../../sidebar.css">
   <link rel="stylesheet" href="../mesimet/style.css">
-  <link rel="stylesheet" href="../../css/playground.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -387,63 +386,6 @@
         </div>
       </section>
 
-      <!-- 9. position: sticky -->
-      <section class="section-card">
-        <div class="section-header"><h2>9. position: sticky — Ngjitet kur scroll-on</h2></div>
-        <p>Sticky është <strong>kombinim i relative dhe fixed</strong>: elementi sillet normalisht derisa përdoruesi scroll-on te ai, pastaj <strong>"ngjitet"</strong> në pozicionin e caktuar.</p>
-
-        <div class="code-card">
-          <div class="code-head">
-            <div class="code-left">
-              <span class="dots"><i></i><i></i><i></i></span>
-              <span class="code-lang">CSS</span>
-            </div>
-            <button class="code-copy">Copy</button>
-          </div>
-          <pre class="code-pre line-numbers"><code class="language-css"><span class="selector">.titulli</span> <span class="punct">{</span>
-  <span class="property">position</span><span class="punct">:</span> <span class="value">sticky</span><span class="punct">;</span>
-  <span class="property">top</span><span class="punct">:</span> <span class="number">0</span><span class="punct">;</span>             <span class="comment">/* ngjitet kur arrin sipër */</span>
-  <span class="property">background</span><span class="punct">:</span> <span class="value">#1a1a2e</span><span class="punct">;</span>
-  <span class="property">padding</span><span class="punct">:</span> <span class="number">10px</span><span class="punct">;</span>
-<span class="punct">}</span></code></pre>
-        </div>
-
-        <div class="property-value-explanation" style="margin-top:18px;padding:18px 16px;background:#ffffff;color:#222;border-radius:10px;border-left:4px solid #3b82f6;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
-          <div style="font-weight:700;font-size:16px;margin-bottom:8px;color:#3b82f6;">Kur përdoret sticky?</div>
-          <p class="blackTextOfExplainTemplate" style="margin:0;">Për titujt e seksioneve që ngjiten kur scroll-on, tabela me header-ë të fiksuar, ose sidebar-ë që ndjekin scroll-in. Kijo ta provon shpesh në faqet moderne!</p>
-        </div>
-      </section>
-
-      <!-- 10. z-index -->
-      <section class="section-card">
-        <div class="section-header"><h2>10. z-index — Cili element del sipër</h2></div>
-        <p>Kur elementet mbishtrihen, <code>z-index</code> vendos <strong>cilin sheh përdoruesi sipër</strong>. Numri më i madh = më sipër. Funksionon vetëm me elementet që kanë <code>position</code> (jo static).</p>
-
-        <div class="code-card">
-          <div class="code-head">
-            <div class="code-left">
-              <span class="dots"><i></i><i></i><i></i></span>
-              <span class="code-lang">CSS</span>
-            </div>
-            <button class="code-copy">Copy</button>
-          </div>
-          <pre class="code-pre line-numbers"><code class="language-css"><span class="selector">.kutia-1</span> <span class="punct">{</span> <span class="property">z-index</span><span class="punct">:</span> <span class="number">1</span><span class="punct">;</span> <span class="punct">}</span>
-<span class="selector">.kutia-2</span> <span class="punct">{</span> <span class="property">z-index</span><span class="punct">:</span> <span class="number">10</span><span class="punct">;</span> <span class="punct">}</span>  <span class="comment">/* kjo del sipër */</span>
-<span class="selector">.kutia-3</span> <span class="punct">{</span> <span class="property">z-index</span><span class="punct">:</span> <span class="number">5</span><span class="punct">;</span> <span class="punct">}</span></code></pre>
-        </div>
-
-        <div class="preview-card" style="margin-top:16px;">
-          <div class="preview-title">z-index — shtresat</div>
-          <div class="preview-box">
-            <div style="position:relative;height:140px;">
-              <div style="position:absolute;top:10px;left:20px;width:120px;height:80px;background:#3b82f6;border-radius:8px;z-index:1;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:600;border:2px solid #2563eb;">z-index: 1</div>
-              <div style="position:absolute;top:30px;left:60px;width:120px;height:80px;background:#7c3aed;border-radius:8px;z-index:10;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:600;border:2px solid #6d28d9;">z-index: 10</div>
-              <div style="position:absolute;top:50px;left:100px;width:120px;height:80px;background:#22c55e;border-radius:8px;z-index:5;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:600;border:2px solid #16a34a;">z-index: 5</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- Position Comparison Table -->
       <section class="section-card">
         <div class="section-header"><h2>Përmbledhje — Position</h2></div>
@@ -462,7 +404,6 @@
               <tr style="background:#fff;"><td style="padding:8px 12px;font-weight:600;">relative</td><td style="padding:8px 12px;">Po</td><td style="padding:8px 12px;">Vetja</td><td style="padding:8px 12px;">Pikë referimi, lëvizje e vogël</td></tr>
               <tr style="background:#f8f9fa;"><td style="padding:8px 12px;font-weight:600;">absolute</td><td style="padding:8px 12px;">Jo</td><td style="padding:8px 12px;">Prindi relative</td><td style="padding:8px 12px;">Popups, badge, overlay</td></tr>
               <tr style="background:#fff;"><td style="padding:8px 12px;font-weight:600;">fixed</td><td style="padding:8px 12px;">Jo</td><td style="padding:8px 12px;">Dritarja</td><td style="padding:8px 12px;">Navbar, buton scroll-top</td></tr>
-              <tr style="background:#f8f9fa;"><td style="padding:8px 12px;font-weight:600;">sticky</td><td style="padding:8px 12px;">Po → Jo</td><td style="padding:8px 12px;">Prindi</td><td style="padding:8px 12px;">Tituj seksionesh, header</td></tr>
             </tbody>
           </table>
         </div>
@@ -483,70 +424,6 @@
 </div>
 
 <script src="../../js.lessons/sidebar.js"></script>
-
-<!-- Interactive Playground -->
-<script type="module">
-  import { createPlayground } from "../../js/playground.js";
-  createPlayground(document.getElementById("cssPlayground"), {
-    defaultCode:
-`<style>
-  body {
-    background: #1a1a2e;
-    font-family: Arial, sans-serif;
-  }
-
-  .kontejner {
-    position: relative;
-    width: 300px;
-    height: 250px;
-    margin: 20px auto;
-    background: #1e1e3f;
-    border: 2px dashed #7c3aed;
-    border-radius: 12px;
-  }
-
-  .emri {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: #7c3aed;
-    color: white;
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-size: 14px;
-  }
-
-  .butoni {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background: #22c55e;
-    color: white;
-    padding: 8px 18px;
-    border-radius: 6px;
-    font-size: 14px;
-    cursor: pointer;
-  }
-
-  .qendra {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #e2e8f0;
-    font-size: 16px;
-    text-align: center;
-  }
-</style>
-
-<div class="kontejner">
-  <div class="emri">Badge</div>
-  <div class="qendra">Ndrrysho pozicionet!</div>
-  <div class="butoni">Kliko</div>
-</div>`,
-    hint: "Ndrysho position, top, left, right, bottom 👉"
-  });
-</script>
 
 <script src="../../js.lessons/code-copy-global.js"></script>
 

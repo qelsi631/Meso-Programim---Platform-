@@ -201,21 +201,11 @@ export async function isUserEnrolledInCourse(userId, courseSlug) {
 }
 
 /**
- * Delete user account and all associated data
+ * Delete user account and all associated data via secure server-side RPC
  */
 export async function deleteUserAccount(userId) {
   try {
-    // Get current session to retrieve access token
-    const { data: { session }, error: sessionError } = await supabase.auth.getSession();
-    
-    if (sessionError || !session) {
-      console.error("No active session:", sessionError);
-      return { error: { message: "No active session found" } };
-    }
-
-    const accessToken = session.access_token;
-
-    // Step 1: Delete avatar from storage if exists
+    // Delete avatar from storage if exists (storage cleanup before account deletion)
     try {
       const { data: files } = await supabase.storage
         .from("profiles")
@@ -235,55 +225,12 @@ export async function deleteUserAccount(userId) {
       console.warn("Could not delete avatars:", e);
     }
 
-    // Step 2: Delete user progress records
-    try {
-      await supabase
-        .from("lesson_progress")
-        .delete()
-        .eq("user_id", userId);
-    } catch (e) {
-      console.warn("Could not delete progress:", e);
-    }
+    // Use the secure server-side RPC function for atomic account deletion
+    const { error: rpcError } = await supabase.rpc('delete_own_account');
 
-    // Step 3: Delete user course enrollments
-    try {
-      await supabase
-        .from("user_courses")
-        .delete()
-        .eq("user_id", userId);
-    } catch (e) {
-      console.warn("Could not delete enrollments:", e);
-    }
-
-    // Step 4: Delete user profile
-    try {
-      await supabase
-        .from("profiles")
-        .delete()
-        .eq("id", userId);
-    } catch (e) {
-      console.warn("Could not delete profile:", e);
-    }
-
-    // Step 5: Delete auth user with Bearer token
-    const { error: deleteError } = await supabase.auth.admin.deleteUser(userId, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
-    });
-    
-    if (deleteError && deleteError.message.includes("not allowed")) {
-      // If admin delete fails (common with RLS), use signOut approach
-      // The user's data will still be deleted from previous steps
-      await supabase.auth.signOut();
-      return { error: null };
-    }
-
-    if (deleteError) {
-      console.error("Error deleting auth user:", deleteError);
-      // Even if auth deletion fails, data was already deleted
-      await supabase.auth.signOut();
-      return { error: null };
+    if (rpcError) {
+      console.error("Error deleting account via RPC:", rpcError);
+      return { error: rpcError };
     }
 
     // Sign out user
