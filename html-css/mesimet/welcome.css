@@ -201,6 +201,28 @@ header p {
   color: #fff;
 }
 
+.anatomy-row {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-left: 3px solid #ff7a00;
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.anatomy-row code {
+  font-size: 14px;
+}
+
+.anatomy-row p {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(255,255,255,0.75);
+  font-weight: 400;
+}
+
 /* Foto e madhe */
 .anatomy-figure{
   margin-top: 18px;

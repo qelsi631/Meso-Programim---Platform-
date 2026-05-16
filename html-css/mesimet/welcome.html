@@ -90,8 +90,73 @@
 
       <p>Kodi me siper paraqet nje paragraf me tekstin "Ky eshte nje Paragraf".</p>
       <p>Ai eshte i krijuar permes 2 tagjeve, tagu hapes <span class="highlight">&lt;p&gt;</span> dhe tagu mbylles <span class="highlight">&lt;/p&gt;</span>. Ndersa brenda shkruhet teksti</p>
-      <p>Me vone do te mesojme edhe per elemente te tjera si Titujt, butonat, imazhet, tabelat etj. </p>
  </div>
+
+ <!-- ===== h1 Section ===== -->
+ <div class="hapsira2">
+  <h2>Titulli kryesor — <code>&lt;h1&gt;</code></h2>
+  <p>Përveç paragrafit, faqet web kanë edhe <b>tituj</b>. Titulli kryesor shkruhet me tagun <span class="highlight">&lt;h1&gt;</span>.</p>
+
+  <div class="code-card">
+    <div class="code-head">
+      <span class="code-lang">HTML</span>
+      <button class="code-copy" type="button">Copy</button>
+    </div>
+    <pre class="code-block line-numbers"><code class="language-html">&lt;h1&gt;Mirësevini në faqen time!&lt;/h1&gt;
+&lt;p&gt;Kjo është faqja ime e parë web.&lt;/p&gt;</code></pre>
+  </div>
+
+  <p>Titulli <span class="highlight">&lt;h1&gt;</span> shfaqet i madh dhe i trashë — është gjëja e parë që lexon vizitori.</p>
+  <p class="highlight-gold">💡 Ekzistojnë edhe tituj të tjerë si &lt;h2&gt;, &lt;h3&gt; e deri &lt;h6&gt; — por për tani mjafton të dish &lt;h1&gt;. Do t'i mësojmë të gjithë në mësimin tjetër!</p>
+ </div>
+
+ <!-- ===== Struktura Bazë ===== -->
+ <section class="lesson-section" id="struktura-baze">
+  <h2>Struktura Bazë e një dokumenti HTML</h2>
+  <p class="muted">Çdo faqe web fillon me të njëjtën strukturë bazë. Le ta shohim hap pas hapi:</p>
+
+  <div class="code-card">
+    <div class="code-head">
+      <span class="code-lang">HTML</span>
+      <button class="code-copy" type="button">Copy</button>
+    </div>
+    <pre class="code-block line-numbers"><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Faqja ime&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Mirësevini!&lt;/h1&gt;
+    &lt;p&gt;Përshëndetje nga faqja ime e parë.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </div>
+
+  <div class="anatomy-points" style="margin-top: 18px; display: flex; flex-direction: column; gap: 12px;">
+    <div class="anatomy-row">
+      <code class="highlight">&lt;!DOCTYPE html&gt;</code>
+      <p>I tregon shfletuesit (browser) se ky është një dokument HTML5. Shkruhet gjithmonë në fillim.</p>
+    </div>
+    <div class="anatomy-row">
+      <code class="highlight">&lt;html&gt; ... &lt;/html&gt;</code>
+      <p>Mbërthen gjithë faqen. Çdo gjë tjetër shkon brenda këtij elementi.</p>
+    </div>
+    <div class="anatomy-row">
+      <code class="highlight">&lt;head&gt; ... &lt;/head&gt;</code>
+      <p>Përmban informacione <b>të padukshme</b> për faqen si titulli i skedës, lidhjet me CSS etj.</p>
+    </div>
+    <div class="anatomy-row">
+      <code class="highlight">&lt;title&gt; ... &lt;/title&gt;</code>
+      <p>Cakton tekstin që shfaqet në <b>skedën e shfletuesit</b> (tab).</p>
+    </div>
+    <div class="anatomy-row">
+      <code class="highlight">&lt;body&gt; ... &lt;/body&gt;</code>
+      <p>Gjithçka që <b>shihet</b> në faqe — titujt, paragrafët, imazhet — shkon brenda &lt;body&gt;.</p>
+    </div>
+  </div>
+
+  <p class="highlight-gold" style="margin-top: 18px;">🧠 Mëso mirë këtë strukturë — do të duhet në çdo faqe që do të krijosh!</p>
+ </section>
 
  <section class="lesson-section" id="anatomia-kodit">
   <h2>Anatomia e kodit në HTML</h2>
@@ -146,7 +211,7 @@
 
 </header>
      <footer class="lesson-footer">
-  <a class="btn-next" href="../../html-css/mesimet/lesson0.2.html">Vazhdo</a>
+  <a class="btn-next" href="../../html-css/quiz/quiz.html">Vazhdo</a>
 </footer>
 
 

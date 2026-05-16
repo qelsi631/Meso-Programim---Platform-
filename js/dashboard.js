@@ -163,7 +163,7 @@ function renderProfile() {
     
     profileNameQuick.textContent = fullName;
     profileUsernameQuick.textContent = `@${username.replace('@', '')}`;
-    welcomeText.textContent = `Welcome back, ${fullName.split(" ")[0]}! 👋`;
+    welcomeText.textContent = `Mirë se u ktheve, ${fullName.split(" ")[0]}! 👋`;
 
     if (userProfile.avatar_url) {
       profileAvatarSmall.innerHTML = `<img src="${userProfile.avatar_url}" alt="Avatar" />`;
@@ -172,7 +172,7 @@ function renderProfile() {
     // Fallback if profile is still not loaded
     profileNameQuick.textContent = "User";
     profileUsernameQuick.textContent = `@user_${currentUser.id.slice(0, 8)}`;
-    welcomeText.textContent = "Welcome back! 👋";
+    welcomeText.textContent = "Mirë se u ktheve! 👋";
     console.warn("Profile data not available");
   }
 }

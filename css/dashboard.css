@@ -80,20 +80,41 @@ a {
 
 .sidebar-nav {
   display: grid;
-  gap: 8px;
+  gap: 4px;
 }
 
 .sidebar-nav a {
-  padding: 10px 12px;
+  padding: 10px 14px;
   border-radius: 12px;
   color: var(--muted);
   background: transparent;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-left: 3px solid transparent;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
 }
 
-.sidebar-nav a.active,
+.nav-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  stroke: currentColor;
+  transition: stroke 0.15s ease;
+}
+
+.sidebar-nav a.active {
+  color: var(--text);
+  background: rgba(255, 122, 26, 0.12);
+  border-left-color: var(--accent);
+}
+
 .sidebar-nav a:hover {
-  color: #111;
-  background: var(--accent);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+  border-left-color: rgba(255, 122, 26, 0.4);
 }
 
 .sidebar-footer {
@@ -113,14 +134,7 @@ a {
 }
 
 .brand-pill {
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: var(--card);
-  color: var(--muted);
-  font-size: 12px;
-  letter-spacing: 0.4px;
-  margin-bottom: 10px;
+  display: none;
 }
 
 .topbar-title h1 {
@@ -160,8 +174,14 @@ a {
   border-radius: 18px;
   padding: 18px;
   border: 1px solid var(--border);
+  border-left: 3px solid transparent;
   box-shadow: 0 18px 30px rgba(0, 0, 0, 0.3);
 }
+
+#cardXP        { border-left-color: #a78bfa; }
+#cardStreak    { border-left-color: #fb923c; }
+#cardProgress  { border-left-color: #34d399; }
+#cardAchievements { border-left-color: #fbbf24; }
 
 #cardCourses {
   background: linear-gradient(135deg, #3a2317 0%, #5a2b12 55%, #7a3715 100%);
