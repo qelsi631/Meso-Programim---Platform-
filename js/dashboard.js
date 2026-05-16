@@ -256,17 +256,17 @@ async function renderCourses() {
           </div>
           <div class="course-stats">
             <div class="course-stat-item">
-              <div class="course-stat-label">Lessons Done</div>
+              <div class="course-stat-label">Mësime të Kryera</div>
               <div class="course-stat-value">${completed}/${total}</div>
             </div>
             <div class="course-stat-item">
-              <div class="course-stat-label">Enrolled</div>
+              <div class="course-stat-label">Regjistruar</div>
               <div class="course-stat-value">${new Date(enrollment.created_at).toLocaleDateString()}</div>
             </div>
           </div>
           <div class="course-card-footer">
-            <button class="course-card-footer" style="flex: 1;" onclick="viewCourseRoadmap('${enrollment.course_slug}')">View Roadmap</button>
-            <button class="btn-resume" onclick="continueLearning('${enrollment.course_slug}')">Continue</button>
+            <button class="btn-view-roadmap" style="flex: 1;" onclick="viewCourseRoadmap('${enrollment.course_slug}')">Shiko Mësimet</button>
+            <button class="btn-resume-hero" onclick="continueLearning('${enrollment.course_slug}')">▶ Vazhdo Mësimin</button>
           </div>
         </div>
       </div>
@@ -310,7 +310,7 @@ function viewCourseRoadmap(courseSlug) {
   roadmapPath.innerHTML = `
     <a href="${course.roadmap}" target="_blank" style="text-align: center; display: block; padding: 20px;">
       <div style="font-size: 48px; margin-bottom: 10px;">🗺️</div>
-      <p style="color: #667eea; text-decoration: none; font-weight: 500;">View Full Course Roadmap →</p>
+      <p style="color: #667eea; text-decoration: none; font-weight: 500;">Shiko Rrugën e Plotë të Kursit →</p>
     </a>
   `;
 

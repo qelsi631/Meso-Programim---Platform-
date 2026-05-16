@@ -151,7 +151,7 @@ a {
 
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -322,9 +322,33 @@ a {
   width: 100%;
 }
 
+.btn-resume-hero {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(120deg, #38bdf8, #0ea5e9);
+  color: #fff;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.45);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  margin-top: 8px;
+}
+
+.btn-resume-hero:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(14, 165, 233, 0.6);
+}
+
 @media (max-width: 1100px) {
   .cards-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
   }
 }
 
@@ -489,13 +513,30 @@ a {
   color: white;
 }
 
+.btn-view-roadmap {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.btn-view-roadmap:hover {
+  background: rgba(255,255,255,0.12);
+}
+
 .btn-resume {
-  background: var(--primary);
-  color: white;
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  color: #111;
+  font-weight: 700;
 }
 
 .btn-resume:hover {
-  background: var(--primary-dark);
+  filter: brightness(1.1);
 }
 
 /* Loading State */
@@ -552,9 +593,10 @@ a {
 }
 
 .modal-content {
-  background: var(--card-bg);
-  border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  background: #1e160f;
+  border: 1px solid rgba(255, 122, 26, 0.2);
+  border-radius: 18px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.7);
   position: relative;
   max-width: 800px;
   width: 100%;
@@ -603,10 +645,11 @@ a {
 }
 
 .course-modal-header {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  color: white;
+  background: linear-gradient(135deg, #3a2317 0%, #5a2b12 55%, #7a3715 100%);
+  color: var(--text);
   padding: 30px;
-  border-radius: 12px 12px 0 0;
+  border-radius: 18px 18px 0 0;
+  border-bottom: 1px solid rgba(255, 122, 26, 0.2);
 }
 
 .course-header-info h2 {
@@ -618,6 +661,7 @@ a {
   padding: 30px;
   max-height: 400px;
   overflow-y: auto;
+  background: #1e160f;
 }
 
 .course-roadmap-container .path {
@@ -630,6 +674,8 @@ a {
   padding: 20px 30px;
   border-top: 1px solid var(--border);
   text-align: center;
+  background: #1a120e;
+  border-radius: 0 0 18px 18px;
 }
 
 /* Roadmap in Modal */
