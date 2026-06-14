@@ -16,7 +16,7 @@ const activeRoadmap = roadmaps[COURSE_SLUG] || htmlRoadmap;
 async function getCompleted() {
   try {
     const progressData = await getCompletedLessons(COURSE_SLUG);
-    const validIds = new Set(getAllItems().map((item) => item.id));
+    const validIds = new Set(getRealItems().map((item) => item.id));
     return Object.keys(progressData).filter(
       (id) => progressData[id]?.completed && validIds.has(id)
     );

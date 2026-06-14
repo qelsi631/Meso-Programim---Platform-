@@ -18,6 +18,7 @@ function getAllLessonsFromRoadmap(courseSlug) {
   
   const lessons = [];
   roadmap.modules.forEach(module => {
+    if (module.comingSoon) return; // skip coming-soon modules
     module.items.forEach(item => {
       lessons.push(item);
     });
@@ -48,7 +49,7 @@ const courseData = {
     icon: '<img src="imgs/html-5.png" alt="HTML" style="height:32px"><img src="imgs/css-3.png" alt="CSS" style="height:32px">',
     slug: "html-fundamentals",
     roadmap: "roadmap.html?course=html-fundamentals",
-    lessonPath: "html-css/mesimet/welcome.html"
+    lessonPath: "html-css/mesimet/lesson0.2.html"
   },
   "javascript-basics": {
     title: "JavaScript Basics",
