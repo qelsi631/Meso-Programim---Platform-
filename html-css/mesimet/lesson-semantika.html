@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mësimi 3 | Hyrje në Semantikë | Mëso Programim</title>
+    <link rel="stylesheet" href="welcome.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../sidebar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="#" id="menuBtn"><img src="../../imgs/menu (1).png" alt="Menu"></a>
+            <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
+        </nav>
+
+        <div class="overlay" id="overlay"></div>
+
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-head">
+                <div class="sidebar-title">
+                    <img class="ikonSidebar" src="../../imgs/icon_platformes-removebg-preview.png" alt="Logo">
+                    <p>Mëso Programim</p>
+                </div>
+                <button class="sidebar-close" id="closeBtn" type="button">✕</button>
+            </div>
+            <div class="sidebar-links">
+                <a href="../../dashboard.html">Dashboard</a>
+                <a href="../../roadmap.html">Roadmap</a>
+                <a href="#" class="report-bug-link" data-report="bug">Report a bug</a>
+            </div>
+        </div>
+
+        <header>
+            <div class="welcome">
+                <p class="lesson-badge">Mësimi 3 — Semantikë</p>
+                <h1>Hyrje në <span>Semantikë</span></h1>
+                <p class="lesson-meta">E përditësuar: Qershor 2026</p>
+            </div>
+
+            <section class="lesson-content">
+
+                <p>Shiko dy copë kodi. Të dyja prodhojnë rezultat të ngjashëm vizualisht — por njëra tregon diçka më shumë:</p>
+
+                <div class="code-card">
+                    <button class="code-copy">Copy</button>
+                    <pre class="code-pre"><code class="language-html">&lt;div&gt;Blog i Mëso Programim&lt;/div&gt;
+&lt;div&gt;
+    &lt;div&gt;Ky është artikulli i parë&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;Kontakt: info@mesoprogramim.online&lt;/div&gt;</code></pre>
+                </div>
+
+                <div class="code-card" style="margin-top: 12px;">
+                    <button class="code-copy">Copy</button>
+                    <pre class="code-pre"><code class="language-html">&lt;header&gt;Blog i Mëso Programim&lt;/header&gt;
+&lt;main&gt;
+    &lt;p&gt;Ky është artikulli i parë&lt;/p&gt;
+&lt;/main&gt;
+&lt;footer&gt;Kontakt: info@mesoprogramim.online&lt;/footer&gt;</code></pre>
+                </div>
+
+                <p style="margin-top: 20px;">Kodi i dytë komunikon qartë: ka një <strong>kokë</strong> faqeje, një <strong>zonë kryesore</strong> dhe një <strong>fund</strong>. Ky është thelbi i HTML semantike.</p>
+
+                <div class="hapsira">
+                    <h2>Çfarë do të thotë semantikë?</h2>
+                    <p>Fjala <strong>semantikë</strong> vjen nga greqishtja dhe do të thotë thjesht <em>kuptim</em>. Kur themi se diçka është semantike, nënkuptojmë se ajo komunikon qëllimin e saj — jo vetëm pamjen.</p>
+                    <p>Në HTML, kjo do të thotë: zgjidh elementin bazuar në atë <strong>çfarë përfaqëson</strong>, jo në atë si duket. Elementi <code>&lt;header&gt;</code> nuk është thjesht një kuti — ai tregon se kjo është koka e faqes. Elementi <code>&lt;nav&gt;</code> tregon se kjo është zona e navigacionit.</p>
+                </div>
+
+                <div class="hapsira2">
+                    <h2>Problemi me &lt;div&gt;</h2>
+                    <p>Elementi <code>&lt;div&gt;</code> është neutral — ai nuk tregon asgjë për përmbajtjen që mban. Mund ta quash <em>kuti pa etiketë</em>. Nuk ka asnjë problem ta përdorësh <code>&lt;div&gt;</code>, por kur ka alternativa me kuptim, semantika kërkon t'i preferosh ato.</p>
+                    <p>Elementet semantike si <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;nav&gt;</code> dhe <code>&lt;article&gt;</code> janë kuti me etiketë — tregojnë menjëherë çfarë roli luajnë në faqe. Do t'i mësojmë të gjitha hap pas hapi.</p>
+                </div>
+
+                <div class="hapsira2">
+                    <h2>Pse na intereson?</h2>
+                    <p>HTML semantike ka pasoja konkrete — jo vetëm estetike:</p>
+                    <ul class="lesson-list">
+                        <li><strong>Aksesibiliteti</strong> — njerëzit që përdorin lexues ekrani (screen readers) mbështeten te elementet semantike për të kuptuar strukturën e faqes. Kodi i saktë bën faqen të përdorshme për të gjithë.</li>
+                        <li><strong>SEO</strong> — Google dhe motorët e tjerë të kërkimit lexojnë HTML-in tënd. Kur kuptojnë strukturën, faqja radhitet më mirë në rezultate.</li>
+                        <li><strong>Lexueshmëria e kodit</strong> — kur lexon kodin tënd pas gjashtë muajsh, <code>&lt;header&gt;</code> është shumë më e qartë se <code>&lt;div class="koka"&gt;</code>.</li>
+                    </ul>
+                </div>
+
+                <div class="hapsira2">
+                    <p>Semantika është temë e vazhdueshme gjatë gjithë kursit — do ta shohësh të integruar në pothuajse çdo mësim. Nuk duhet ta mësosh plotësisht tani. Mjafton ta kesh në mendje: <strong>zgjedh elementin e duhur për kuptimin e duhur.</strong></p>
+                </div>
+
+                <div class="lesson-recap">
+                    <h2>📋 Përmbledhje</h2>
+                    <ul class="lesson-list">
+                        <li>Semantika do të thotë të përdorësh elementin e duhur për qëllimin e duhur.</li>
+                        <li>Kur HTML-i yt përshkruan qartë përmbajtjen, kodi bëhet më i lehtë për t'u lexuar, më i aksesueshëm dhe më i organizuar.</li>
+                        <li>Në mësimet e ardhshme do të mësojmë elementet semantike një nga një.</li>
+                    </ul>
+                </div>
+
+            </section>
+        </header>
+
+        <footer class="lesson-footer">
+            <a class="btn-back" href="../../html-css/quiz/quiz2.html">← Kthehu</a>
+            <a class="btn-next" href="lesson-titujt.html">Vazhdo →</a>
+        </footer>
+    </div>
+
+    <script src="../../js.lessons/sidebar.js"></script>
+    <script src="../../js.lessons/copy.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module" src="../../js/requireAuth.js"></script>
+
+    <script type="module">
+        import { initLessonProgress } from "../../js/lessonProgressInit.js";
+        initLessonProgress("html-semantika-1");
+    </script>
+
+    <script type="module">
+        import { markLessonCompleted } from "../../js/courseProgressManager.js";
+
+        const COURSE_SLUG = "html-fundamentals";
+        const LESSON_ID = "l2s";
+
+        const btn = document.querySelector(".btn-next");
+        if (btn) {
+            btn.addEventListener("click", async (e) => {
+                e.preventDefault();
+                const nextUrl = btn.getAttribute("href");
+                await markLessonCompleted(COURSE_SLUG, LESSON_ID);
+                window.location.href = nextUrl;
+            });
+        }
+    </script>
+</body>
+</html>

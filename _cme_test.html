@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <title>cmEditor Test</title>
+  <link rel="stylesheet" href="css/cmEditor.css">
+  <style>
+    body { margin: 0; background: #1e1e2e; padding: 20px; font-family: sans-serif; }
+    #error { color: #f87171; background: rgba(248,113,113,0.1); padding: 12px; border-radius:6px; display:none; white-space:pre; font-family:monospace; margin-top:10px; }
+  </style>
+</head>
+<body>
+  <div id="exercise"></div>
+  <div id="error"></div>
+
+  <script type="module">
+    window.addEventListener("unhandledrejection", e => {
+      document.getElementById("error").style.display = "block";
+      document.getElementById("error").textContent = "Unhandled rejection: " + e.reason;
+    });
+    try {
+      const { createEditor } = await import("./js/cmEditor.js");
+      createEditor(document.getElementById("exercise"), {
+        startHTML: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tim Berners-Lee | Online wiki</title>
+</head>
+<body>
+    Tim Berners-Lee
+</body>
+</html>
+`,
+        instructions: `<h3>Detyrë: Titulli i parë</h3><p>Vendos emrin <strong>Tim Berners-Lee</strong> brenda etiketave të duhura HTML.</p>`,
+        tests: [{ description: "Ka h1", test: doc => !!doc.querySelector("h1") }],
+        successMessage: "Shkëlqyeshëm! 🎉",
+        nextUrl: "#",
+        showCSS: false,
+        showJS: false,
+        theme: "dark",
+      });
+    } catch(e) {
+      document.getElementById("error").style.display = "block";
+      document.getElementById("error").textContent = "Error: " + e.message + "\n" + e.stack;
+    }
+  </script>
+</body>
+</html>

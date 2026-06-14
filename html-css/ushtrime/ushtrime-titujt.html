@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="sq">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ushtrime: &lt;br&gt; dhe &lt;hr&gt; | Meso Programim</title>
+  <title>Ushtrime: Titujt HTML | Meso Programim</title>
 
-  <link rel="stylesheet" href="../../css/codingExercise.css">
+  <link rel="stylesheet" href="../../css/cmEditor.css">
   <link rel="stylesheet" href="../../sidebar.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -89,7 +89,7 @@
         <img src="../../imgs/menu (1).png" alt="Menu">
       </a>
       <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
-      <a href="../mesimet/lesson0.04.html" class="goback">Kthehu Pas</a>
+      <a href="../mesimet/lesson-titujt.html" class="goback">← Kthehu te mësimi</a>
     </nav>
 
     <div class="overlay" id="overlay"></div>
@@ -103,67 +103,93 @@
       </div>
       <div class="sidebar-links">
         <a href="../../dashboard.html">Dashboard</a>
-        <a href="../../roadmap.html?course=html-fundamentals">Roadmap</a>
+        <a href="../../roadmap.html">Roadmap</a>
         <a href="#" class="report-bug-link" data-report="bug">Report a bug</a>
       </div>
     </div>
 
+    <!-- EXERCISE HEADER -->
     <div class="exercise-header">
-      <h1>&#128187; Ushtrime: &lt;br&gt; dhe &lt;hr&gt;</h1>
-      <p>Praktiko tag-et pa mbyllje — shkruaj kodin HTML dhe kontrollo rezultatin live!</p>
+      <h1>&#128187; Ushtrim: Titujt HTML</h1>
+      <p>Praktiko atë që mësove — shkruaj kodin HTML dhe kontrollo rezultatin live!</p>
     </div>
 
-    <div id="brHrExercise"></div>
+    <!-- CODING EXERCISE -->
+    <div id="titujt-exercise"></div>
 
   </div>
 
   <script src="../../js.lessons/sidebar.js"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script type="module" src="../../js/requireAuth.js"></script>
 
   <script type="module">
-    import { createCodingExercise } from "../../js/codingExercise.js";
-    createCodingExercise(document.getElementById("brHrExercise"), {
+    import { createEditor } from "../../js/cmEditor.js";
+
+    createEditor(document.getElementById("titujt-exercise"), {
+      startHTML: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tim Berners-Lee | Online wiki</title>
+</head>
+<body>
+    Tim Berners-Lee
+</body>
+</html>
+`,
+      showCSS: false,
+      showJS:  false,
+      theme: "dark",
       instructions: `
-        <h3>Detyre: Njoftim Eventi me &lt;br&gt; dhe &lt;hr&gt;</h3>
-        <p>Krijo nje njoftim real per nje event. Perdor:</p>
+        <h3>Detyrë: Titulli i parë</h3>
+        <p>Po fillojmë të ndërtojmë një faqe interneti për <strong>Tim Berners-Lee</strong> — njeriu që shpiku World Wide Web.</p>
         <ol>
-          <li><code>&lt;br&gt;</code> per rreshta te rinj ne adrese (te pakten 2)</li>
-          <li><code>&lt;hr&gt;</code> per te ndare seksionet (te pakten 1)</li>
+          <li>Etiketo emrin e tij me titullin e saktë HTML.</li>
+          <li>Mendoje mirë: cilit nivel titulli i takon emri kryesor i një faqeje?</li>
         </ol>
-        <p><em>Sugjerim: shkruaj titullin e eventit, adresen me &lt;br&gt;, pastaj nda me &lt;hr&gt; dhe shto agjenden.</em></p>
+        <p>💡 <em>Kliko <strong>Run</strong> për të parë si shfaqet titulli në preview.</em></p>
       `,
-      htmlDefault: '<!-- Shkruaj ketu HTML-in tend -->\n\n<h2>Workshop per Fillestare</h2>\n<p>Rr. Dardania 12<br>Prishtine<br>Kosove</p>\n',
-      cssDefault: '',
       tests: [
         {
-          description: "Ka te pakten 2 <br>",
-          test: (doc) => doc.querySelectorAll('br').length >= 2
+          description: "Ka një <h1> në faqe",
+          test: (doc) => doc.querySelectorAll("h1").length === 1
         },
         {
-          description: "Ka te pakten 1 <hr>",
-          test: (doc) => doc.querySelectorAll('hr').length >= 1
+          description: "<h1> përmban emrin 'Tim Berners-Lee'",
+          test: (doc) => {
+            const h1 = doc.querySelector("h1");
+            return h1 && h1.textContent.trim() === "Tim Berners-Lee";
+          }
         }
       ],
-      successMessage: "Shkelqyeshem! <br> dhe <hr> u mesuan! 🎉",
-      nextUrl: "../mesimet/lesson0.05.html",
-      htmlSolution: `<h2>Workshop per Fillestare</h2>
-<p>Rr. Dardania 12<br>Prishtine<br>Kosove</p>
-
-<hr>
-
-<p>Nje seksion i ri fillon ketu.</p>`
+      successMessage: "Shkëlqyeshëm! Tim Berners-Lee ka titullin e tij! 🎉",
+      nextUrl: "../mesimet/lesson-aksesibiliteti.html",
+      htmlSolution: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tim Berners-Lee | Online wiki</title>
+</head>
+<body>
+    <h1>Tim Berners-Lee</h1>
+</body>
+</html>`
     });
   </script>
 
   <script type="module">
     import { markLessonCompleted } from "../../js/courseProgressManager.js";
     const COURSE_SLUG = "html-fundamentals";
-    const LESSON_ID = "l10";
+    const LESSON_ID = "l3-ex";
 
     document.addEventListener("ce-all-passed", async () => {
       await markLessonCompleted(COURSE_SLUG, LESSON_ID);
     });
   </script>
+
 </body>
 </html>

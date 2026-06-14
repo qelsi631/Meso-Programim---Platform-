@@ -19,6 +19,26 @@
 
 const DEBOUNCE_MS = 350;
 
+/* ── Emmet expansion ───────────────────────── */
+let _emmetExpand = null;
+import('https://cdn.jsdelivr.net/npm/emmet@2/dist/emmet.esm.js')
+  .then(mod => { _emmetExpand = mod.expand ?? mod.default; })
+  .catch(() => {});
+
+function tryEmmetExpand(abbrev) {
+  if (!_emmetExpand) return null;
+  try {
+    let expanded = _emmetExpand(abbrev, { type: 'markup', syntax: 'html' });
+    // Replace first tab stop ($1 or ${1:...}) with SOH sentinel for cursor tracking
+    expanded = expanded.replace(/\$\{1:[^}]*\}|\$1/, '\x01');
+    // Remove remaining TextMate field markers
+    expanded = expanded.replace(/\$\{\d+:[^}]*\}|\$\{\d+\}|\$\d+/g, '');
+    const cursorOffset = expanded.indexOf('\x01');
+    expanded = expanded.replace('\x01', '');
+    return { expanded, cursorOffset: cursorOffset === -1 ? expanded.length : cursorOffset };
+  } catch { return null; }
+}
+
 /* ── HTML Tag Autocomplete (shared with playground.js) ── */
 const CSS_PROPS = [
   { prop: "color",              snippet: "color: |;",                 desc: "Ngjyra e tekstit" },
@@ -403,6 +423,23 @@ export function createCodingExercise(container, opts = {}) {
     }
     if (e.key === "Tab") {
       e.preventDefault();
+      // Try emmet expansion in HTML tab
+      if (activeFile === "html") {
+        const s = editor.selectionStart;
+        const textBefore = editor.value.substring(0, s);
+        const abbrevMatch = textBefore.match(/[\w:.#>\[\]{}()*+^$~|"'=@-]+$/);
+        if (abbrevMatch) {
+          const result = tryEmmetExpand(abbrevMatch[0]);
+          if (result) {
+            const insertStart = s - abbrevMatch[0].length;
+            editor.value = editor.value.substring(0, insertStart) + result.expanded + editor.value.substring(s);
+            editor.selectionStart = editor.selectionEnd = insertStart + result.cursorOffset;
+            onInput();
+            return;
+          }
+        }
+      }
+      // Fallback: insert 2-space indent
       const s = editor.selectionStart, end = editor.selectionEnd;
       editor.value = editor.value.substring(0, s) + "  " + editor.value.substring(end);
       editor.selectionStart = editor.selectionEnd = s + 2;

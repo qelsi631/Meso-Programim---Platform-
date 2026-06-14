@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mësimi 4 | Hyrje në Titujt HTML | Mëso Programim</title>
+
+  <link rel="stylesheet" href="welcome.css">
+  <link rel="stylesheet" href="../../sidebar.css">
+  <link rel="stylesheet" href="../../css/playground.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="#" id="menuBtn"><img src="../../imgs/menu (1).png" alt="Menu"></a>
+      <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
+    </nav>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-head">
+        <div class="sidebar-title">
+          <img class="ikonSidebar" src="../../imgs/icon_platformes-removebg-preview.png" alt="Logo">
+          <p>Mëso Programim</p>
+        </div>
+        <button class="sidebar-close" id="closeBtn" type="button">✕</button>
+      </div>
+      <div class="sidebar-links">
+        <a href="../../dashboard.html">Dashboard</a>
+        <a href="../../roadmap.html">Roadmap</a>
+        <a href="#" class="report-bug-link" data-report="bug">Report a bug</a>
+      </div>
+    </div>
+
+    <header>
+      <div class="welcome">
+        <p class="lesson-badge">Mësimi 4 — Titujt</p>
+        <h1>Hyrje në <span>Titujt HTML</span></h1>
+        <p class="lesson-meta">E përditësuar: Qershor 2026</p>
+      </div>
+
+      <section class="lesson-content">
+
+        <p>HTML ofron gjashtë nivele titujsh — nga <code>&lt;h1&gt;</code> deri te <code>&lt;h6&gt;</code>. Ata nuk janë thjesht tekst i madh ose i vogël — ata krijojnë <strong>hierarkinë e faqes</strong>.</p>
+
+        <div class="hapsira">
+          <h2>Gjashtë nivelet e titujve</h2>
+          <p>Çdo nivel ka kuptim të ndryshëm. Shfletuesi, motorët e kërkimit dhe lexuesit e ekranit i lexojnë titujt për të kuptuar strukturën e faqes.</p>
+
+          <div class="code-card">
+            <button class="code-copy">Copy</button>
+            <pre class="code-pre line-numbers"><code class="language-html">&lt;h1&gt;Titulli kryesor i faqes&lt;/h1&gt;
+&lt;h2&gt;Seksion kryesor&lt;/h2&gt;
+&lt;h3&gt;Nënseksion&lt;/h3&gt;
+&lt;h4&gt;Nënë-nënseksion&lt;/h4&gt;
+&lt;h5&gt;Titull i vogël&lt;/h5&gt;
+&lt;h6&gt;Titulli më i vogël&lt;/h6&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="hapsira2">
+          <h2>h1 — vetëm një herë në faqe</h2>
+          <p>Elementi <code>&lt;h1&gt;</code> duhet të përdoret <strong>vetëm një herë</strong> për çdo faqe. Ai përfaqëson temën kryesore të asaj faqeje — si titulli i një artikulli ose emri i produktit.</p>
+          <p>Motorët e kërkimit si Google i kushtojnë vëmendje të veçantë <code>&lt;h1&gt;</code>-it. Nëse ke dy ose tre <code>&lt;h1&gt;</code> në të njëjtën faqe, mesazhi bëhet i paqartë.</p>
+        </div>
+
+        <div class="hapsira2">
+          <h2>Titujt nuk janë për stilizim</h2>
+          <p>Gabimi më i zakonshëm i fillestarëve: përdorimi i <code>&lt;h3&gt;</code> sepse "duket mirë" — jo sepse ka kuptim atje.</p>
+          <p>Nëse dëshiron tekst të madh ose të vogël, përdor CSS. Titujt ekzistojnë për <strong>strukturë</strong>, jo për pamje. Kjo është semantika në veprim.</p>
+
+          <div class="code-card">
+            <button class="code-copy">Copy</button>
+            <pre class="code-pre line-numbers"><code class="language-html">&lt;!-- ✅ E saktë — h2 sepse është nënseksion --&gt;
+&lt;h1&gt;Receta të shpejta&lt;/h1&gt;
+&lt;h2&gt;Mëngjes&lt;/h2&gt;
+&lt;h2&gt;Drekë&lt;/h2&gt;
+
+&lt;!-- ❌ Gabim — h4 vetëm sepse "duket mirë" --&gt;
+&lt;h1&gt;Receta të shpejta&lt;/h1&gt;
+&lt;h4&gt;Mëngjes&lt;/h4&gt;
+&lt;h4&gt;Drekë&lt;/h4&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="lesson-recap">
+          <h2>📋 Përmbledhje</h2>
+          <ul class="lesson-list">
+            <li>HTML ka gjashtë nivele titujsh: <code>&lt;h1&gt;</code> deri te <code>&lt;h6&gt;</code>.</li>
+            <li><code>&lt;h1&gt;</code> përdoret vetëm një herë për faqe — për temën kryesore.</li>
+            <li>Titujt janë për strukturë dhe semantikë, jo për stilizim vizual.</li>
+            <li>Nivelet duhet të ndiqen në rend hierarkik — mos kalo nga <code>&lt;h1&gt;</code> direkt te <code>&lt;h4&gt;</code>.</li>
+          </ul>
+        </div>
+
+      </section>
+    </header>
+
+    <footer class="lesson-footer">
+      <a class="btn-back" href="lesson-semantika.html">← Kthehu</a>
+      <a class="btn-next" href="../../html-css/ushtrime/ushtrime-titujt.html">Vazhdo →</a>
+    </footer>
+
+  </div>
+
+  <script src="../../js.lessons/sidebar.js"></script>
+  <script src="../../js.lessons/copy.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module" src="../../js/requireAuth.js"></script>
+
+  <script type="module">
+    import { initLessonProgress } from "../../js/lessonProgressInit.js";
+    initLessonProgress("html-titujt-1");
+  </script>
+
+  <script type="module">
+    import { markLessonCompleted } from "../../js/courseProgressManager.js";
+
+    const COURSE_SLUG = "html-fundamentals";
+    const LESSON_ID = "l3";
+
+    const btn = document.querySelector(".btn-next");
+    if (btn) {
+      btn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        const nextUrl = btn.getAttribute("href");
+        await markLessonCompleted(COURSE_SLUG, LESSON_ID);
+        window.location.href = nextUrl;
+      });
+    }
+  </script>
+</body>
+</html>

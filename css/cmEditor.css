@@ -1,0 +1,264 @@
+/* ── cmEditor.css — CodeMirror 6 Lesson Editor styles ───────────────────────── */
+
+/* ── CSS custom properties ── */
+.cme-wrap.cme-dark {
+  --cme-bg:       #12121f;
+  --cme-panel:    #1a1a2e;
+  --cme-bar:      #0e0e1b;
+  --cme-brd:      rgba(255, 255, 255, 0.08);
+  --cme-fg:       #e0e0f0;
+  --cme-muted:    #94a3b8;
+  --cme-sel:      #2a2a3e;
+  --cme-sel-fg:   #ffffff;
+  --cme-hov:      rgba(255, 255, 255, 0.06);
+  --cme-accent:   #4f8ef7;
+  --cme-accent-fg:#ffffff;
+  --cme-ghost:    rgba(255, 255, 255, 0.08);
+  --cme-ghost-fg: #94a3b8;
+  --cme-pass:     #4ade80;
+  --cme-fail:     #f87171;
+  --cme-ok-bg:    rgba(74, 222, 128, 0.13);
+  --cme-ok-fg:    #4ade80;
+}
+
+.cme-wrap.cme-light {
+  --cme-bg:       #f8f9fb;
+  --cme-panel:    #ffffff;
+  --cme-bar:      #f0f2f7;
+  --cme-brd:      rgba(0, 0, 0, 0.10);
+  --cme-fg:       #1e1e2e;
+  --cme-muted:    #64748b;
+  --cme-sel:      #ffffff;
+  --cme-sel-fg:   #1e1e2e;
+  --cme-hov:      rgba(0, 0, 0, 0.04);
+  --cme-accent:   #3b82f6;
+  --cme-accent-fg:#ffffff;
+  --cme-ghost:    rgba(0, 0, 0, 0.06);
+  --cme-ghost-fg: #64748b;
+  --cme-pass:     #16a34a;
+  --cme-fail:     #dc2626;
+  --cme-ok-bg:    rgba(22, 163, 74, 0.12);
+  --cme-ok-fg:    #16a34a;
+}
+
+/* ── Wrapper grid ── */
+.cme-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr auto auto;
+  height: 560px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--cme-brd);
+  font-family: "Nunito Sans", system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+}
+
+/* ── Editor column (left) ── */
+.cme-ecol {
+  display: flex;
+  flex-direction: column;
+  background: var(--cme-bg);
+  border-right: 1px solid var(--cme-brd);
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ── Right column ── */
+.cme-rcol {
+  display: flex;
+  flex-direction: column;
+  background: var(--cme-panel);
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ── Toolbars ── */
+.cme-tbar,
+.cme-rtbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  background: var(--cme-bar);
+  border-bottom: 1px solid var(--cme-brd);
+  flex-shrink: 0;
+}
+
+.cme-tabs { display: flex; gap: 2px; flex: 1; }
+
+.cme-tab,
+.cme-rtab {
+  padding: 4px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  background: transparent;
+  color: var(--cme-muted);
+  transition: background 0.15s, color 0.15s;
+}
+.cme-tab:hover,
+.cme-rtab:hover { background: var(--cme-hov); color: var(--cme-fg); }
+
+.cme-tab.active,
+.cme-rtab.active { background: var(--cme-sel); color: var(--cme-sel-fg); }
+
+/* ── Buttons ── */
+.cme-acts { display: flex; gap: 6px; }
+
+.cme-btn {
+  padding: 4px 13px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: inherit;
+  transition: opacity 0.15s, transform 0.15s;
+}
+.cme-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+.cme-ghost   { background: var(--cme-ghost);  color: var(--cme-ghost-fg); }
+.cme-primary { background: var(--cme-accent); color: var(--cme-accent-fg); }
+
+/* ── CodeMirror mount ── */
+.cme-emount {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+/* Use flex on cm-editor instead of height:100% (avoids height chain issues) */
+.cme-emount .cm-editor {
+  flex: 1;
+  min-height: 0;
+  outline: none;
+}
+.cme-emount .cm-scroller {
+  overflow: auto !important;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace !important;
+  font-size: 13.5px !important;
+  line-height: 1.65 !important;
+}
+
+/* ── Right panels ── */
+.cme-panel {
+  flex: 1;
+  overflow-y: auto;
+  padding: 18px 20px;
+  color: var(--cme-fg);
+  display: none;
+}
+.cme-panel.on  { display: block; }
+.cme-panel.np  { padding: 0; }
+
+.cme-panel h3      { margin: 0 0 10px; font-size: 15px; color: var(--cme-fg); }
+.cme-panel p       { margin: 8px 0; line-height: 1.65; color: var(--cme-muted); }
+.cme-panel ol,
+.cme-panel ul      { padding-left: 18px; margin: 8px 0; line-height: 1.75; color: var(--cme-muted); }
+.cme-panel li      { margin-bottom: 4px; }
+.cme-panel code    { background: rgba(128,128,128,.15); padding: 2px 5px; border-radius: 4px; font-size: 12px; font-family: monospace; }
+.cme-panel strong  { color: var(--cme-fg); }
+.cme-panel em      { color: var(--cme-muted); }
+
+/* ── Preview iframe ── */
+.cme-preview {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #fff;
+  display: block;
+}
+
+/* ── Theme toggle ── */
+.cme-theme-btn {
+  margin-left: auto;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  background: var(--cme-ghost);
+  color: var(--cme-ghost-fg);
+  transition: background 0.15s;
+}
+.cme-theme-btn:hover { background: var(--cme-hov); }
+
+/* ── Results bar ── */
+.cme-res {
+  grid-column: 1 / -1;
+  padding: 12px 18px;
+  background: var(--cme-bar);
+  border-top: 1px solid var(--cme-brd);
+  font-size: 13px;
+  display: none;
+}
+.cme-res-hd    { font-weight: 700; margin-bottom: 8px; color: var(--cme-fg); }
+.cme-trow      { display: flex; align-items: center; gap: 8px; padding: 3px 0; }
+.cme-tpass     { color: var(--cme-pass); }
+.cme-tfail     { color: var(--cme-fail); }
+.cme-thint     { margin-top: 6px; color: var(--cme-muted); font-size: 12px; }
+.cme-tsuccess  {
+  margin-top: 10px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: var(--cme-ok-bg);
+  color: var(--cme-ok-fg);
+  font-weight: 700;
+}
+.cme-sol         { margin-top: 8px; color: var(--cme-muted); font-size: 12px; }
+.cme-sol summary { cursor: pointer; padding: 4px 0; user-select: none; }
+.cme-sol pre     {
+  margin: 6px 0 0;
+  padding: 8px;
+  background: rgba(128,128,128,0.1);
+  border-radius: 4px;
+  overflow-x: auto;
+  font-family: monospace;
+  font-size: 12px;
+  white-space: pre-wrap;
+}
+
+/* ── Footer ── */
+.cme-foot {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 18px;
+  background: var(--cme-bar);
+  border-top: 1px solid var(--cme-brd);
+}
+.cme-cont {
+  padding: 8px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  background: var(--cme-accent);
+  color: var(--cme-accent-fg);
+  transition: opacity 0.15s, transform 0.15s;
+}
+.cme-cont:hover:not(.off) { opacity: 0.85; transform: translateY(-1px); }
+.cme-cont.off { opacity: 0.35; pointer-events: none; }
+
+/* ── Responsive ── */
+@media (max-width: 680px) {
+  .cme-wrap {
+    grid-template-columns: 1fr;
+    grid-template-rows: 280px auto auto auto;
+    height: auto;
+  }
+  .cme-ecol {
+    border-right: none;
+    border-bottom: 1px solid var(--cme-brd);
+  }
+  .cme-rcol { min-height: 220px; }
+  .cme-res,
+  .cme-foot { grid-column: 1; }
+}

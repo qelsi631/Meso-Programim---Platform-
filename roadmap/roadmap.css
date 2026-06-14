@@ -199,6 +199,7 @@ h1{margin:0; font-size: 26px; color: white;}
 .node.done{ background: var(--nodeDone); }
 .node.next{ background: var(--nodeNext); }
 .node.locked{ opacity: .45; cursor:not-allowed; }
+.node.coming-soon { opacity: .35; cursor: default; filter: grayscale(0.4); }
 
 .node .icon{
   font-weight: 800;

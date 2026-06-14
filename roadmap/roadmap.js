@@ -32,9 +32,15 @@ function getAllItems() {
       moduleId: m.id,
       moduleTitle: m.title,
       moduleIndex,
-      idxInModule
+      idxInModule,
+      comingSoon: !!m.comingSoon,
     }))
   );
+}
+
+function getRealItems() {
+  // Only items that are actually available (not coming soon)
+  return getAllItems().filter(x => !x.comingSoon);
 }
 
 function getNextItem(all, completed) {
@@ -98,13 +104,14 @@ async function render() {
   title.textContent = activeRoadmap.title;
 
   const all = getAllItems();
-  await pruneStaleCourseProgress(COURSE_SLUG, all.map((item) => item.id));
+  const realItems = getRealItems();
+  await pruneStaleCourseProgress(COURSE_SLUG, realItems.map((item) => item.id));
 
   const completed = await getCompleted();
-  const next = getNextItem(all, completed);
+  const next = getNextItem(realItems, completed);
   const nextId = next?.id;
 
-  updateSummary(completed.length, all.length);
+  updateSummary(completed.length, realItems.length);
   bindReset();
 
   subtitle.textContent = next?.moduleTitle ?? "Përfunduar";
@@ -163,10 +170,13 @@ async function render() {
 
     divider.innerHTML = `
       <div class="left">
-        <div class="kicker">Moduli</div>
+        <div class="kicker">${m.comingSoon ? "" : "Moduli"}</div>
         <div class="name">${m.title}</div>
       </div>
-      <div class="badge">${doneCount}/${moduleItems.length}</div>
+      ${m.comingSoon
+        ? `<div class="badge" style="background:rgba(255,122,0,0.15);color:#ff7a00;border:1px solid rgba(255,122,0,0.3)">🔨 Duke u ndërtuar</div>`
+        : `<div class="badge">${doneCount}/${moduleItems.length}</div>`
+      }
     `;
 
     path.appendChild(divider);
@@ -177,16 +187,16 @@ async function render() {
     const pos = itemPositions[i];
     if (!pos) return;
     const { top, leftOffset } = pos;
-    const status = statusOf(item, completed, nextId);
+    const status = item.comingSoon ? "locked" : statusOf(item, completed, nextId);
 
     const node = document.createElement("div");
-    node.className = `node ${status}`;
+    node.className = `node ${status}${item.comingSoon ? " coming-soon" : ""}`;
     node.style.top = `${top}px`;
     node.style.marginLeft = `${leftOffset}px`;
 
     const icon = document.createElement("div");
     icon.className = "icon";
-    icon.innerHTML = itemIcon(item, status);
+    icon.innerHTML = item.comingSoon ? "<i class=\"bi bi-clock\"></i>" : itemIcon(item, status);
     node.appendChild(icon);
     // Tooltip (shows on hover)
 const tip = document.createElement("div");
@@ -206,7 +216,7 @@ label.style.marginLeft = `${leftOffset}px`;
 path.appendChild(label);
 
 
-    node.addEventListener("click", () => openItem(item, status));
+    node.addEventListener("click", () => item.comingSoon ? null : openItem(item, status));
     path.appendChild(node);
 
     // Continue flag

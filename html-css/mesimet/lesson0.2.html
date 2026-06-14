@@ -1,37 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html lang="sq">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mësimi 0.2 | Hyrje në HTML</title>
     <link rel="stylesheet" href="welcome.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../sidebar.css">
     <link rel="stylesheet" href="../../css/playground.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-  
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" defer></script>
-
-<!-- për HTML highlight (language-html përdor markup) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js" defer></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" defer></script>
 </head>
 <body>
     <div class="container">
            <nav>
-        <a href="" id="menuBtn"><img src="../../imgs/menu (1).png" alt=""></a>
+        <a href="#" id="menuBtn"><img src="../../imgs/menu (1).png" alt="Menu"></a>
         
         <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
 
-        <a href="../../html-css/quiz/quiz.html"  class="goback">Kthehu Pas</a>
     </nav>
 
     <div class="overlay" id="overlay"></div>
@@ -39,8 +31,8 @@
 <div class="sidebar" id="sidebar">
   <div class="sidebar-head">
     <div class="sidebar-title">
-        <img class="ikonSidebar" src="../../imgs/icon_platformes-removebg-preview.png" alt="">
-        <p>Meso Programim</p>
+        <img class="ikonSidebar" src="../../imgs/icon_platformes-removebg-preview.png" alt="Logo">
+        <p>Mëso Programim</p>
     </div>
     <button class="sidebar-close" id="closeBtn" type="button">✕</button>
   </div>
@@ -53,104 +45,85 @@
 </div>
 
 <header>
-    <div class="welcome">
-        
-        <h1>Titujt ne HTML</span></h1>
-     
+  <div class="welcome">
+    <p class="lesson-badge">Mësimi 2 — Hyrje</p>
+    <h1>Hyrje në <span>HTML</span></h1>
+    <p class="lesson-meta">E përditësuar: Maj 2026</p>
+  </div>
+
+  <section class="lesson-content">
+
+    <p>HTML është një <strong>gjuhë shënimi</strong> (markup language). Ajo nuk përmban logjikë programuese si if...else ose lak for.</p>
+
+    <p>Gjuha e shënimit do të thotë se ajo etiketonpërmbajtjen dhe i jep kuptim. Mendoje si një redaktor gazete: ai nuk vendos vetëm tekst në faqe — ai vendos se cili tekst është titulli kryesor, cili është nëntitulli, cili është citati i theksuar. HTML bën të njëjtën gjë për faqen web — i tregon shfletuesit se çfarë është çdo pjesë e përmbajtjes.</p>
+
+    <div class="hapsira">
+      <h2>HTML dhe CSS punojnë bashkë</h2>
+      <p>Në këtë kurs do të mësojmë fillimisht HTML, pastaj CSS, pastaj do t'i kombinojmë. Nuk ka kuptim të mësosh si të stilizosh diçka para se ta ndërtosh.</p>
+      <p>HTML dhe CSS janë dy gjuhë të ndara me qëllime të ndara. HTML thotë: <em>"Ky është titulli, ky është një paragraf, kjo është një listë."</em> CSS thotë: <em>"Ky titull është i bardhë, ky paragraf ka 16px hapësirë poshtë, kjo listë nuk ka pika."</em> Bashkë, formojnë çdo faqe interneti.</p>
     </div>
 
-
-   <section class="lesson-content">
-
-  <p>
-    Në këtë mësim do të mësosh për <span class="highlight">Titujt (Headings) në HTML</span>.
-    Titujt përdoren për t’i dhënë strukturë një faqeje dhe për ta bërë tekstin më të kuptueshëm.
-  </p>
-
-  <p>
-    HTML ka <span class="highlight">6 nivele titujsh</span>: nga <span class="highlight">&lt;h1&gt;</span> (më i rëndësishmi)
-    deri te <span class="highlight">&lt;h6&gt;</span> (më i vogli).
-  </p>
-
-  <div class="hapsira">
-    <h2>Çka janë Headings?</h2>
-    <p>
-      Headings janë titujt që i shohim zakonisht në fillim të një faqeje ose në fillim të seksioneve.
-      Ata e organizojnë përmbajtjen si në një libër: titull kryesor, kapituj dhe nënkapituj.
-    </p>
-  </div>
-
-  <div class="hapsira2">
-    <h2>Shembull: 6 nivelet e titujve</h2>
-    <p>Shiko si shkruhen titujt në HTML:</p>
-
- <!-- ===== Code + Preview (HTML) ===== -->
-<div class="code-card">
-  <div class="code-head">
-    <div class="code-left">
-      <span class="dots">
-        <i></i><i></i><i></i>
-      </span>
-      <span class="code-lang">HTML</span>
+    <div class="hapsira2">
+      <h2>Fokusi: semantikë dhe aksesibilitet</h2>
+      <p>Ky kurs fokusohet fuqimisht te <strong>semantika</strong> dhe <strong>aksesibiliteti</strong>. Këto koncepte do të prezantohen në mësimet e ardhshme dhe janë pjesë e pothuajse çdo mësimi.</p>
+      <p>Semantika do të thotë të zgjedhësh elementin HTML që i përshtatet kuptimit të përmbajtjes — jo atë që "duket mirë". Aksesibiliteti do të thotë të ndërtosh faqe që funksionojnë për të gjithë: njerëzit që navigojnë me tastierë, ata që përdorin lexues ekrani, dhe motorët e kërkimit si Google. Të dyja do të shpjegohen hollësisht në mësimet e ardhshme.</p>
     </div>
-    <button class="code-copy" id="copyBtn">Copy</button>
-  </div>
 
-  <pre class="code-block line-numbers">
-<code class="language-html" id="exampleCode" >&lt;h1&gt;Ky eshte titull me h1&lt;/h1&gt;
-&lt;h2&gt;Titull me h2&lt;/h2&gt;
-&lt;h3&gt;Titull me h3&lt;/h3&gt;
-&lt;h4&gt;Titull me h4&lt;/h4&gt;
-&lt;h5&gt;Titull me h5&lt;/h5&gt;
-&lt;h6&gt;Titull me h6&lt;/h6&gt;</code>
-  </pre>
-</div>
+    <div class="hapsira2">
+      <h2>Histori e shkurtër e HTML</h2>
+      <p>HTML u zhvillua fillimisht nga <a href="https://en.wikipedia.org/wiki/Tim_Berners-Lee" target="_blank" rel="noopener noreferrer" class="highlight">Tim Berners-Lee</a> ndërkohë që punonte në CERN. Qëllimi kryesor i HTML ishte paraqitja e dokumenteve që mund të lidhen me njëri-tjetrin.</p>
+    </div>
 
-<div class="preview-card">
-  <div class="preview-title">Preview</div>
-  <div class="preview-box" id="examplePreview"></div>
-</div>
+    <div class="hapsira2">
+      <h2>Sintaksa bazë e një elementi HTML</h2>
+      <p>Ky mësim ka si qëllim të të njohë me HTML gradualisht — prandaj nuk do të shkruajmë vetë elemente HTML ende. Në mësimin tjetër do ta bëjmë, sapo të mësojmë elementin <code>&lt;h1&gt;</code>.</p>
+      <p>Ja si duket një element HTML:</p>
 
+      <div class="code-card">
+        <button class="code-copy">Copy</button>
+        <pre class="code-pre line-numbers"><code class="language-html">&lt;h1&gt;Përfitimet e sportit çdo ditë tjetër&lt;/h1&gt;</code></pre>
+      </div>
 
-    <p>
-      <span class="highlight">&lt;h1&gt;</span> zakonisht përdoret për titullin kryesor të faqes,
-      ndërsa <span class="highlight">&lt;h2&gt;</span> dhe <span class="highlight">&lt;h3&gt;</span>
-      për seksione dhe nën-seksione.
-    </p>
-  </div>
+      <p style="margin-top: 16px;">Në kodin e mësipërm kemi një element <code>h1</code>. Ai përbëhet nga <strong>tagu hapës</strong> <code>&lt;h1&gt;</code>, <strong>përmbajtja</strong> — teksti brenda — dhe <strong>tagu mbyllës</strong> <code>&lt;/h1&gt;</code>.</p>
+    </div>
 
-  
+    <div class="hapsira2">
+      <h2>Struktura e një dokumenti HTML</h2>
+      <p>Çdo faqe HTML ndjek të njëjtën strukturë bazë — si një skelet. Shfletuesi e pret gjithmonë këtë formë kur hap një faqe:</p>
 
-  <div class="hapsira2">
-    <h2>Shembull real: strukturë faqeje</h2>
-    <p>Ja një strukturë tipike e një faqeje me tituj:</p>
+      <div class="code-card">
+        <button class="code-copy">Copy</button>
+        <pre class="code-pre line-numbers"><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="sq"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Faqja ime e parë&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Mirë se vini!&lt;/h1&gt;
+    &lt;p&gt;Ky është teksti i faqes.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
 
-    <pre class="code-block line-numbers"><code class="language-html">
-&lt;h1&gt;Titulli i pare&lt;/h1&gt;
+      <p style="margin-top: 16px;">Le të shohim çfarë bën secila pjesë:</p>
+      <ul class="lesson-list" style="margin-top: 8px;">
+        <li><code>&lt;!DOCTYPE html&gt;</code> — nuk është element HTML; është deklaratë. I tregon shfletuesit se po lexon HTML5.</li>
+        <li><code>&lt;html&gt;</code> — elementi <em>rrënjë</em> (root). Të gjitha elementet tjera janë brenda tij.</li>
+        <li><code>&lt;head&gt;</code> — zona e <em>metadata</em>. Nuk shfaqet drejtpërdrejt në faqe, por i thotë shfletuesit çfarë emri ka taba, cilat stile të ngarkojë, cilën gjuhë të përdorë.</li>
+        <li><code>&lt;body&gt;</code> — gjithçka që shikon në ekran hyn këtu: titujt, paragrafët, imazhet, butonat.</li>
+      </ul>
+      <p style="margin-top: 12px;" class="lesson-note">⚠️ Mos u shqetëso nëse këto nuk janë të qarta tani — secila prej tyre do të shpjegohet hollësisht në mësimet e ardhshme. Për momentin, mjafton të dish që ekzistojnë.</p>
+    </div>
 
-&lt;h2&gt;Kapitulli 1: Bazat&lt;/h2&gt;
-&lt;h3&gt;Titujt (Headings)&lt;/h3&gt;
-&lt;p&gt;Titujt përdoren për të ndarë përmbajtjen në pjesë...&lt;/p&gt;
-
-&lt;h3&gt;Paragrafët&lt;/h3&gt;
-&lt;p&gt;Paragrafët krijohen me tagun p...&lt;/p&gt;
-    </code></pre>
-
-    <img class="liveserver" src="../../imgs/Document - Google Chrome 19_01_2026 12_41_56.png" alt="">
-  </div>
-
- 
-
-
-    
-
-
+  </section>
 </header>
 
    
 
-     <footer class="lesson-footer">
-  <a class="btn-next" href="../../html-css/quiz/quiz2.html">Vazhdo</a>
+<footer class="lesson-footer">
+  <a class="btn-back" href="welcome.html">← Kthehu</a>
+  <a class="btn-next" href="lesson-semantika.html">Vazhdo →</a>
 </footer>
 
 

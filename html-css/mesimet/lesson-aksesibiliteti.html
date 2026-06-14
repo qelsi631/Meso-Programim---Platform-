@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mësimi 5 | Aksesibiliteti | Mëso Programim</title>
+
+  <link rel="stylesheet" href="welcome.css">
+  <link rel="stylesheet" href="../../sidebar.css">
+  <link rel="stylesheet" href="../../css/playground.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="#" id="menuBtn"><img src="../../imgs/menu (1).png" alt="Menu"></a>
+      <a href="../../dashboard.html" class="dashboard-btn" title="Go to Dashboard">📊</a>
+    </nav>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-head">
+        <div class="sidebar-title">
+          <img class="ikonSidebar" src="../../imgs/icon_platformes-removebg-preview.png" alt="Logo">
+          <p>Mëso Programim</p>
+        </div>
+        <button class="sidebar-close" id="closeBtn" type="button">✕</button>
+      </div>
+      <div class="sidebar-links">
+        <a href="../../dashboard.html">Dashboard</a>
+        <a href="../../roadmap.html">Roadmap</a>
+        <a href="#" class="report-bug-link" data-report="bug">Report a bug</a>
+      </div>
+    </div>
+
+    <header>
+      <div class="welcome">
+        <p class="lesson-badge">Mësimi 5 — Aksesibiliteti</p>
+        <h1>Hyrje në <span>Aksesibilitet</span></h1>
+        <p class="lesson-meta">E përditësuar: Qershor 2026</p>
+      </div>
+
+      <section class="lesson-content">
+
+        <p>Kur ndërtojmë faqe interneti, duam që <strong>sa më shumë njerëz</strong> të mund t'i përdorin ato — duke përfshirë njerëzit me aftësi të kufizuara. Kjo quhet <strong>aksesibilitet</strong>.</p>
+
+        <div class="hapsira">
+          <h2>Çfarë është aksesibiliteti?</h2>
+          <p>Aksesibiliteti do të thotë të ndërtosh faqe që funksionojnë për <strong>të gjithë</strong> — jo vetëm për njerëzit që shohin dhe dëgjojnë mirë.</p>
+          <p>Mendoje kështu: nëse dikush nuk mund të shohë ekranin, si e di çfarë shkruan imazhi? Nëse dikush nuk mund të përdorë miun, si navigon faqen? Aksesibiliteti jep përgjigje për këto pyetje.</p>
+
+          <p class="lesson-note">♿ Rreth <strong>1 në 4 njerëz</strong> ka ndonjë lloj aftësie të kufizuar — vizuale, dëgjimore, motorike ose kognitive. Aksesibiliteti nuk është opsional, është pjesë e kodit të mirë.</p>
+        </div>
+
+        <div class="hapsira2">
+          <h2>Kush e përdor aksesibilitetin?</h2>
+          <p>Jo vetëm njerëzit me aftësi të kufizuara të përhershme. Edhe situata të zakonshme si:</p>
+          <ul class="lesson-list">
+            <li>🌞 Dielli godet ekranin dhe kontrasti është i ulët</li>
+            <li>🤕 Ke dorën e lënduar dhe nuk mund të përdorësh miun</li>
+            <li>🔇 Je në vend publik pa kufje dhe nuk mund të dëgjosh video</li>
+            <li>👴 Dikush i moshuar me shikim më të dobët</li>
+          </ul>
+          <p style="margin-top: 16px;">Aksesibiliteti i mirë ndihmon <strong>të gjithë</strong>.</p>
+        </div>
+
+        <div class="hapsira2">
+          <h2>Si "lexon" faqen dikush që nuk sheh?</h2>
+          <p>Njerëzit me probleme vizuale përdorin një program që quhet <strong>screen reader</strong> (lexues ekrani). Ky program lexon me zë çdo gjë në faqe — tekstin, butonat, linqet, imazhet.</p>
+          <p>Por si e di screen reader-i çfarë është një imazh? Vetëm nëse ti i tregon me atributin <code>alt</code>:</p>
+
+          <div class="code-card">
+            <button class="code-copy">Copy</button>
+            <pre class="code-pre line-numbers"><code class="language-html">&lt;!-- ❌ Screen reader thotë: "imazh" — nuk ka info --&gt;
+&lt;img src="qen.jpg"&gt;
+
+&lt;!-- ✅ Screen reader thotë: "Foto e një qeni që luan në park" --&gt;
+&lt;img src="qen.jpg" alt="Foto e një qeni që luan në park"&gt;</code></pre>
+          </div>
+
+          <p style="margin-top: 16px;">Atributi <code>alt</code> është teksti alternativ që përshkruan imazhin. Nëse imazhi nuk ngarkohet — për çfarëdo arsye — ky tekst shfaqet në vend të tij.</p>
+        </div>
+
+        <div class="hapsira2">
+          <h2>Linqet duhet të kenë kuptim</h2>
+          <p>Kur screen reader-i lexon linqet e një faqeje, ai i liston njëri pas tjetrit. Imagjino të dëgjosh:</p>
+          <ul class="lesson-list">
+            <li>❌ "kliko këtu" — "kliko këtu" — "kliko këtu"</li>
+          </ul>
+          <p style="margin-top: 10px;">Nuk ka kuptim, apo jo? Linqet duhet të tregojnë qartë ku të çojnë:</p>
+
+          <div class="code-card">
+            <button class="code-copy">Copy</button>
+            <pre class="code-pre line-numbers"><code class="language-html">&lt;!-- ❌ Nuk tregon asgjë --&gt;
+&lt;a href="artikulli.html"&gt;Kliko këtu&lt;/a&gt;
+
+&lt;!-- ✅ Tregon qartë ku të çon --&gt;
+&lt;a href="artikulli.html"&gt;Lexo artikullin për HTML&lt;/a&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="hapsira2">
+          <h2>Titujt ndihmojnë navigimin</h2>
+          <p>Screen reader-ët i përdorin titujt (<code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, etj.) si <strong>shkurtore navigimi</strong>. Dikush mund të kërcejë direkt tek seksioni që dëshiron duke u bazuar te titujt.</p>
+          <p>Kjo është edhe një arsye pse titujt duhet të përdoren sipas hierarkisë — jo vetëm për pamje vizuale, por edhe për aksesibilitet.</p>
+
+          <p class="lesson-note">💡 Titujt e strukturuar mirë = navigim i lehtë për <strong>të gjithë</strong> — duke përfshirë motorët e kërkimit si Google.</p>
+        </div>
+
+        <div class="hapsira2">
+          <h2>Gjuha e faqes</h2>
+          <p>Ke parë <code>lang="sq"</code> në çdo faqe që kemi bërë? Kjo i tregon shfletuesit dhe screen reader-it se <strong>në ç'gjuhë është shkruar faqja</strong>.</p>
+          <p>Pa këtë atribut, screen reader-i mund ta lexojë shqipen me theks të gabuar — ose ta lexojë si gjuhë tjetër fare.</p>
+
+          <div class="code-card">
+            <button class="code-copy">Copy</button>
+            <pre class="code-pre line-numbers"><code class="language-html">&lt;!-- Faqja është në shqip --&gt;
+&lt;html lang="sq"&gt;
+
+&lt;!-- Faqja është në anglisht --&gt;
+&lt;html lang="en"&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="lesson-recap">
+          <h2>📋 Përmbledhje</h2>
+          <ul class="lesson-list">
+            <li>Aksesibiliteti do të thotë të ndërtosh faqe që funksionojnë për <strong>të gjithë njerëzit</strong>.</li>
+            <li>Imazhet duhet të kenë <code>alt</code> — një përshkrim teksti për screen reader-ët.</li>
+            <li>Linqet duhet të tregojnë qartë ku të çojnë — jo "kliko këtu".</li>
+            <li>Titujt e strukturuar mirë ndihmojnë navigimin — jo vetëm vizualisht.</li>
+            <li>Atributi <code>lang</code> në <code>&lt;html&gt;</code> i tregon shfletuesit gjuhën e faqes.</li>
+          </ul>
+        </div>
+
+      </section>
+    </header>
+
+    <footer class="lesson-footer">
+      <a class="btn-back" href="lesson-titujt.html">← Kthehu</a>
+      <a class="btn-next" href="../coming-soon.html">Vazhdo →</a>
+    </footer>
+
+  </div>
+
+  <script src="../../js.lessons/sidebar.js"></script>
+  <script src="../../js.lessons/copy.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module" src="../../js/requireAuth.js"></script>
+
+  <script type="module">
+    import { initLessonProgress } from "../../js/lessonProgressInit.js";
+    initLessonProgress("html-aksesibiliteti-1");
+  </script>
+
+  <script type="module">
+    import { markLessonCompleted } from "../../js/courseProgressManager.js";
+
+    const COURSE_SLUG = "html-fundamentals";
+    const LESSON_ID = "l4";
+
+    const btn = document.querySelector(".btn-next");
+    if (btn) {
+      btn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        const nextUrl = btn.getAttribute("href");
+        await markLessonCompleted(COURSE_SLUG, LESSON_ID);
+        window.location.href = nextUrl;
+      });
+    }
+  </script>
+</body>
+</html>
